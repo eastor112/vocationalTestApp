@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Future, MY Choice</title>
+  <link rel="stylesheet" href="../dist/output.css">
+  <script src="https://kit.fontawesome.com/9149f518c5.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="font-roboto overflow-y-visible box-border">
+
+  <!-- NAVEGACION -->
+  <nav id="navbar"
+    class="fixed z-10 w-full h-20 md:h-20 px-6 md:px-20 lg:px-24 flex flex-col md:flex-row md:justify-between shrink-0 md:items-center  bg-primary-1">
+
+    <!-- LEFT -->
+    <div class="flex items-center justify-between h-20">
+      <!-- LOGO -->
+      <div class="flex items-center">
+        <svg class="w-10 h-10 mr-2 text-light-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+          </path>
+        </svg>
+        <a class="text-xl font-medium whitespace-nowrap text-light-1" href="">My Future, My Choice</a>
+      </div>
+
+      <!-- MENU BUTTON -->
+      <button id='boton'
+        class="flex items-center md:hidden px-3 py-2 border rounded text-light-1 border-light-1 hover:text-secondary hover:border-secondary">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- RIGHT -->
+    <div id="right"
+      class="hidden md:flex flex-col md:flex-row  items-start md:items-center flex-nowrap  md:visible h-20">
+      <div class="flex flex-col md:flex-row text-light-1">
+        <a href="" class="px-3 py-2 font-normal text-md hover:font-semibold whitespace-nowrap">Home</a>
+        <a href="" class="px-3 py-2 font-normal text-md hover:font-semibold whitespace-nowrap">Pricing</a>
+        <a href="" class="px-3 py-2 font-normal text-md hover:font-semibold whitespace-nowrap">About Us</a>
+      </div>
+      <!-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mx-3 rounded-md whitespace-nowrap">
+        Sign Up
+      </button> -->
+    </div>
+
+  </nav>
+
+  <main class="px-6 md:px-20 lg:px-24 pb-3 pt-20 flex flex-col items-center">
+
+    <div class="signUp-container w-5/6 sm:w-4/6 md:w-3/6 lg:w-2/6 xl:1/6">
+      <div class="mt-10 text-center">
+        <h2 class="text-3xl">
+          Sign Up
+        </h2>
+        <h3 class="flex justify-center gap-3 mt-3">
+          <p>
+            Already a member?
+          </p>
+          <a class="text-blue-500 hover:text-blue-700 hover:underline" href="">Log In</a>
+        </h3>
+      </div>
+
+      <!-- Sign up with email and pass -->
+      <form class="mt-6 flex flex-col" action="" method="post">
+
+        <div class="mb-5 flex flex-col gap-2">
+          <label for="email" class=""></label>
+          <input id="email" type="email" placeholder="Email"
+            class="border-b hover:border-b-2 focus:border-b-2 border-primary-1 w-full py-1 outline-none">
+        </div>
+
+        <div class="mb-8 flex flex-col gap-2">
+          <label for="pass" class=""></label>
+          <input id="pass" type="password" placeholder="Password"
+            class="border-b hover:border-b-2 focus:border-b-2 border-primary-1  w-full py-1 outline-none">
+        </div>
+
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6  whitespace-nowrap">
+          Sign Up
+        </button>
+
+      </form>
+
+      <!-- Sign up with google -->
+      <div class="flex flex-col gap-2 mt-10 mb-20">
+
+        <div class="flex justify-between items-center w-full">
+          <hr class="w-1/4  border-primary-1">
+          <p class="text-center text-primary-1 px-3">or sign up with:</p>
+          <hr class="w-1/4  border-primary-1">
+        </div>
+
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mt-5 whitespace-nowrap">
+          <i class="fa fa-google" aria-hidden="true"></i>
+          Sign Up with Google
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="px-6 md:px-20 lg:px-24 pt-24 md:pt-28 lg:pt-32 bg-primary-1 text-light-1">
+
+    <div class="grid grid-cols-2 grid-rows-2 lg:grid-rows-1 lg:grid-cols-6 gap-10">
+
+      <div class="hidden lg:block lg:col-span-2">
+
+        <div class="flex flex-col md:flex-row items-center">
+          <svg class="w-14 h-14 mr-2 text-light-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+            </path>
+          </svg>
+          <a class="text-base font-medium whitespace-nowrap text-light-1" href="">My Future, My Choice</a>
+        </div>
+
+      </div>
+
+      <div>
+        <h2 class="font-bold">
+          Advertising
+        </h2>
+
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Pricing
+        </a>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Subscriptions
+        </a>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Payment methods
+        </a>
+
+      </div>
+
+      <div>
+        <h2 class="font-bold">
+          Resources
+        </h2>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Personal counseling
+        </a>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Universities Ranking
+        </a>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Employment statistics
+        </a>
+      </div>
+
+      <div>
+        <h2 class="font-bold">
+          Contact Us
+        </h2>
+        <ul>
+          <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+            PE+51-555555555
+          </a>
+          <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+            CO+57-999999999
+          </a>
+          <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+            YourFutureApp
+          </a>
+        </ul>
+      </div>
+
+      <div class="md:block">
+        <h2 class="font-bold">
+          Address
+        </h2>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">282
+          Kevin Brook,
+          Imogeneborough,
+          CA
+          58517</a>
+      </div>
+
+    </div>
+
+    <small class="block text-center pt-12 md:pt-16 lg:pt-20 pb-2 md:pb-4 lg:pb-6">
+      Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2022 -2030
+    </small>
+  </footer>
+
+  <script src="test.js"></script>
+</body>
+
+</html>
