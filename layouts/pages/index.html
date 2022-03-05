@@ -7,30 +7,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Future, MY Choice</title>
   <link rel="stylesheet" href="../dist/output.css">
+  <script src="https://kit.fontawesome.com/9149f518c5.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="font-roboto overflow-y-visible box-border">
 
   <!-- NAVEGACION -->
   <nav id="navbar"
-    class="h-20 md:h-20 px-4 md:px-16 flex flex-col md:flex-row md:justify-between shrink-0 md:items-center border border-black bg-slate-400">
+    class="fixed z-10 w-full h-20 md:h-20 px-6 md:px-20 lg:px-24 flex flex-col md:flex-row md:justify-between shrink-0 md:items-center  bg-primary-1">
 
     <!-- LEFT -->
     <div class="flex items-center justify-between h-20">
       <!-- LOGO -->
       <div class="flex items-center">
-        <svg class="w-10 h-10 mr-2 " fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        <svg class="w-10 h-10 mr-2 text-light-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
           </path>
         </svg>
-        <a class="text-xl font-medium whitespace-nowrap" href="">My Future, My Choice</a>
+        <a class="text-xl font-medium whitespace-nowrap text-light-1" href="">My Future, My Choice</a>
       </div>
 
       <!-- MENU BUTTON -->
       <button id='boton'
-        class="flex items-center md:hidden px-3 py-2 border rounded text-teal-500 border-teal-600 hover:text-black hover:border-black">
+        class="flex items-center md:hidden px-3 py-2 border rounded text-light-1 border-light-1 hover:text-secondary hover:border-secondary">
         <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <title>Menu</title>
           <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
@@ -41,18 +42,269 @@
     <!-- RIGHT -->
     <div id="right"
       class="hidden md:flex flex-col md:flex-row  items-start md:items-center flex-nowrap  md:visible h-20">
-      <div class="flex flex-col md:flex-row">
+      <div class="flex flex-col md:flex-row text-light-1">
         <a href="" class="px-3 py-2 font-normal text-md hover:font-semibold whitespace-nowrap">Home</a>
         <a href="" class="px-3 py-2 font-normal text-md hover:font-semibold whitespace-nowrap">Pricing</a>
         <a href="" class="px-3 py-2 font-normal text-md hover:font-semibold whitespace-nowrap">About Us</a>
       </div>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mx-3 rounded whitespace-nowrap">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mx-3 rounded-md whitespace-nowrap">
         Sign Up
       </button>
     </div>
 
   </nav>
 
+  <main class="px-6 md:px-20 lg:px-24 pb-3 pt-20">
+
+    <!-- HERO SECTION -->
+    <section class="hero flex flex-col-reverse md:flex-row md:items-center mt-6 md:mt-12 lg:mt-28 xl:mr-10">
+
+      <div class="left flex flex-col w-full md:w-1/2 lg:mr-8">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl leading-5 xl:leading-8 font-semibold mt-6 md:mt-0">
+          Discover your vocation, choose well
+        </h2>
+        <p class="text-xl md:text-lg xl:text-xl leading-4 md:leading-4 xl:leading-5 mt-10 md:mt-5 lg:mt-10">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ipsa inventore libero dolorem vel
+          ipsam fuga necessitatibus non natus quo. Sed, est quia ad necessitatibus aperiam culpa autem eum quasi.
+        </p>
+        <div class="buttons mt-14 md:mt-7 lg:mt-12">
+          <button
+            class="border w-52 md:w-36 lg:w-48 mr-2 md:mr-1 mb-2 bg-primary-2 hover:bg-primary-1 text-light-1 text-lg md:text-sm lg:text-base font-medium px-3 py-3 rounded-md">
+            Vocational test
+          </button>
+          <button
+            class="border w-52 md:w-36 lg:w-48  md:mr-1 mb-2 border-primary-1 bg-light-2 hover:bg-light-1 text-primary-1 text-lg md:text-sm lg:text-base font-medium px-3 py-3 rounded-md">
+            Where to study
+          </button>
+        </div>
+      </div>
+
+      <div class="right flex h-auto md:h-96 xl:h-auto md:w-1/2 ">
+
+        <img class="w-full" src="../assets/girl-choosing.jpg" alt="">
+
+      </div>
+
+    </section>
+
+    <!-- ADVERTISEMENT SECTION -->
+    <section class="cards mt-32 md:mt-36 lg:mt-40">
+
+      <div>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl leading-5 font-semibold mt-6 md:mt-0 md:text-center">
+          Choose the best educational institution
+        </h2>
+
+        <p
+          class="text-xl md:text-lg lg:text-xl leading-4 md:leading-4 lg:leading-5 mt-10 md:mt-5 lg:mt-10 md:text-center">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui ad reprehenderit nulla omnis optio, quo dolorem
+        </p>
+      </div>
+
+      <div class="carousel z-0 mt-6 relative">
+        <button class="left-arrow bg-blue-400 opacity-10 hover:opacity-60 absolute h-full">
+          back
+        </button>
+        <button class="right-arrow absolute bg-blue-400 opacity-10 hover:opacity-60 right-0 h-full">
+          next
+        </button>
+
+        <div class="card-container mx-9 overflow-hidden whitespace-nowrap">
+
+          <div
+            class="card md:w-1/2 lg:w-1/3 xl:w-1/4 border-8 border-white bg-slate-400 inline-block whitespace-normal">
+            <figure>
+              <img src="https://via.placeholder.com/800x600?text=University-Photograph" alt="">
+            </figure>
+            <div class="p-6">
+              <h3 class="text-lg font-bold uppercase">
+                University 1
+              </h3>
+              <p class="mt-4 text-base leading-3">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste cumque autem quos quisquam, atque bea...
+              </p>
+
+              <button class="mt-4 text-blue-500 hover:underline ">
+                See More >
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="card md:w-1/2 lg:w-1/3 xl:w-1/4 border-8 border-white bg-slate-400 inline-block whitespace-normal">
+            <figure>
+              <img src="https://via.placeholder.com/800x600?text=University-Photograph" alt="">
+            </figure>
+            <div class="p-6">
+              <h3 class="text-lg font-bold uppercase">
+                University 1
+              </h3>
+              <p class="mt-4 text-base leading-3">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste cumque autem quos quisquam, atque bea...
+              </p>
+
+              <button class="mt-4 text-blue-500 hover:underline ">
+                See More >
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="card md:w-1/2 lg:w-1/3 xl:w-1/4 border-8 border-white bg-slate-400 inline-block whitespace-normal">
+            <figure>
+              <img src="https://via.placeholder.com/800x600?text=University-Photograph" alt="">
+            </figure>
+            <div class="p-6">
+              <h3 class="text-lg font-bold uppercase">
+                University 1
+              </h3>
+              <p class="mt-4 text-base leading-3">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste cumque autem quos quisquam, atque bea...
+              </p>
+
+              <button class="mt-4 text-blue-500 hover:underline ">
+                See More >
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="card md:w-1/2 lg:w-1/3 xl:w-1/4 border-8 border-white bg-slate-400 inline-block whitespace-normal">
+            <figure>
+              <img src="https://via.placeholder.com/800x600?text=University-Photograph" alt="">
+            </figure>
+            <div class="p-6">
+              <h3 class="text-lg font-bold uppercase">
+                University 1
+              </h3>
+              <p class="mt-4 text-base leading-3">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste cumque autem quos quisquam, atque bea...
+              </p>
+
+              <button class="mt-4 text-blue-500 hover:underline ">
+                See More >
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="CTA my-32 md:my-36 lg:my-40  md:px-16 xl:px-24 md:flex md:flex-row md:justify-between md:gap-2">
+
+      <div class="CTA-left md:flex md:flex-col md:justify-center md:gap-2">
+        <h2 class="text-3xl md:text-2xl xl:text-4xl leading-5 font-semibold mt-6 md:mt-0 ">
+          Don't know what to study?
+        </h2>
+        <p class="text-xl mt-6 md:mt-0 md:text-lg xl:text-xl leading-4 md:leading-4 lg:leading-5 ">
+          Take the vocational test and discover your best option
+        </p>
+      </div>
+
+      <div
+        class="CTA-right buttons mt-6 md:mt-0 md:flex md:flex-col xl:flex-row md:gap-2 xl:gap-5 md:flex-end md:items-center">
+        <button
+          class="border w-52 md:w-40 lg:w-48 mr-2 md:mr-1 bg-primary-2 hover:bg-primary-1 text-light-1 text-lg md:text-sm lg:text-base font-medium px-3 py-3 rounded-md">
+          Vocational test
+        </button>
+        <button
+          class="border w-52 md:w-40 lg:w-48 mt-2  md:mr-1 border-primary-1 bg-light-2 hover:bg-light-1 text-primary-1 text-lg md:text-sm lg:text-base font-medium px-3 py-3 rounded-md">
+          Where to study
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="px-6 md:px-20 lg:px-24 pt-24 md:pt-28 lg:pt-32 bg-primary-1 text-light-1">
+
+    <div class="grid grid-cols-2 grid-rows-2 lg:grid-rows-1 lg:grid-cols-6 gap-10">
+
+      <div class="hidden lg:block lg:col-span-2">
+
+        <div class="flex flex-col md:flex-row items-center">
+          <svg class="w-14 h-14 mr-2 text-light-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+            </path>
+          </svg>
+          <a class="text-base font-medium whitespace-nowrap text-light-1" href="">My Future, My Choice</a>
+        </div>
+
+      </div>
+
+      <div>
+        <h2 class="font-bold">
+          Advertising
+        </h2>
+
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Pricing
+        </a>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Subscriptions
+        </a>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Payment methods
+        </a>
+
+      </div>
+
+      <div>
+        <h2 class="font-bold">
+          Resources
+        </h2>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Personal counseling
+        </a>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Universities Ranking
+        </a>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+          Employment statistics
+        </a>
+      </div>
+
+      <div>
+        <h2 class="font-bold">
+          Contact Us
+        </h2>
+        <ul>
+          <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+            PE+51-555555555
+          </a>
+          <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+            CO+57-999999999
+          </a>
+          <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+            YourFutureApp
+          </a>
+        </ul>
+      </div>
+
+      <div class="md:block">
+        <h2 class="font-bold">
+          Address
+        </h2>
+        <a class="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">282
+          Kevin Brook,
+          Imogeneborough,
+          CA
+          58517</a>
+      </div>
+
+    </div>
+
+    <small class="block text-center pt-12 md:pt-16 lg:pt-20 pb-2 md:pb-4 lg:pb-6">
+      Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2022 -2030
+    </small>
+  </footer>
 
   <script src="test.js"></script>
 </body>
