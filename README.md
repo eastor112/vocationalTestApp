@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+#### Group 1 - Make it Real
+# Vocational Tests App (Front)
+
+* **Paola Barbosa**
+* **Emerson Asto**
+* **Carlos Vega**
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
