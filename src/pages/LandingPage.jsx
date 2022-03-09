@@ -1,7 +1,7 @@
 import Advertisement from '../components/organisms/advertisement/Advertisement'
 import Cta from '../components/organisms/cta/Cta'
 import Footer from '../components/organisms/footer/Footer'
-import Hero from '../components/organisms/Hero/Hero'
+import Hero from '../components/organisms/hero/Hero'
 import NavBar from '../components/organisms/navBar/NavBar'
 
 const LandingPage = () => {

@@ -1,25 +1,29 @@
+const sizeOptions = {
+  xsmall: 'text-xs',
+  small: 'text-sm',
+  medium: 'text-md',
+  large: 'text-lg',
+  xlarge: 'text-xl',
+  default: 'text-base',
+}
+// block text-xs md:text-sm leading-4 md:leading-5
 const Link = (props) => {
 
-  const { link = './', text, size = 'small' } = props;
+  const {
+    link = './',
+    text = 'link',
+    size = 'small',
+    underlineOnHover = false,
+    vertical = false } = props;
 
-  const selectSize = (size) => {
-    if (size === 'small') {
-      return 'text-sm';
-    } else if (size === 'medium') {
-      return 'text-md';
-    } else if (size === 'large') {
-      return 'text-lg';
-    } else if (size === 'xlarge') {
-      return 'text-xl';
-    } else {
-      return 'text-base';
-    }
-  }
 
   return (
     <a
       href={link}
-      className={"px-3 py-2 font-normal hover:font-semibold whitespace-nowrap " + selectSize(size)}
+      className={`font-normal ${!(text.length > 20) && 'whitespace-nowrap'} hover:font-medium cursor-pointer \
+      ${vertical ? 'block leading-5' : 'px-3 py-2'} \
+      ${underlineOnHover ? 'hover:underline' : ''} \
+      ${sizeOptions[size]}`}
     >
       {text}
     </a>

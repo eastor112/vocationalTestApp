@@ -1,4 +1,4 @@
-import React from 'react'
+import GroupLinks from '../../molecules/groupLinks/GroupLinks'
 
 const Footer = () => {
   return (
@@ -25,15 +25,15 @@ const Footer = () => {
             Advertising
           </h2>
 
-          <a href="." className="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
-            Pricing
-          </a>
-          <a href="." className="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
-            Subscriptions
-          </a>
-          <a href="." className="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
-            Payment methods
-          </a>
+          <GroupLinks
+            linksArray={[
+              { link: './', text: 'Pricing', size: 'small' },
+              { link: './', text: 'Subscriptions', size: 'small' },
+              { link: './', text: 'Payment methods', size: 'small' },
+            ]}
+            underlineOnHover={true}
+            vertical={true}
+          />
 
         </div>
 
@@ -41,44 +41,47 @@ const Footer = () => {
           <h2 className="font-bold">
             Resources
           </h2>
-          <a href="." className="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
-            Personal counseling
-          </a>
-          <a href="." className="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
-            Universities Ranking
-          </a>
-          <a href="." className="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
-            Employment statistics
-          </a>
+
+          <GroupLinks
+            linksArray={[
+              { link: './', text: 'Personal counseling', size: 'small' },
+              { link: './', text: 'Universities Ranking', size: 'small' },
+              { link: './', text: 'Employment statistics', size: 'small' },
+            ]}
+            underlineOnHover={true}
+            vertical={true}
+          />
         </div>
 
         <div>
           <h2 className="font-bold">
             Contact Us
           </h2>
-          <ul>
-            <a href="." className="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
-              PE+51-555555555
-            </a>
-            <a href="." className="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
-              CO+57-999999999
-            </a>
-            <a href="." className="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">
-              <i className="fa fa-instagram" aria-hidden="true"></i>
-              YourFutureApp
-            </a>
-          </ul>
+
+          <GroupLinks
+            linksArray={[
+              { link: './', text: 'PE+51-555555555', size: 'small' },
+              { link: './', text: 'CO+57-999999999', size: 'small' },
+              { link: './', text: 'YourFutureApp', size: 'small' },
+            ]}
+            underlineOnHover={true}
+            vertical={true}
+          />
+
         </div>
 
         <div className="md:block">
           <h2 className="font-bold">
             Address
           </h2>
-          <a href="." className="block text-xs md:text-sm leading-4 md:leading-5 hover:underline hover:font-bold cursor-pointer">282
-            Kevin Brook,
-            Imogeneborough,
-            CA
-            58517</a>
+
+          <GroupLinks
+            linksArray={[
+              { link: '', text: 'Kevin Brook,\n Imogeneborough,\n CA 58517', size: 'small' },
+            ]}
+            underlineOnHover={true}
+            vertical={true}
+          />
         </div>
 
       </div>

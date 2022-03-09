@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../../atoms/Button/Button'
 
 const Cta = () => {
 
@@ -15,15 +16,10 @@ const Cta = () => {
       </div>
 
       <div
-        className="CTA-right buttons mt-6 md:mt-0 md:flex md:flex-col xl:flex-row md:gap-2 xl:gap-5 md:flex-end md:items-center">
-        <button
-          className="border w-52 md:w-40 lg:w-48 mr-2 md:mr-1 bg-primary-2 hover:bg-primary-1 text-light-1 text-lg md:text-sm lg:text-base font-medium px-3 py-3 rounded-md">
-          Vocational test
-        </button>
-        <button
-          className="border w-52 md:w-40 lg:w-48 mt-2  md:mr-1 border-primary-1 bg-light-2 hover:bg-light-1 text-primary-1 text-lg md:text-sm lg:text-base font-medium px-3 py-3 rounded-md">
-          Where to study
-        </button>
+        className="CTA-right buttons mt-6 md:mt-0 md:flex md:flex-col xl:flex-row md:gap-2 xl:gap-3 md:flex-end md:items-center">
+
+        <Button text="Vocational test" size="large" />
+        <Button text="Where to study" size="large" outline={true} />
       </div>
 
     </section>

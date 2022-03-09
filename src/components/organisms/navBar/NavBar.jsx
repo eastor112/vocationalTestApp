@@ -27,6 +27,7 @@ const NavBar = () => {
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
         </button>
+
       </div>
 
       <div id="right"
@@ -36,13 +37,13 @@ const NavBar = () => {
           linksArray={[
             { link: "/", text: "Home", size: 'medium' },
             { link: "/about", text: "Pricing", size: "medium" },
-            { link: "/contact", text: "About Us", size: "medium" }]}
+            { link: "/contact", text: "About Us", size: "medium" },
+          ]}
+          underlineOnHover={true}
         />
 
-        {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mx-3 rounded-md whitespace-nowrap">
-          Sign Up
-        </button> */}
-        <Button text="Registrate" type="success" size='large' />
+        <Button text="Sign Up" type="neutral" size='medium' />
+
       </div>
 
     </nav>
