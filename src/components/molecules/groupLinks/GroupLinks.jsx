@@ -1,11 +1,11 @@
 import React from 'react'
 import Link from '../../atoms/link/Link'
 
-const GroupLinks = ({ linksArray }) => {
+const GroupLinks = ({ linksArray, underlineOnHover = false, vertical = false }) => {
 
   return (
     <div
-      className='flex flex-col md:flex-row text-light-1'
+      className={!vertical && `flex flex-col md:flex-row text-light-1`}
     >
       {
         linksArray.map((link, index) => {
@@ -15,6 +15,8 @@ const GroupLinks = ({ linksArray }) => {
               link={link.link}
               text={link.text}
               size={link.size}
+              underlineOnHover={underlineOnHover}
+              vertical={vertical}
             />
           )
         }
