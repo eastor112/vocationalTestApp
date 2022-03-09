@@ -1,10 +1,13 @@
 import React from 'react'
+import LoginPage from './pages/LoginPage'
+// import LandingPage from './pages/LandingPage'
 
 const App = () => {
   return (
-    <div className='text-xl font-bold text-primary-1 font-roboto'>
-      App
-    </div>
+    <>
+      {/* <LandingPage /> */}
+      <LoginPage />
+    </>
   )
 }
 

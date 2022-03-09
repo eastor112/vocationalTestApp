@@ -11,7 +11,7 @@ module.exports = {
         },
         secondary: {
           1: '#488FB1',
-          2: '#6A9FBB',
+          2: '#5f96af',
         },
         terciary: {
           1: '#4FD3C4',
@@ -19,9 +19,16 @@ module.exports = {
         },
         cuaternary: {
           1: '#C1F8CF',
-          2: '#DDF8CF',
+          2: '#cff1d8',
         },
-        success: '#198754',
+        neutral: {
+          1: '#0D6EFD',
+          2: '#3686fd',
+        },
+        success: {
+          1: '#198754',
+          2: '#319b62',
+        },
         danger: {
           1: '#971540',
           2: '#B71540',
@@ -35,12 +42,12 @@ module.exports = {
           2: '#4DDAF5',
         },
         light: {
-          1: '#E6E6E6',
+          1: '#e2e2e2',
           2: '#F5F5F5',
         },
         dark: {
-          1: '#212529',
-          2: '#313131',
+          1: '#202020',
+          2: '#363636',
         }
       },
       lineHeight: {
