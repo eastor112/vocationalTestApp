@@ -1,5 +1,6 @@
 import React from 'react'
-import SignUpPage from './pages/SignUpPage'
+import CareerInformationPage from './pages/CareerInformationPage'
+// import SignUpPage from './pages/SignUpPage'
 // import LoginPage from './pages/LoginPage'
 // import LandingPage from './pages/LandingPage'
 
@@ -8,7 +9,8 @@ const App = () => {
     <>
       {/* <LandingPage /> */}
       {/* <LoginPage /> */}
-      <SignUpPage />
+      {/* <SignUpPage /> */}
+      <CareerInformationPage />
     </>
   )
 }
