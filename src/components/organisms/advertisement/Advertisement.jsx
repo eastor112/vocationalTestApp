@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from './Card'
+import Carousel from '../carousel/Carousel'
 
 const Advertisement = () => {
   return (
@@ -16,27 +16,7 @@ const Advertisement = () => {
         </p>
       </div>
 
-      <div className="carousel z-0 mt-6 relative">
-        <button className="left-arrow bg-blue-400 opacity-10 hover:opacity-60 absolute h-full">
-          back
-        </button>
-        <button className="right-arrow absolute bg-blue-400 opacity-10 hover:opacity-60 right-0 h-full">
-          next
-        </button>
-
-        <div className="card-container mx-9 overflow-hidden whitespace-nowrap">
-
-          <Card />
-
-          <Card />
-
-          <Card />
-
-          <Card />
-
-        </div>
-
-      </div>
+      <Carousel />
 
     </section>
   )
