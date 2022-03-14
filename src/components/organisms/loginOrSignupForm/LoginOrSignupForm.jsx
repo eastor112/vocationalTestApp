@@ -23,13 +23,13 @@ const LoginOrSignupForm = ({ title }) => {
     >
 
       <div className="mb-5 flex flex-col gap-2">
-        <label for="email" className=""></label>
+        <label htmlFor="email" className=""></label>
         <input id="email" type="email" placeholder="Email"
           className="border-b hover:border-b-2 focus:border-b-2 border-primary-1 w-full py-1 outline-none" />
       </div>
 
       <div className="mb-8 flex flex-col gap-2">
-        <label for="pass" className=""></label>
+        <label htmlFor="pass" className=""></label>
         <input id="pass" type="password" placeholder="Password"
           className="border-b hover:border-b-2 focus:border-b-2 border-primary-1  w-full py-1 outline-none" />
       </div>

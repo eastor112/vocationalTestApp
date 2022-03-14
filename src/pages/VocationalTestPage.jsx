@@ -24,8 +24,8 @@ const VocationalTestPage = () => {
           <br />
           <div className=" md:grid grid-cols-2 gap-2">
             {
-              questions.map(question => (
-                <Question question={question} />
+              questions.map((question, index) => (
+                <Question key={index} question={question} />
               ))
             }
           </div>

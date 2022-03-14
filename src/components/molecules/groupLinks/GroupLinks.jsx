@@ -5,7 +5,7 @@ const GroupLinks = ({ linksArray, underlineOnHover = false, vertical = false }) 
 
   return (
     <div
-      className={!vertical && `flex flex-col md:flex-row text-light-1`}
+      className={!vertical ? `flex flex-col md:flex-row text-light-1` : ''}
     >
       {
         linksArray.map((link, index) => {
