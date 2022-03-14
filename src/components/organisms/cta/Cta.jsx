@@ -1,7 +1,17 @@
-import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import Button from '../../atoms/Button/Button'
 
 const Cta = () => {
+
+  const navigate = useNavigate();
+
+  const handleTest = () => {
+    navigate('/signup');
+  }
+
+  const handleSearch = () => {
+    navigate('/search');
+  }
 
   return (
     <section className="CTA my-32 md:my-36 lg:my-40  md:px-16 xl:px-24 md:flex md:flex-row md:justify-between md:gap-2">
@@ -18,8 +28,8 @@ const Cta = () => {
       <div
         className="CTA-right buttons mt-6 md:mt-0 md:flex md:flex-col xl:flex-row md:gap-2 xl:gap-3 md:flex-end md:items-center">
 
-        <Button text="Vocational test" size="large" />
-        <Button text="Where to study" size="large" outline={true} />
+        <Button text="Vocational test" size="large" action={handleTest} />
+        <Button text="Where to study" size="large" outline={true} action={handleSearch} />
       </div>
 
     </section>

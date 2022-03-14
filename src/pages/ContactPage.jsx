@@ -1,9 +1,10 @@
-import React from 'react'
-
 const ContactPage = () => {
+
   return (
-    <div>ContactPage</div>
+    <>
+      <h3 className="pt-20 pl-20 text-xl font-semibold">ContactPage</h3>
+    </>
   )
 }
 
-export default ContactPage
+export default ContactPage;

@@ -1,11 +1,10 @@
-import React from 'react'
-
 const AboutPage = () => {
+
   return (
     <>
-      <h1 className='pt-24'>About</h1>
+      <h3 className="pt-20 pl-20 text-xl font-semibold">AboutPage</h3>
     </>
   )
 }
 
-export default AboutPage
+export default AboutPage;

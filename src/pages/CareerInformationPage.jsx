@@ -2,12 +2,10 @@ import React from 'react'
 import Carousel from '../components/organisms/carousel/Carousel'
 import Footer from '../components/organisms/footer/Footer'
 import FullWidthCard from '../components/organisms/fullWidthCard/FullWidthCard'
-import NavBar from '../components/organisms/navBar/NavBar'
 
 const CareerInformationPage = () => {
   return (
     <>
-      <NavBar />
       <main className="px-6 md:px-20 lg:px-24 pb-3 pt-20">
 
         <FullWidthCard />

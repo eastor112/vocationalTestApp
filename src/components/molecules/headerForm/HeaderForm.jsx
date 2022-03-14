@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const HeaderForm = (props) => {
 
@@ -13,12 +14,12 @@ const HeaderForm = (props) => {
         <p>
           {description}
         </p>
-        <a
+        <Link
           className="text-blue-500 hover:text-blue-700 hover:underline"
-          href="../signup.html"
+          to={!login ? '/login' : '/signup'}
         >
-          {login ? 'Sign Up' : 'Log In'}
-        </a>
+          {login ? 'Sign up' : 'Login'}
+        </Link>
       </h3>
     </div>
   )

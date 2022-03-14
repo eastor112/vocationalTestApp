@@ -42,6 +42,7 @@ const Button = (props) => {
     type = 'primary',
     size = 'medium',
     outline = false,
+    action
   } = props;
 
 
@@ -52,7 +53,9 @@ const Button = (props) => {
           `border whitespace-nowrap font-medium rounded-md bg-light-2 hover:bg-light-1  ${sizeBtn[size]} ${outlineStyles[type]}`
           :
           `font-medium whitespace-nowrap rounded-md ${typeBtn[type]} ${sizeBtn[size]}`
-      }>
+      }
+      onClick={action}
+    >
       {text}
     </button>
   )

@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import HeaderForm from '../components/molecules/headerForm/HeaderForm'
 import Footer from '../components/organisms/footer/Footer'
 import LoginOrSignupForm from '../components/organisms/loginOrSignupForm/LoginOrSignupForm'
-import NavBar from '../components/organisms/navBar/NavBar'
 import SocialMediaLoginOrSignup from '../components/organisms/socialMediaLoginSignup/SocialMediaLoginOrSignup'
 
 const SignUpPage = () => {
+
+  // use to go to top of page
+  const location = useLocation();
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <>
-      <NavBar />
 
       <main className="px-6 md:px-20 lg:px-24 pb-3 pt-20 flex flex-col items-center">
 
@@ -20,7 +26,7 @@ const SignUpPage = () => {
             login={false}
           />
 
-          <LoginOrSignupForm title='Sign Up' />
+          <LoginOrSignupForm title='Sign up' />
 
           <SocialMediaLoginOrSignup login={false} />
         </div>
