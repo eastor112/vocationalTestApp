@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'flowbite';
+import MainRouter from './Routers/MainRouter';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MainRouter />
   </React.StrictMode>,
   document.getElementById('root')
 );
