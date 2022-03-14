@@ -1,16 +1,13 @@
 import React from 'react'
-// import CareerInformationPage from './pages/CareerInformationPage'
-// import SignUpPage from './pages/SignUpPage'
-// import LoginPage from './pages/LoginPage'
-import LandingPage from './pages/LandingPage'
+import { Outlet } from 'react-router-dom'
+import NavBarFlow from './components/organisms/navBar/NavBarFlow'
+
 
 const App = () => {
   return (
     <>
-      <LandingPage />
-      {/* <LoginPage /> */}
-      {/* <SignUpPage /> */}
-      {/* <CareerInformationPage /> */}
+      <NavBarFlow />
+      <Outlet />
     </>
   )
 }

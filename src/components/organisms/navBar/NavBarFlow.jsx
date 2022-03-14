@@ -72,12 +72,12 @@ const NavBarFlow = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/about" className="block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0">
+              <NavLink to="about" className="block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0">
                 About
               </NavLink>
             </li>
             <li>
-              <NavLink to="/contact" className="block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0">
+              <NavLink to="contact" className="block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0">
                 Contact
               </NavLink>
             </li>
