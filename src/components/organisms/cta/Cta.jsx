@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '../../atoms/button/Button'
+import Button from '../../atoms/Button/Button'
 
 const Cta = () => {
 
