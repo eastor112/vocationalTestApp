@@ -11,6 +11,7 @@ import VocationalTestResultPage from "../pages/VocationalTestResultPage";
 import CareerInformationPage from "../pages/CareerInformationPage";
 import UniversityProfilePage from "../pages/UniversityProfilePage";
 import SearchUniversityPage from "../pages/SearchUniversityPage";
+import Dashboard from "../pages/Dashboard";
 
 
 const MainRouter = () => {
@@ -28,6 +29,7 @@ const MainRouter = () => {
           <Route path="career/1" element={<CareerInformationPage />} />
           <Route path="university/1" element={<UniversityProfilePage />} />
           <Route path="search" element={<SearchUniversityPage />} />
+          <Route path="dashboard" element={<Dashboard />} />
 
         </Route>
       </Routes>
