@@ -1,23 +1,35 @@
 import React from 'react'
-import Button from '../components/atoms/Button/Button'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import Button from '../components/atoms/button/Button'
 
 const NotFound404 = () => {
+
+  const navigate = useNavigate();
+
+
+
+  const handleClick = () => {
+    navigate('/')
+  }
+
   return (
     <>
-      <section className='bg-slate-100 w-screen h-screen place-content-center'>
-        <div className='w-full flex items-center flex-col'>
-          <figure className=' w-3/4 pt-52' >
+      <section className='bg-slate-100 w-screen h-screen'>
+        <div className='h-full flex flex-col items-center justify-center gap-20'>
+
+          <figure className=' w-3/4 flex justify-center' >
             <img src={require('./../assets/404.png')} alt="" />
           </figure>
+
           <div className='place-content-center md: w-full'>
             <h2 className='text-2xl font-bold text-center md:text-4xl'>Page not found.</h2>
             <br />
             <p className=' text-gray-500 text-center'>The page you are looking for might have been removed.</p>
-            <div className="w-full flex justify-center pt-">
-              <Button><Link to='/' className="flex items-center"> Return to home</Link></Button>
+            <div className="w-full flex justify-center pt-5">
+              <Button text='Return to home' size='large' action={handleClick} />
             </div>
           </div>
+
         </div>
       </section>
     </>
