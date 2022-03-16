@@ -11,6 +11,7 @@ import VocationalTestResultPage from "../pages/VocationalTestResultPage";
 import CareerInformationPage from "../pages/CareerInformationPage";
 import UniversityProfilePage from "../pages/UniversityProfilePage";
 import SearchUniversityPage from "../pages/SearchUniversityPage";
+import NotFound404 from "../pages/NotFound404";
 
 
 const MainRouter = () => {
@@ -28,8 +29,8 @@ const MainRouter = () => {
           <Route path="career/1" element={<CareerInformationPage />} />
           <Route path="university/1" element={<UniversityProfilePage />} />
           <Route path="search" element={<SearchUniversityPage />} />
-
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter >
   )

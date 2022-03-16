@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Button from '../components/atoms/button/Button'
+import Button from '../components/atoms/Button/Button'
 
 const NotFound404 = () => {
 
@@ -25,7 +25,7 @@ const NotFound404 = () => {
             <h2 className='text-2xl font-bold text-center md:text-4xl'>Page not found.</h2>
             <br />
             <p className=' text-gray-500 text-center'>The page you are looking for might have been removed.</p>
-            <div className="w-full flex justify-center pt-5">
+            <div className="w-full flex justify-center pt-20">
               <Button text='Return to home' size='large' action={handleClick} />
             </div>
           </div>
