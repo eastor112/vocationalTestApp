@@ -29,9 +29,9 @@ const MainRouter = () => {
           <Route path="career/1" element={<CareerInformationPage />} />
           <Route path="university/1" element={<UniversityProfilePage />} />
           <Route path="search" element={<SearchUniversityPage />} />
-          <Route path="dashboard" element={<Dashboard />} />
-
         </Route>
+        <Route path="/dashboard" element={<Dashboard />} />
+
       </Routes>
     </BrowserRouter >
   )

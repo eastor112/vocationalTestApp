@@ -1,11 +1,14 @@
+import { useState } from "react";
 import Sidebar from "../components/organisms/sidebar/Sidebar";
 
 const Dashboard = () => {
+  const [width, setwidth] = useState(64);
 
   return (
     <>
-      <Sidebar />
-      <main className="pt-24 pl-72 pr-20">
+      <Sidebar setwidth={setwidth} />
+
+      <main className={"" + (width === 64 ? 'pt-10 pr-10 ml-72' : ' pt-10 pr-10 pl-24')}>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quos, aliquid tenetur non adipisci dolores deserunt perferendis unde excepturi nihil ad laborum architecto temporibus consequatur itaque veritatis minus accusamus eos.
           A laudantium eum molestiae reprehenderit nulla asperiores corporis quis dolore reiciendis vero maxime, praesentium provident sit laboriosam repellendus quaerat. Repudiandae pariatur exercitationem ad odit ipsam vitae! Totam sed fugiat laborum.
@@ -18,18 +21,7 @@ const Dashboard = () => {
           Quo veritatis autem fugit distinctio quisquam hic reprehenderit illum modi ullam sequi dolorum harum molestias blanditiis voluptatem voluptate minima alias quia, est pariatur laborum nam eos ab mollitia aliquid. Aspernatur.
           Quas impedit beatae blanditiis voluptas incidunt a necessitatibus harum quisquam molestias, tempore quasi eaque excepturi! Dignissimos illo odit animi, voluptatem eius deleniti sit perspiciatis repellat impedit assumenda dicta possimus porro.
         </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nobis culpa necessitatibus ad fuga commodi nihil vero tempore error at corrupti molestias, architecto quo dignissimos vitae labore maiores debitis hic?
-          Natus dignissimos, magni itaque id vel nulla veritatis molestiae labore soluta libero ratione voluptatum aspernatur inventore. Dolores ea provident veritatis, magnam voluptatibus cum laudantium alias aperiam distinctio unde architecto dolorem.
-          Fuga ratione nostrum dicta ea assumenda numquam veritatis rem nobis, corporis maiores autem, laborum modi quod. Ipsum, perspiciatis saepe ipsa, earum quos, incidunt sequi voluptatem accusantium hic quae odit facere!
-          Ipsa iste delectus ratione omnis accusantium alias, dolore, at corporis nihil mollitia vitae pariatur vel facere? Consequuntur officiis iure sed, repudiandae reprehenderit ducimus, vel quod vero facere dolores laborum necessitatibus.
-          Incidunt beatae voluptate a minima! Assumenda tempora optio sed tenetur? Maxime explicabo id aliquid atque accusantium quia eaque sapiente ex, quis vero ducimus temporibus ad, itaque nulla eligendi consequuntur amet.
-          Ratione reiciendis eaque fugiat recusandae voluptas. Voluptate quibusdam quas laudantium natus officia dicta placeat sapiente obcaecati explicabo esse, odit aliquid deserunt voluptatibus laboriosam ducimus earum aliquam aspernatur ad? Et, reprehenderit.
-          Asperiores, alias pariatur, cupiditate, dolorum amet repudiandae aliquid consequatur ipsum excepturi temporibus eos voluptatum eaque ex? Maiores dolor dicta rerum repudiandae quod nisi? Cumque rem aspernatur harum aliquid ipsa qui.
-          Eos recusandae fugiat non tenetur eaque esse perferendis! Deserunt ducimus magnam impedit voluptate quam earum nihil tenetur, animi, labore dolorem maiores quas nulla et? Vitae distinctio labore voluptates quisquam cumque.
-          Dolorum laudantium magni, vitae possimus cupiditate ullam quibusdam. Cum iste eaque qui unde sequi, adipisci, autem corporis, quisquam distinctio incidunt optio consequatur vero minima soluta illum aperiam voluptatem officiis in!
-          Cum labore recusandae, consequatur impedit voluptas odit eos fuga beatae aliquam, dolorem itaque nisi. Quos, sequi quae ab dignissimos nobis cumque modi? Consequuntur facilis aperiam veritatis in! Voluptate, dicta natus.
-        </p>
+
       </main>
     </>
   )
