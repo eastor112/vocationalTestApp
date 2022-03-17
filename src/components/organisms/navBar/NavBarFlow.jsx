@@ -139,17 +139,17 @@ function NavBarFlow() {
         <div className={`justify-between items-center w-full md:flex md:w-auto md:order-1 ${showMenu ? '' : 'hidden'}`} id="mobile-menu-4">
           <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-normal">
             <li>
-              <NavLink to="/" className="block py-2 pr-4 pl-3 text-light-1 bg-primary-2 rounded md:bg-transparent md:hover:font-semibold md:p-0" aria-current="page">
+              <NavLink onClick={() => setShowMenu(!showMenu)} to="/" className="block py-2 pr-4 pl-3 text-light-1 bg-primary-2 rounded md:bg-transparent md:hover:font-semibold md:p-0" aria-current="page">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="about" className="block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0">
+              <NavLink onClick={() => setShowMenu(!showMenu)} to="about" className="block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0">
                 About us
               </NavLink>
             </li>
             <li>
-              <NavLink to="contact" className="block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0">
+              <NavLink onClick={() => setShowMenu(!showMenu)} to="contact" className="block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0">
                 Contact
               </NavLink>
             </li>
