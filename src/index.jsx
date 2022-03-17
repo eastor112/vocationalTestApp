@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'flowbite';
-import MainRouter from './Routers/MainRouter';
+import MainRouter from './routers/MainRouter';
 
 ReactDOM.render(
   <React.StrictMode>
