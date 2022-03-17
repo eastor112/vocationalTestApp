@@ -1,7 +1,7 @@
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./node_modules/flowbite/**/*.js",
+    './src/**/*.{js,jsx,ts,tsx}',
+    './node_modules/flowbite/**/*.js',
   ],
   theme: {
     extend: {
@@ -49,28 +49,29 @@ module.exports = {
         dark: {
           1: '#202020',
           2: '#363636',
-        }
+        },
       },
       lineHeight: {
-        '1': '.5rem',
-        '2': '1rem',
-        '3': '1.5rem',
-        '4': '2rem',
-        '5': '2.5rem',
-        '6': '3rem',
-        '7': '3.5rem',
-        '8': '4rem',
-        '9': '4.5rem',
-        '10': '5rem',
-        '11': '5.5rem',
-        '12': '6rem',
-      }
+        1: '.5rem',
+        2: '1rem',
+        3: '1.5rem',
+        4: '2rem',
+        5: '2.5rem',
+        6: '3rem',
+        7: '3.5rem',
+        8: '4rem',
+        9: '4.5rem',
+        10: '5rem',
+        11: '5.5rem',
+        12: '6rem',
+      },
     },
     fontFamily: {
       roboto: ['Roboto', 'sans-serif'],
-    }
+    },
   },
   plugins: [
-    require('flowbite/plugin')
+    // eslint-disable-next-line global-require
+    require('flowbite/plugin'),
   ],
-}
+};

@@ -1,19 +1,18 @@
-import { BrowserRouter, Routes, Route, } from "react-router-dom";
-import React from 'react'
-import App from "../App";
-import LandingPage from "../pages/LandingPage";
-import SignUpPage from "../pages/SignUpPage";
-import AboutPage from "../pages/AboutPage";
-import ContactPage from "../pages/ContactPage";
-import LoginPage from "../pages/LoginPage";
-import VocationalTestPage from "../pages/VocationalTestPage";
-import VocationalTestResultPage from "../pages/VocationalTestResultPage";
-import CareerInformationPage from "../pages/CareerInformationPage";
-import UniversityProfilePage from "../pages/UniversityProfilePage";
-import SearchUniversityPage from "../pages/SearchUniversityPage";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import App from '../App';
+import LandingPage from '../pages/LandingPage';
+import SignUpPage from '../pages/SignUpPage';
+import AboutPage from '../pages/AboutPage';
+import ContactPage from '../pages/ContactPage';
+import LoginPage from '../pages/LoginPage';
+import VocationalTestPage from '../pages/VocationalTestPage';
+import VocationalTestResultPage from '../pages/VocationalTestResultPage';
+import CareerInformationPage from '../pages/CareerInformationPage';
+import UniversityProfilePage from '../pages/UniversityProfilePage';
+import SearchUniversityPage from '../pages/SearchUniversityPage';
 
-
-const MainRouter = () => {
+function MainRouter() {
   return (
     <BrowserRouter>
       <Routes>
@@ -31,8 +30,8 @@ const MainRouter = () => {
 
         </Route>
       </Routes>
-    </BrowserRouter >
-  )
+    </BrowserRouter>
+  );
 }
 
-export default MainRouter
+export default MainRouter;

@@ -1,31 +1,39 @@
-import React from 'react'
-import Link from '../../atoms/link/Link'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Link from '../../atoms/link/Link';
 
-const GroupLinks = ({ linksArray, underlineOnHover = false, vertical = false }) => {
-
+function GroupLinks({ linksArray, underlineOnHover, vertical }) {
   return (
     <div
-      className={!vertical ? `flex flex-col md:flex-row text-light-1` : ''}
+      className={!vertical ? 'flex flex-col md:flex-row text-light-1' : ''}
     >
       {
-        linksArray.map((link, index) => {
-          return (
-            <Link
-              key={index}
-              link={link.link}
-              text={link.text}
-              size={link.size}
-              underlineOnHover={underlineOnHover}
-              vertical={vertical}
-            />
-          )
-        }
-        )
+        linksArray.map((link, index) => (
+          <Link
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            href={link.link}
+            text={link.text}
+            size={link.size}
+            underlineOnHover={underlineOnHover}
+            vertical={vertical}
+          />
+        ))
       }
     </div>
 
-
-  )
+  );
 }
 
-export default GroupLinks
+export default GroupLinks;
+
+GroupLinks.defaultProps = {
+  underlineOnHover: false,
+  vertical: false,
+};
+
+GroupLinks.propTypes = {
+  linksArray: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  underlineOnHover: PropTypes.bool,
+  vertical: PropTypes.bool,
+};

@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const HeaderForm = (props) => {
-
+function HeaderForm(props) {
   const { title, description, login = true } = props;
 
   return (
@@ -22,7 +22,17 @@ const HeaderForm = (props) => {
         </Link>
       </h3>
     </div>
-  )
+  );
 }
 
-export default HeaderForm
+export default HeaderForm;
+
+HeaderForm.defaultProps = {
+  login: true,
+};
+
+HeaderForm.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  login: PropTypes.bool,
+};

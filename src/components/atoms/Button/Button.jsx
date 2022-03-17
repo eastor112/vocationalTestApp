@@ -1,3 +1,6 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 const outlineStyles = {
   primary: 'border-primary-1 text-primary-1',
   secondary: 'border-secondary-1 text-secondary-1',
@@ -11,7 +14,7 @@ const outlineStyles = {
   light: 'border-light-1 text-light-1',
   dark: 'border-dark-1 text-dark-1',
   default: 'border-primary-1 text-primary-1',
-}
+};
 
 const typeBtn = {
   primary: 'bg-primary-2 hover:bg-primary-1 text-white',
@@ -26,39 +29,52 @@ const typeBtn = {
   light: 'bg-light-2 hover:bg-light-1 text-black',
   dark: 'bg-dark-2 hover:bg-dark-1 text-white',
   default: 'bg-primary-2 hover:bg-primary12 text-white',
-}
+};
 
 const sizeBtn = {
   small: 'py-1 px-3 mx-1 text-sm',
   medium: 'py-2 px-4 mx-2 text-base',
   large: 'py-3 px-7 mx-2 text-lg',
   default: 'py-2 px-4 mx-2 text-base',
-}
+};
 
-const Button = (props) => {
-
+function Button(props) {
   const {
     text = 'button',
     type = 'primary',
     size = 'medium',
     outline = false,
-    action
+    action,
   } = props;
-
 
   return (
     <button
+      type="button"
       className={
-        outline ?
-          `border whitespace-nowrap font-medium rounded-md bg-light-2 hover:bg-light-1  ${sizeBtn[size]} ${outlineStyles[type]}`
-          :
-          `font-medium whitespace-nowrap rounded-md ${typeBtn[type]} ${sizeBtn[size]}`
+        outline
+          ? `border whitespace-nowrap font-medium rounded-md bg-light-2 hover:bg-light-1  ${sizeBtn[size]} ${outlineStyles[type]}`
+          : `font-medium whitespace-nowrap rounded-md ${typeBtn[type]} ${sizeBtn[size]}`
       }
       onClick={action}
     >
       {text}
     </button>
-  )
+  );
 }
 
-export default Button
+export default Button;
+
+Button.defaultProps = {
+  type: 'primary',
+  size: 'medium',
+  outline: false,
+  action: () => { },
+};
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['primary', 'secondary', 'terciary', 'cuaternary', 'neutral', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'default']),
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'default']),
+  outline: PropTypes.bool,
+  action: PropTypes.func,
+};

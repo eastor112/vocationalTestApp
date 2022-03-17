@@ -1,13 +1,13 @@
-import React from 'react'
-import SimpleCard from '../simpleCard/SimpleCard'
+import React from 'react';
+import SimpleCard from '../simpleCard/SimpleCard';
 
-const Carousel = () => {
+function Carousel() {
   return (
     <div className="carousel z-0 mt-6 relative">
-      <button className="left-arrow bg-blue-400 opacity-10 hover:opacity-60 absolute h-full">
+      <button type="button" className="left-arrow bg-blue-400 opacity-10 hover:opacity-60 absolute h-full">
         back
       </button>
-      <button className="right-arrow absolute bg-blue-400 opacity-10 hover:opacity-60 right-0 h-full">
+      <button type="button" className="right-arrow absolute bg-blue-400 opacity-10 hover:opacity-60 right-0 h-full">
         next
       </button>
 
@@ -18,11 +18,10 @@ const Carousel = () => {
         <SimpleCard />
         <SimpleCard />
 
-
       </div>
 
     </div>
-  )
+  );
 }
 
-export default Carousel
+export default Carousel;

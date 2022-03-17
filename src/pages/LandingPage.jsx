@@ -1,9 +1,10 @@
-import Advertisement from '../components/organisms/advertisement/Advertisement'
-import Cta from '../components/organisms/cta/Cta'
-import Footer from '../components/organisms/footer/Footer'
-import HeroMain from '../components/organisms/hero/HeroMain'
+import React from 'react';
+import Advertisement from '../components/organisms/advertisement/Advertisement';
+import Cta from '../components/organisms/cta/Cta';
+import Footer from '../components/organisms/footer/Footer';
+import HeroMain from '../components/organisms/hero/HeroMain';
 
-const LandingPage = () => {
+function LandingPage() {
   return (
     <>
       <main className="px-6 md:px-20 lg:px-24 pb-3 pt-16">
@@ -18,7 +19,7 @@ const LandingPage = () => {
 
       <Footer />
     </>
-  )
+  );
 }
 
-export default LandingPage
+export default LandingPage;

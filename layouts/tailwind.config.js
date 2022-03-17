@@ -39,26 +39,26 @@ module.exports = {
         dark: {
           1: '#212529',
           2: '#313131',
-        }
+        },
       },
       lineHeight: {
-        '1': '.5rem',
-        '2': '1rem',
-        '3': '1.5rem',
-        '4': '2rem',
-        '5': '2.5rem',
-        '6': '3rem',
-        '7': '3.5rem',
-        '8': '4rem',
-        '9': '4.5rem',
-        '10': '5rem',
-        '11': '5.5rem',
-        '12': '6rem',
-      }
+        1: '.5rem',
+        2: '1rem',
+        3: '1.5rem',
+        4: '2rem',
+        5: '2.5rem',
+        6: '3rem',
+        7: '3.5rem',
+        8: '4rem',
+        9: '4.5rem',
+        10: '5rem',
+        11: '5.5rem',
+        12: '6rem',
+      },
     },
     fontFamily: {
       roboto: ['Roboto', 'sans-serif'],
-    }
+    },
   },
   plugins: [],
-}
+};
