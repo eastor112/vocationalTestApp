@@ -1,50 +1,198 @@
 import React, { useState } from 'react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 import Sidebar from '../components/organisms/sidebar/Sidebar';
 
-function Dashboard() {
-  const [width, setwidth] = useState(64);
+// eslint-disable-next-line import/no-extraneous-dependencies
+const { faker } = require('@faker-js/faker');
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: 'Chart.js Line Chart',
+    },
+  },
+};
+
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    },
+    {
+      label: 'Dataset 2',
+      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      borderColor: 'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    },
+  ],
+};
+
+function Dashboard() {
+  const [width, setWidth] = useState(64);
   return (
     <>
-      <Sidebar setwidth={setwidth} />
+      <Sidebar setWidth={setWidth} />
 
       <main className={`${width === 64 ? 'pt-10 pr-10 ml-72' : ' pt-10 pr-10 pl-24'}`}>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quos,
-          aliquid tenetur non adipisci dolores deserunt perferendis unde excepturi
-          nihil ad laborum architecto temporibus consequatur itaque veritatis minus accusamus eos.
-          A laudantium eum molestiae reprehenderit nulla asperiores corporis quis
-          dolore reiciendis vero maxime, praesentium provident sit laboriosam
-          repellendus quaerat. Repudiandae pariatur exercitationem ad odit ipsam vitae!
-          Totam sed fugiat laborum. Reiciendis eveniet velit aliquam suscipit quos
-          repudiandae aperiam magnam
-          nisi corporis eaque, consequuntur exercitationem quidem nemo rerum atque
-          sed a assumenda, officia accusantium, placeat modi quis inventore.
-          Molestiae, accusamus at!
-          Voluptas, nesciunt voluptatum iure voluptates officia dolorum debitis
-          eligendi expedita fugiat libero accusamus aut quibusdam neque dicta consequatur.
-          Reprehenderit non impedit cupiditate optio est at voluptatum earum architecto esse cum?
-          Similique tenetur facere cupiditate, debitis ut doloremque ipsa corporis
-          aperiam voluptate repellendus accusamus tempore eum? Ea, eveniet unde.
-          Sapiente consequatur recusandae quia distinctio officiis nulla enim accusantium
-          labore quae doloremque.
-          Voluptatem perferendis ea inventore dolor expedita, sit at. Obcaecati maiores
-          earum eius quod quidem. Odit ipsam earum rem placeat dolore, illum,
-          veritatis accusamus, enim quaerat aliquid fugit tenetur. Harum, doloribus.
-          Enim illum excepturi ipsam possimus minus voluptate sit consequuntur. A sit
-          ab optio debitis, magnam eius, excepturi expedita voluptas, veniam dolore
-          aperiam sed in. Voluptatibus sequi reiciendis ipsa alias consectetur.
-          Aut consectetur repellat eveniet veniam. Maxime ad deleniti iure ducimus id
-          molestiae, totam mollitia ullam recusandae, nihil dolor error voluptatum
-          eaque itaque consequatur numquam tempora ab consequuntur omnis similique porro!
-          Quo veritatis autem fugit distinctio quisquam hic reprehenderit illum modi
-          ullam sequi dolorum harum molestias blanditiis voluptatem voluptate minima
-          alias quia, est pariatur laborum nam eos ab mollitia aliquid. Aspernatur.
-          Quas impedit beatae blanditiis voluptas incidunt a necessitatibus harum
-          quisquam molestias, tempore quasi eaque excepturi! Dignissimos illo odit
-          animi, voluptatem eius deleniti sit perspiciatis repellat impedit assumenda
-          dicta possimus porro.
-        </p>
+
+        <div className='general-stats'>
+          <div>
+            <div>
+              <img src='https://via.placeholder.com/100?text=icon' alt='stats' />
+            </div>
+            <div>
+              <h3>1 478 286</h3>
+              <p>Total visits</p>
+              <p>
+                <span>4.07%</span>
+                Last month
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <img src='https://via.placeholder.com/100?text=icon' alt='stats' />
+            </div>
+            <div>
+              <h3>478 520</h3>
+              <p>Total vocational test</p>
+              <p>
+                <span>0.24%</span>
+                Last month
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <img src='https://via.placeholder.com/100?text=icon' alt='stats' />
+            </div>
+            <div>
+              <h3>1 872</h3>
+              <p>Total subscriptions</p>
+              <p>
+                <span>1.64%</span>
+                Last month
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <img src='https://via.placeholder.com/100?text=icon' alt='stats' />
+            </div>
+            <div>
+              <h3>5 367</h3>
+              <p>Total subscriptions</p>
+              <p>
+                <span>0.00%</span>
+                Last month
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className='left'>
+            <div className='graph'>
+              <Line options={options} data={data} />
+            </div>
+            <div className='late-payments'>
+              <h3>Subscriptors with late Payments</h3>
+              <table className='border border-solid w-full'>
+                <thead>
+                  <tr>
+                    <th className='px-5'>user id</th>
+                    <th className='px-5'>Name</th>
+                    <th className='px-5'>Email</th>
+                    <th className='px-5'>Payment status</th>
+                    <th className='px-5'>Payment late days</th>
+                    <th className='px-5'>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{(Math.random() * 45000).toFixed(0)}</td>
+                    <td>{faker.name.findName()}</td>
+                    <td>{faker.internet.email()}</td>
+                    <td>overdue</td>
+                    <td>3 days 12hours</td>
+                    <td>sdfs</td>
+                  </tr>
+                  <tr>
+                    <td>{(Math.random() * 45000).toFixed(0)}</td>
+                    <td>{faker.name.findName()}</td>
+                    <td>{faker.internet.email()}</td>
+                    <td>overdue</td>
+                    <td>3 days 12hours</td>
+                    <td>sdfs</td>
+                  </tr>
+                  <tr>
+                    <td>{(Math.random() * 45000).toFixed(0)}</td>
+                    <td>{faker.name.findName()}</td>
+                    <td>{faker.internet.email()}</td>
+                    <td>overdue</td>
+                    <td>3 days 12hours</td>
+                    <td>sdfs</td>
+                  </tr>
+                  <tr>
+                    <td>{(Math.random() * 45000).toFixed(0)}</td>
+                    <td>{faker.name.findName()}</td>
+                    <td>{faker.internet.email()}</td>
+                    <td>overdue</td>
+                    <td>3 days 12hours</td>
+                    <td>sdfs</td>
+                  </tr>
+                  <tr>
+                    <td>{(Math.random() * 45000).toFixed(0)}</td>
+                    <td>{faker.name.findName()}</td>
+                    <td>{faker.internet.email()}</td>
+                    <td>overdue</td>
+                    <td>3 days 12hours</td>
+                    <td>sdfs</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className=''>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque rerum
+            quod nihil, veritatis dicta aliquid nam aspernatur accusantium repudiandae
+            ipsa consectetur, sint vitae minima officia fugit repellat quis illo voluptatum.
+          </div>
+        </div>
 
       </main>
     </>

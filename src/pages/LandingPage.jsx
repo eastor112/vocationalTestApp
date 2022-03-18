@@ -7,7 +7,7 @@ import HeroMain from '../components/organisms/hero/HeroMain';
 function LandingPage() {
   return (
     <>
-      <main className="px-6 md:px-20 lg:px-24 pb-3 pt-16">
+      <main className='px-6 md:px-20 lg:px-24 pb-3 pt-16'>
 
         <HeroMain />
 

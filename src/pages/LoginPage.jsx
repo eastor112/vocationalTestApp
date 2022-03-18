@@ -8,16 +8,16 @@ function LoginPage() {
   return (
     <>
 
-      <main className="px-6 md:px-20 lg:px-24 pb-3 pt-20 flex flex-col items-center">
+      <main className='px-6 md:px-20 lg:px-24 pb-3 pt-20 flex flex-col items-center'>
 
-        <div className="signUp-container w-5/6 sm:w-4/6 md:w-3/6 lg:w-2/6 xl:1/6">
+        <div className='signUp-container w-5/6 sm:w-4/6 md:w-3/6 lg:w-2/6 xl:1/6'>
 
           <HeaderForm
-            title="Login"
+            title='Login'
             description="You don't have an account yet?"
           />
 
-          <LoginOrSignupForm title="Login" />
+          <LoginOrSignupForm title='Login' />
 
           <SocialMediaLoginOrSignup login />
 

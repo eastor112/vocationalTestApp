@@ -11,35 +11,35 @@ function LoginOrSignupForm({ title }) {
 
   return (
     <form
-      className="mt-6 flex flex-col"
-      action=""
+      className='mt-6 flex flex-col'
+      action=''
     >
 
-      <div className="mb-5 flex flex-col gap-2">
-        <label htmlFor="email" className="">
+      <div className='mb-5 flex flex-col gap-2'>
+        <label htmlFor='email' className=''>
           <input
-            id="email"
-            type="email"
-            placeholder="Email"
-            className="border-b hover:border-b-2 focus:border-b-2 border-primary-1 w-full py-1 outline-none"
+            id='email'
+            type='email'
+            placeholder='Email'
+            className='border-b hover:border-b-2 focus:border-b-2 border-primary-1 w-full py-1 outline-none'
           />
         </label>
       </div>
 
-      <div className="mb-8 flex flex-col gap-2">
-        <label htmlFor="pass" className="">
+      <div className='mb-8 flex flex-col gap-2'>
+        <label htmlFor='pass' className=''>
           <input
-            id="pass"
-            type="password"
-            placeholder="Password"
-            className="border-b hover:border-b-2 focus:border-b-2 border-primary-1  w-full py-1 outline-none"
+            id='pass'
+            type='password'
+            placeholder='Password'
+            className='border-b hover:border-b-2 focus:border-b-2 border-primary-1  w-full py-1 outline-none'
           />
         </label>
       </div>
 
       <button
-        type="button"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6  whitespace-nowrap"
+        type='button'
+        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6  whitespace-nowrap'
         onClick={handleLoginOrSignup}
       >
         {title}
