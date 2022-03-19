@@ -5,7 +5,7 @@ import LineGraph from '../components/organisms/lineGraph/LineGraph';
 import LatePayments from '../components/organisms/latePayments/LatePayments';
 import PopularTop from '../components/organisms/popularTop/PopularTop';
 
-function Dashboard() {
+const Dashboard = () => {
   const [width, setWidth] = useState(64);
   return (
     <>
@@ -42,6 +42,6 @@ function Dashboard() {
       </main>
     </>
   );
-}
+};
 
 export default Dashboard;

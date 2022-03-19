@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function HeroMain() {
+const HeroMain = () => {
   const navigate = useNavigate();
 
   const handleTest = () => {
@@ -51,6 +51,6 @@ function HeroMain() {
 
     </section>
   );
-}
+};
 
 export default HeroMain;

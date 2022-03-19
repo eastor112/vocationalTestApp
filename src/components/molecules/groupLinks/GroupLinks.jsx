@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from '../../atoms/link/Link';
 
-function GroupLinks({ linksArray, underlineOnHover, vertical }) {
-  return (
-    <div
-      className={!vertical ? 'flex flex-col md:flex-row text-light-1' : ''}
-    >
-      {
+const GroupLinks = ({ linksArray, underlineOnHover, vertical }) => (
+  <div
+    className={!vertical ? 'flex flex-col md:flex-row text-light-1' : ''}
+  >
+    {
         linksArray.map((link, index) => (
           <Link
             // eslint-disable-next-line react/no-array-index-key
@@ -20,10 +19,9 @@ function GroupLinks({ linksArray, underlineOnHover, vertical }) {
           />
         ))
       }
-    </div>
+  </div>
 
-  );
-}
+);
 
 export default GroupLinks;
 

@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { React, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-function Sidebar({ setWidth }) {
+const Sidebar = ({ setWidth }) => {
   const [expand, setExpand] = useState(false);
 
   const handleExpand = () => {
@@ -126,7 +126,7 @@ function Sidebar({ setWidth }) {
       </div>
     </aside>
   );
-}
+};
 
 Sidebar.propTypes = {
   setWidth: PropTypes.func.isRequired,

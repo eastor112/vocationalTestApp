@@ -18,9 +18,49 @@
     "react"
   ],
   "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/react-in-jsx-scope": 0,
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": {
+          "multiline": true,
+          "consistent": true
+        },
+        "ObjectPattern": {
+          "multiline": true,
+          "consistent": true
+        },
+        "ImportDeclaration": {
+          "multiline": true,
+          "consistent": true
+        },
+        "ExportDeclaration": {
+          "minProperties": 3,
+          "multiline": true,
+          "consistent": true
+        }
+      }
+    ],
     "jsx-quotes": [
       "error",
       "prefer-single"
-    ]
+    ],
+    "global-require": 0,
+    "ignoredNodes": 0
   }
 }

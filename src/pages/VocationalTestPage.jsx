@@ -4,7 +4,7 @@ import Footer from '../components/organisms/footer/Footer';
 import Question from '../components/organisms/question/Question';
 import questions from '../data/questions';
 
-function VocationalTestPage() {
+const VocationalTestPage = () => {
   const navigate = useNavigate();
 
   const handleFinish = () => {
@@ -47,6 +47,6 @@ function VocationalTestPage() {
       <Footer />
     </>
   );
-}
+};
 
 export default VocationalTestPage;

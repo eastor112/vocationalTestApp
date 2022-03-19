@@ -5,7 +5,7 @@ import Footer from '../components/organisms/footer/Footer';
 import LoginOrSignupForm from '../components/organisms/loginOrSignupForm/LoginOrSignupForm';
 import SocialMediaLoginOrSignup from '../components/organisms/socialMediaLoginSignup/SocialMediaLoginOrSignup';
 
-function SignUpPage() {
+const SignUpPage = () => {
   const location = useLocation();
   useLayoutEffect(() => {
     document.documentElement.scrollTo(0, 0);
@@ -34,6 +34,6 @@ function SignUpPage() {
       <Footer />
     </>
   );
-}
+};
 
 export default SignUpPage;

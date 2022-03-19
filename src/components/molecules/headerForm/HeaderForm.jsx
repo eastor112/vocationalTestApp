@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function HeaderForm(props) {
+const HeaderForm = (props) => {
   const { title, description, login = true } = props;
 
   return (
@@ -23,7 +23,7 @@ function HeaderForm(props) {
       </h3>
     </div>
   );
-}
+};
 
 export default HeaderForm;
 

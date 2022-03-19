@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-function NavBarFlow() {
+const NavBarFlow = () => {
   const navigate = useNavigate();
   const userMenuButton = useRef();
 
@@ -158,6 +158,6 @@ function NavBarFlow() {
       </div>
     </nav>
   );
-}
+};
 
 export default NavBarFlow;

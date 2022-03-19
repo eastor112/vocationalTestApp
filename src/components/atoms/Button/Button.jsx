@@ -38,7 +38,7 @@ const sizeBtn = {
   default: 'py-2 px-4 mx-2 text-base',
 };
 
-function Button(props) {
+const Button = (props) => {
   const {
     text = 'button',
     type = 'primary',
@@ -60,7 +60,7 @@ function Button(props) {
       {text}
     </button>
   );
-}
+};
 
 export default Button;
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/atoms/button/Button';
 
-function NotFound404() {
+const NotFound404 = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -30,6 +30,6 @@ function NotFound404() {
       </div>
     </section>
   );
-}
+};
 
 export default NotFound404;

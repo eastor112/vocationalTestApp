@@ -10,7 +10,7 @@ const sizeOptions = {
   default: 'text-base',
 };
 // block text-xs md:text-sm leading-4 md:leading-5
-function Link(props) {
+const Link = (props) => {
   const {
     href = './',
     text = 'link',
@@ -30,7 +30,7 @@ function Link(props) {
       {text}
     </a>
   );
-}
+};
 
 Link.defaultProps = {
   size: 'small',

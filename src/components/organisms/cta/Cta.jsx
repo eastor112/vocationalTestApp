@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../atoms/button/Button';
 
-function Cta() {
+const Cta = () => {
   const navigate = useNavigate();
 
   const handleTest = () => {
@@ -35,6 +35,6 @@ function Cta() {
 
     </section>
   );
-}
+};
 
 export default Cta;

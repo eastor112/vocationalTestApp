@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function SimpleCard() {
+const SimpleCard = () => {
   const navigate = useNavigate();
 
   const handleSeeMore = () => {
@@ -34,6 +34,6 @@ function SimpleCard() {
       </div>
     </div>
   );
-}
+};
 
 export default SimpleCard;

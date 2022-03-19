@@ -60,12 +60,10 @@ export const data = {
   ],
 };
 
-function LineGraph() {
-  return (
-    <div className='graph h-80'>
-      <Line options={options} data={data} />
-    </div>
-  );
-}
+const LineGraph = () => (
+  <div className='graph h-80'>
+    <Line options={options} data={data} />
+  </div>
+);
 
 export default LineGraph;

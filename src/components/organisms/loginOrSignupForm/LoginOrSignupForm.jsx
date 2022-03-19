@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-function LoginOrSignupForm({ title }) {
+const LoginOrSignupForm = ({ title }) => {
   const navigate = useNavigate();
 
   const handleLoginOrSignup = () => {
@@ -47,7 +47,7 @@ function LoginOrSignupForm({ title }) {
 
     </form>
   );
-}
+};
 
 export default LoginOrSignupForm;
 
