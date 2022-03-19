@@ -61,6 +61,7 @@
       "prefer-single"
     ],
     "global-require": 0,
-    "ignoredNodes": 0
+    "ignoredNodes": 0,
+    "arrow-body-style": 0
   }
 }
