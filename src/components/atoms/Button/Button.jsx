@@ -49,7 +49,7 @@ function Button(props) {
 
   return (
     <button
-      type="button"
+      type='button'
       className={
         outline
           ? `border whitespace-nowrap font-medium rounded-md bg-light-2 hover:bg-light-1  ${sizeBtn[size]} ${outlineStyles[type]}`
