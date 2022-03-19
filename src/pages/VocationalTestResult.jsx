@@ -8,6 +8,7 @@ const VocationalTestResult = () => {
   return (
     <section>
       <NavBar/>
+      <Header/>
       <Footer/>
     </section>
   )
