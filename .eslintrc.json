@@ -62,6 +62,9 @@
     ],
     "global-require": 0,
     "ignoredNodes": 0,
-    "arrow-body-style": 0
+    "arrow-body-style": 0,
+    "import/prefer-default-export": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "import/no-extraneous-dependencies": 0
   }
 }
