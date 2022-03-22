@@ -49,7 +49,6 @@ const VocationalTestResultPage = () => {
             Excelent Albert Einsten!
           </h3>
           <p>
-
             {`We find that ${results[Math.round(rand * 3)].description}`}
           </p>
           <p className='my-5'>
