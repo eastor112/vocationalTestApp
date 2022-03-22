@@ -612,6 +612,7 @@
   ],
   "careers":[
     {
+      "id": 1,
       "name": "Architecture",
       "description": "An architect is the professional who is in charge of projecting, designing, directing the construction and maintenance of buildings, urbanizations, cities and structures of various kinds.",
       "field":{
@@ -644,6 +645,7 @@
       },
       "photo": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80"
     },{
+      "id": 2,
       "name": "Medicine",
       "description": "A physician is a professional who practices medicine and who attempts to maintain and restore health by studying, diagnosing, and treating a patient's illness or injury.",
       "field":{
@@ -678,6 +680,7 @@
       },
       "photo":"https://images.unsplash.com/photo-1571772996211-2f02c9727629?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     },{
+      "id": 3,
       "name": "Law",
       "description":"The lawyer is the professional who exercises legal defense in a trial, as well as the judicial and administrative processes caused or suffered by it. In addition, he advises and gives advice on legal matters.",
       "field":{
@@ -717,6 +720,7 @@
       },
       "photo":"https://images.unsplash.com/photo-1589994965851-a8f479c573a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     },{
+      "id": 4,
       "name": "Geography",
       "description":"A geographer is a scientist and researcher who studies the earth's surface, both in its physical composition and in the activities and human interrelationships that occur in it. They study the surface of the Earth (geosphere) according to its spatial structures, the processes that take place and their functions (interactions between geofactors).",
       "field":{
@@ -753,6 +757,7 @@
       },
       "photo":"https://images.unsplash.com/photo-1619468129361-605ebea04b44?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
     },{
+      "id": 5,
       "name": "Social work",
       "description":"Social work is a profession that promotes social change and development, social cohesion and the empowerment of people. Social work engages people and structures to deal with life's challenges and increase well-being.",
       "field":{
@@ -787,6 +792,7 @@
       },
       "photo":"https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
     },{
+      "id": 6,
       "name":"Visual Arts",
       "description": "The visual artist performs art forms such as painting, drawing, printmaking, photography, video, film, design, crafts, and architecture.",
       "field":{
@@ -821,6 +827,7 @@
       },
       "photo":"https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=945&q=80"
     },{
+      "id": 7,
       "name":"Philosophy",
       "description":"The philosophy is a branch of philosophy that deals with the nature of knowledge and the relationship between knowledge and truth.",
       "field":{
@@ -852,6 +859,7 @@
       },
       "photo":"https://images.unsplash.com/photo-1502700807168-484a3e7889d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80"
     },{
+      "id": 8,
       "name":"Literature",
       "description":"These professionals produce different forms of literary art and creative writing such as novels, short stories, books, poetry, plays, screenplays, songs, and essays, as well as other reports and news articles that may be of interest to the public.",
       "field":{
