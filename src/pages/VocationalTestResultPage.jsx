@@ -1,79 +1,76 @@
 import React from 'react';
-import NavBar from '../components/organisms/navBar/NavBar';
+import { Link } from 'react-router-dom';
 import Footer from '../components/organisms/footer/Footer';
-// import girl-choosing from '../../assets/girl-choosing.jpg';
+import careersData from '../data/careers';
 
-const VocationalTestResultPage = () => (
+const imgs = [
+  'https://media.giphy.com/media/3vPAVUcLAbIGs/giphy.gif',
+  'https://media.giphy.com/media/lnlAifQdenMxW/giphy.gif',
+  'https://media.giphy.com/media/Y4vdnmg54rD54Ytf30/giphy.gif',
+];
 
-  <>
-    <NavBar />
-    <section className='mt-0'>
-      <article>
-        <div className='w-full'>
-          <div
-            className='grid grid-cols-1 md:grid-cols-2 gap-4 bg-white mb-20 mx-20 mt-20'
-          >
-            <div
-              className='bg-cover bg-center ml-10 border border-yellow border-dashed h-90 w-50'
-            >
-              <img
-                src={require('../assets/girl-choosing.jpg')}
-                alt='#'
+const results = [
+  {
+    option: 'A',
+    description: 'the careers that are most related to you are technical, experimental and health sciences, as well as some degrees in social sciences.',
+    careers: [1, 2],
+  }, {
+    option: 'B',
+    description: 'the careers that are most related to you are those that correspond to the field of social and legal sciences, as well as some of the humanities and technical areas.',
+    careers: [3, 4],
+  }, {
+    option: 'C',
+    description: 'the careers that most closely relate to you are those related to culture and those whose fundamental activity consists of helping others.',
+    careers: [5, 6],
+  }, {
+    option: 'D',
+    description: 'the careers that are most related to you are those related to humanities and creative work',
+    careers: [7, 8],
+  },
+];
 
-              />
+const VocationalTestResultPage = () => {
+  const rand = Math.random();
+  return (
+    <>
+      <main className='px-6 md:px-20 lg:px-24 pb-3 pt-16' />
 
-            </div>
+      <div className='flex flex-col-reverse lg:flex-row items-center mx-20 my-12 gap-6'>
+        <figure className='flex-1 overflow-hidden'>
+          <img
+            className='w-full h-full object-contain'
+            src={imgs[Math.round(rand * 2)]}
+            alt=''
+          />
+        </figure>
 
-            <div className='mx-10 h-50 border border-yellow border-dashed h-50'>
-              <h3 className='text-3xl font-medium mb-8'>Excellent Jhon!</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Sapiente, deleniti. Excepturi recusandae repellendus atque fuga
-                impedit nulla numquam incidunt. Voluptatibus. Alias libero illo
-                facere suscipit adipisci quis. Reprehenderit, expedita soluta!
-                Sequi quod modi amet pariatur sapiente optio ea iste quibusdam.
-                Eos qui quisquam officiis in sapiente accusamus sit ducimus
-                temporibus?
-              </p>
-              <ul className='my-10'>
-                <li>
-                  <a
-                    href='./vocationalTestResults.html'
-                    className='text-md hover:font-semibold whitespace-nowrap hover:bg-purple-300 hover:px-2 hover:py-2 hover:rounded-md hover:font-bold hover:text-white cursor-pointer'
-                  >
-                    Suggestion 1
-                  </a
-                  >
-                </li>
-                <li>
-                  <a
-                    href='./vocationalTestResults.html'
-                    className='text-md hover:font-semibold whitespace-nowrap hover:bg-purple-300 hover:px-2 hover:py-2 hover:rounded-md hover:font-bold hover:text-white cursor-pointer'
-                  >
-                    Suggestion 2
-                  </a
-                  >
-                </li>
-                <li>
-                  <a
-                    href='./vocationalTestResults.html'
-                    className='text-md hover:font-semibold whitespace-nowrap hover:bg-purple-300 hover:px-2 hover:py-2 hover:rounded-md hover:font-bold hover:text-white cursor-pointer'
-                  >
-                    Suggestion 3
-                  </a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div className='flex-1 border-2 border-solid border-primary-1 p-5 rounded-xl shadow-lg shadow-primary-2 opacity-90'>
+          <h3 className='font-bold text-2xl mb-5'>
+            Excelent Albert Einsten!
+          </h3>
+          <p>
+            {`We find that ${results[Math.round(rand * 3)].description}`}
+          </p>
+          <p className='my-5'>
+            Your career choices are:
+          </p>
+          <ul className='columns-2 md:columns-3 lg:columns-2 mb-5 font-medium list-decimal ml-4'>
+            {results[Math.round(rand * 3)].careers.map((career) => (
+              <li>
+                <Link to={`/career/${career}`} key={career}>{careersData.find((elem) => elem.id === career).name}</Link>
+              </li>
+            ))}
+          </ul>
+          <small className='italic'>
+            <span className='font-bold mr-1 not-italic'>Note:</span>
+            You can find more information about the races by clicking on them,
+            before making your final decision.
+          </small>
         </div>
-
-        <script src='test.js' />
-      </article>
-    </section>
-    <Footer />
-  </>
-
-);
+      </div>
+      <Footer />
+    </>
+  );
+};
 
 export default VocationalTestResultPage;

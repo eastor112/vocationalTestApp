@@ -77,7 +77,7 @@ const NavBarFlow = () => {
             />
 
           </svg>
-          <span className='self-center text-xl font-semibold whitespace-nowrap text-light-1 dark:text-white'>My Future, My Choice</span>
+          <span className='self-center hidden sm:block text-xl font-semibold whitespace-nowrap text-light-1 dark:text-white'>My Future, My Choice</span>
         </NavLink>
 
         <div className='flex md:order-2 items-center'>

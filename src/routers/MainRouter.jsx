@@ -13,6 +13,7 @@ import UniversityProfilePage from '../pages/UniversityProfilePage';
 import SearchUniversityPage from '../pages/SearchUniversityPage';
 import Dashboard from '../pages/Dashboard';
 import NotFound404 from '../pages/NotFound404';
+import UniversityProfileFormPage from '../pages/UniversityProfileFormPage';
 
 const MainRouter = () => (
   <BrowserRouter>
@@ -30,6 +31,7 @@ const MainRouter = () => (
         <Route path='search' element={<SearchUniversityPage />} />
       </Route>
       <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/profile' element={<UniversityProfileFormPage />} />
       <Route path='*' element={<NotFound404 />} />
     </Routes>
   </BrowserRouter>
