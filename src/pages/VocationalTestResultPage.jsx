@@ -1,24 +1,27 @@
 import React from 'react';
 import NavBar from '../components/organisms/navBar/NavBar';
 import Footer from '../components/organisms/footer/Footer';
+// import girl-choosing from '../../assets/girl-choosing.jpg';
 
 const VocationalTestResultPage = () => (
-  <section>
+
+  <>
     <NavBar />
-    <section>
+    <section className='mt-0'>
       <article>
-        <div className='wrapper'>
+        <div className='w-full'>
           <div
-            className='grid grid-cols-1 md:grid-cols-2 gap-4 bg-neutral-2 mb-20 mx-20 mt-20'
+            className='grid grid-cols-1 md:grid-cols-2 gap-4 bg-white mb-20 mx-20 mt-20'
           >
             <div
               className='bg-cover bg-center ml-10 border border-yellow border-dashed h-90 w-50'
             >
               <img
-                src='../assets/girl-choosing.jpg'
-                alt=''
-                className='bg-cover bg-center'
+                src={require('../assets/girl-choosing.jpg')}
+                alt='#'
+
               />
+
             </div>
 
             <div className='mx-10 h-50 border border-yellow border-dashed h-50'>
@@ -69,7 +72,8 @@ const VocationalTestResultPage = () => (
       </article>
     </section>
     <Footer />
-  </section>
+  </>
+
 );
 
 export default VocationalTestResultPage;
