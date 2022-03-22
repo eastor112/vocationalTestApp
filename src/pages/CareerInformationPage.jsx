@@ -11,12 +11,14 @@ const CareerInformationPage = () => {
   const [career, setCareer] = useState({});
 
   useEffect(() => {
-    try {
-      getCareerById(id)
-        .then(setCareer);
-    } catch (error) {
-      setCareer(careersData);
-    }
+    getCareerById(id)
+      .then((data) => {
+        if (data === 'error') {
+          setCareer(careersData.find((car) => car.id === Number(id)));
+        } else {
+          setCareer(data);
+        }
+      });
   }, [id]);
 
   return (

@@ -8,11 +8,13 @@ const SearchUniversityPage = () => {
   const [universities, setUniversities] = useState([]);
 
   useEffect(() => {
-    try {
-      getAllUniversities().then(setUniversities);
-    } catch (error) {
-      setUniversities(universitiesData);
-    }
+    getAllUniversities().then((data) => {
+      if (data === 'error') {
+        setUniversities(universitiesData);
+      } else {
+        setUniversities(data);
+      }
+    });
   }, []);
 
   return (
