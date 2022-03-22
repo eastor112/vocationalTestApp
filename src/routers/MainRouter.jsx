@@ -26,7 +26,7 @@ const MainRouter = () => (
         <Route path='contact' element={<ContactPage />} />
         <Route path='test' element={<VocationalTestPage />} />
         <Route path='test/result' element={<VocationalTestResultPage />} />
-        <Route path='career/1' element={<CareerInformationPage />} />
+        <Route path='career/:id' element={<CareerInformationPage />} />
         <Route path='university/1' element={<UniversityProfilePage />} />
         <Route path='search' element={<SearchUniversityPage />} />
       </Route>

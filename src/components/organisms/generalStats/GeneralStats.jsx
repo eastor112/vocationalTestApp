@@ -12,7 +12,7 @@ const GeneralStats = () => (
       <div className=''>
         <h3 className='font-bold text-lg'>1 478 286</h3>
         <p className='whitespace-nowrap text-sm text-gray-600'>Total visits</p>
-        <p className='whitespace-nowrap text-xs text-gray-600 flex items-center'>
+        <div className='whitespace-nowrap text-xs text-gray-600 flex items-center'>
           <span className='flex items-center text-success-1 mr-1'>
             <svg xmlns='http://www.w3.org/2000/svg' className='inline-block h-4 w-4 lg:h-6 lg:w-6 mr-1' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
               <path strokeLinecap='round' strokeLinejoin='round' d='M13 7h8m0 0v8m0-8l-8 8-4-4-6 6' />
@@ -22,7 +22,7 @@ const GeneralStats = () => (
           <p>
             Last month
           </p>
-        </p>
+        </div>
       </div>
     </div>
 
@@ -35,7 +35,7 @@ const GeneralStats = () => (
       <div className=''>
         <h3 className='font-bold text-lg'>478 520</h3>
         <p className='whitespace-nowrap text-sm text-gray-600'>Total vocational test</p>
-        <p className='whitespace-nowrap text-xs text-gray-600 flex items-center'>
+        <div className='whitespace-nowrap text-xs text-gray-600 flex items-center'>
           <span className='flex items-center text-success-1 mr-1'>
             <svg xmlns='http://www.w3.org/2000/svg' className='inline-block h-4 w-4 lg:h-6 lg:w-6 mr-1' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
               <path strokeLinecap='round' strokeLinejoin='round' d='M13 7h8m0 0v8m0-8l-8 8-4-4-6 6' />
@@ -43,7 +43,7 @@ const GeneralStats = () => (
             0.24%
           </span>
           Last month
-        </p>
+        </div>
       </div>
     </div>
 
@@ -56,7 +56,7 @@ const GeneralStats = () => (
       <div className=''>
         <h3 className='font-bold text-lg'>1 872</h3>
         <p className='whitespace-nowrap text-sm text-gray-600'>Total subscriptions</p>
-        <p className='whitespace-nowrap text-xs text-gray-600 flex items-center'>
+        <div className='whitespace-nowrap text-xs text-gray-600 flex items-center'>
           <span className='flex items-center text-red-600 mr-1'>
             <svg xmlns='http://www.w3.org/2000/svg' className='inline-block h-4 w-4 lg:h-6 lg:w-6 mr-1' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
               <path strokeLinecap='round' strokeLinejoin='round' d='M13 17h8m0 0V9m0 8l-8-8-4 4-6-6' />
@@ -66,7 +66,7 @@ const GeneralStats = () => (
           <p>
             Last month
           </p>
-        </p>
+        </div>
       </div>
     </div>
 
@@ -79,7 +79,7 @@ const GeneralStats = () => (
       <div className=''>
         <h3 className='font-bold text-lg'>5 367</h3>
         <p className='whitespace-nowrap text-sm text-gray-600'>Total chat interactions</p>
-        <p className='whitespace-nowrap text-xs text-gray-600 flex items-center'>
+        <div className='whitespace-nowrap text-xs text-gray-600 flex items-center'>
           <span className='flex items-center text-warning-1 mr-1'>
             <svg xmlns='http://www.w3.org/2000/svg' className='inline-block h-4 w-4 lg:h-6 lg:w-6 mr-1' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
               <path strokeLinecap='round' strokeLinejoin='round' d='M17 8l4 4m0 0l-4 4m4-4H3' />
@@ -89,7 +89,7 @@ const GeneralStats = () => (
           <p>
             Last month
           </p>
-        </p>
+        </div>
       </div>
     </div>
 
