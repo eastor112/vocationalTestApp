@@ -56,8 +56,8 @@ const VocationalTestResultPage = () => {
           </p>
           <ul className='columns-2 md:columns-3 lg:columns-2 mb-5 font-medium list-decimal ml-4'>
             {results[Math.round(rand * 3)].careers.map((career) => (
-              <li>
-                <Link to={`/career/${career}`} key={career}>{careersData.find((elem) => elem.id === career).name}</Link>
+              <li key={career}>
+                <Link to={`/career/${career}`}>{careersData.find((elem) => elem.id === career).name}</Link>
               </li>
             ))}
           </ul>
