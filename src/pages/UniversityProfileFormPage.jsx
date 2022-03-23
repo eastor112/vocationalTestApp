@@ -10,7 +10,7 @@ const UniversityProfileFormPage = () => {
       <Sidebar setWidth={setWidth} />
       <main className={`${width === 64 ? 'pt-4 pr-10 pl-72 bg-light-1 h-screen' : ' pt-4 pr-10 pl-24 bg-light-1 h-screen'}`}>
         <div className='mt-5'>
-          <h2 className='pb-10 text-2xl font-bold text-dark-1 my-4'>Edit Profile</h2>
+          <h2 className='pb-10 text-2xl font-bold text-dark-1 my-4'>University Profile</h2>
           <div className='md: w-2/5'>
             <img src={require('../assets/img.png')} alt='' />
           </div>
