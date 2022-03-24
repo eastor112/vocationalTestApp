@@ -45,39 +45,40 @@ const Sidebar = ({ setWidth }) => {
                 <path d='M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z' />
               </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
-                Dashboard
+                General
               </span>
             </NavLink>
           </li>
 
           <li>
             <NavLink to='/dashboard/institution/profile' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-              <svg className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path d='M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z' /></svg>
+              <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                <path strokeLinecap='round' strokeLinejoin='round' d='M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' />
+              </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
                 Institution Profile
               </span>
-              {/* <span className="inline-flex justify-center items-center px-2 ml-3
-              text-sm font-medium text-gray-800 bg-gray-200 rounded-full">Pro</span> */}
+
             </NavLink>
           </li>
 
           <li>
             <NavLink to='/dashboard/user/profile' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-              <svg className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
-                <path d='M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z' />
-                <path d='M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z' />
+              <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' viewBox='0 0 20 20' fill='currentColor'>
+                <path fillRule='evenodd' d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z' clipRule='evenodd' />
               </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
                 User profile
               </span>
-              {/* <span className="inline-flex justify-center items-center p-3 ml-3 w-3
-              h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full">3</span> */}
+
             </NavLink>
           </li>
 
           <li>
-            <NavLink to='.' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-              <svg className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path fillRule='evenodd' d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z' clipRule='evenodd' /></svg>
+            <NavLink to='/dashboard/users' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
+              <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' viewBox='0 0 20 20' fill='currentColor'>
+                <path d='M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z' />
+              </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
                 Users
               </span>
@@ -85,28 +86,36 @@ const Sidebar = ({ setWidth }) => {
           </li>
 
           <li>
-            <NavLink to='.' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-              <svg className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path fillRule='evenodd' d='M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z' clipRule='evenodd' /></svg>
+            <NavLink to='/dashboard/careers' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
+              <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                <path d='M12 14l9-5-9-5-9 5 9 5z' />
+                <path d='M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z' />
+                <path strokeLinecap='round' strokeLinejoin='round' d='M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222' />
+              </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
-                Products
+                Careers
               </span>
             </NavLink>
           </li>
 
           <li>
-            <NavLink to='.' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-              <svg className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path fillRule='evenodd' d='M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z' clipRule='evenodd' /></svg>
+            <NavLink to='/dashboard/tests' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
+              <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                <path strokeLinecap='round' strokeLinejoin='round' d='M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z' />
+              </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
-                Sign In
+                Vocational Tests
               </span>
             </NavLink>
           </li>
 
           <li>
-            <NavLink to='.' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-              <svg className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path fillRule='evenodd' d='M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z' clipRule='evenodd' /></svg>
+            <NavLink to='/' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
+              <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
+              </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
-                Sign Up
+                Logout
               </span>
             </NavLink>
           </li>
@@ -114,11 +123,12 @@ const Sidebar = ({ setWidth }) => {
 
         <button type='button' className='w-full' onClick={handleExpand}>
           <div className='flex items-center justify-between p-2 text-base font-normal text-light-1'>
-            <svg className={`h-6 w-6  ${expand && 'invisible'}`} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'>
-              <path fillRule='evenodd' d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z' clipRule='evenodd' />
+            <svg xmlns='http://www.w3.org/2000/svg' className={`h-6 w-6  ${expand && 'invisible'}`} fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+              <path strokeLinecap='round' strokeLinejoin='round' d='M13 5l7 7-7 7M5 5l7 7-7 7' />
             </svg>
-            <svg className={`h-6 w-6 ${!expand && 'hidden'}`} xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
-              <path strokeLinecap='round' strokeLinejoin='round' d='M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z' />
+
+            <svg xmlns='http://www.w3.org/2000/svg' className={`h-6 w-6 ${!expand && 'hidden'}`} fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+              <path strokeLinecap='round' strokeLinejoin='round' d='M11 19l-7-7 7-7m8 14l-7-7 7-7' />
             </svg>
           </div>
         </button>
@@ -133,3 +143,15 @@ Sidebar.propTypes = {
 };
 
 export default Sidebar;
+
+// <span className='inline-flex justify-center items-center px-2 ml-3
+// text-sm font-medium text-gray-800 bg-gray-200 rounded-full'
+// >
+//   Pro
+// </span>
+
+// <span className='inline-flex justify-center items-center p-3 ml-3 w-3
+// h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full'
+// >
+//   3
+// </span>

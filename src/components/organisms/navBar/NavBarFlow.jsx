@@ -107,7 +107,7 @@ const NavBarFlow = () => {
                 <NavLink to='/dashboard' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Dashboard</NavLink>
               </li>
               <li>
-                <NavLink to='/profile' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Profile</NavLink>
+                <NavLink to='/dashboard/user/profile' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Profile</NavLink>
               </li>
 
               <li>
