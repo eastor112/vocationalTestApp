@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginGoogle } from '../../../actions/auth-actions';
 
 const LoginOrSignupForm = ({ title }) => {
   const navigate = useNavigate();
 
+  const dispatch = useDispatch();
+  const { auth } = useSelector((state) => state);
+
   const handleLoginOrSignup = () => {
-    navigate('/test');
+    dispatch(loginGoogle());
   };
+
+  useEffect(() => {
+    if (auth.uid) {
+      navigate('/test');
+    }
+  }, [auth.uid]);
 
   return (
     <form
       className='mt-6 flex flex-col'
       action=''
     >
-
+      <div>
+        {
+          auth.uid
+        }
+        {
+          auth.displayName
+        }
+      </div>
       <div className='mb-5 flex flex-col gap-2'>
         <label htmlFor='email' className=''>
           <input
