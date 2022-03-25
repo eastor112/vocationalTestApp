@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
+import { Provider } from 'react-redux';
 import App from '../App';
 import LandingPage from '../pages/LandingPage';
 import SignUpPage from '../pages/SignUpPage';
@@ -19,35 +20,38 @@ import Dashboard from '../pages/Dashboard';
 import UsersListPage from '../pages/UsersListPage';
 import CareersListPage from '../pages/CareersListPage';
 import TestsListPage from '../pages/TestsListPage';
+import { store } from '../store/store';
 
 const MainRouter = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<App />}>
-        <Route index element={<LandingPage />} />
-        <Route path='about' element={<AboutPage />} />
-        <Route path='contact' element={<ContactPage />} />
-        <Route path='career/:id' element={<CareerInformationPage />} />
-        <Route path='university/:id' element={<UniversityProfilePage />} />
-        <Route path='search' element={<SearchUniversityPage />} />
-        <Route path='login' element={<LoginPage />} />
-        <Route path='signup' element={<SignUpPage />} />
-        <Route path='test' element={<VocationalTestPage />} />
-        <Route path='test/result' element={<VocationalTestResultPage />} />
-      </Route>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<App />}>
+          <Route index element={<LandingPage />} />
+          <Route path='about' element={<AboutPage />} />
+          <Route path='contact' element={<ContactPage />} />
+          <Route path='career/:id' element={<CareerInformationPage />} />
+          <Route path='university/:id' element={<UniversityProfilePage />} />
+          <Route path='search' element={<SearchUniversityPage />} />
+          <Route path='login' element={<LoginPage />} />
+          <Route path='signup' element={<SignUpPage />} />
+          <Route path='test' element={<VocationalTestPage />} />
+          <Route path='test/result' element={<VocationalTestResultPage />} />
+        </Route>
 
-      <Route path='/dashboard' element={<DashboardRoutes />}>
-        <Route index element={<Dashboard />} />
-        <Route path='institution/profile' element={<UniversityProfileFormPage />} />
-        <Route path='user/profile' element={<UserProfilePage />} />
-        <Route path='users' element={<UsersListPage />} />
-        <Route path='careers' element={<CareersListPage />} />
-        <Route path='tests' element={<TestsListPage />} />
-      </Route>
+        <Route path='/dashboard' element={<DashboardRoutes />}>
+          <Route index element={<Dashboard />} />
+          <Route path='institution/profile' element={<UniversityProfileFormPage />} />
+          <Route path='user/profile' element={<UserProfilePage />} />
+          <Route path='users' element={<UsersListPage />} />
+          <Route path='careers' element={<CareersListPage />} />
+          <Route path='tests' element={<TestsListPage />} />
+        </Route>
 
-      <Route path='*' element={<NotFound404 />} />
-    </Routes>
-  </BrowserRouter>
+        <Route path='*' element={<NotFound404 />} />
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 );
 
 export default MainRouter;
