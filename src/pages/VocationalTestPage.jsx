@@ -8,7 +8,7 @@ const VocationalTestPage = () => {
   const navigate = useNavigate();
 
   const handleFinish = () => {
-    navigate('/test/result');
+    navigate('/dashboard/test/result');
   };
 
   return (
