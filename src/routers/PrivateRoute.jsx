@@ -14,7 +14,10 @@ const PrivateRoute = ({ children }) => {
 };
 
 PrivateRoute.propTypes = {
-  children: PropTypes.elementType.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.elementType,
+  ]).isRequired,
 };
 
 export default PrivateRoute;
