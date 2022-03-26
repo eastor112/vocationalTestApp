@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Footer from '../components/organisms/footer/Footer';
-import careersData from '../data/careers';
+import { Link, useOutletContext } from 'react-router-dom';
+import careersData from '../../data/careers';
 
 const imgs = [
   'https://media.giphy.com/media/3vPAVUcLAbIGs/giphy.gif',
@@ -31,11 +30,13 @@ const results = [
 
 const VocationalTestResultPage = () => {
   const rand = Math.random();
-  return (
-    <>
-      <main className='px-6 md:px-20 lg:px-24 pb-3 pt-16' />
+  const width = useOutletContext();
 
-      <div className='flex flex-col-reverse lg:flex-row items-center mx-20 my-12 gap-6'>
+  return (// <main className='flex justify-center items-center h-screen'>
+
+    <main className={`min-h-screen bg-light-1 pt-4 pr-10 pb-8 ${width === 64 ? 'pl-72 ' : 'pl-24'}`}>
+
+      <div div className='flex flex-col-reverse lg:flex-row-reverse items-center mx-0 sm:mx-1 md:mx-5  gap-6'>
         <figure className='flex-1 overflow-hidden'>
           <img
             className='w-full h-full object-contain'
@@ -54,9 +55,9 @@ const VocationalTestResultPage = () => {
           <p className='my-5'>
             Your career choices are:
           </p>
-          <ul className='columns-2 md:columns-3 lg:columns-2 mb-5 font-medium list-decimal ml-4'>
+          <ul className='columns-1 sm:columns-2 md:columns-3 lg:columns-2 mb-5 font-medium list-decimal ml-4'>
             {results[Math.round(rand * 3)].careers.map((career) => (
-              <li key={career}>
+              <li key={career} className='mb-2 text-blue-600 hover:text-blue-700 hover:underline'>
                 <Link to={`/career/${career}`}>{careersData.find((elem) => elem.id === career).name}</Link>
               </li>
             ))}
@@ -68,8 +69,8 @@ const VocationalTestResultPage = () => {
           </small>
         </div>
       </div>
-      <Footer />
-    </>
+
+    </main>
   );
 };
 
