@@ -21,6 +21,8 @@ import UsersListPage from '../pages/UsersListPage';
 import CareersListPage from '../pages/CareersListPage';
 import TestsListPage from '../pages/TestsListPage';
 import { store } from '../store/store';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 const MainRouter = () => (
   <Provider store={store}>
@@ -33,14 +35,36 @@ const MainRouter = () => (
           <Route path='career/:id' element={<CareerInformationPage />} />
           <Route path='university/:id' element={<UniversityProfilePage />} />
           <Route path='search' element={<SearchUniversityPage />} />
-          <Route path='login' element={<LoginPage />} />
-          <Route path='signup' element={<SignUpPage />} />
-          <Route path='test' element={<VocationalTestPage />} />
-          <Route path='test/result' element={<VocationalTestResultPage />} />
+          <Route
+            path='login'
+            element={(
+              <PublicRoute route='/dashboard/test'>
+                <LoginPage />
+              </PublicRoute>
+            )}
+          />
+          <Route
+            path='signup'
+            element={(
+              <PublicRoute route='/dashboard/test'>
+                <SignUpPage />
+              </PublicRoute>
+            )}
+          />
+
         </Route>
 
-        <Route path='/dashboard' element={<DashboardRoutes />}>
+        <Route
+          path='/dashboard'
+          element={(
+            <PrivateRoute>
+              <DashboardRoutes />
+            </PrivateRoute>
+          )}
+        >
           <Route index element={<Dashboard />} />
+          <Route path='test' element={<VocationalTestPage />} />
+          <Route path='test/result' element={<VocationalTestResultPage />} />
           <Route path='institution/profile' element={<UniversityProfileFormPage />} />
           <Route path='user/profile' element={<UserProfilePage />} />
           <Route path='users' element={<UsersListPage />} />
