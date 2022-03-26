@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import Question from '../components/organisms/question/Question';
-import questions from '../data/questions';
+import Question from '../../components/organisms/question/Question';
+import questions from '../../data/questions';
 
 const VocationalTestPage = () => {
   const navigate = useNavigate();

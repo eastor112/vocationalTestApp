@@ -1,9 +1,9 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
-import GeneralStats from '../components/organisms/generalStats/GeneralStats';
-import LineGraph from '../components/organisms/lineGraph/LineGraph';
-import LatePayments from '../components/organisms/latePayments/LatePayments';
-import PopularTop from '../components/organisms/popularTop/PopularTop';
+import GeneralStats from '../../components/organisms/generalStats/GeneralStats';
+import LineGraph from '../../components/organisms/lineGraph/LineGraph';
+import LatePayments from '../../components/organisms/latePayments/LatePayments';
+import PopularTop from '../../components/organisms/popularTop/PopularTop';
 
 const Dashboard = () => {
   const width = useOutletContext();

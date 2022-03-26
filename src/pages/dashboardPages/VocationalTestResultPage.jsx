@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
-import careersData from '../data/careers';
+import careersData from '../../data/careers';
 
 const imgs = [
   'https://media.giphy.com/media/3vPAVUcLAbIGs/giphy.gif',
