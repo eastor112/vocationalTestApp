@@ -1,9 +1,24 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Footer from '../components/organisms/footer/Footer';
+import universitiesData from '../data/universities';
+import { getUniversityById } from '../services/universitiesServices';
 
 const UniversityProfilePage = () => {
-  console.log('hola');
+  const { id } = useParams();
+  const [university, setUniversity] = useState({});
+
+  useEffect(() => {
+    getUniversityById(id)
+      .then((data) => {
+        if (data === 'error') {
+          setUniversity(universitiesData.find((uni) => uni.id === Number(id)));
+        } else {
+          setUniversity(data);
+        }
+      });
+  }, [id]);
+
   return (
     <>
 
@@ -15,84 +30,71 @@ const UniversityProfilePage = () => {
 
             <section className='university'>
               <div className='title text-3xl'>
-                <h1 className='text-3xl font-medium'>university name</h1>
+                <h1 className='text-3xl font-medium mt-5'>{university.name}</h1>
               </div>
-              <figure>
-                <img src={require('../assets/girl-choosing.jpg')} alt='#' className='h-22 w-full rounded-md grid grid-cols-1  gap-4   mt-10' />
+
+              <figure className=' mt-10'>
+                <img className=' h-72 w-full' src={university.campus && university.campus[0]} alt='#' />
               </figure>
+
             </section>
 
-            <section className='mision-vision grid grid-cols-1 md:grid-cols-2  mb-20 mt-20 gap-x-16'>
-              <div className='mission-vision'>
-                <p className='text-3xl font-medium'>Mission And Vision</p>
-
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, distinctio.
-                Saepe eaque natus eveniet, optio perferendis architecto culpa numquam voluptas!
-                Quasi placeat repudiandae tenetur, odio praesentium quaerat veniam deleniti
-                uscipit?
-                Non reiciendis repellat praesentium iusto commodi? Exercitationem veniam
-                quia reiciendis.
-                Quas, temporibus. Dolorum explicabo rem porro harum eos. Quos, inventore.
+            <section className='mision-vision grid grid-cols-1 md:grid-cols-2  mb-5 mt-10 gap-x-2'>
+              <div className='mission-vision mt-10'>
+                <p className='text-3xl font-medium p-2'>Mission And Vision</p>
+                <p className='text-justify p-2'>
+                  {university.mission}
+                  {university.vision}
+                </p>
 
               </div>
 
-              <div className='how-to-apply'>
-                <p className='text-3xl font-medium'>How To Apply</p>
-                Lorem ipsum dolor sit amet consectetur adipisicing.
-                Distinctio accusamus, placeat repudiandae perspiciatis unde libero.
-                Reprehenderit error unde doloribus minima, doloremque recusandae?
-                Quidem unde maiores quo ad, vitae soluta.
-                Sed excepturi eius rem error rerum possimus.
+              <div className='how-to-apply md:border-l-2 p-8 '>
+                <p className='text-3xl font-medium p-5'>How To Apply</p>
+
+                <ul className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
+
+                  {university.process && university.process.map((process) => {
+                    const count = university.process.indexOf(process) + 1;
+                    return (
+                      <li className=''>
+                        {`${count}`}
+                        .
+                        {process}
+                      </li>
+                    );
+                  })}
+                </ul>
 
               </div>
             </section>
 
             <section className='Academic Offer'>
-              <p className='text-3xl font-medium'>Academic Offer</p>
-              <div className='academis-offer mb-20 grid grid-cols-1 md:grid-cols-3  gap-4 '>
+              <p className='text-3xl font-medium p-5'>Academic Offer</p>
+              <div className='academic-offer mb-20 grid grid-cols-1 md:grid-cols-2  gap-4 '>
 
-                <div className='paragraph1'>
+                {university.offer && university.offer.map((offer) => {
+                  return (
+                    <div>
+                      <a className='text-teal-600 hover:text-teal-400 underline underline-offset-8 ' href='.' key={offer.code}>{offer.career}</a>
+                      <p className='p-2'>{offer.description}</p>
 
-                  Lorem ipsum dolor sit amet consectetur adipisi className
-                  Architecto, assumenda facilis ea non natus iusto.
-                  Aliquid, nostrum provident ipsum dolorum sunt odio.
-                  Possimus tempora ex, omnis dicta ut officiis.
-                  Sunt deserunt aut maiores accusantium qui reprehenderit!
-
-                </div>
-
-                <div className='pragraph2'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing.
-                  Architecto, assumenda facilis ea non natus iusto.
-                  Aliquid, nostrum provident ipsum dolorum sunt odio.
-                  Possimus tempora ex, omnis dicta ut officiis.
-                  Sunt deserunt aut maiores accusantium qui reprehenderit!
-                </div>
-
-                <div className='paragraph3'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing.
-                  Architecto, assumenda facilis ea non natus iusto.
-                  Aliquid, nostrum provident ipsum dolorum sunt odio.
-                  Possimus tempora ex, omnis dicta ut officiis.
-                  Sunt deserunt aut maiores accusantium qui reprehenderit!
-                </div>
+                    </div>
+                  );
+                })}
               </div>
             </section>
 
             <section className='another-important-information mb-20 grid grid-cols-1 md:grid-cols-2  gap-4 '>
               <div>
                 <p className='text-3xl font-medium'>Other Important Information</p>
-                <div>
-                  Lorem ipsum dolor sit amet consectetur adipisicing.
-                  Laudantium iste accusantium ea porro repellat maiores?
-                  Dignissimos ullam placeat repellendus? Accusamus, necessitatibus repudiandae.
-                  Iusto adipisci nam perferendis! Distinctio, iure tempore?
-                  Delectus quidem accusamus cupiditate sit temporibus laudantium.
+                <div className='text-justify p-5'>
+                  {university.url}
                 </div>
 
               </div>
 
-              <div>
+              <div className='md:border-l-2 p-10'>
                 <p className='text-3xl font-medium'>Location</p>
                 <div>
 
@@ -137,8 +139,11 @@ const UniversityProfilePage = () => {
             </section>
 
           </div>
+
         </div>
+
       </section>
+
       <Footer />
     </>
   );

@@ -307,7 +307,7 @@
       "Department": "MA",
       "Country": "USA"
     },
-    "academic offer": [{
+    "offer": [{
         "code": 11,
         "career": "Liberal Arts & Sciences",
         "duration": "4 semesters",
@@ -349,7 +349,7 @@
       "Department": "Oxfordshire",
       "Country": "England"
     },
-    "academic offer": [{
+    "offer": [{
         "code": 21,
         "career": "Philology and Phonetics",
         "duration": "6 semesters",
@@ -390,7 +390,7 @@
       "Department": "ON",
       "Country": "Canada"
     },
-    "academic offer": [{
+    "offer": [{
         "code": 31,
         "career": "Accounting and Finance",
         "duration": "3 semesters",
@@ -431,7 +431,7 @@
       "Department": "Beijing",
       "Country": "China"
     },
-    "academic offer": [{
+    "offer": [{
         "code": 41,
         "career": "Environmental Engineering",
         "duration": "10 semesters",
@@ -472,7 +472,7 @@
       "Department": "NSW",
       "Country": "Australia"
     },
-    "academic offer": [{
+    "offer": [{
         "code": 51,
         "career": "Authors & Editors",
         "duration": "6 semesters",
@@ -511,7 +511,7 @@
       "Department": "Queenstown",
       "Country": "Singapore"
     },
-    "academic offer": [{
+    "offer": [{
         "code": 61,
         "career": "Law",
         "duration": "10 semesters",
@@ -551,7 +551,7 @@
       "Department": "IN",
       "Country": "USA"
     },
-    "academic offer": [{
+    "offer": [{
         "code": 71,
         "career": "Food Science and Human Nutrition",
         "duration": "6 semesters",
@@ -592,7 +592,7 @@
       "Department": "MA",
       "Country": "USA"
     },
-    "academic offer": [{
+    "offer": [{
         "code": 81,
         "career": "Geographic Information Systems",
         "duration": "10 semesters",
