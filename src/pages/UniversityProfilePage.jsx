@@ -4,7 +4,6 @@ import Footer from '../components/organisms/footer/Footer';
 import MapChart from '../components/organisms/mapChart/MapChart';
 
 const UniversityProfilePage = () => {
-  console.log('hola');
   return (
     <>
 
