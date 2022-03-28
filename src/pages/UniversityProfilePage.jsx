@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Footer from '../components/organisms/footer/Footer';
+import MapChart from '../components/organisms/mapChart/MapChart';
 
 const UniversityProfilePage = () => {
   console.log('hola');
@@ -95,8 +96,7 @@ const UniversityProfilePage = () => {
               <div>
                 <p className='text-3xl font-medium'>Location</p>
                 <div>
-
-                  <img src={require('../assets/mapa.jpg')} alt='#' className='rounded-lg' />
+                  <MapChart />
                 </div>
               </div>
 
