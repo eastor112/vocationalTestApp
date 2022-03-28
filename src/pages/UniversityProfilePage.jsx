@@ -97,8 +97,7 @@ const UniversityProfilePage = () => {
               <div className='md:border-l-2 p-10'>
                 <p className='text-3xl font-medium'>Location</p>
                 <div>
-
-                  <img src={require('../assets/mapa.jpg')} alt='#' className='rounded-lg' />
+                  <MapChart />
                 </div>
               </div>
 

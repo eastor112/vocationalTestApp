@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../../components/organisms/sidebar/Sidebar';
 
-const DashboardRoutes = () => {
+const BaseDashboard = () => {
   const [width, setWidth] = useState(64);
-
   return (
     <>
       <Sidebar setWidth={setWidth} />
@@ -13,4 +12,4 @@ const DashboardRoutes = () => {
   );
 };
 
-export default DashboardRoutes;
+export default BaseDashboard;

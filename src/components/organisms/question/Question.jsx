@@ -4,16 +4,40 @@ import PropTypes from 'prop-types';
 const Question = ({ question }) => (
   <div className='border-b-2 pb-4  border-slate-200'>
     <p className='py-6 font-bold'>{question.description}</p>
-    <input type='radio' id={`radio-${(question.id * 4 - 3).toString()}`} name={`radio-options-${question.id}`} value='a' />
+    <input
+      type='radio'
+      id={`radio-${(question.id * 4 - 3).toString()}`}
+      name={`radio-options-${question.id}`}
+      value='a'
+      className='mr-2'
+    />
     <label htmlFor={`radio-${(question.id * 4 - 3).toString()}`} className='hover:text-teal-400'>{question.option1}</label>
     <br />
-    <input type='radio' id={`radio-${(question.id * 4 - 2).toString()}`} name={`radio-options-${question.id}`} value='b' />
+    <input
+      type='radio'
+      id={`radio-${(question.id * 4 - 2).toString()}`}
+      name={`radio-options-${question.id}`}
+      value='b'
+      className='mr-2'
+    />
     <label htmlFor={`radio-${(question.id * 4 - 2).toString()}`} className='hover:text-teal-400'>{question.option2}</label>
     <br />
-    <input type='radio' id={`radio-${(question.id * 4 - 1).toString()}`} name={`radio-options-${question.id}`} value='c' />
+    <input
+      type='radio'
+      id={`radio-${(question.id * 4 - 1).toString()}`}
+      name={`radio-options-${question.id}`}
+      value='c'
+      className='mr-2'
+    />
     <label htmlFor={`radio-${(question.id * 4 - 1).toString()}`} className='hover:text-teal-400'>{question.option3}</label>
     <br />
-    <input type='radio' id={`radio-${(question.id * 4).toString()}`} name={`radio-options-${question.id}`} value='d' />
+    <input
+      type='radio'
+      id={`radio-${(question.id * 4).toString()}`}
+      name={`radio-options-${question.id}`}
+      value='d'
+      className='mr-2'
+    />
     <label htmlFor={`radio-${(question.id * 4).toString()}`} className='hover:text-teal-400'>{question.option4}</label>
   </div>
 );

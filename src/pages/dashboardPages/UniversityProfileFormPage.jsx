@@ -1,6 +1,6 @@
 import { useOutletContext } from 'react-router-dom';
-import FileUpload from '../components/molecules/fileUpload/FileUpload';
-import UniversityForm from '../components/molecules/universityForm/UniversityForm';
+import FileUpload from '../../components/molecules/fileUpload/FileUpload';
+import UniversityForm from '../../components/molecules/universityForm/UniversityForm';
 
 const UniversityProfileFormPage = () => {
   const width = useOutletContext();
@@ -9,7 +9,7 @@ const UniversityProfileFormPage = () => {
       <div className='mt-5'>
         <h2 className='pb-10 text-2xl font-bold text-dark-1 my-4'>University Profile</h2>
         <div className='md: w-2/5'>
-          <img src={require('../assets/img.png')} alt='' />
+          <img src={require('../../assets/img.png')} alt='' />
         </div>
         <div className='grid grid-cols-1 justify-start items-cent pt-8'>
           <FileUpload />
