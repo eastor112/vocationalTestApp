@@ -57,7 +57,7 @@ const UniversityProfilePage = () => {
                   {university.process && university.process.map((process) => {
                     const count = university.process.indexOf(process) + 1;
                     return (
-                      <li className=''>
+                      <li className='' key={university.id}>
                         {`${count}`}
                         .
                         {process}
@@ -75,8 +75,8 @@ const UniversityProfilePage = () => {
 
                 {university.offer && university.offer.map((offer) => {
                   return (
-                    <div>
-                      <a className='text-teal-600 hover:text-teal-400 underline underline-offset-8 ' href='.' key={offer.code}>{offer.career}</a>
+                    <div key={offer.code}>
+                      <a className='text-teal-600 hover:text-teal-400 underline underline-offset-8 ' href='.'>{offer.career}</a>
                       <p className='p-2'>{offer.description}</p>
 
                     </div>
