@@ -24,7 +24,7 @@ const universitiesData = [
       Department: 'MA',
       Country: 'USA',
     },
-    'academic offer': [{
+    offer: [{
       code: 11,
       career: 'Liberal Arts & Sciences',
       duration: '4 semesters',
@@ -66,7 +66,7 @@ const universitiesData = [
       Department: 'Oxfordshire',
       Country: 'England',
     },
-    'academic offer': [{
+    offer: [{
       code: 21,
       career: 'Philology and Phonetics',
       duration: '6 semesters',
@@ -107,7 +107,7 @@ const universitiesData = [
       Department: 'ON',
       Country: 'Canada',
     },
-    'academic offer': [{
+    offer: [{
       code: 31,
       career: 'Accounting and Finance',
       duration: '3 semesters',
@@ -148,7 +148,7 @@ const universitiesData = [
       Department: 'Beijing',
       Country: 'China',
     },
-    'academic offer': [{
+    offer: [{
       code: 41,
       career: 'Environmental Engineering',
       duration: '10 semesters',
@@ -189,7 +189,7 @@ const universitiesData = [
       Department: 'NSW',
       Country: 'Australia',
     },
-    'academic offer': [{
+    offer: [{
       code: 51,
       career: 'Authors & Editors',
       duration: '6 semesters',
@@ -228,7 +228,7 @@ const universitiesData = [
       Department: 'Queenstown',
       Country: 'Singapore',
     },
-    'academic offer': [{
+    offer: [{
       code: 61,
       career: 'Law',
       duration: '10 semesters',
@@ -268,7 +268,7 @@ const universitiesData = [
       Department: 'IN',
       Country: 'USA',
     },
-    'academic offer': [{
+    offer: [{
       code: 71,
       career: 'Food Science and Human Nutrition',
       duration: '6 semesters',
@@ -309,7 +309,7 @@ const universitiesData = [
       Department: 'MA',
       Country: 'USA',
     },
-    'academic offer': [{
+    offer: [{
       code: 81,
       career: 'Geographic Information Systems',
       duration: '10 semesters',
