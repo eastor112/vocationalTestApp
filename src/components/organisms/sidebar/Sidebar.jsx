@@ -1,9 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import { React, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { GoogleLogout } from 'react-google-login';
+import { useDispatch } from 'react-redux';
+import { logoutSimple } from '../../../actions/auth-actions';
 
 const Sidebar = ({ setWidth }) => {
   const [expand, setExpand] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleExpand = () => {
     setExpand(!expand);
@@ -12,6 +17,10 @@ const Sidebar = ({ setWidth }) => {
   useEffect(() => {
     setWidth(expand ? 64 : 16);
   }, [setWidth, expand]);
+
+  const logout = () => {
+    dispatch(logoutSimple());
+  };
 
   return (
     <aside className={`fixed  transition duration-1000 ${expand ? 'w-64' : 'w-16'}`} aria-label='Sidebar'>
@@ -108,17 +117,26 @@ const Sidebar = ({ setWidth }) => {
               </span>
             </NavLink>
           </li>
+          <GoogleLogout
+            clientId='658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'
+            buttonText='Logout'
+            render={(renderProps) => (
+              <li>
+                <NavLink to='/'>
+                  <button type='button' className='text-light-1 flex justify-start items-center p-2 text-base font-normal hover:bg-primary-2 rounded-lg w-full' onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                    <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                      <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
+                    </svg>
+                    <span className={expand ? 'ml-3 whitespace-nowrap' : 'hidden'}>
+                      Logout
+                    </span>
+                  </button>
+                </NavLink>
+              </li>
+            )}
+            onLogoutSuccess={logout}
+          />
 
-          <li>
-            <NavLink to='/' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-              <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
-                <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
-              </svg>
-              <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
-                Logout
-              </span>
-            </NavLink>
-          </li>
         </ul>
 
         <button type='button' className='w-full' onClick={handleExpand}>
@@ -143,15 +161,3 @@ Sidebar.propTypes = {
 };
 
 export default Sidebar;
-
-// <span className='inline-flex justify-center items-center px-2 ml-3
-// text-sm font-medium text-gray-800 bg-gray-200 rounded-full'
-// >
-//   Pro
-// </span>
-
-// <span className='inline-flex justify-center items-center p-3 ml-3 w-3
-// h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full'
-// >
-//   3
-// </span>

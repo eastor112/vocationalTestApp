@@ -13,7 +13,7 @@ export const loginAsync = (user) => {
   };
 };
 
-export const logout = () => ({
+export const logoutSimple = () => ({
   type: types.logout,
   payload: {},
 });
