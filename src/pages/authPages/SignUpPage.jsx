@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import HeaderForm from '../../components/molecules/headerForm/HeaderForm';
 import Footer from '../../components/organisms/footer/Footer';
 import LoginOrSignupForm from '../../components/organisms/loginOrSignupForm/LoginOrSignupForm';
-import SocialMediaLoginOrSignup from '../../components/organisms/socialMediaLoginSignup/SocialMediaLoginOrSignup';
 
 const SignUpPage = () => {
   const location = useLocation();
@@ -26,7 +25,6 @@ const SignUpPage = () => {
 
           <LoginOrSignupForm title='Sign up' />
 
-          <SocialMediaLoginOrSignup login={false} />
         </div>
 
       </main>

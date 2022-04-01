@@ -1,38 +1,28 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginGoogle } from '../../../actions/auth-actions';
+import { useSelector } from 'react-redux';
 
 const LoginOrSignupForm = ({ title }) => {
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
   const { auth } = useSelector((state) => state);
-
-  const handleLoginOrSignup = () => {
-    dispatch(loginGoogle());
-  };
 
   useEffect(() => {
     if (auth.uid) {
-      navigate('/test');
+      navigate('.');
     }
   }, [auth.uid]);
+
+  const handleLogin = () => {
+
+  };
 
   return (
     <form
       className='mt-6 flex flex-col'
       action=''
     >
-      <div>
-        {
-          auth.uid
-        }
-        {
-          auth.displayName
-        }
-      </div>
       <div className='mb-5 flex flex-col gap-2'>
         <label htmlFor='email' className=''>
           <input
@@ -58,7 +48,7 @@ const LoginOrSignupForm = ({ title }) => {
       <button
         type='button'
         className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6  whitespace-nowrap'
-        onClick={handleLoginOrSignup}
+        onClick={handleLogin}
       >
         {title}
       </button>
