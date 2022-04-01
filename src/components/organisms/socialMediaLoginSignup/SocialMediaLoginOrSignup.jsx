@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import GoogleLogin from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { loginSimple } from '../../../actions/auth-actions';
+import { googleLoginValidationApi } from '../../../services/authServices';
 
 const SocialMediaLoginOrSignup = () => {
   const [error, setError] = useState(false);
@@ -13,19 +14,9 @@ const SocialMediaLoginOrSignup = () => {
 
   const handleLogin = async (credential) => {
     setError(false);
-    const response = await fetch('http://localhost:8080/auth/google/login', {
-      method: 'POST',
-      body: JSON.stringify({
-        idToken: credential.tokenId,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const data = googleLoginValidationApi(credential);
 
-    const { token, user } = await response.json();
-
-    dispatch(loginSimple({ token, ...user }));
+    dispatch(loginSimple(data));
   };
 
   return (
