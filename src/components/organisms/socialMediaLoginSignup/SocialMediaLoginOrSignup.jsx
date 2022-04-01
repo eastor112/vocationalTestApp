@@ -14,7 +14,7 @@ const SocialMediaLoginOrSignup = () => {
 
   const handleLogin = async (credential) => {
     setError(false);
-    const data = googleLoginValidationApi(credential);
+    const data = await googleLoginValidationApi(credential);
 
     dispatch(loginSimple(data));
   };
