@@ -8,10 +8,7 @@ const SocialMediaLoginOrSignup = () => {
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
 
-  console.log(error);
-
-  const handleFailure = (e) => {
-    console.log(e);
+  const handleFailure = () => {
     setError(true);
   };
 
