@@ -46,10 +46,6 @@ const LoginOrSignupForm = ({ title }) => {
     }
   };
 
-  const handleLogin = () => {
-
-  };
-
   return (
     <form
       className='mt-6 flex flex-col'
@@ -97,7 +93,7 @@ const LoginOrSignupForm = ({ title }) => {
 
       <button
         type='submit'
-        className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6  whitespace-nowrap ${isLoading && 'bg-gray-500'}`}
+        className={`bg-blue-500  text-white font-bold py-2 px-6  whitespace-nowrap ${isLoading ? 'bg-gray-500' : 'hover:bg-blue-700'}`}
         disabled={isLoading}
       >
         {title}

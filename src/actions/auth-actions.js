@@ -9,12 +9,12 @@ export const loginSimple = (user) => ({
   },
 });
 
-
 export const loginAsync = (email, password) => {
   return async (dispatch) => {
     try {
       const user = await loginValidationApi(email, password);
       dispatch(loginSimple(user));
+      dispatch(setLoaded());
     } catch (error) {
       dispatch(setError(error.message));
       dispatch(setLoaded());
