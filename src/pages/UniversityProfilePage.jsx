@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../components/organisms/footer/Footer';
+import MapChart from '../components/organisms/mapChart/MapChart';
 import universitiesData from '../data/universities';
 import { getUniversityById } from '../services/universitiesServices';
 import MapChart from '../components/organisms/mapChart/MapChart';

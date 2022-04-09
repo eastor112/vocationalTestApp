@@ -46,6 +46,10 @@ const LoginOrSignupForm = ({ title }) => {
     }
   };
 
+  const handleLogin = () => {
+
+  };
+
   return (
     <form
       className='mt-6 flex flex-col'
@@ -63,7 +67,6 @@ const LoginOrSignupForm = ({ title }) => {
         )
 
       }
-
       <div className='mb-5 flex flex-col gap-2'>
         <label htmlFor='email' className=''>
           <input
