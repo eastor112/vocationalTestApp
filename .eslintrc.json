@@ -1,11 +1,8 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
   "extends": [
     "plugin:react/recommended",
-    "airbnb"
+    "airbnb",
+    "plugin:jest-dom/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -15,8 +12,14 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "jest-dom"
   ],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
   "rules": {
     "react/jsx-filename-extension": [
       1,
