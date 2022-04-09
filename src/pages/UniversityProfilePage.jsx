@@ -4,6 +4,7 @@ import Footer from '../components/organisms/footer/Footer';
 import MapChart from '../components/organisms/mapChart/MapChart';
 import universitiesData from '../data/universities';
 import { getUniversityById } from '../services/universitiesServices';
+import MapChart from '../components/organisms/mapChart/MapChart';
 
 const UniversityProfilePage = () => {
   const { id } = useParams();
