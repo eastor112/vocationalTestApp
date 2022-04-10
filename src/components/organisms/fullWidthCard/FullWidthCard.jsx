@@ -9,7 +9,7 @@ const FullWidthCard = ({ name, skills, field, photo }) => {
         <img
           className='object-cover w-full object-center'
           src={photo}
-          alt=''
+          alt={`${name}.jpg`}
         />
       </div>
 

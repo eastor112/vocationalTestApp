@@ -7,7 +7,7 @@ const UniversityCard = ({ university }) => {
     <div key={university.id} className='card rounded-md bg-light-1'>
       <div className='flex flex-col gap-4'>
         <figure className='w-full h-36 overflow-hidden'>
-          <img src={university.campus[0]} className='h-36 w-full' alt='harvard' />
+          <img src={university.campus[0]} className='h-36 w-full' alt={`campus ${university.name}`} />
         </figure>
         <figure className='w-3/5 ml-3'>
           <img className='logo w-full' src={university.logo} alt={university.name} />

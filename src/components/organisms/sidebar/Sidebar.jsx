@@ -123,7 +123,13 @@ const Sidebar = ({ setWidth }) => {
             render={(renderProps) => (
               <li>
                 <NavLink to='/'>
-                  <button type='button' className='text-light-1 flex justify-start items-center p-2 text-base font-normal hover:bg-primary-2 rounded-lg w-full' onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                  <button
+                    data-testid='logout-button'
+                    type='button'
+                    className='text-light-1 flex justify-start items-center p-2 text-base font-normal hover:bg-primary-2 rounded-lg w-full'
+                    onClick={renderProps.onClick}
+                    disabled={renderProps.disabled}
+                  >
                     <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
                       <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
                     </svg>
@@ -139,7 +145,7 @@ const Sidebar = ({ setWidth }) => {
 
         </ul>
 
-        <button type='button' className='w-full' onClick={handleExpand}>
+        <button data-testid='expand-button' type='button' className='w-full' onClick={handleExpand}>
           <div className='flex items-center justify-between p-2 text-base font-normal text-light-1'>
             <svg xmlns='http://www.w3.org/2000/svg' className={`h-6 w-6  ${expand && 'invisible'}`} fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
               <path strokeLinecap='round' strokeLinejoin='round' d='M13 5l7 7-7 7M5 5l7 7-7 7' />
