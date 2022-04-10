@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import FullWidthCard from '../../../components/organisms/fullWidthCard/FullWidthCard';
+import FullWidthCard from '../../../../components/organisms/fullWidthCard/FullWidthCard';
 
 describe('testing fullWidthCard', () => {
   test('should render fullWidthCard', () => {

@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import NavBarFlow from '../../../components/organisms/navBar/NavBarFlow';
+import NavBarFlow from '../../../../components/organisms/navBar/NavBarFlow';
 
 beforeAll(() => {
 

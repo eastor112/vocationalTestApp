@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import SearchBar from '../../../components/organisms/searchBar/SearchBar';
+import SearchBar from '../../../../components/organisms/searchBar/SearchBar';
 
 describe('testing searchBar', () => {
   test('should render searchBar', () => {

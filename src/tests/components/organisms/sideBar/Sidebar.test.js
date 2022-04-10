@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import Sidebar from '../../../components/organisms/sidebar/Sidebar';
+import Sidebar from '../../../../components/organisms/sidebar/Sidebar';
 
 const mockStore = configureStore();
 

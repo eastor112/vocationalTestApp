@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import UniversityCard from '../../../components/organisms/simpleCard/UniversityCard';
+import UniversityCard from '../../../../components/organisms/simpleCard/UniversityCard';
 
 describe('testing UniversityCard', () => {
   test('should render UniversityCard', () => {

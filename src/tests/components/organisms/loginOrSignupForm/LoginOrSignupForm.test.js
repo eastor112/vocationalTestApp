@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
-import LoginOrSignupForm from '../../../components/organisms/loginOrSignupForm/LoginOrSignupForm';
-import { store } from '../../../store/store';
+import LoginOrSignupForm from '../../../../components/organisms/loginOrSignupForm/LoginOrSignupForm';
+import { store } from '../../../../store/store';
 
 describe('testing loginOrSignupForm', () => {
   test('should render loginOrSignupForm', () => {
