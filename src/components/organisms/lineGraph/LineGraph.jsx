@@ -61,7 +61,7 @@ export const data = {
 };
 
 const LineGraph = () => (
-  <div className='graph h-80'>
+  <div aria-label='graph-container' className='graph h-80'>
     <Line options={options} data={data} />
   </div>
 );
