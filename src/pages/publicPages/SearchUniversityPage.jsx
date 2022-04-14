@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import SearchBar from '../components/organisms/searchBar/SearchBar';
-import UniversityCard from '../components/organisms/simpleCard/UniversityCard';
-import universitiesData from '../data/universities';
-import { getAllUniversities } from '../services/universitiesServices';
+import SearchBar from '../../components/organisms/searchBar/SearchBar';
+import UniversityCard from '../../components/organisms/simpleCard/UniversityCard';
+import universitiesData from '../../data/universities';
+import { getAllUniversities } from '../../services/universitiesServices';
 
 const SearchUniversityPage = () => {
   const [universities, setUniversities] = useState([]);

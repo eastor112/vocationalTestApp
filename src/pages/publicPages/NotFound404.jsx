@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../components/atoms/button/Button';
+import Button from '../../components/atoms/button/Button';
 
 const NotFound404 = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const NotFound404 = () => {
       <div className='h-full flex flex-col items-center justify-center gap-20'>
 
         <figure className=' w-3/4 flex justify-center'>
-          <img src={require('../assets/404.png')} alt='' />
+          <img src={require('../../assets/404.png')} alt='' />
         </figure>
 
         <div className='place-content-center md: w-full'>
