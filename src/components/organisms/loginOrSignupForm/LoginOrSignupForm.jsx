@@ -149,7 +149,7 @@ const LoginOrSignupForm = ({ title }) => {
             <div aria-label='country-phone' className='flex gap-5 w-full'>
               <div aria-label='country' className='mb-5 flex flex-col gap-2 flex-1'>
                 <label htmlFor='country' className=''>
-                  <select name='country' id='country' className='w-full h-9' value={country} onChange={handleInputChange}>
+                  <select name='country' id='country' className='w-full h-9 text-sm' value={country} onChange={handleInputChange}>
                     <option value='peru'>Perú</option>
                     <option value='colombia'>Colombia</option>
                   </select>
