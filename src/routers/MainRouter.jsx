@@ -15,6 +15,7 @@ import DashboardRoutes from './DashboardRoutes';
 import { store } from '../store/store';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import ValidatePage from '../pages/authPages/ValidatePage';
 
 const MainRouter = () => (
   <Provider store={store}>
@@ -44,6 +45,7 @@ const MainRouter = () => (
               </PublicRoute>
             )}
           />
+          <Route path='activate/:hash' element={<ValidatePage />} />
         </Route>
 
         <Route

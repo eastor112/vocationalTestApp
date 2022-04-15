@@ -14,16 +14,9 @@ export const clearError = () => {
   };
 };
 
-export const setLoading = () => {
+export const setLoading = (val) => {
   return {
     type: types.loading,
-    payload: null,
-  };
-};
-
-export const setLoaded = () => {
-  return {
-    type: types.loaded,
-    payload: null,
+    payload: val,
   };
 };

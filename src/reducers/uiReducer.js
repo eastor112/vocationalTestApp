@@ -3,8 +3,6 @@ import { types } from '../types/types';
 const initialState = {
   error: null,
   isLoading: false,
-  isLoggedIn: false,
-  user: null,
 };
 
 export const uiReducer = (state = initialState, action) => {
@@ -22,12 +20,7 @@ export const uiReducer = (state = initialState, action) => {
     case types.loading:
       return {
         ...state,
-        isLoading: true,
-      };
-    case types.loaded:
-      return {
-        ...state,
-        isLoading: false,
+        isLoading: action.payload,
       };
     default:
       return state;
