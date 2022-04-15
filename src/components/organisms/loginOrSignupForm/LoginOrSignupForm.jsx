@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 import { loginAsync } from '../../../actions/auth-actions';
@@ -59,6 +59,12 @@ const LoginOrSignupForm = ({ title }) => {
       dispatch(loginAsync(email, password));
     }
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearError());
+    };
+  }, []);
 
   return (
     <form
