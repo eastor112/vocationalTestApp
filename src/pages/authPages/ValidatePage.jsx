@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { emailValidationAsync } from '../../actions/auth-actions';
-import { clearError, setLoading } from '../../actions/ui-actions';
+import { emailValidationAsync } from '../../context/actions/auth-actions';
+import { clearError, setLoading } from '../../context/actions/ui-actions';
 
 const ValidatePage = () => {
   const { hash } = useParams();

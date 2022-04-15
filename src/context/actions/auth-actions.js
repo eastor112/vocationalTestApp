@@ -1,4 +1,4 @@
-import { emailValidationApi, loginValidationApi } from '../services/authServices';
+import { emailValidationApi, loginValidationApi } from '../../services/authServices';
 import { types } from '../types/types';
 import { setError, setLoading } from './ui-actions';
 

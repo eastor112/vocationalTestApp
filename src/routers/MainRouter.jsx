@@ -12,7 +12,7 @@ import UniversityProfilePage from '../pages/publicPages/UniversityProfilePage';
 import SearchUniversityPage from '../pages/publicPages/SearchUniversityPage';
 import NotFound404 from '../pages/publicPages/NotFound404';
 import DashboardRoutes from './DashboardRoutes';
-import { store } from '../store/store';
+import { store } from '../context/store/store';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import ValidatePage from '../pages/authPages/ValidatePage';

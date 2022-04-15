@@ -3,7 +3,7 @@ import { React, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { GoogleLogout } from 'react-google-login';
 import { useDispatch } from 'react-redux';
-import { logoutSimple } from '../../../actions/auth-actions';
+import { logoutSimple } from '../../../context/actions/auth-actions';
 
 const Sidebar = ({ setWidth }) => {
   const [expand, setExpand] = useState(false);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import GoogleLogin from 'react-google-login';
 import { useDispatch } from 'react-redux';
-import { loginSimple } from '../../../actions/auth-actions';
+import { loginSimple } from '../../../context/actions/auth-actions';
 import { googleLoginValidationApi } from '../../../services/authServices';
 
 const SocialMediaLoginOrSignup = () => {

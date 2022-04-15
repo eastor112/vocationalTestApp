@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
-import { loginAsync } from '../../../actions/auth-actions';
-import { setError, clearError, setLoading } from '../../../actions/ui-actions';
+import { loginAsync } from '../../../context/actions/auth-actions';
+import { setError, clearError, setLoading } from '../../../context/actions/ui-actions';
 import { useForm } from '../../../hooks/useForm';
 
 const LoginOrSignupForm = ({ title }) => {
