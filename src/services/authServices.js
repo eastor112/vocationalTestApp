@@ -59,3 +59,110 @@ export const emailValidationApi = async (hash) => {
 
   return { token, ...user };
 };
+
+export const signUpStudentApi = async (email, password) => {
+  const URL = `${BASE_URL}/api/users`;
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      password,
+      role: 'STUDENT',
+    }),
+  };
+
+  const response = await fetch(URL, requestOptions);
+
+  if (response.status === 400) {
+    throw new Error('Incorrect email or password');
+  }
+  if (response.status === 500) {
+    throw new Error('Server error');
+  }
+
+  const user = await response.json();
+
+  return user;
+};
+
+export const signUpInstitutionApi = async (email, password, name, country, phone, url) => {
+  const URL = `${BASE_URL}/api/universities`;
+
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name,
+      address: {
+        country,
+      },
+      url,
+    }),
+  };
+
+  const response = await fetch(URL, requestOptions);
+
+  if (response.status !== 201) {
+    throw new Error('Error creating institution');
+  }
+
+  const university = await response.json();
+
+  const URL2 = `${BASE_URL}/api/users`;
+
+  const requestOptions2 = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      password,
+      role: 'INSTITUTION',
+      university: university.id,
+      phone,
+    }),
+  };
+
+  const response2 = await fetch(URL2, requestOptions2);
+
+  if (response2.status !== 201) {
+    throw new Error('Error creating user');
+  }
+
+  const user = await response2.json();
+
+  return user;
+};
+
+export const refreshTokenApi = async (token) => {
+  const URL = `${BASE_URL}/auth/local/login/validate`;
+
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', `Bearer ${token}`);
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    redirect: 'follow',
+  };
+
+  const response = await fetch(URL, requestOptions);
+
+  if (response.status === 401) {
+    localStorage.removeItem('token');
+    throw new Error('Incorrect token');
+  }
+  if (response.status === 500) {
+    throw new Error('Server error');
+  }
+
+  const { token: newToken, user } = await response.json();
+
+  return { token: newToken, ...user };
+};

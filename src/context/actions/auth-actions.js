@@ -23,10 +23,13 @@ export const loginAsync = (email, password) => {
   };
 };
 
-export const logoutSimple = () => ({
-  type: types.logout,
-  payload: {},
-});
+export const logoutSimple = () => {
+  localStorage.removeItem('token');
+  return {
+    type: types.logout,
+    payload: {},
+  };
+};
 
 export const emailValidationAsync = (hash) => {
   return async (dispatch) => {

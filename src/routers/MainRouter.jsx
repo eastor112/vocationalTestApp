@@ -16,6 +16,7 @@ import { store } from '../context/store/store';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import ValidatePage from '../pages/authPages/ValidatePage';
+import RegistrationConfirmPage from '../pages/authPages/RegistrationConfirmPage';
 
 const MainRouter = () => (
   <Provider store={store}>
@@ -45,6 +46,7 @@ const MainRouter = () => (
               </PublicRoute>
             )}
           />
+          <Route path='signup/confirmation' element={<RegistrationConfirmPage />} />
           <Route path='activate/:hash' element={<ValidatePage />} />
         </Route>
 

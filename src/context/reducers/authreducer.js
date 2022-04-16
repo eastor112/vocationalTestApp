@@ -7,6 +7,7 @@ const initialState = {
   motherName: null,
   names: null,
   phone: null,
+  google: null,
   profile: null,
   email: null,
   token: null,

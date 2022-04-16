@@ -2,13 +2,14 @@ import { NavLink } from 'react-router-dom';
 import { React, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { GoogleLogout } from 'react-google-login';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutSimple } from '../../../context/actions/auth-actions';
 
 const Sidebar = ({ setWidth }) => {
   const [expand, setExpand] = useState(false);
 
   const dispatch = useDispatch();
+  const { google } = useSelector((state) => state.auth);
 
   const handleExpand = () => {
     setExpand(!expand);
@@ -18,7 +19,7 @@ const Sidebar = ({ setWidth }) => {
     setWidth(expand ? 64 : 16);
   }, [setWidth, expand]);
 
-  const logout = () => {
+  const googleLogout = () => {
     dispatch(logoutSimple());
   };
 
@@ -117,31 +118,57 @@ const Sidebar = ({ setWidth }) => {
               </span>
             </NavLink>
           </li>
-          <GoogleLogout
-            clientId='658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'
-            buttonText='Logout'
-            render={(renderProps) => (
-              <li>
-                <NavLink to='/'>
-                  <button
-                    data-testid='logout-button'
-                    type='button'
-                    className='text-light-1 flex justify-start items-center p-2 text-base font-normal hover:bg-primary-2 rounded-lg w-full'
-                    onClick={renderProps.onClick}
-                    disabled={renderProps.disabled}
-                  >
-                    <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
-                      <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
-                    </svg>
-                    <span className={expand ? 'ml-3 whitespace-nowrap' : 'hidden'}>
-                      Logout
-                    </span>
-                  </button>
-                </NavLink>
-              </li>
-            )}
-            onLogoutSuccess={logout}
-          />
+
+          {
+            google
+              ? (
+                <GoogleLogout
+                  clientId='658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'
+                  buttonText='Logout'
+                  render={(renderProps) => (
+                    <li>
+                      <NavLink to='/' onClick={googleLogout}>
+                        <button
+                          data-testid='logout-button'
+                          type='button'
+                          className='text-light-1 flex justify-start items-center p-2 text-base font-normal hover:bg-primary-2 rounded-lg w-full'
+                          onClick={renderProps.onClick}
+                          disabled={renderProps.disabled}
+                        >
+                          <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                            <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
+                          </svg>
+                          <span className={expand ? 'ml-3 whitespace-nowrap' : 'hidden'}>
+                            Logout
+                          </span>
+                        </button>
+                      </NavLink>
+                    </li>
+                  )}
+                  onLogoutSuccess={googleLogout}
+                />
+              )
+              : (
+                <li>
+                  <NavLink to='/'>
+                    <button
+                      data-testid='logout-button'
+                      type='button'
+                      className='text-light-1 flex justify-start items-center p-2 text-base font-normal hover:bg-primary-2 rounded-lg w-full'
+                      onClick={googleLogout}
+                    >
+                      <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                        <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
+                      </svg>
+                      <span className={expand ? 'ml-3 whitespace-nowrap' : 'hidden'}>
+                        Logout
+                      </span>
+                    </button>
+                  </NavLink>
+                </li>
+              )
+
+          }
 
         </ul>
 
