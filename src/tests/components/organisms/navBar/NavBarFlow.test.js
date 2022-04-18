@@ -8,7 +8,7 @@ beforeAll(() => {
 });
 
 describe('testing NavBarFlow', () => {
-  test('should render a home link', () => {
+  test('should render a home, about, and contact links', () => {
     const wraper = render(
       <BrowserRouter>
         <NavBarFlow />
@@ -24,7 +24,7 @@ describe('testing NavBarFlow', () => {
     expect(contact).toBeInTheDocument();
   });
 
-  test('should render a signup button', () => {
+  test('should render a text Logo', () => {
     render(
       <BrowserRouter>
         <NavBarFlow />
