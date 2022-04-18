@@ -11,7 +11,7 @@ import CareerInformationPage from '../pages/publicPages/CareerInformationPage';
 import UniversityProfilePage from '../pages/publicPages/UniversityProfilePage';
 import SearchUniversityPage from '../pages/publicPages/SearchUniversityPage';
 import NotFound404 from '../pages/publicPages/NotFound404';
-import DashboardRoutes from './DashboardRoutes';
+import DashboardRoutes from './DashboardRouter';
 import { store } from '../context/store/store';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -33,7 +33,7 @@ const MainRouter = () => (
           <Route
             path='login'
             element={(
-              <PublicRoute route='/dashboard/test'>
+              <PublicRoute route='/dashboard/general'>
                 <LoginPage />
               </PublicRoute>
             )}
@@ -41,7 +41,7 @@ const MainRouter = () => (
           <Route
             path='signup'
             element={(
-              <PublicRoute route='/dashboard/test'>
+              <PublicRoute route='/dashboard/general'>
                 <SignUpPage />
               </PublicRoute>
             )}

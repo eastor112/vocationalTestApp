@@ -49,13 +49,23 @@ const Sidebar = ({ setWidth }) => {
             </NavLink>
           </li>
           <li>
+            <NavLink to='/dashboard/general' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
+              <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' viewBox='0 0 20 20' fill='currentColor'>
+                <path fillRule='evenodd' d='M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z' clipRule='evenodd' />
+              </svg>
+              <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
+                General
+              </span>
+            </NavLink>
+          </li>
+          <li>
             <NavLink to='/dashboard' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
               <svg className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
                 <path d='M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z' />
                 <path d='M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z' />
               </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
-                General
+                Dashboard
               </span>
             </NavLink>
           </li>

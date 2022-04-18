@@ -5,7 +5,7 @@ import LineGraph from '../../components/organisms/lineGraph/LineGraph';
 import LatePayments from '../../components/organisms/latePayments/LatePayments';
 import PopularTop from '../../components/organisms/popularTop/PopularTop';
 
-const Dashboard = () => {
+const DashboardPage = () => {
   const width = useOutletContext();
   return (
     <main className={`${width === 64 ? 'pt-4 pr-10 pl-72 bg-light-1' : ' pt-4 pr-10 pl-24 bg-light-1'}`}>
@@ -40,4 +40,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

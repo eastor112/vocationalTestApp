@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import SocialMediaLoginOrSignup from '../../../../components/organisms/socialMediaLoginSignup/SocialMediaLoginOrSignup';
-import { store } from '../../../../store/store';
+import { store } from '../../../../context/store/store';
 
 describe('testing SocialMediaLoginOrSignup', () => {
   test('should render SocialMediaLoginOrSignup', () => {

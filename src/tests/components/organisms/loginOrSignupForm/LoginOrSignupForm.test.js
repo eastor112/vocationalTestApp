@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
+import { BrowserRouter } from 'react-router-dom';
 import LoginOrSignupForm from '../../../../components/organisms/loginOrSignupForm/LoginOrSignupForm';
-import { store } from '../../../../store/store';
+import { store } from '../../../../context/store/store';
 
 describe('testing loginOrSignupForm', () => {
   test('should render loginOrSignupForm', () => {
@@ -10,7 +11,9 @@ describe('testing loginOrSignupForm', () => {
 
     render(
       <Provider store={store}>
-        <LoginOrSignupForm title={title} />
+        <BrowserRouter>
+          <LoginOrSignupForm title={title} />
+        </BrowserRouter>
       </Provider>,
     );
 
@@ -28,7 +31,9 @@ describe('testing loginOrSignupForm', () => {
 
     render(
       <Provider store={store}>
-        <LoginOrSignupForm title={title} />
+        <BrowserRouter>
+          <LoginOrSignupForm title={title} />
+        </BrowserRouter>
       </Provider>,
     );
 
@@ -47,7 +52,9 @@ describe('testing loginOrSignupForm', () => {
     const title = 'textButton';
     render(
       <Provider store={store}>
-        <LoginOrSignupForm title={title} />
+        <BrowserRouter>
+          <LoginOrSignupForm title={title} />
+        </BrowserRouter>
       </Provider>,
     );
 
@@ -62,7 +69,9 @@ describe('testing loginOrSignupForm', () => {
     const title = 'textButton';
     render(
       <Provider store={store}>
-        <LoginOrSignupForm title={title} />
+        <BrowserRouter>
+          <LoginOrSignupForm title={title} />
+        </BrowserRouter>
       </Provider>,
     );
 

@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import BaseDashboard from '../pages/dashboardPages/BaseDashboard';
 import CareersListPage from '../pages/dashboardPages/CareersListPage';
-import Dashboard from '../pages/dashboardPages/Dashboard';
+import DashboardPage from '../pages/dashboardPages/DashboardPage';
+import GeneralPage from '../pages/dashboardPages/GeneralPage';
 import TestsListPage from '../pages/dashboardPages/TestsListPage';
 import UniversityProfileFormPage from '../pages/dashboardPages/UniversityProfileFormPage';
 import UserProfilePage from '../pages/dashboardPages/UserProfilePage';
@@ -13,7 +14,8 @@ const DashboardRoutes = () => {
   return (
     <Routes>
       <Route path='' element={<BaseDashboard />}>
-        <Route index element={<Dashboard />} />
+        <Route index element={<DashboardPage />} />
+        <Route path='general' element={<GeneralPage />} />
         <Route path='test' element={<VocationalTestPage />} />
         <Route path='test/result' element={<VocationalTestResultPage />} />
         <Route path='institution/profile' element={<UniversityProfileFormPage />} />
