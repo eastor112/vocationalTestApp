@@ -24,7 +24,7 @@ const Sidebar = ({ setWidth }) => {
   };
 
   return (
-    <aside className={`fixed  transition duration-1000 ${expand ? 'w-64' : 'w-16'}`} aria-label='Sidebar'>
+    <aside className={`fixed  transition duration-1000 z-10 ${expand ? 'w-64' : 'w-16'}`} aria-label='Sidebar'>
       <div className='overflow-hidden py-4 px-3 h-screen bg-primary-1 flex flex-col justify-between'>
 
         <ul className='space-y-2'>
