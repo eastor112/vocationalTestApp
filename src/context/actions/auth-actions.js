@@ -1,4 +1,5 @@
-import { emailValidationApi, loginValidationApi } from '../../services/authServices';
+import Swal from 'sweetalert2';
+import { emailValidationApi, loginValidationApi, updateUserApi } from '../../services/authServices';
 import { types } from '../types/types';
 import { setError, setLoading } from './ui-actions';
 
@@ -42,6 +43,41 @@ export const emailValidationAsync = (hash) => {
     } catch (error) {
       dispatch(setError(error.message));
       dispatch(setLoading(false));
+    }
+  };
+};
+
+export const updateUserDataAsync = (token, user) => {
+  return async (dispatch) => {
+    try {
+      Swal.fire({
+        title: 'Updating...',
+        html: 'Wait a moment...',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
+      const updateduser = await updateUserApi(token, user);
+
+      dispatch({
+        type: types.updateUserData,
+        payload: {
+          ...updateduser,
+        },
+      });
+
+      Swal.close();
+    } catch (error) {
+      Swal.close();
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please try again later',
+        icon: 'error',
+        confirmButtonText: 'ok',
+      });
     }
   };
 };

@@ -16,6 +16,16 @@ export const authReducer = (state = initialState, action) => {
       };
     case types.logout:
       return initialState;
+
+    case types.updateUserData:
+      return {
+        ...state,
+
+        user: {
+          ...state.user,
+          ...action.payload,
+        },
+      };
     default:
       return state;
   }

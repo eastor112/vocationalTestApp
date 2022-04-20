@@ -1,16 +1,17 @@
 import { useOutletContext } from 'react-router-dom';
 import { Country, City } from 'country-state-city';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import Swal from 'sweetalert2';
 import InputV2 from '../../components/atoms/input/InputV2';
 import { useForm } from '../../hooks/useForm';
-import { updateUserApi } from '../../services/authServices';
+import { updateUserDataAsync } from '../../context/actions/auth-actions';
+import InputFile from '../../components/atoms/input/InputFile';
 
 const UserProfilePage = () => {
   const width = useOutletContext();
   const { user, token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const { formValues, handleFormChange, setFormValues } = useForm(user);
 
   const [countries, setCountries] = useState([]);
@@ -34,6 +35,11 @@ const UserProfilePage = () => {
     }
   }, [token]);
 
+  useEffect(() => {
+    setFormValues(user);
+    document.querySelector('#file').value = '';
+  }, [user]);
+
   const handleFileChange = (ev) => {
     const file = ev.target.files[0];
 
@@ -48,15 +54,13 @@ const UserProfilePage = () => {
 
   const handleCountryChange = (e) => {
     const countryCode = e.target.value;
-    setFormValues(
-      {
-        ...formValues,
-        address: {
-          ...formValues.address,
-          [e.target.name]: countryCode,
-        },
+    setFormValues({
+      ...formValues,
+      address: {
+        ...formValues.address,
+        [e.target.name]: countryCode,
       },
-    );
+    });
 
     const citiesCountry = City.getCitiesOfCountry(countryCode);
 
@@ -65,42 +69,18 @@ const UserProfilePage = () => {
 
   const handleCityChange = (e) => {
     const cityCode = e.target.value;
-    setFormValues(
-      {
-        ...formValues,
-        address: {
-          ...formValues.address,
-          [e.target.name]: cityCode,
-        },
+    setFormValues({
+      ...formValues,
+      address: {
+        ...formValues.address,
+        [e.target.name]: cityCode,
       },
-    );
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    Swal.fire({
-      title: 'Updating...',
-      html: 'Wait a moment...',
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
-    updateUserApi(token, formValues)
-      .then((updatedUser) => {
-        setFormValues(updatedUser);
-        Swal.close();
-      })
-      .catch((err) => {
-        Swal.fire({
-          title: 'Error!',
-          text: err.message,
-          icon: 'error',
-          confirmButtonText: 'ok',
-        });
-      });
+    dispatch(updateUserDataAsync(token, formValues));
   };
 
   return (
@@ -188,15 +168,7 @@ const UserProfilePage = () => {
                   />
                 </figure>
 
-                <input
-                  className='block w-full h-10  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400'
-                  aria-describedby='user_avatar_help'
-                  id='file'
-                  type='file'
-                  name='file'
-                  onChange={handleFileChange}
-                  accept='image/png, image/jpeg, image/gif image/jpg'
-                />
+                <InputFile name='file' onChange={handleFileChange} />
               </div>
 
             </div>
