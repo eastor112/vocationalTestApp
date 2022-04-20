@@ -9,7 +9,9 @@ const Sidebar = ({ setWidth }) => {
   const [expand, setExpand] = useState(false);
 
   const dispatch = useDispatch();
-  const { google } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
+
+  const { google } = user;
 
   const handleExpand = () => {
     setExpand(!expand);

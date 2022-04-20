@@ -2,17 +2,8 @@ import { types } from '../types/types';
 
 const initialState = {
   isAuthenticated: false,
-  address: {},
-  fatherName: null,
-  motherName: null,
-  names: null,
-  phone: null,
-  google: null,
-  profile: null,
-  email: null,
   token: null,
-  uid: null,
-  username: null,
+  user: {},
 };
 
 export const authReducer = (state = initialState, action) => {

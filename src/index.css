@@ -9,3 +9,9 @@
   height: 50vh;
   z-index: 0;
 }
+
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: green !important;
+  -webkit-background-clip: text;
+}

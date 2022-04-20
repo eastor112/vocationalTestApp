@@ -15,7 +15,7 @@ export const googleLoginValidationApi = async (credential) => {
 
   const { token, user } = await response.json();
 
-  return { token, ...user };
+  return { token, user };
 };
 
 export const loginValidationApi = async (email, password) => {
@@ -43,7 +43,7 @@ export const loginValidationApi = async (email, password) => {
 
   const { token, user } = await response.json();
 
-  return { token, ...user };
+  return { token, user };
 };
 
 export const emailValidationApi = async (hash) => {
@@ -57,7 +57,7 @@ export const emailValidationApi = async (hash) => {
 
   const { token, user } = await response.json();
 
-  return { token, ...user };
+  return { token, user };
 };
 
 export const signUpStudentApi = async (email, password) => {
@@ -164,5 +164,62 @@ export const refreshTokenApi = async (token) => {
 
   const { token: newToken, user } = await response.json();
 
-  return { token: newToken, ...user };
+  return { token: newToken, user };
+};
+
+export const updateUserApi = async (token, user) => {
+  const URL = `${BASE_URL}/api/users/${user.uid}`;
+
+  const userCopy = { ...user };
+
+  if (user.role === 'ADMIN') {
+    delete userCopy.role;
+  }
+
+  if (userCopy.file) {
+    const formData = new FormData();
+    formData.append('profile', userCopy.file);
+
+    const requestOptions = {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    };
+
+    const response = await fetch(URL, requestOptions);
+
+    if (response.status === 401) {
+      throw new Error('Incorrect token');
+    }
+    if (response.status === 500) {
+      throw new Error('Server error');
+    }
+  }
+
+  delete userCopy.file;
+  delete userCopy.profile;
+
+  const requestOptions = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(userCopy),
+  };
+
+  const response = await fetch(URL, requestOptions);
+
+  if (response.status === 401) {
+    throw new Error('Incorrect token');
+  }
+  if (response.status === 500) {
+    throw new Error('Server error');
+  }
+
+  const updatedUser = await response.json();
+
+  return updatedUser;
 };

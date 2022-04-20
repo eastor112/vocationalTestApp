@@ -2,19 +2,20 @@ import { emailValidationApi, loginValidationApi } from '../../services/authServi
 import { types } from '../types/types';
 import { setError, setLoading } from './ui-actions';
 
-export const loginSimple = (user) => ({
+export const loginSimple = (result) => ({
   type: types.login,
   payload: {
-    ...user,
+    ...result,
   },
 });
 
 export const loginAsync = (email, password) => {
   return async (dispatch) => {
     try {
-      const user = await loginValidationApi(email, password);
-      localStorage.setItem('token', user.token);
-      dispatch(loginSimple(user));
+      const result = await loginValidationApi(email, password);
+
+      localStorage.setItem('token', result.token);
+      dispatch(loginSimple(result));
       dispatch(setLoading(false));
     } catch (error) {
       dispatch(setError(error.message));
@@ -34,9 +35,9 @@ export const logoutSimple = () => {
 export const emailValidationAsync = (hash) => {
   return async (dispatch) => {
     try {
-      const user = await emailValidationApi(hash);
-      localStorage.setItem('token', user.token);
-      dispatch(loginSimple(user));
+      const result = await emailValidationApi(hash);
+      localStorage.setItem('token', result.token);
+      dispatch(loginSimple(result));
       dispatch(setLoading(false));
     } catch (error) {
       dispatch(setError(error.message));
