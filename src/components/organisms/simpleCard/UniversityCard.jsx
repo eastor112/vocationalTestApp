@@ -20,7 +20,7 @@ const UniversityCard = ({ university }) => {
             Location:
           </span>
           {
-            ` ${university.location.city}, ${university.location.Country}`
+            ` ${university.address.city}, ${university.address.country ? university.address.country : ''}`
           }
         </p>
 
@@ -50,7 +50,7 @@ const UniversityCard = ({ university }) => {
 
 UniversityCard.propTypes = {
   university: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     logo: PropTypes.string.isRequired,
     campus: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -58,9 +58,9 @@ UniversityCard.propTypes = {
       national: PropTypes.number.isRequired,
       worldwide: PropTypes.number.isRequired,
     }).isRequired,
-    location: PropTypes.shape({
-      city: PropTypes.string.isRequired,
-      Country: PropTypes.string.isRequired,
+    address: PropTypes.shape({
+      city: PropTypes.string,
+      country: PropTypes.string,
     }).isRequired,
     vision: PropTypes.string.isRequired,
   }).isRequired,

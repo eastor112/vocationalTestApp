@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import SearchBar from '../../components/organisms/searchBar/SearchBar';
 import UniversityCard from '../../components/organisms/simpleCard/UniversityCard';
-import universitiesData from '../../data/universities';
 import { getAllUniversities } from '../../services/universitiesServices';
 
 const SearchUniversityPage = () => {
@@ -9,11 +8,7 @@ const SearchUniversityPage = () => {
 
   useEffect(() => {
     getAllUniversities().then((data) => {
-      if (data === 'error') {
-        setUniversities(universitiesData);
-      } else {
-        setUniversities(data);
-      }
+      setUniversities(data.universities);
     });
   }, []);
 
