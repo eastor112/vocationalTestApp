@@ -4,7 +4,7 @@ const position = [42.3771302, -71.1171107];
 
 const MapChart = () => {
   return (
-    <div>
+    <div aria-label='map-container'>
       <MapContainer className='z-0' center={position} zoom={12}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

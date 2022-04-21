@@ -1,16 +1,19 @@
 import React from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import Question from '../../components/organisms/question/Question';
 import questions from '../../data/questions';
+import { useForm } from '../../hooks/useForm';
 
 const VocationalTestPage = () => {
   const navigate = useNavigate();
+  const width = useOutletContext();
+
+  const { formValues, handleFormChange } = useForm();
 
   const handleFinish = () => {
     navigate('/dashboard/test/result');
   };
-
-  const width = useOutletContext();
 
   return (
 
@@ -26,8 +29,7 @@ const VocationalTestPage = () => {
         <br />
         <div className=' md:grid grid-cols-2 gap-2'>
           {
-            // eslint-disable-next-line react/no-array-index-key
-            questions.map((question, index) => (<Question key={index} question={question} />))
+            questions.map((question) => (<Question key={uuidv4()} question={question} />))
           }
         </div>
         <br />

@@ -5,7 +5,7 @@ import Input from '../../atoms/input/Input';
 const UniversityForm = () => {
   return (
     <form action='' className=' md:grid grid-cols-3 gap-8'>
-      <Input type='text' name='University name' />
+      <Input type='text' name='University' />
       <Input type='text' name='Mission' />
       <Input type='text' name='Vision' />
       <Input type='text' name='Country' />

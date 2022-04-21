@@ -7,7 +7,7 @@ const Question = ({ question }) => (
     <input
       type='radio'
       id={`radio-${(question.id * 4 - 3).toString()}`}
-      name={`radio-options-${question.id}`}
+      name={`question-${question.id}`}
       value='a'
       className='mr-2'
     />
@@ -16,7 +16,7 @@ const Question = ({ question }) => (
     <input
       type='radio'
       id={`radio-${(question.id * 4 - 2).toString()}`}
-      name={`radio-options-${question.id}`}
+      name={`question-${question.id}`}
       value='b'
       className='mr-2'
     />
@@ -25,7 +25,7 @@ const Question = ({ question }) => (
     <input
       type='radio'
       id={`radio-${(question.id * 4 - 1).toString()}`}
-      name={`radio-options-${question.id}`}
+      name={`question-${question.id}`}
       value='c'
       className='mr-2'
     />
@@ -34,7 +34,7 @@ const Question = ({ question }) => (
     <input
       type='radio'
       id={`radio-${(question.id * 4).toString()}`}
-      name={`radio-options-${question.id}`}
+      name={`question-${question.id}`}
       value='d'
       className='mr-2'
     />

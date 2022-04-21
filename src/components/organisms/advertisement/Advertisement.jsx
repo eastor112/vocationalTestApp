@@ -10,6 +10,7 @@ const Advertisement = () => (
       </h2>
 
       <p
+        aria-label='description'
         className='text-xl md:text-lg lg:text-xl leading-4 md:leading-4 lg:leading-5 mt-10 md:mt-5 lg:mt-10 md:text-center'
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui ad

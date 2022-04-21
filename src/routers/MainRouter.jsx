@@ -2,19 +2,21 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import { Provider } from 'react-redux';
 import App from '../App';
-import LandingPage from '../pages/LandingPage';
+import LandingPage from '../pages/publicPages/LandingPage';
 import SignUpPage from '../pages/authPages/SignUpPage';
-import AboutPage from '../pages/AboutPage';
-import ContactPage from '../pages/ContactPage';
+import AboutPage from '../pages/publicPages/AboutPage';
+import ContactPage from '../pages/publicPages/ContactPage';
 import LoginPage from '../pages/authPages/LoginPage';
-import CareerInformationPage from '../pages/CareerInformationPage';
-import UniversityProfilePage from '../pages/UniversityProfilePage';
-import SearchUniversityPage from '../pages/SearchUniversityPage';
-import NotFound404 from '../pages/NotFound404';
-import DashboardRoutes from './DashboardRoutes';
-import { store } from '../store/store';
+import CareerInformationPage from '../pages/publicPages/CareerInformationPage';
+import UniversityProfilePage from '../pages/publicPages/UniversityProfilePage';
+import SearchUniversityPage from '../pages/publicPages/SearchUniversityPage';
+import NotFound404 from '../pages/publicPages/NotFound404';
+import DashboardRoutes from './DashboardRouter';
+import { store } from '../context/store/store';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import ValidatePage from '../pages/authPages/ValidatePage';
+import RegistrationConfirmPage from '../pages/authPages/RegistrationConfirmPage';
 
 const MainRouter = () => (
   <Provider store={store}>
@@ -31,7 +33,7 @@ const MainRouter = () => (
           <Route
             path='login'
             element={(
-              <PublicRoute route='/dashboard/test'>
+              <PublicRoute route='/dashboard/general'>
                 <LoginPage />
               </PublicRoute>
             )}
@@ -39,11 +41,13 @@ const MainRouter = () => (
           <Route
             path='signup'
             element={(
-              <PublicRoute route='/dashboard/test'>
+              <PublicRoute route='/dashboard/general'>
                 <SignUpPage />
               </PublicRoute>
             )}
           />
+          <Route path='signup/confirmation' element={<RegistrationConfirmPage />} />
+          <Route path='activate/:hash' element={<ValidatePage />} />
         </Route>
 
         <Route

@@ -1,9 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import { React, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { GoogleLogout } from 'react-google-login';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutSimple } from '../../../context/actions/auth-actions';
 
 const Sidebar = ({ setWidth }) => {
   const [expand, setExpand] = useState(false);
+
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
+  const { google } = user;
 
   const handleExpand = () => {
     setExpand(!expand);
@@ -13,8 +21,12 @@ const Sidebar = ({ setWidth }) => {
     setWidth(expand ? 64 : 16);
   }, [setWidth, expand]);
 
+  const googleLogout = () => {
+    dispatch(logoutSimple());
+  };
+
   return (
-    <aside className={`fixed  transition duration-1000 ${expand ? 'w-64' : 'w-16'}`} aria-label='Sidebar'>
+    <aside className={`fixed  transition duration-1000 z-10 ${expand ? 'w-64' : 'w-16'}`} aria-label='Sidebar'>
       <div className='overflow-hidden py-4 px-3 h-screen bg-primary-1 flex flex-col justify-between'>
 
         <ul className='space-y-2'>
@@ -39,13 +51,23 @@ const Sidebar = ({ setWidth }) => {
             </NavLink>
           </li>
           <li>
+            <NavLink to='/dashboard/general' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
+              <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' viewBox='0 0 20 20' fill='currentColor'>
+                <path fillRule='evenodd' d='M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z' clipRule='evenodd' />
+              </svg>
+              <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
+                General
+              </span>
+            </NavLink>
+          </li>
+          <li>
             <NavLink to='/dashboard' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
               <svg className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
                 <path d='M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z' />
                 <path d='M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z' />
               </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
-                General
+                Dashboard
               </span>
             </NavLink>
           </li>
@@ -109,19 +131,60 @@ const Sidebar = ({ setWidth }) => {
             </NavLink>
           </li>
 
-          <li>
-            <NavLink to='/' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-              <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
-                <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
-              </svg>
-              <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
-                Logout
-              </span>
-            </NavLink>
-          </li>
+          {
+            google
+              ? (
+                <GoogleLogout
+                  clientId='658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'
+                  buttonText='Logout'
+                  render={(renderProps) => (
+                    <li>
+                      <NavLink to='/' onClick={googleLogout}>
+                        <button
+                          data-testid='logout-button'
+                          type='button'
+                          className='text-light-1 flex justify-start items-center p-2 text-base font-normal hover:bg-primary-2 rounded-lg w-full'
+                          onClick={renderProps.onClick}
+                          disabled={renderProps.disabled}
+                        >
+                          <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                            <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
+                          </svg>
+                          <span className={expand ? 'ml-3 whitespace-nowrap' : 'hidden'}>
+                            Logout
+                          </span>
+                        </button>
+                      </NavLink>
+                    </li>
+                  )}
+                  onLogoutSuccess={googleLogout}
+                />
+              )
+              : (
+                <li>
+                  <NavLink to='/'>
+                    <button
+                      data-testid='logout-button'
+                      type='button'
+                      className='text-light-1 flex justify-start items-center p-2 text-base font-normal hover:bg-primary-2 rounded-lg w-full'
+                      onClick={googleLogout}
+                    >
+                      <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                        <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
+                      </svg>
+                      <span className={expand ? 'ml-3 whitespace-nowrap' : 'hidden'}>
+                        Logout
+                      </span>
+                    </button>
+                  </NavLink>
+                </li>
+              )
+
+          }
+
         </ul>
 
-        <button type='button' className='w-full' onClick={handleExpand}>
+        <button data-testid='expand-button' type='button' className='w-full' onClick={handleExpand}>
           <div className='flex items-center justify-between p-2 text-base font-normal text-light-1'>
             <svg xmlns='http://www.w3.org/2000/svg' className={`h-6 w-6  ${expand && 'invisible'}`} fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
               <path strokeLinecap='round' strokeLinejoin='round' d='M13 5l7 7-7 7M5 5l7 7-7 7' />
@@ -143,15 +206,3 @@ Sidebar.propTypes = {
 };
 
 export default Sidebar;
-
-// <span className='inline-flex justify-center items-center px-2 ml-3
-// text-sm font-medium text-gray-800 bg-gray-200 rounded-full'
-// >
-//   Pro
-// </span>
-
-// <span className='inline-flex justify-center items-center p-3 ml-3 w-3
-// h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full'
-// >
-//   3
-// </span>
