@@ -25,7 +25,7 @@ const GeneralPage = () => {
         Swal.close();
       });
 
-    // navigate('/dashboard/test');
+    navigate('/dashboard/test');
   };
 
   return (
