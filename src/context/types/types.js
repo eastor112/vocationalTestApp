@@ -2,8 +2,16 @@ export const types = {
   login: '[AUTH] LOGIN',
   logout: '[AUTH] LOGOUT',
   updateUserData: '[AUTH] UPDATE_USER',
+
   setError: '[UI] SET_ERROR',
   clearError: '[UI] CLEAR_ERROR',
   loading: '[UI] LOADING',
   loaded: '[UI] LOADED',
+
+  setTestResult: '[TEST] SET_TEST_RESULT',
+  setTests: '[TEST] SET_TESTS',
+  setActiveTest: '[TEST] SET_ACTIVE_TEST',
+  setQuestions: '[TEST] SET_QUESTIONS',
+
+  addQuestionResponse: '[SOLVING] ADD_QUESTION_RESPONSE',
 };

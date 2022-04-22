@@ -1,56 +1,95 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addQuestionResponseAction } from '../../../context/actions/solvingTest-actions';
 
-const Question = ({ question }) => (
-  <div className='border-b-2 pb-4  border-slate-200'>
-    <p className='py-6 font-bold'>{question.description}</p>
-    <input
-      type='radio'
-      id={`radio-${(question.id * 4 - 3).toString()}`}
-      name={`question-${question.id}`}
-      value='a'
-      className='mr-2'
-    />
-    <label htmlFor={`radio-${(question.id * 4 - 3).toString()}`} className='hover:text-teal-400'>{question.option1}</label>
-    <br />
-    <input
-      type='radio'
-      id={`radio-${(question.id * 4 - 2).toString()}`}
-      name={`question-${question.id}`}
-      value='b'
-      className='mr-2'
-    />
-    <label htmlFor={`radio-${(question.id * 4 - 2).toString()}`} className='hover:text-teal-400'>{question.option2}</label>
-    <br />
-    <input
-      type='radio'
-      id={`radio-${(question.id * 4 - 1).toString()}`}
-      name={`question-${question.id}`}
-      value='c'
-      className='mr-2'
-    />
-    <label htmlFor={`radio-${(question.id * 4 - 1).toString()}`} className='hover:text-teal-400'>{question.option3}</label>
-    <br />
-    <input
-      type='radio'
-      id={`radio-${(question.id * 4).toString()}`}
-      name={`question-${question.id}`}
-      value='d'
-      className='mr-2'
-    />
-    <label htmlFor={`radio-${(question.id * 4).toString()}`} className='hover:text-teal-400'>{question.option4}</label>
-  </div>
-);
+const Question = ({ question }) => {
+  const dispatch = useDispatch();
+
+  const handleInputChange = (e) => {
+    dispatch(addQuestionResponseAction(question.id, e.target.value));
+  };
+
+  return (
+    <div className='border-b-2 pb-4  border-slate-200'>
+
+      <p className='py-6 font-bold'>{question.statement}</p>
+      <input
+        type='radio'
+        id={`${question.id}-a`}
+        name={`question-${question.id}`}
+        value='A'
+        className='mr-2'
+        onChange={handleInputChange}
+      />
+      <label
+        htmlFor={`${question.id}-a`}
+        className='hover:text-teal-400'
+      >
+        {question.optionA}
+      </label>
+      <br />
+
+      <input
+        type='radio'
+        id={`${question.id}-b`}
+        name={`question-${question.id}`}
+        value='B'
+        className='mr-2'
+        onChange={handleInputChange}
+      />
+      <label
+        htmlFor={`${question.id}-b`}
+        className='hover:text-teal-400'
+      >
+        {question.optionB}
+
+      </label>
+      <br />
+
+      <input
+        type='radio'
+        id={`${question.id}-c`}
+        name={`question-${question.id}`}
+        value='C'
+        className='mr-2'
+        onChange={handleInputChange}
+      />
+      <label
+        htmlFor={`${question.id}-c`}
+        className='hover:text-teal-400'
+      >
+        {question.optionC}
+
+      </label>
+      <br />
+
+      <input
+        type='radio'
+        id={`${question.id}-d`}
+        name={`question-${question.id}`}
+        value='D'
+        className='mr-2'
+        onChange={handleInputChange}
+      />
+      <label
+        htmlFor={`${question.id}-d`}
+        className='hover:text-teal-400'
+      >
+        {question.optionD}
+      </label>
+    </div>
+  );
+};
 
 export default Question;
 
 Question.propTypes = {
   question: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    option1: PropTypes.string.isRequired,
-    option2: PropTypes.string.isRequired,
-    option3: PropTypes.string,
-    option4: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    statement: PropTypes.string.isRequired,
+    optionA: PropTypes.string.isRequired,
+    optionB: PropTypes.string.isRequired,
+    optionC: PropTypes.string,
+    optionD: PropTypes.string,
   }).isRequired,
 };

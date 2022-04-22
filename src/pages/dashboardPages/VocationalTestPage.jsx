@@ -1,17 +1,35 @@
-import React from 'react';
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Question from '../../components/organisms/question/Question';
-import questions from '../../data/questions';
-import { useForm } from '../../hooks/useForm';
+import {
+  getAllTestQuestionsAction,
+  getTestAction,
+  createTestResultAction,
+} from '../../context/actions/vocational-actions';
 
 const VocationalTestPage = () => {
-  const navigate = useNavigate();
   const width = useOutletContext();
 
-  const { formValues, handleFormChange } = useForm();
+  const { testId } = useParams();
+  const navigate = useNavigate();
+  const { questions } = useSelector((state) => state.vocational);
+  const { user: { uid } } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!testId) {
+      navigate('/dashboard/tests');
+    }
+
+    dispatch(getTestAction(testId));
+
+    dispatch(getAllTestQuestionsAction(testId));
+  }, [testId, navigate]);
 
   const handleFinish = () => {
+    dispatch(createTestResultAction(uid, testId));
     navigate('/dashboard/test/result');
   };
 
@@ -29,17 +47,22 @@ const VocationalTestPage = () => {
         <br />
         <div className=' md:grid grid-cols-2 gap-2'>
           {
-            questions.map((question) => (<Question key={uuidv4()} question={question} />))
+            questions.map((question) => (
+              <Question
+                key={uuidv4()}
+                question={question}
+              />
+            ))
           }
         </div>
         <br />
         <br />
       </div>
 
-      <div className='w-full flex justify-end'>
+      <div className='w-full flex justify-center'>
         <button
-          type='submit'
-          className='bg-black hover:bg-green-400 text-white font-bold py-4 px-20 rounded'
+          type='button'
+          className='w-1/2 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'
           onClick={handleFinish}
         >
           Finish

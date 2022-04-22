@@ -2,8 +2,6 @@ const initialState = {
   users: [],
 };
 
-const usersReducer = (state = initialState, action) => {
+export const usersReducer = (state = initialState, action) => {
   return state;
 };
-
-export default usersReducer;

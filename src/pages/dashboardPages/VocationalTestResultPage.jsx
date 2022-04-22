@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useOutletContext } from 'react-router-dom';
 import careersData from '../../data/careers';
+import { careersResults } from '../../helpers/testsHelpers';
 
 const imgs = [
   'https://media.giphy.com/media/3vPAVUcLAbIGs/giphy.gif',
@@ -32,11 +34,17 @@ const VocationalTestResultPage = () => {
   const rand = Math.random();
   const width = useOutletContext();
 
-  return (// <main className='flex justify-center items-center h-screen'>
+  const { questionsResponses } = useSelector((state) => state.solvingTest);
 
+  useEffect(() => {
+    const careersResult = careersResults(questionsResponses);
+    console.log(careersResult);
+  }, []);
+
+  return (
     <main className={`min-h-screen flex justify-center bg-light-1 pt-4 pr-10 pb-8 ${width === 64 ? 'pl-72 ' : 'pl-24'}`}>
 
-      <div div className='flex flex-col-reverse lg:flex-row-reverse items-center mx-0 sm:mx-1 md:mx-5  gap-6'>
+      <div className='flex flex-col-reverse lg:flex-row-reverse items-center mx-0 sm:mx-1 md:mx-5  gap-6'>
         <figure className='flex-1 overflow-hidden'>
           <img
             className='w-full h-full object-contain'
