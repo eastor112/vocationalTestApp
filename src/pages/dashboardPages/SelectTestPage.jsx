@@ -14,7 +14,7 @@ const SelectTestPage = () => {
   }, []);
 
   return (
-    <main className={`${width === 64 ? 'pt-4 pr-10 pl-72 bg-light-1 h-screen' : ' pt-4 pr-10 pl-24 bg-light-1 h-screen'}`}>
+    <main className={`min-h-screen pb-8 bg-light-1 pt-4 pr-10 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
       <h2
         className='text-2xl font-bold text-dark-1 my-4'
       >

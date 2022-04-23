@@ -2,7 +2,7 @@ const BASE_URL = process.env.REACT_APP_ENV === 'develop'
   ? process.env.REACT_APP_API_URL_DEV
   : process.env.REACT_APP_API_URL_PROD;
 
-export const createTestResultService = async (uid, testId) => {
+export const createTestResultService = async (uid, testId, answers, firstOption, secondOption) => {
   const URL = `${BASE_URL}/api/results/`;
 
   const token = localStorage.getItem('token');
@@ -16,6 +16,9 @@ export const createTestResultService = async (uid, testId) => {
     body: JSON.stringify({
       user: uid,
       test: testId,
+      answers,
+      firstOption,
+      secondOption,
     }),
   };
 

@@ -5,7 +5,7 @@ import DoughnutChart from '../../components/organisms/doughnutChart/DoughnutChar
 import FoundCareers from '../../components/organisms/foundCareers/FoundCareers';
 import ModalComponent from '../../components/organisms/modal/ModalComponent';
 import CareersList from '../../components/organisms/listElement/CareersList';
-import { careersResults, setDataGraph, gifs } from '../../helpers/testsHelpers';
+import { setDataGraph, gifs, numberAndPercentage } from '../../helpers/testsHelpers';
 import { useModal } from '../../hooks/useModal';
 import { getFilteredCareers } from '../../services/careersServices';
 
@@ -13,20 +13,16 @@ const VocationalTestResultPage = () => {
   const rand = Math.random();
   const width = useOutletContext();
 
-  const { unsavedQuestionsResponses } = useSelector((state) => state.solvingTest);
   const { user: { names } } = useSelector((state) => state.auth);
+  const { testResult } = useSelector((state) => state.vocational);
 
   const [data, setData] = useState({});
-  const [processedData, setProcessedData] = useState(null);
   const [careers, setCareers] = useState([]);
 
   const { isOpen, openModal, closeModal } = useModal(false);
 
   useEffect(() => {
-    const processed = careersResults(unsavedQuestionsResponses);
-    setProcessedData(processed);
-
-    const configGraph = setDataGraph(processed.percents);
+    const configGraph = setDataGraph(testResult.answers);
     setData(configGraph);
   }, []);
 
@@ -73,16 +69,29 @@ const VocationalTestResultPage = () => {
                 <tbody>
                   <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center'>
                     <td className='px-3 py-2 border border-gray-300'>
-                      {`${processedData?.answers.A} (${processedData?.percents.A}%)`}
+                      {numberAndPercentage(
+                        testResult?.answers.A,
+                        testResult.test.numberOfQuestions,
+                      )}
                     </td>
                     <td className='px-3 py-2 border border-gray-300'>
-                      {`${processedData?.answers.B} (${processedData?.percents.B}%)`}
+                      {numberAndPercentage(
+                        testResult?.answers.B,
+                        testResult.test.numberOfQuestions,
+                      )}
+
                     </td>
                     <td className='px-3 py-2 border border-gray-300'>
-                      {`${processedData?.answers.C} (${processedData?.percents.C}%)`}
+                      {numberAndPercentage(
+                        testResult?.answers.C,
+                        testResult.test.numberOfQuestions,
+                      )}
                     </td>
                     <td className='px-3 py-2 border border-gray-300'>
-                      {`${processedData?.answers.D} (${processedData?.percents.D}%)`}
+                      {numberAndPercentage(
+                        testResult?.answers.D,
+                        testResult.test.numberOfQuestions,
+                      )}
                     </td>
                   </tr>
                 </tbody>
@@ -100,20 +109,20 @@ const VocationalTestResultPage = () => {
           </div>
 
           {
-            processedData && (
+            testResult && (
               <div aria-label='careers-list'>
 
                 <CareersList
                   option='first option,'
-                  description={processedData.firstOption.description}
-                  careers={processedData.firstOption.careers}
+                  description={testResult.test.descriptions[testResult.firstOption]}
+                  careers={testResult.test.results[testResult.firstOption]}
                   onClick={handleSearchCareersAndOpenModal}
                 />
 
                 <CareersList
                   option='second option,'
-                  description={processedData.secondOption.description}
-                  careers={processedData.secondOption.careers}
+                  description={testResult.test.descriptions[testResult.secondOption]}
+                  careers={testResult.test.results[testResult.secondOption]}
                   onClick={handleSearchCareersAndOpenModal}
                 />
               </div>

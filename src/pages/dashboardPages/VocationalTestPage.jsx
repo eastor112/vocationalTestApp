@@ -15,8 +15,6 @@ const VocationalTestPage = () => {
   const { testId } = useParams();
   const navigate = useNavigate();
   const { questions } = useSelector((state) => state.vocational);
-  const { unsavedQuestionsResponses } = useSelector((state) => state.solvingTest);
-  const { user: { uid } } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +28,7 @@ const VocationalTestPage = () => {
   }, [testId, navigate]);
 
   const handleFinish = () => {
-    dispatch(createTestResultAction(uid, testId, unsavedQuestionsResponses));
+    dispatch(createTestResultAction());
     navigate('/dashboard/test/result');
   };
 

@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2';
+import { processResponses } from '../../helpers/testsHelpers';
 import { createMultipleQuestionResponseService } from '../../services/solvingTestServices';
 import {
   createTestResultService,
@@ -32,8 +33,8 @@ export const getTestAction = (testId) => {
   };
 };
 
-export const createTestResultAction = (uid, testId, unsavedQuestionsResponses) => {
-  return async (dispatch) => {
+export const createTestResultAction = () => {
+  return async (dispatch, getState) => {
     Swal.fire({
       title: 'Saving your answers...',
       html: 'Wait a moment...',
@@ -44,7 +45,23 @@ export const createTestResultAction = (uid, testId, unsavedQuestionsResponses) =
       },
     });
 
-    const testResult = await createTestResultService(uid, testId);
+    const {
+      auth: { user },
+      vocational: { activeTest },
+      solvingTest: { unsavedQuestionsResponses },
+    } = getState();
+
+    const { firstOption, secondOption, answers } = processResponses(
+      unsavedQuestionsResponses,
+    );
+
+    const testResult = await createTestResultService(
+      user.uid,
+      activeTest.id,
+      answers,
+      firstOption,
+      secondOption,
+    );
 
     const savedQuestionsResponses = await createMultipleQuestionResponseService(
       unsavedQuestionsResponses,
