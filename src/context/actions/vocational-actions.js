@@ -3,7 +3,9 @@ import { processResponses } from '../../helpers/testsHelpers';
 import { createMultipleQuestionResponseService } from '../../services/solvingTestServices';
 import {
   createTestResultService,
+  fetchAllTestsResultsService,
   fetchAllTestsService,
+  fetchOneTestResultService,
   getAllTestQuestionsService,
   getTestService,
 } from '../../services/vocationalServices';
@@ -63,13 +65,18 @@ export const createTestResultAction = () => {
       secondOption,
     );
 
+    dispatch({
+      type: types.setActiveTestResult,
+      payload: testResult,
+    });
+
     const savedQuestionsResponses = await createMultipleQuestionResponseService(
       unsavedQuestionsResponses,
       testResult.id,
     );
 
     dispatch({
-      type: types.setTestResult,
+      type: types.setActiveTestResult,
       payload: testResult,
     });
 
@@ -90,5 +97,44 @@ export const getAllTestQuestionsAction = (testId) => {
       type: types.setQuestions,
       payload: questions,
     });
+  };
+};
+
+export const clearQuestionsAction = () => {
+  return {
+    type: types.clearQuestions,
+    payload: null,
+  };
+};
+
+export const getAllTestsResultsAction = () => {
+  return async (dispatch, getState) => {
+    const {
+      auth: { user },
+    } = getState();
+
+    const testsResults = await fetchAllTestsResultsService(user.uid);
+
+    dispatch({
+      type: types.setTestsResults,
+      payload: testsResults,
+    });
+  };
+};
+
+export const getActiveTestResultAction = (testId) => {
+  return async (dispatch) => {
+    const testResult = await fetchOneTestResultService(testId);
+
+    dispatch({
+      type: types.setActiveTestResult,
+      payload: testResult,
+    });
+  };
+};
+
+export const clearActiveTestResultAction = () => {
+  return {
+    type: types.clearActiveTestResult,
   };
 };

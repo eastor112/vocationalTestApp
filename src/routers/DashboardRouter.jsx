@@ -4,6 +4,7 @@ import CareersListPage from '../pages/dashboardPages/CareersListPage';
 import DashboardPage from '../pages/dashboardPages/DashboardPage';
 import GeneralPage from '../pages/dashboardPages/GeneralPage';
 import SelectTestPage from '../pages/dashboardPages/SelectTestPage';
+import SelectTestResultPage from '../pages/dashboardPages/SelectTestResultPage';
 import TestsListPage from '../pages/dashboardPages/TestsListPage';
 import UniversityProfileFormPage from '../pages/dashboardPages/UniversityProfileFormPage';
 import UserProfilePage from '../pages/dashboardPages/UserProfilePage';
@@ -19,8 +20,8 @@ const DashboardRoutes = () => {
         <Route path='general' element={<GeneralPage />} />
         <Route path='tests' element={<SelectTestPage />} />
         <Route path='tests/:testId' element={<VocationalTestPage />} />
-        <Route path='tests/:testId/result' element={<VocationalTestResultPage />} />
-        <Route path='test/result' element={<VocationalTestResultPage />} />
+        <Route path='testsresults' element={<SelectTestResultPage />} />
+        <Route path='testsresults/:resultId' element={<VocationalTestResultPage />} />
         <Route path='institution/profile' element={<UniversityProfileFormPage />} />
         <Route path='user/profile' element={<UserProfilePage />} />
         <Route path='users' element={<UsersListPage />} />

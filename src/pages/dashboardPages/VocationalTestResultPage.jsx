@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useOutletContext } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useOutletContext, useParams } from 'react-router-dom';
 import DoughnutChart from '../../components/organisms/doughnutChart/DoughnutChart';
 import FoundCareers from '../../components/organisms/foundCareers/FoundCareers';
 import ModalComponent from '../../components/organisms/modal/ModalComponent';
@@ -8,13 +8,17 @@ import CareersList from '../../components/organisms/listElement/CareersList';
 import { setDataGraph, gifs, numberAndPercentage } from '../../helpers/testsHelpers';
 import { useModal } from '../../hooks/useModal';
 import { getFilteredCareers } from '../../services/careersServices';
+import { getActiveTestResultAction } from '../../context/actions/vocational-actions';
 
 const VocationalTestResultPage = () => {
   const rand = Math.random();
   const width = useOutletContext();
 
+  const { resultId } = useParams();
+
+  const dispatch = useDispatch();
   const { user: { names } } = useSelector((state) => state.auth);
-  const { testResult } = useSelector((state) => state.vocational);
+  const { activeTestResult } = useSelector((state) => state.vocational);
 
   const [data, setData] = useState({});
   const [careers, setCareers] = useState([]);
@@ -22,9 +26,17 @@ const VocationalTestResultPage = () => {
   const { isOpen, openModal, closeModal } = useModal(false);
 
   useEffect(() => {
-    const configGraph = setDataGraph(testResult.answers);
-    setData(configGraph);
+    if (Object.keys(activeTestResult).length === 0) {
+      dispatch(getActiveTestResultAction(resultId));
+    }
   }, []);
+
+  useEffect(() => {
+    if (activeTestResult.id) {
+      const configGraph = setDataGraph(activeTestResult.answers);
+      setData(configGraph);
+    }
+  }, [activeTestResult]);
 
   const handleSearchCareersAndOpenModal = (career) => {
     getFilteredCareers(career)
@@ -39,111 +51,118 @@ const VocationalTestResultPage = () => {
 
       <div className='flex flex-col-reverse md:flex-row-reverse md:justify-center md:max-w-4xl items-center mx-0 sm:mx-1 md:mx-5 gap-6 mt-6 mb-2'>
 
-        <div className='flex-1 border-2 border-solid border-primary-1 p-10 rounded-xl shadow-lg shadow-primary-2 opacity-90 bg-white'>
-          <h3 className='font-bold text-2xl mb-5'>
-            {`Excelent ${names}!`}
-          </h3>
+        {
+          (Object.keys(activeTestResult).length > 0) ? (
 
-          <h4>This is the summary of your answers:</h4>
+            <div className='flex-1 border-2 border-solid border-primary-1 p-10 rounded-xl shadow-lg shadow-primary-2 opacity-90 bg-white'>
+              <h3 className='font-bold text-2xl mb-5'>
+                {`Excelent ${names}!`}
+              </h3>
 
-          <div aria-label='summary-stats' className='flex flex-col-reverse items-center gap-4 sm:gap-14 sm:flex-row sm:justify-center sm:items-center mb-8'>
+              <h4>This is the summary of your answers:</h4>
 
-            <div className='relative shadow-md sm:rounded-lg w-60'>
-              <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-2 border'>
-                <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border border-gray'>
-                  <tr className='text-center'>
-                    <th scope='col' className='px-3 py-2 border border-gray-300'>
-                      A
-                    </th>
-                    <th scope='col' className='px-3 py-2 border border-gray-300'>
-                      B
-                    </th>
-                    <th scope='col' className='px-3 py-2 border border-gray-300'>
-                      C
-                    </th>
-                    <th scope='col' className='px-3 py-2 border border-gray-300'>
-                      D
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center'>
-                    <td className='px-3 py-2 border border-gray-300'>
-                      {numberAndPercentage(
-                        testResult?.answers.A,
-                        testResult.test.numberOfQuestions,
-                      )}
-                    </td>
-                    <td className='px-3 py-2 border border-gray-300'>
-                      {numberAndPercentage(
-                        testResult?.answers.B,
-                        testResult.test.numberOfQuestions,
-                      )}
+              <div aria-label='summary-stats' className='flex flex-col-reverse items-center gap-4 sm:gap-14 sm:flex-row sm:justify-center sm:items-center mb-8'>
 
-                    </td>
-                    <td className='px-3 py-2 border border-gray-300'>
-                      {numberAndPercentage(
-                        testResult?.answers.C,
-                        testResult.test.numberOfQuestions,
-                      )}
-                    </td>
-                    <td className='px-3 py-2 border border-gray-300'>
-                      {numberAndPercentage(
-                        testResult?.answers.D,
-                        testResult.test.numberOfQuestions,
-                      )}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                <div className='relative shadow-md sm:rounded-lg w-60'>
+                  <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-2 border'>
+                    <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border border-gray'>
+                      <tr className='text-center'>
+                        <th scope='col' className='px-3 py-2 border border-gray-300'>
+                          A
+                        </th>
+                        <th scope='col' className='px-3 py-2 border border-gray-300'>
+                          B
+                        </th>
+                        <th scope='col' className='px-3 py-2 border border-gray-300'>
+                          C
+                        </th>
+                        <th scope='col' className='px-3 py-2 border border-gray-300'>
+                          D
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center'>
+                        <td className='px-3 py-2 border border-gray-300'>
+                          {numberAndPercentage(
+                            activeTestResult.answers.A,
+                            activeTestResult.test.numberOfQuestions,
+                          )}
+                        </td>
+                        <td className='px-3 py-2 border border-gray-300'>
+                          {numberAndPercentage(
+                            activeTestResult?.answers.B,
+                            activeTestResult.test.numberOfQuestions,
+                          )}
 
-            <div className='w-36 h-36 '>
-              {
-                Object.keys(data).length > 0
-                && (
-                  <DoughnutChart data={data} />)
-              }
-            </div>
+                        </td>
+                        <td className='px-3 py-2 border border-gray-300'>
+                          {numberAndPercentage(
+                            activeTestResult?.answers.C,
+                            activeTestResult.test.numberOfQuestions,
+                          )}
+                        </td>
+                        <td className='px-3 py-2 border border-gray-300'>
+                          {numberAndPercentage(
+                            activeTestResult?.answers.D,
+                            activeTestResult.test.numberOfQuestions,
+                          )}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
 
-          </div>
+                <div className='w-36 h-36 '>
+                  {
+                    Object.keys(data).length > 0
+                    && (
+                      <DoughnutChart data={data} />)
+                  }
+                </div>
 
-          {
-            testResult && (
+              </div>
+
               <div aria-label='careers-list'>
-
                 <CareersList
                   option='first option,'
-                  description={testResult.test.descriptions[testResult.firstOption]}
-                  careers={testResult.test.results[testResult.firstOption]}
+                  description={activeTestResult.test.descriptions[activeTestResult.firstOption]}
+                  careers={activeTestResult.test.results[activeTestResult.firstOption]}
                   onClick={handleSearchCareersAndOpenModal}
                 />
 
                 <CareersList
                   option='second option,'
-                  description={testResult.test.descriptions[testResult.secondOption]}
-                  careers={testResult.test.results[testResult.secondOption]}
+                  description={activeTestResult.test.descriptions[activeTestResult.secondOption]}
+                  careers={activeTestResult.test.results[activeTestResult.secondOption]}
                   onClick={handleSearchCareersAndOpenModal}
                 />
               </div>
+
+              <small className='italic mb-5'>
+                <span className='font-bold mr-1 not-italic'>Note:</span>
+                You can find more information about the careers by clicking on them,
+                before making your final decision.
+              </small>
+
+              <figure className='flex overflow-hidden self-start mt-6 max-h-60'>
+                <img
+                  className='w-full  max-h-60 object-contain'
+                  src={gifs[Math.round(rand * 2)]}
+                  alt=''
+                />
+              </figure>
+
+            </div>
+
+          )
+            : (
+              <svg role='status' className='inline mr-2 w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600' viewBox='0 0 100 101' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z' fill='currentColor' />
+                <path d='M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z' fill='currentFill' />
+              </svg>
             )
-          }
-
-          <small className='italic mb-5'>
-            <span className='font-bold mr-1 not-italic'>Note:</span>
-            You can find more information about the careers by clicking on them,
-            before making your final decision.
-          </small>
-
-          <figure className='flex overflow-hidden self-start mt-6 max-h-60'>
-            <img
-              className='w-full  max-h-60 object-contain'
-              src={gifs[Math.round(rand * 2)]}
-              alt=''
-            />
-          </figure>
-
-        </div>
+        }
 
       </div>
 

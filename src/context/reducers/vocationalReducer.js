@@ -1,7 +1,8 @@
 import { types } from '../types/types';
 
 const initialState = {
-  testResult: {},
+  testsResults: [],
+  activeTestResult: {},
   tests: [],
   activeTest: {},
   questions: [],
@@ -9,10 +10,16 @@ const initialState = {
 
 export const vocationalReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.setTestResult:
+    case types.setActiveTestResult:
       return {
         ...state,
-        testResult: { ...action.payload },
+        activeTestResult: { ...action.payload },
+      };
+
+    case types.clearActiveTestResult:
+      return {
+        ...state,
+        activeTestResult: {},
       };
 
     case types.setTests:
@@ -20,16 +27,31 @@ export const vocationalReducer = (state = initialState, action) => {
         ...state,
         tests: [...action.payload],
       };
+
     case types.setActiveTest:
       return {
         ...state,
         activeTest: { ...action.payload },
       };
+
     case types.setQuestions:
       return {
         ...state,
         questions: [...action.payload],
       };
+
+    case types.clearQuestions:
+      return {
+        ...state,
+        questions: [],
+      };
+
+    case types.setTestsResults:
+      return {
+        ...state,
+        testsResults: [...action.payload],
+      };
+
     default:
       return state;
   }

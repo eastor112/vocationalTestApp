@@ -8,10 +8,13 @@ export const types = {
   loading: '[UI] LOADING',
   loaded: '[UI] LOADED',
 
-  setTestResult: '[TEST] SET_TEST_RESULT',
+  setActiveTestResult: '[TEST] SET_ACTIVE_TEST_RESULT',
+  clearActiveTestResult: '[TEST] CLEAR_ACTIVE_TEST_RESULT',
+  setTestsResults: '[TEST] SET_TESTS_RESULTS',
   setTests: '[TEST] SET_TESTS',
   setActiveTest: '[TEST] SET_ACTIVE_TEST',
   setQuestions: '[TEST] SET_QUESTIONS',
+  clearQuestions: '[TEST] CLEAR_QUESTIONS',
 
   addQuestionResponse: '[SOLVING] ADD_QUESTION_RESPONSE',
   setSavedQuestionsResponses: '[SOLVING] ADD_SAVED_QUESTION_RESPONSE',

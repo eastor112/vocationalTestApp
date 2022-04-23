@@ -6,10 +6,7 @@ const GeneralPage = () => {
   return (
     <main className={`min-h-screen w-screen pt-4 pr-10 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
 
-      <h2 className='text-2xl font-bold text-dark-1 my-4'>
-        General
-      </h2>
-      <section className='flex flex-col lg:flex-row gap-8 lg:gap-16'>
+      <section className='flex flex-col lg:flex-row gap-8 lg:gap-16 py-6'>
 
         <div className='flex-1 flex items-center h-64 border border-primary-1 overflow-hidden rounded-lg shadow-lg bg-white'>
           <figure className='hidden sm:flex flex-1 h-64 w-64 overflow-hidden justify-center items-center'>
@@ -51,7 +48,7 @@ const GeneralPage = () => {
               the results will be updated.
             </p>
 
-            <Link to='/dashboard/test/result' className='text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mb-2'>
+            <Link to='/dashboard/testsresults' className='text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mb-2'>
               Go to results
             </Link>
           </div>

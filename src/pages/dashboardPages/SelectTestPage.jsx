@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
 import TestCardV2 from '../../components/organisms/simpleCard/TestCardV2';
-import { getAllTestsAction } from '../../context/actions/vocational-actions';
+import { clearQuestionsAction, getAllTestsAction } from '../../context/actions/vocational-actions';
 
 const SelectTestPage = () => {
   const width = useOutletContext();
@@ -11,6 +11,7 @@ const SelectTestPage = () => {
 
   useEffect(() => {
     dispatch(getAllTestsAction());
+    dispatch(clearQuestionsAction());
   }, []);
 
   return (

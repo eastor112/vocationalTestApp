@@ -97,3 +97,47 @@ export const getAllTestQuestionsService = async (testId) => {
 
   throw new Error('Error getting questions');
 };
+
+export const fetchAllTestsResultsService = async (uid) => {
+  const URL = `${BASE_URL}/api/search/results/${uid}?target=user`;
+
+  const token = localStorage.getItem('token');
+
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await fetch(URL, requestOptions);
+
+  if (response.status === 200) {
+    const { results } = await response.json();
+    return results;
+  }
+
+  throw new Error('Error getting results');
+};
+
+export const fetchOneTestResultService = async (testId) => {
+  const URL = `${BASE_URL}/api/results/${testId}`;
+
+  const token = localStorage.getItem('token');
+
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await fetch(URL, requestOptions);
+
+  if (response.status === 200) {
+    const testResult = await response.json();
+    return testResult;
+  }
+
+  throw new Error('Error getting test result');
+};
