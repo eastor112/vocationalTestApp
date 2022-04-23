@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2';
+import { createMultipleQuestionResponseService } from '../../services/solvingTestServices';
 import {
   createTestResultService,
   fetchAllTestsService,
@@ -31,7 +32,7 @@ export const getTestAction = (testId) => {
   };
 };
 
-export const createTestResultAction = (uid, testId) => {
+export const createTestResultAction = (uid, testId, unsavedQuestionsResponses) => {
   return async (dispatch) => {
     Swal.fire({
       title: 'Saving your answers...',
@@ -45,9 +46,19 @@ export const createTestResultAction = (uid, testId) => {
 
     const testResult = await createTestResultService(uid, testId);
 
+    const savedQuestionsResponses = await createMultipleQuestionResponseService(
+      unsavedQuestionsResponses,
+      testResult.id,
+    );
+
     dispatch({
       type: types.setTestResult,
       payload: testResult,
+    });
+
+    dispatch({
+      type: types.setSavedQuestionsResponses,
+      payload: savedQuestionsResponses,
     });
 
     Swal.close();

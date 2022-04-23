@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
-import ListElement from '../../components/molecules/listElement/ListElement';
 import DoughnutChart from '../../components/organisms/doughnutChart/DoughnutChart';
 import FoundCareers from '../../components/organisms/foundCareers/FoundCareers';
 import ModalComponent from '../../components/organisms/modal/ModalComponent';
+import CareersList from '../../components/organisms/listElement/CareersList';
 import { careersResults, setDataGraph, gifs } from '../../helpers/testsHelpers';
 import { useModal } from '../../hooks/useModal';
 import { getFilteredCareers } from '../../services/careersServices';
@@ -13,7 +13,7 @@ const VocationalTestResultPage = () => {
   const rand = Math.random();
   const width = useOutletContext();
 
-  const { questionsResponses } = useSelector((state) => state.solvingTest);
+  const { unsavedQuestionsResponses } = useSelector((state) => state.solvingTest);
   const { user: { names } } = useSelector((state) => state.auth);
 
   const [data, setData] = useState({});
@@ -23,7 +23,7 @@ const VocationalTestResultPage = () => {
   const { isOpen, openModal, closeModal } = useModal(false);
 
   useEffect(() => {
-    const processed = careersResults(questionsResponses);
+    const processed = careersResults(unsavedQuestionsResponses);
     setProcessedData(processed);
 
     const configGraph = setDataGraph(processed.percents);
@@ -103,14 +103,14 @@ const VocationalTestResultPage = () => {
             processedData && (
               <div aria-label='careers-list'>
 
-                <ListElement
+                <CareersList
                   option='first option,'
                   description={processedData.firstOption.description}
                   careers={processedData.firstOption.careers}
                   onClick={handleSearchCareersAndOpenModal}
                 />
 
-                <ListElement
+                <CareersList
                   option='second option,'
                   description={processedData.secondOption.description}
                   careers={processedData.secondOption.careers}

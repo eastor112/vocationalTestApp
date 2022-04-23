@@ -14,4 +14,5 @@ export const types = {
   setQuestions: '[TEST] SET_QUESTIONS',
 
   addQuestionResponse: '[SOLVING] ADD_QUESTION_RESPONSE',
+  setSavedQuestionsResponses: '[SOLVING] ADD_SAVED_QUESTION_RESPONSE',
 };

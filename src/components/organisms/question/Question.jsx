@@ -8,15 +8,15 @@ const Question = ({ question }) => {
   const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState(null);
 
-  const { questionsResponses } = useSelector((state) => state.solvingTest);
+  const { unsavedQuestionsResponses } = useSelector((state) => state.solvingTest);
 
   useEffect(() => {
-    const actualQuestion = questionsResponses.find((q) => q.question === question.id);
+    const actualQuestion = unsavedQuestionsResponses.find((q) => q.question === question.id);
 
     if (actualQuestion) {
       setSelectedOption(actualQuestion.userResponse);
     }
-  }, [questionsResponses]);
+  }, [unsavedQuestionsResponses]);
 
   const handleInputChange = (e) => {
     dispatch(addQuestionResponseAction(question.id, e.target.value));

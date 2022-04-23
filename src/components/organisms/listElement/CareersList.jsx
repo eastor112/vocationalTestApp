@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { v4 as uidv4 } from 'uuid';
 
-const ListElement = ({ option, description, careers, onClick }) => {
+const CareersList = ({ option, description, careers, onClick }) => {
   return (
     <div className='pb-6'>
       <p>
@@ -38,11 +38,11 @@ const ListElement = ({ option, description, careers, onClick }) => {
   );
 };
 
-ListElement.propTypes = {
+CareersList.propTypes = {
   option: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   careers: PropTypes.arrayOf(PropTypes.string).isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
-export default ListElement;
+export default CareersList;

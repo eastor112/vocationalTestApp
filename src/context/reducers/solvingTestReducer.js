@@ -1,19 +1,19 @@
 import { types } from '../types/types';
 
 const initialState = {
-  questionsResponses: [],
+  unsavedQuestionsResponses: [],
+  savedQuestionsResponses: [],
 };
 
 export const solvingTestReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.setQuestionsResponses:
     case types.addQuestionResponse: {
-      const existingQuestion = state.questionsResponses.find((question) => {
+      const existingQuestion = state.unsavedQuestionsResponses.find((question) => {
         return question.question === action.payload.question;
       });
 
       if (existingQuestion) {
-        const modifiedQuestionsResponses = state.questionsResponses.map((question) => {
+        const modifiedQuestionsResponses = state.unsavedQuestionsResponses.map((question) => {
           if (question.question === action.payload.question) {
             question.userResponse = action.payload.userResponse;
           }
@@ -22,15 +22,20 @@ export const solvingTestReducer = (state = initialState, action) => {
 
         return {
           ...state,
-          questionsResponses: modifiedQuestionsResponses,
+          unsavedQuestionsResponses: modifiedQuestionsResponses,
         };
       }
 
       return {
         ...state,
-        questionsResponses: [...state.questionsResponses, action.payload],
+        unsavedQuestionsResponses: [...state.unsavedQuestionsResponses, action.payload],
       };
     }
+    case types.setSavedQuestionsResponses:
+      return {
+        ...state,
+        savedQuestionsResponses: [...action.payload],
+      };
     default:
       return state;
   }
