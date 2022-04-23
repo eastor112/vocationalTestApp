@@ -1,14 +1,13 @@
 const descriptions = {
-  A: 'The careers hat have the most what to do with your personality science related and health',
-  B: 'You should think about doing some engineering or career technology',
-  C: 'It is clear that you are more interested in subjects related to the social sciences, humanities and philologies.',
-  D: 'You should consider studying arts or any artistic expression.',
+  A: 'the careers that have the most to do with your personality are those that are related to science and health',
+  B: 'you should think about doing some engineering or career technology',
+  C: 'it is clear that you are interested in subjects related to the social sciences, humanities and philologies.',
+  D: 'you should consider studying arts or any artistic expression.',
 };
 
 const careers = {
   A: [
     'Biology',
-    'Marine Sciences',
     'Geology',
     'Physics',
     'Mathematics',
@@ -18,21 +17,27 @@ const careers = {
   ],
   B: [
     'Biotechnology',
-    'chemistry',
+    'Chemistry',
     'Engineer',
   ],
   C: [
     'Social work',
-    'Social education',
+    'Education',
     'Literature',
   ],
   D: [
-    'Design',
+    'Graphics Design',
     'Photography',
     'Painting',
     'Sculpture',
   ],
 };
+
+export const gifs = [
+  'https://media.giphy.com/media/3vPAVUcLAbIGs/giphy.gif',
+  'https://media.giphy.com/media/lnlAifQdenMxW/giphy.gif',
+  'https://media.giphy.com/media/Y4vdnmg54rD54Ytf30/giphy.gif',
+];
 
 export const careersResults = (questionsResponses) => {
   const responses = [...questionsResponses];
@@ -46,10 +51,10 @@ export const careersResults = (questionsResponses) => {
   });
 
   const percents = {
-    A: (answers.A / total) * 100,
-    B: (answers.B / total) * 100,
-    C: (answers.C / total) * 100,
-    D: (answers.D / total) * 100,
+    A: Math.round((answers.A / total) * 100),
+    B: Math.round((answers.B / total) * 100),
+    C: Math.round((answers.C / total) * 100),
+    D: Math.round((answers.D / total) * 100),
   };
 
   const keys = Object.keys(answers);
@@ -66,5 +71,37 @@ export const careersResults = (questionsResponses) => {
       careers: careers[keys[1]],
     },
     percents,
+    answers,
+  };
+};
+
+export const setDataGraph = (
+  data,
+  borderWidth = 1,
+) => {
+  const values = Object.values(data);
+  const keys = Object.keys(data);
+
+  return {
+    labels: keys,
+    datasets: [
+      {
+        label: '# Responses',
+        data: values,
+        backgroundColor: [
+          '#533e854e',
+          '#488FB14e',
+          '#4FD3C44e',
+          '#C1F8CF4e',
+        ],
+        borderColor: [
+          'rgba(153, 102, 255, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(139, 235, 240, 1)',
+        ],
+        borderWidth,
+      },
+    ],
   };
 };

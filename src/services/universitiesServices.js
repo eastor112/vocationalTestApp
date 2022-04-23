@@ -16,7 +16,6 @@ export const getUniversityById = async (id) => {
   try {
     const response = await fetch(URL);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     return error.message;

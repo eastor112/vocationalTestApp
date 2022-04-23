@@ -1,9 +1,22 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { addQuestionResponseAction } from '../../../context/actions/solvingTest-actions';
 
 const Question = ({ question }) => {
   const dispatch = useDispatch();
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const { questionsResponses } = useSelector((state) => state.solvingTest);
+
+  useEffect(() => {
+    const actualQuestion = questionsResponses.find((q) => q.question === question.id);
+
+    if (actualQuestion) {
+      setSelectedOption(actualQuestion.userResponse);
+    }
+  }, [questionsResponses]);
 
   const handleInputChange = (e) => {
     dispatch(addQuestionResponseAction(question.id, e.target.value));
@@ -20,6 +33,7 @@ const Question = ({ question }) => {
         value='A'
         className='mr-2'
         onChange={handleInputChange}
+        checked={selectedOption === 'A'}
       />
       <label
         htmlFor={`${question.id}-a`}
@@ -36,6 +50,7 @@ const Question = ({ question }) => {
         value='B'
         className='mr-2'
         onChange={handleInputChange}
+        checked={selectedOption === 'B'}
       />
       <label
         htmlFor={`${question.id}-b`}
@@ -53,6 +68,7 @@ const Question = ({ question }) => {
         value='C'
         className='mr-2'
         onChange={handleInputChange}
+        checked={selectedOption === 'C'}
       />
       <label
         htmlFor={`${question.id}-c`}
@@ -70,6 +86,7 @@ const Question = ({ question }) => {
         value='D'
         className='mr-2'
         onChange={handleInputChange}
+        checked={selectedOption === 'D'}
       />
       <label
         htmlFor={`${question.id}-d`}
@@ -81,7 +98,7 @@ const Question = ({ question }) => {
   );
 };
 
-export default Question;
+export default React.memo(Question);
 
 Question.propTypes = {
   question: PropTypes.shape({
