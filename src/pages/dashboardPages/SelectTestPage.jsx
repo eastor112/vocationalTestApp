@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
+import ModalComponent from '../../components/organisms/modal/ModalComponent';
+import Paypal from '../../components/atoms/paypalButton/PaypalButton';
 import TestCardV2 from '../../components/organisms/simpleCard/TestCardV2';
 import { clearQuestionsAction, getAllTestsAction } from '../../context/actions/vocational-actions';
+import { useModal } from '../../hooks/useModal';
 
 const SelectTestPage = () => {
   const width = useOutletContext();
@@ -14,7 +17,11 @@ const SelectTestPage = () => {
     dispatch(clearQuestionsAction());
   }, []);
 
+  const { isOpen, openModal, closeModal } = useModal(false);
+  console.log('render!!!');
+
   return (
+
     <main className={`min-h-screen pb-8 bg-light-1 pt-4 pr-10 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
       {
         tests.length > 0
@@ -34,6 +41,7 @@ const SelectTestPage = () => {
                       title={test.title}
                       numberOfQuestions={test.numberOfQuestions}
                       estimatedTime={test.estimatedTime}
+                      openModal={openModal}
                       type={test.type}
                     />
                   ))
@@ -51,6 +59,23 @@ const SelectTestPage = () => {
             </div>
           )
       }
+
+      <ModalComponent
+        isOpen={isOpen}
+        closeModal={closeModal}
+      >
+        <div>
+          <h3>
+            Select the payment method
+          </h3>
+
+          <Paypal product={{
+            description: 'Test premium',
+            price: 15,
+          }}
+          />
+        </div>
+      </ModalComponent>
 
     </main>
   );
