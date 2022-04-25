@@ -1,8 +1,12 @@
+import PaypalButton from '../../atoms/paypalButton/PaypalButton';
+
 const OrderPayments = () => {
   return (
-    <div>
-      <h3>OrderPayments</h3>
-    </div>
+    <PaypalButton product={{
+      description: 'Test premium',
+      price: 15,
+    }}
+    />
   );
 };
 

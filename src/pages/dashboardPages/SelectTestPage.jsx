@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
 import ModalComponent from '../../components/organisms/modal/ModalComponent';
-import Paypal from '../../components/atoms/paypalButton/PaypalButton';
 import TestCardV2 from '../../components/organisms/simpleCard/TestCardV2';
 import { clearQuestionsAction, getAllTestsAction } from '../../context/actions/vocational-actions';
 import { useModal } from '../../hooks/useModal';
+import OrderPayments from '../../components/organisms/payments/OrderPayments';
 
 const SelectTestPage = () => {
   const width = useOutletContext();
@@ -18,7 +18,6 @@ const SelectTestPage = () => {
   }, []);
 
   const { isOpen, openModal, closeModal } = useModal(false);
-  console.log('render!!!');
 
   return (
 
@@ -64,17 +63,7 @@ const SelectTestPage = () => {
         isOpen={isOpen}
         closeModal={closeModal}
       >
-        <div>
-          <h3>
-            Select the payment method
-          </h3>
-
-          <Paypal product={{
-            description: 'Test premium',
-            price: 15,
-          }}
-          />
-        </div>
+        <OrderPayments />
       </ModalComponent>
 
     </main>
