@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-const TestCardV2 = ({ id, title, numberOfQuestions, estimatedTime, openModal, type = 'FREE' }) => {
+const TestCardV2 = ({ id, title, numberOfQuestions, estimatedTime, openModal, type = 'FREE', setProduct }) => {
   const navigate = useNavigate();
 
   const handleOpenTest = () => {
     if (type === 'PREMIUM') {
+      setProduct({
+        id,
+        description: title,
+        price: 15,
+      });
       openModal();
     } else {
       navigate(`/dashboard/tests/${id}`);
@@ -74,6 +79,7 @@ TestCardV2.propTypes = {
   estimatedTime: PropTypes.number.isRequired,
   openModal: PropTypes.func.isRequired,
   type: PropTypes.string,
+  setProduct: PropTypes.func.isRequired,
 };
 
 export default TestCardV2;

@@ -2,14 +2,17 @@
 import React, { useState } from 'react';
 import { PayPalButtons } from '@paypal/react-paypal-js';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-const Paypal = ({ product }) => {
+const Paypal = ({ product, closeModal }) => {
   const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleApprove = (details) => {
-    // create billing in backend
+  const navigate = useNavigate();
 
+  const handleApprove = (details) => {
+    closeModal();
+    navigate(`/dashboard/tests/${product.id}`);
     // status === 200
     setPaidFor(true);
 
@@ -85,11 +88,17 @@ const Paypal = ({ product }) => {
   );
 };
 
+Paypal.defaultProps = {
+  closeModal: () => { },
+};
+
 Paypal.propTypes = {
   product: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,
+  closeModal: PropTypes.func,
 };
 
 export default React.memo(Paypal);

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
 import ModalComponent from '../../components/organisms/modal/ModalComponent';
@@ -11,6 +11,7 @@ const SelectTestPage = () => {
   const width = useOutletContext();
   const dispatch = useDispatch();
   const { tests } = useSelector((state) => state.vocational);
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     dispatch(getAllTestsAction());
@@ -42,6 +43,7 @@ const SelectTestPage = () => {
                       estimatedTime={test.estimatedTime}
                       openModal={openModal}
                       type={test.type}
+                      setProduct={setProduct}
                     />
                   ))
                 }
@@ -63,7 +65,7 @@ const SelectTestPage = () => {
         isOpen={isOpen}
         closeModal={closeModal}
       >
-        <OrderPayments />
+        <OrderPayments product={product} closeModal={closeModal} />
       </ModalComponent>
 
     </main>
