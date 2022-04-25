@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const TestCardV2 = ({ id, title, numberOfQuestions, estimatedTime }) => {
+const TestCardV2 = ({ id, title, numberOfQuestions, estimatedTime, type = 'FREE' }) => {
   return (
-    <div className='flex flex-col justify-center w-68  border border-primary-1 overflow-hidden rounded-lg shadow-lg bg-white'>
+    <div className='relative flex flex-col justify-center w-68  border border-primary-1 overflow-hidden rounded-lg shadow-lg bg-white'>
+      {
+        type === 'FREE'
+          ? <div className='absolute top-2 right-2 bg-green-100 text-green-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900'>Free</div>
+          : <span className='absolute top-2 right-2 bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900'>Premium</span>
+      }
 
       <figure className='h-32 overflow-hidden flex justify-center items-center'>
         <img className='h-32' src={require('../../../assets/test_1.jpg')} alt='test_figure' />
@@ -47,11 +52,16 @@ const TestCardV2 = ({ id, title, numberOfQuestions, estimatedTime }) => {
   );
 };
 
+TestCardV2.defaultProps = {
+  type: 'FREE',
+};
+
 TestCardV2.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   numberOfQuestions: PropTypes.number.isRequired,
   estimatedTime: PropTypes.number.isRequired,
+  type: PropTypes.string,
 };
 
 export default TestCardV2;

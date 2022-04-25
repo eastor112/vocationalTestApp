@@ -34,6 +34,7 @@ const SelectTestPage = () => {
                       title={test.title}
                       numberOfQuestions={test.numberOfQuestions}
                       estimatedTime={test.estimatedTime}
+                      type={test.type}
                     />
                   ))
                 }
