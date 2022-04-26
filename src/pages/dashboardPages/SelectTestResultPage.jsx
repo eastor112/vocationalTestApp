@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { resetSolvingTest } from '../../context/actions/solvingTest-actions';
 import { clearActiveTestResultAction, getActiveTestResultAction, getAllTestsResultsAction } from '../../context/actions/vocational-actions';
 import { toLocalTime } from '../../helpers/dateHelpers';
 
@@ -15,6 +16,7 @@ const SelectTestResultPage = () => {
   useEffect(() => {
     dispatch(getAllTestsResultsAction());
     dispatch(clearActiveTestResultAction());
+    dispatch(resetSolvingTest());
   }, []);
 
   const handleViewTestResult = (testResultId) => {
@@ -29,8 +31,8 @@ const SelectTestResultPage = () => {
           ? (
             <div>
 
-              <h2>
-                Select a result to see details
+              <h2 className='font-medium mb-3 text-lg'>
+                Select a report to view details
               </h2>
 
               <div className='relative shadow-md sm:rounded-lg'>

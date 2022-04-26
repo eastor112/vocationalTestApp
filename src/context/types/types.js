@@ -16,6 +16,9 @@ export const types = {
   setQuestions: '[TEST] SET_QUESTIONS',
   clearQuestions: '[TEST] CLEAR_QUESTIONS',
 
+  resetSolvingTest: '[SOLVING] RESET_SOLVING_TEST',
   addQuestionResponse: '[SOLVING] ADD_QUESTION_RESPONSE',
+  clearUnsavedQuestionsResponses: '[SOLVING] CLEAR_UNSAVED_QUESTIONS_RESPONSES',
   setSavedQuestionsResponses: '[SOLVING] ADD_SAVED_QUESTION_RESPONSE',
+  clearSavedQuestionsResponses: '[SOLVING] CLEAR_SAVED_QUESTION_RESPONSE',
 };

@@ -31,11 +31,32 @@ export const solvingTestReducer = (state = initialState, action) => {
         unsavedQuestionsResponses: [...state.unsavedQuestionsResponses, action.payload],
       };
     }
+
+    case types.clearUnsavedQuestionsResponses: {
+      return {
+        ...state,
+        unsavedQuestionsResponses: [],
+      };
+    }
     case types.setSavedQuestionsResponses:
       return {
         ...state,
         savedQuestionsResponses: [...action.payload],
       };
+
+    case types.clearSavedQuestionsResponses:
+      return {
+        ...state,
+        savedQuestionsResponses: [],
+      };
+
+    case types.resetSolvingTest:
+      return {
+        ...state,
+        unsavedQuestionsResponses: [],
+        savedQuestionsResponses: [],
+      };
+
     default:
       return state;
   }

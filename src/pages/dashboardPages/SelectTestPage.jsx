@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
 import ModalComponent from '../../components/organisms/modal/ModalComponent';
 import TestCardV2 from '../../components/organisms/simpleCard/TestCardV2';
-import { clearQuestionsAction, getAllTestsAction } from '../../context/actions/vocational-actions';
+import { clearQuestionsAction, getAllTestsAction, clearActiveTestResultAction } from '../../context/actions/vocational-actions';
 import { useModal } from '../../hooks/useModal';
 import OrderPayments from '../../components/organisms/payments/OrderPayments';
+import { resetSolvingTest } from '../../context/actions/solvingTest-actions';
 
 const SelectTestPage = () => {
   const width = useOutletContext();
@@ -16,6 +17,8 @@ const SelectTestPage = () => {
   useEffect(() => {
     dispatch(getAllTestsAction());
     dispatch(clearQuestionsAction());
+    dispatch(clearActiveTestResultAction());
+    dispatch(resetSolvingTest());
   }, []);
 
   const { isOpen, openModal, closeModal } = useModal(false);
@@ -65,7 +68,10 @@ const SelectTestPage = () => {
         isOpen={isOpen}
         closeModal={closeModal}
       >
-        <OrderPayments product={product} closeModal={closeModal} />
+        {
+          isOpen
+          && <OrderPayments product={product} closeModal={closeModal} />
+        }
       </ModalComponent>
 
     </main>

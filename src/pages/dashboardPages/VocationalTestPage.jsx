@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Question from '../../components/organisms/question/Question';
 import {
@@ -16,6 +16,7 @@ const VocationalTestPage = () => {
   const navigate = useNavigate();
   const { questions } = useSelector((state) => state.vocational);
   const { activeTestResult } = useSelector((state) => state.vocational);
+  const { savedQuestionsResponses } = useSelector((state) => state.solvingTest);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,13 +30,17 @@ const VocationalTestPage = () => {
   }, [testId, navigate]);
 
   useEffect(() => {
-    if (activeTestResult.id) {
+    if (activeTestResult.id && savedQuestionsResponses.length === 0) {
       navigate(`/dashboard/testsresults/${activeTestResult.id}`);
     }
   }, [activeTestResult]);
 
   const handleFinish = () => {
-    dispatch(createTestResultAction());
+    if (Object.keys(activeTestResult).length === 0) {
+      dispatch(createTestResultAction(activeTestResult));
+    } else {
+      navigate(`/dashboard/testsresults/${activeTestResult.id}`);
+    }
   };
 
   return (
@@ -45,7 +50,23 @@ const VocationalTestPage = () => {
       {
         Object.keys(questions).length > 0
           ? (
-            <>
+            <div className='relative'>
+              {
+                savedQuestionsResponses.length > 0
+                && (
+                  <div className='p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800' role='alert'>
+                    <span className='font-medium mr-2'>Info!</span>
+                    You cannot modify a completed test. But you can do it again
+                    <Link
+                      to='/dashboard/tests'
+                      className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded text-sm px-3 py-1.5 ml-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800'
+                    >
+                      Repeat test
+                    </Link>
+                  </div>
+                )
+              }
+
               <h1 className='text-3xl md:text-4xl lg:text-5xl leading-5 xl:leading-8 font-semibold  md:mt-0'>Vocational Test</h1>
               <div>
                 <p className='mt-10 text-justify'>
@@ -76,10 +97,12 @@ const VocationalTestPage = () => {
                   className='w-1/2 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'
                   onClick={handleFinish}
                 >
-                  Finish
+                  {
+                    Object.keys(activeTestResult).length > 0 ? 'View Results' : 'Finish test'
+                  }
                 </button>
               </div>
-            </>
+            </div>
           )
           : (
             <div className='w-full h-screen flex justify-center items-center'>
