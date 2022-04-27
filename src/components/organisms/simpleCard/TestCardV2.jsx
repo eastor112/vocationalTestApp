@@ -1,20 +1,26 @@
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const TestCardV2 = ({ id, title, numberOfQuestions, estimatedTime, openModal, type = 'FREE', setProduct }) => {
-  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+
+  const [isPurchased, setIsPurchased] = useState(false);
+
+  useEffect(() => {
+    if (user.purchasedTests.includes(id)) {
+      setIsPurchased(true);
+    }
+  }, [user.purchasedTests]);
 
   const handleOpenTest = () => {
-    if (type === 'PREMIUM') {
-      setProduct({
-        id,
-        description: title,
-        price: 15,
-      });
-      openModal();
-    } else {
-      navigate(`/dashboard/tests/${id}`);
-    }
+    setProduct({
+      id,
+      description: title,
+      price: 15,
+    });
+    openModal();
   };
 
   return (
@@ -29,7 +35,12 @@ const TestCardV2 = ({ id, title, numberOfQuestions, estimatedTime, openModal, ty
         <img className='h-32' src={require('../../../assets/test_1.jpg')} alt='test_figure' />
       </figure>
 
-      <h3 className='font-medium text-center mb-2'>{title}</h3>
+      <h3 className='font-medium text-center'>{title}</h3>
+      {
+        isPurchased
+          ? <h5 className='text-center text-xs mb-1 h-4 text-green-600'>You bought this test</h5>
+          : <h5 className='text-center text-xs mb-1 h-4'> </h5>
+      }
       <hr />
 
       <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
@@ -54,15 +65,29 @@ const TestCardV2 = ({ id, title, numberOfQuestions, estimatedTime, openModal, ty
       </table>
 
       <div className='p-5 flex flex-col items-center'>
-
-        <button
-          type='button'
-          className='focus:outline-none text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'
-          onClick={handleOpenTest}
-        >
-          Start the test
-        </button>
-
+        {
+          (type === 'FREE' || isPurchased)
+          && (
+            <Link
+              to={`/dashboard/tests/${id}`}
+              className='focus:outline-none text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 '
+            >
+              Start the test
+            </Link>
+          )
+        }
+        {
+          (type === 'PREMIUM' && !isPurchased)
+          && (
+            <button
+              type='button'
+              className='text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900'
+              onClick={handleOpenTest}
+            >
+              Buy the test
+            </button>
+          )
+        }
       </div>
     </div>
   );

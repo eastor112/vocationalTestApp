@@ -121,7 +121,7 @@ const Sidebar = ({ setWidth }) => {
           </li>
 
           <li>
-            <NavLink to='/dashboard/tests' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
+            <NavLink to='/dashboard/admin/tests' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
               <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
                 <path strokeLinecap='round' strokeLinejoin='round' d='M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z' />
               </svg>

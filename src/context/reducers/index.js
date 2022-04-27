@@ -5,6 +5,7 @@ import { authReducer } from './authReducer';
 import { usersReducer } from './usersReducer';
 import { vocationalReducer } from './vocationalReducer';
 import { solvingTestReducer } from './solvingTestReducer';
+import { billingsReducer } from './billingsReducer';
 
 const rootReducer = combineReducers({
   ui: uiReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   users: usersReducer,
   vocational: vocationalReducer,
   solvingTest: solvingTestReducer,
+  billings: billingsReducer,
 });
 
 export default rootReducer;
