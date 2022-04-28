@@ -11,7 +11,7 @@ describe('Testing Cta.test ', () => {
     );
 
     expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
-    expect(screen.getByLabelText('description')).toBeInTheDocument();
+    expect(screen.getByLabelText('description------')).toBeInTheDocument();
   });
 
   test('activate functions with buttons', () => {
