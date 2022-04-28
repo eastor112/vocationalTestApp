@@ -88,15 +88,6 @@ const Paypal = ({ product, closeModal }) => {
         });
       }}
 
-      onCancel={(data, actions) => {
-
-      }}
-
-      onError={(err) => {
-        console.log(err);
-        setError(err);
-      }}
-
     />
   );
 };
