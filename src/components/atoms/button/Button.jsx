@@ -39,6 +39,7 @@ const sizeBtn = {
 };
 
 const Button = (props) => {
+  console.log('holi');
   const {
     text = 'button',
     type = 'primary',
