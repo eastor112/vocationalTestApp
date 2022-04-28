@@ -1,15 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import Sidebar from '../../../../components/organisms/sidebar/Sidebar';
-
-const mockStore = configureStore();
+import { store } from '../../../../context/store/store';
 
 describe('testing Sidebar', () => {
   test('should render Sidebar', () => {
-    const store = mockStore({ auth: {}, ui: {} });
-
     render(
       <Provider store={store}>
         <BrowserRouter>
@@ -24,8 +20,6 @@ describe('testing Sidebar', () => {
   });
 
   test('should show when expand is true', () => {
-    const store = mockStore({ auth: {}, ui: { expand: true } });
-
     render(
       <Provider store={store}>
         <BrowserRouter>
