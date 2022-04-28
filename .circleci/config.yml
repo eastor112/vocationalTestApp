@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/repo
+    working_directory: ~/src
     docker:
       - image: cimg/node:16.14.2
     steps:
