@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { v4 as uidv4 } from 'uuid';
 
 const FoundCareers = ({ careers, closeModal }) => {
@@ -38,12 +39,12 @@ const FoundCareers = ({ careers, closeModal }) => {
                 {`${career.description.substring(0, 50)}...`}
               </p>
 
-              <button
-                type='button'
+              <Link
+                to={`/careers/${career.id}`}
                 className='flex-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-5 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 whitespace-nowrap'
               >
                 See details
-              </button>
+              </Link>
             </div>
           ))
         }
