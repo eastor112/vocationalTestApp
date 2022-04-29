@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
 jobs:
   build:
     working_directory: ~/src
@@ -24,3 +26,8 @@ jobs:
       - run:
           name: Run tests
           command: npm run test
+
+workflows:
+  build:
+    jobs:
+      - cypress/run # "run" job comes from "cypress" orb
