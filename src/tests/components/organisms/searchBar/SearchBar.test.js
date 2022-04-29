@@ -7,10 +7,8 @@ describe('testing searchBar', () => {
 
     const country = screen.getByText(/country:/i);
     const career = screen.getByText(/career:/i);
-    const orderBy = screen.getByText(/order by:/i);
 
     expect(country).toBeInTheDocument();
     expect(career).toBeInTheDocument();
-    expect(orderBy).toBeInTheDocument();
   });
 });
