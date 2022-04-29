@@ -7,7 +7,7 @@ version: 2.1
 #     docker:
 #       - image: "cypress/browsers:node16.14.2-slim-chrome100-ff99-edge"
 jobs:
-  build-units:
+  build:
     working_directory: ~/src
     docker:
       - image: cimg/node:16.14.2
@@ -58,8 +58,7 @@ jobs:
           command: npm run cypress:run
 
 workflows:
-  version: 2
-  ci:
+  build:
     jobs:
       - build
       - e2e
