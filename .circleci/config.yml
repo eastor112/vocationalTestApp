@@ -30,12 +30,9 @@ jobs:
 workflows:
   build:
     jobs:
-      - build-units
       - cypress/install:
           pre-steps:
           - run: npm install ajv-errors@1 
       - cypress/run:
-          requires:
-            - cypress/install
           start: npm start 
           wait-on: 'http://localhost:3000'
