@@ -35,7 +35,9 @@ jobs:
 workflows:
   build:
     jobs:
-      - cypress/install
+      - cypress/install:
+          pre-steps:
+          - run: npm install -g npm@latest
       - cypress/run:
           requires:
             - cypress/install
