@@ -67,9 +67,9 @@ const CheckoutFormV2 = ({ testId, closeModal }) => {
       const response = await fetch(URL, payload);
       const body = await response.json();
       Swal.close();
-
+      const paypalAmount = Number(body.amount) / 100;
       dispatch(
-        fetchBillingAction(testId, body.description, body.amount, 'CREDIT CARD'),
+        fetchBillingAction(testId, body.description, paypalAmount, 'CREDIT CARD'),
       );
       dispatch(setIsPurchasedAction(true));
       closeModal();
