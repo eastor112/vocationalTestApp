@@ -52,7 +52,7 @@ jobs:
       - run:
           name: Launch server
           command: npm start
-          background: true
+          background: false
       - run:
           name: Run E2E tests
           command: npm run cypress:run
