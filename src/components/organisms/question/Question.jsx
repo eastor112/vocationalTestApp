@@ -8,10 +8,13 @@ const Question = ({ question }) => {
   const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState(null);
 
-  const { unsavedQuestionsResponses } = useSelector((state) => state.solvingTest);
+  const {
+    unsavedQuestionsResponses,
+    savedQuestionsResponses,
+  } = useSelector((state) => state.solvingTest);
 
   useEffect(() => {
-    const actualQuestion = unsavedQuestionsResponses.find((q) => q.question === question.id);
+    const actualQuestion = unsavedQuestionsResponses?.find((q) => q.question === question.id);
 
     if (actualQuestion) {
       setSelectedOption(actualQuestion.userResponse);
@@ -31,13 +34,14 @@ const Question = ({ question }) => {
         id={`${question.id}-a`}
         name={`question-${question.id}`}
         value='A'
-        className='mr-2'
+        className={`checked:bg-teal-600 checked:border-teal-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 ${savedQuestionsResponses.length > 0 && 'form-check-input appearance-none border-gray-300 bg-white'}`}
         onChange={handleInputChange}
         checked={selectedOption === 'A'}
+        disabled={savedQuestionsResponses?.length > 0}
       />
       <label
         htmlFor={`${question.id}-a`}
-        className='hover:text-teal-400'
+        className={(savedQuestionsResponses?.length > 0 && selectedOption !== 'A') ? 'form-check-label inline-block text-gray-800 opacity-50' : 'text-black hover:text-teal-700 cursor-pointer'}
       >
         {question.optionA}
       </label>
@@ -48,13 +52,14 @@ const Question = ({ question }) => {
         id={`${question.id}-b`}
         name={`question-${question.id}`}
         value='B'
-        className='mr-2'
+        className={`checked:bg-teal-600 checked:border-teal-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 ${savedQuestionsResponses.length > 0 && 'form-check-input appearance-none border-gray-300 bg-white'}`}
         onChange={handleInputChange}
         checked={selectedOption === 'B'}
+        disabled={savedQuestionsResponses?.length > 0}
       />
       <label
         htmlFor={`${question.id}-b`}
-        className='hover:text-teal-400'
+        className={(savedQuestionsResponses?.length > 0 && selectedOption !== 'B') ? 'form-check-label inline-block text-gray-800 opacity-50' : 'text-black hover:text-teal-700 cursor-pointer'}
       >
         {question.optionB}
 
@@ -66,13 +71,14 @@ const Question = ({ question }) => {
         id={`${question.id}-c`}
         name={`question-${question.id}`}
         value='C'
-        className='mr-2'
+        className={`checked:bg-teal-600 checked:border-teal-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 ${savedQuestionsResponses.length > 0 && 'form-check-input appearance-none border-gray-300 bg-white'}`}
         onChange={handleInputChange}
         checked={selectedOption === 'C'}
+        disabled={savedQuestionsResponses?.length > 0}
       />
       <label
         htmlFor={`${question.id}-c`}
-        className='hover:text-teal-400'
+        className={(savedQuestionsResponses?.length > 0 && selectedOption !== 'C') ? 'form-check-label inline-block text-gray-800 opacity-50' : 'text-black hover:text-teal-700 cursor-pointer'}
       >
         {question.optionC}
 
@@ -84,13 +90,14 @@ const Question = ({ question }) => {
         id={`${question.id}-d`}
         name={`question-${question.id}`}
         value='D'
-        className='mr-2'
+        className={`checked:bg-teal-600 checked:border-teal-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 ${savedQuestionsResponses.length > 0 && 'form-check-input appearance-none border-gray-300 bg-white'}`}
         onChange={handleInputChange}
         checked={selectedOption === 'D'}
+        disabled={savedQuestionsResponses?.length > 0}
       />
       <label
         htmlFor={`${question.id}-d`}
-        className='hover:text-teal-400'
+        className={(savedQuestionsResponses?.length > 0 && selectedOption !== 'D') ? 'form-check-label inline-block text-gray-800 opacity-50' : 'text-black hover:text-teal-700 cursor-pointer'}
       >
         {question.optionD}
       </label>

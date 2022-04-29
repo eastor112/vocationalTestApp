@@ -10,6 +10,7 @@ import {
   getTestService,
 } from '../../services/vocationalServices';
 import { types } from '../types/types';
+import { setSavedQuestionsResponsesAction } from './solvingTest-actions';
 
 export const getAllTestsAction = () => {
   return async (dispatch) => {
@@ -80,10 +81,7 @@ export const createTestResultAction = () => {
       payload: testResult,
     });
 
-    dispatch({
-      type: types.setSavedQuestionsResponses,
-      payload: savedQuestionsResponses,
-    });
+    dispatch(setSavedQuestionsResponsesAction(savedQuestionsResponses));
 
     Swal.close();
   };

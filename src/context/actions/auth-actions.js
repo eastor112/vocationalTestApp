@@ -81,3 +81,10 @@ export const updateUserDataAsync = (token, user) => {
     }
   };
 };
+
+export const addPurchasedTestAsync = (purchasedTestId) => {
+  return {
+    type: types.addPurchasedTest,
+    payload: purchasedTestId,
+  };
+};

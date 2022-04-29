@@ -28,7 +28,7 @@ const DashboardRoutes = () => {
         <Route path='user/profile' element={<UserProfilePage />} />
         <Route path='users' element={<UsersListPage />} />
         <Route path='careers' element={<CareersListPage />} />
-        <Route path='tests' element={<TestsListPage />} />
+        <Route path='admin/tests' element={<TestsListPage />} />
         <Route path='payment' element={<Payment />} />
         <Route path='checkout' element={<Checkout />} />
       </Route>

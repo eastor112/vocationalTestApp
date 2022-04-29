@@ -14,7 +14,7 @@ const SearchUniversityPage = () => {
 
   return (
     <main className='px-6 md:px-20 lg:px-24 pb-3 pt-16'>
-      <SearchBar />
+      <SearchBar setUniversities={setUniversities} />
 
       <section className='results mt-44 lg:mt-36 xl:mt-24'>
         <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mb-6 gap-10'>

@@ -3,20 +3,38 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
 import ModalComponent from '../../components/organisms/modal/ModalComponent';
 import TestCardV2 from '../../components/organisms/simpleCard/TestCardV2';
-import { clearQuestionsAction, getAllTestsAction } from '../../context/actions/vocational-actions';
+import { clearQuestionsAction, getAllTestsAction, clearActiveTestResultAction } from '../../context/actions/vocational-actions';
 import { useModal } from '../../hooks/useModal';
 import OrderPayments from '../../components/organisms/payments/OrderPayments';
+import { resetSolvingTest } from '../../context/actions/solvingTest-actions';
+import { setIsPurchasedAction } from '../../context/actions/billings-actions';
 
 const SelectTestPage = () => {
   const width = useOutletContext();
   const dispatch = useDispatch();
   const { tests } = useSelector((state) => state.vocational);
+  const { activeBilling, isPurchased } = useSelector((state) => state.billings);
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
     dispatch(getAllTestsAction());
     dispatch(clearQuestionsAction());
+    dispatch(clearActiveTestResultAction());
+    dispatch(resetSolvingTest());
   }, []);
+
+  useEffect(() => {
+    let timeOut;
+
+    if (isPurchased) {
+      timeOut = setTimeout(() => {
+        dispatch(setIsPurchasedAction(false));
+      }, 4000);
+    }
+    return () => {
+      clearTimeout(timeOut);
+    };
+  }, [activeBilling]);
 
   const { isOpen, openModal, closeModal } = useModal(false);
 
@@ -27,6 +45,15 @@ const SelectTestPage = () => {
         tests.length > 0
           ? (
             <div>
+              {
+                isPurchased && (
+                  <div className='absolute top-2 right-2 w-64 p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800' role='alert'>
+                    <span className='font-medium mr-2'>Success!</span>
+                    You bought a test.
+                  </div>
+                )
+              }
+
               <h2
                 className='text-2xl font-bold text-dark-1 my-4'
               >
@@ -65,7 +92,10 @@ const SelectTestPage = () => {
         isOpen={isOpen}
         closeModal={closeModal}
       >
-        <OrderPayments product={product} closeModal={closeModal} />
+        {
+          isOpen
+          && <OrderPayments product={product} closeModal={closeModal} />
+        }
       </ModalComponent>
 
     </main>

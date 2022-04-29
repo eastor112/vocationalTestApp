@@ -26,6 +26,16 @@ export const authReducer = (state = initialState, action) => {
           ...action.payload,
         },
       };
+
+    case types.addPurchasedTest:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          purchasedTests: [...state.user.purchasedTests, action.payload],
+        },
+      };
+
     default:
       return state;
   }

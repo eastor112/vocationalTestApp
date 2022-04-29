@@ -1,26 +1,32 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Country } from 'country-state-city';
 import { resumeDescription } from '../../../helpers/universityHelper';
 
 const UniversityCard = ({ university }) => {
+  const searchCountrybyCode = (code) => {
+    const country = Country.getCountryByCode(code);
+    return country.name;
+  };
+
   return (
     <div key={university.id} className='card rounded-md bg-light-1'>
       <div className='flex flex-col gap-4'>
         <figure className='w-full h-36 overflow-hidden'>
           <img src={university.campus[0]} className='h-36 w-full' alt={`campus ${university.name}`} />
         </figure>
-        <figure className='w-3/5 ml-3'>
+        <figure className='w-2/5 ml-3'>
           <img className='logo w-full' src={university.logo} alt={university.name} />
         </figure>
       </div>
       <div className='p-3'>
-
+        <h3 className='font-medium text-xs text-center mb-2'>{university.name.toUpperCase()}</h3>
         <p className='text-sm mb-1'>
           <span className='font-medium text-sm mr-1'>
             Location:
           </span>
           {
-            ` ${university.address.city}, ${university.address.country ? university.address.country : ''}`
+            ` ${university.address.city}, ${university.address.country ? searchCountrybyCode(university.address.country) : ''}`
           }
         </p>
 

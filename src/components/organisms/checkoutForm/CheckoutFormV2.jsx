@@ -58,7 +58,7 @@ const CheckoutFormV2 = () => {
   return (
 
     <div className='flex flex-col gap-2'>
-      <form onSubmit={handleSubmit} className='m-auto text-center w-[390px]  overflow-hidden rounded shadow-lg bg-white pt-6 mb-2'>
+      <form onSubmit={handleSubmit} className='text-center overflow-hidden rounded shadow-lg bg-white pt-6 mb-2'>
         <CardElement options={cardElementOptions} />
         <br />
         <button

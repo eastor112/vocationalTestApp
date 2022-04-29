@@ -3,5 +3,13 @@ const initialState = {
 };
 
 export const usersReducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case 'SET_USERS':
+      return {
+        ...state,
+        users: action.payload,
+      };
+    default:
+      return state;
+  }
 };

@@ -27,7 +27,7 @@ const MainRouter = () => (
           <Route index element={<LandingPage />} />
           <Route path='about' element={<AboutPage />} />
           <Route path='contact' element={<ContactPage />} />
-          <Route path='career/:id' element={<CareerInformationPage />} />
+          <Route path='careers/:id' element={<CareerInformationPage />} />
           <Route path='university/:id' element={<UniversityProfilePage />} />
           <Route path='search' element={<SearchUniversityPage />} />
           <Route

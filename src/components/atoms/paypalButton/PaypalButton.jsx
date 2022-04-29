@@ -1,23 +1,38 @@
 /* eslint-disable react/jsx-props-no-multi-spaces */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PayPalButtons } from '@paypal/react-paypal-js';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBillingAction, setIsPurchasedAction } from '../../../context/actions/billings-actions';
 
 const Paypal = ({ product, closeModal }) => {
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const { user: { purchasedTests } } = useSelector((state) => state.auth);
+
   const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (purchasedTests.includes(product.id)) {
+      setPaidFor(true);
+      closeModal();
+      navigate(`/dashboard/tests/${product.id}`);
+    }
+  }, [purchasedTests]);
 
   const handleApprove = (details) => {
-    closeModal();
-    navigate(`/dashboard/tests/${product.id}`);
-    // status === 200
-    setPaidFor(true);
+    dispatch(fetchBillingAction(
+      product.id,
+      details.purchase_units[0].description,
+      details.purchase_units[0].amount.value,
+      'PAYPAL',
+    ));
 
-    // refresh user premium status
-    // alert the payment was successful
+    dispatch(setIsPurchasedAction(true));
+    closeModal();
   };
 
   if (paidFor) {
@@ -69,19 +84,8 @@ const Paypal = ({ product, closeModal }) => {
 
       onApprove={(data, actions) => {
         return actions.order.capture().then((details) => {
-          console.log(details);
           handleApprove(details);
         });
-      }}
-
-      onCancel={(data, actions) => {
-        console.log('========', data);
-        console.log('========', actions);
-      }}
-
-      onError={(err) => {
-        console.log(err);
-        setError(err);
       }}
 
     />
