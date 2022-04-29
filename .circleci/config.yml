@@ -35,8 +35,6 @@ jobs:
   e2e:
     docker:
       - image: cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
-        environment:
-          TERM: xterm
     steps:
       - checkout
       - restore_cache:
@@ -52,7 +50,7 @@ jobs:
       - run:
           name: Launch server
           command: npm start
-          background: false
+          background: true
       - run:
           name: Run E2E tests
           command: npm run cypress:run
