@@ -21,3 +21,39 @@ export const getUniversityById = async (id) => {
     return error.message;
   }
 };
+
+export const getUniversitiesByCountry = async (country) => {
+  const URL = `${BASE_URL}/api/search/universities/${country}?target=country`;
+  try {
+    const response = await fetch(URL);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const getUniversitiesByName = async (name) => {
+  const URL = `${BASE_URL}/api/search/universities/${name}?target=name`;
+  try {
+    const response = await fetch(URL);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const getUniversitiesByCareer = async (career) => {
+  const query = career.split(' ').join('|');
+
+  const URL = `${BASE_URL}/api/search/universities/${query}?target=career`;
+
+  try {
+    const response = await fetch(URL);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};

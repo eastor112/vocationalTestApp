@@ -219,7 +219,7 @@ const UserProfilePage = () => {
                   {
                     cities.map((c) => {
                       return (
-                        <option key={uuidv4()} value={c.code}>
+                        <option key={uuidv4()} value={c.name}>
                           {c.name}
                         </option>
                       );
