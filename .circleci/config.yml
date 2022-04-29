@@ -1,11 +1,11 @@
 version: 2.1
-orbs:
-  cypress: cypress-io/cypress@1
-executors:
-  with-chrome:
-    resource_class: small
-    docker:
-      - image: "cypress/browsers:node16.14.2-slim-chrome100-ff99-edge"
+# orbs:
+#   cypress: cypress-io/cypress@1
+# executors:
+#   with-chrome:
+#     resource_class: small
+#     docker:
+#       - image: "cypress/browsers:node16.14.2-slim-chrome100-ff99-edge"
 jobs:
   build-units:
     working_directory: ~/src
@@ -32,25 +32,55 @@ jobs:
           name: Run tests
           command: npm run test
 
+  e2e:
+    docker:
+      - image: cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
+        environment:
+          TERM: xterm
+    steps:
+      - checkout
+      - restore_cache:
+          key: e2e-cache-{{ checksum "package.json" }}
+      - run:
+          name: install ci dependencies
+          command: npm install
+      - save_cache:
+          key: e2e-cache-{{ checksum "package.json" }}
+          paths:
+            - ~/.npm
+            - ~/.cache
+      - run:
+          name: Launch server
+          command: npm start
+          background: true
+      - run:
+          name: Run E2E tests
+          command: npm run cypress:run
+
 workflows:
-  build:
+  version: 2
+  ci:
     jobs:
-      - cypress/install:
-          pre-steps:
-          - run: npm install -g npm@latest
-      - cypress/run:
-          requires:
-            - cypress/install
-          executor: with-chrome
-          browser: chrome
-          start:
-            npm start
-          wait-on: 'http://localhost:3000'
-          no-workspace: true
-          post-steps:
-            - run: ls
+      - build
+      - e2e
+# workflows:
+#   build:
+#     jobs:
+#       - cypress/install:
+#           pre-steps:
+#           - run: npm install -g npm@latest
+#       - cypress/run:
+#           requires:
+#             - cypress/install
+#           executor: with-chrome
+#           browser: chrome
+#           start:
+#             npm start
+#           wait-on: 'http://localhost:3000'
+#           no-workspace: true
+#           post-steps:
+#             - run: ls
             # - store_test_results:
             #     path: cypress/results
             # - store_artifacts:
             #     path: cypress/screenshots
-

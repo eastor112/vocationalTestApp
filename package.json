@@ -59,7 +59,9 @@
     "lint:fix": "eslint --ext .js,.jsx src/ --fix",
     "prepare": "husky install",
     "db": "json-server --watch db.json --port 3001 --routes routes.json",
-    "dev": "concurrently \"npm run start\"  \"npm run db\""
+    "dev": "concurrently \"npm run start\"  \"npm run db\"",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
