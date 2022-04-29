@@ -45,10 +45,11 @@ workflows:
           browser: chrome
           start:
             npm start
+          wait-on: 'http://localhost:3000'
           post-steps:
             - run: ls
-            - store_test_results:
-                path: cypress/results
-            - store_artifacts:
-                path: cypress/screenshots
+            # - store_test_results:
+            #     path: cypress/results
+            # - store_artifacts:
+            #     path: cypress/screenshots
 
