@@ -1,8 +1,13 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
+executors:
+  with-chrome:
+    resource_class: small
+    docker:
+      - image: "cypress/browsers:node16.14.2-slim-chrome100-ff99-edge"
 jobs:
-  build:
+  build-units:
     working_directory: ~/src
     docker:
       - image: cimg/node:16.14.2
@@ -30,4 +35,22 @@ jobs:
 workflows:
   build:
     jobs:
-      - cypress/run # "run" job comes from "cypress" orb
+      - cypress/install:
+          pre-steps:
+          - run: npm install -g npm@latest
+      - cypress/run:
+          requires:
+            - cypress/install
+          executor: with-chrome
+          browser: chrome
+          start:
+            npm start
+          wait-on: 'http://localhost:3000'
+          no-workspace: true
+          post-steps:
+            - run: ls
+            # - store_test_results:
+            #     path: cypress/results
+            # - store_artifacts:
+            #     path: cypress/screenshots
+
