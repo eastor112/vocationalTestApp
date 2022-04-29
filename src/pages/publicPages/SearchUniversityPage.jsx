@@ -17,7 +17,7 @@ const SearchUniversityPage = () => {
       <SearchBar setUniversities={setUniversities} />
 
       <section className='results mt-44 lg:mt-36 xl:mt-24'>
-        <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mb-6 gap-10'>
+        <div className='card-container grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mb-6 gap-10'>
           {
             universities.length > 0
             && universities.map((university) => {

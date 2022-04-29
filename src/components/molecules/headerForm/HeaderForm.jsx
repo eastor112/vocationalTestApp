@@ -7,7 +7,10 @@ const HeaderForm = (props) => {
 
   return (
     <div className='mt-10 text-center'>
-      <h2 className='text-3xl'>
+      <h2
+        data-cy='title'
+        className='text-3xl'
+      >
         {title}
       </h2>
       <h3 className='flex justify-center gap-3 mt-3'>

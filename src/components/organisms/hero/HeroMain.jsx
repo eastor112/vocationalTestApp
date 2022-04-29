@@ -14,7 +14,7 @@ const HeroMain = () => {
   };
 
   return (
-    <section className='hero flex flex-col-reverse md:flex-row md:items-center mt-6 md:mt-12 lg:mt-28 xl:mr-10'>
+    <section data-cy='hero-section' className='hero flex flex-col-reverse md:flex-row md:items-center mt-6 md:mt-12 lg:mt-28 xl:mr-10'>
 
       <div className='left flex flex-col w-full md:w-1/2 lg:mr-8'>
         <h2 className='text-3xl md:text-4xl lg:text-5xl leading-5 xl:leading-8 font-semibold mt-6 md:mt-0'>
@@ -27,6 +27,7 @@ const HeroMain = () => {
         </p>
         <div className='buttons mt-14 md:mt-7 lg:mt-12'>
           <button
+            data-cy='test-button'
             type='button'
             className='border w-52 md:w-36 lg:w-48 mr-2 md:mr-1 mb-2 bg-primary-2 hover:bg-primary-1 text-light-1 text-lg md:text-sm lg:text-base font-medium px-3 py-3 rounded-md'
             onClick={handleTest}
@@ -34,6 +35,7 @@ const HeroMain = () => {
             Vocational test
           </button>
           <button
+            data-cy='search-button'
             type='button'
             className='border w-52 md:w-36 lg:w-48  md:mr-1 mb-2 border-primary-1 bg-light-2 hover:bg-light-1 text-primary-1 text-lg md:text-sm lg:text-base font-medium px-3 py-3 rounded-md'
             onClick={handleSearch}

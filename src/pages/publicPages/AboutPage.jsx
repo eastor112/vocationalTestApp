@@ -6,11 +6,23 @@ const AboutPage = () => (
     <div className='h-3 flex md:h-96  absolute -z-10'>
       <img src={require('../../assets/shapes.png')} alt='' />
     </div>
-    <h3 className='pt-20 pl-20 font-semibold text-5xl p-2 flex justify-center'>Let us help built your future!</h3>
+
+    <h3
+      data-cy='about-page-title'
+      className='pt-20 pl-20 font-semibold text-5xl p-2 flex justify-center'
+    >
+      Let us help built your future!
+    </h3>
+
     <div className='flex flex-col justify-center items-center p-2 gap-16 md:flex-row'>
       <div className='flex flex-col gap-5'>
         <span className='block p-6 max-w-xs md:max-w-sm bg-purple-900 rounded-lg border border-indigo-200 shadow-md hover:bg-teal-400 dark:bg-indigo-800'>
-          <h5 className='mb-2 text-2xl font-bold tracking-tight text-white'>Mission</h5>
+          <h5
+            data-cy='about-page-mission'
+            className='mb-2 text-2xl font-bold tracking-tight text-white'
+          >
+            Mission
+          </h5>
           <p className='font-normal text-white  text-justify'>We are a group of developers willing to help you choose the best fit for you!, no worries, everyone hesitate when choosing a profession, it was not easy for us either, res assured this will make everything go with ease.</p>
         </span>
         <span className='block p-6 max-w-xs md:max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-teal-400'>

@@ -9,7 +9,7 @@ const RegistrationConfirmPage = () => {
           <img src='https://media.giphy.com/media/BPJmthQ3YRwD6QqcVD/giphy.gif' alt='congratulations' />
         </figure>
 
-        <h3 className='font-roboto font-medium text-xl text-green-600 mb-5'>
+        <h3 data-cy='congrats-message' className='font-roboto font-medium text-xl text-green-600 mb-5'>
           Congratulations, your account has been created
         </h3>
         <p className='text-gray-700 text-base leading-4'>

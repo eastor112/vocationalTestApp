@@ -10,7 +10,10 @@ const UniversityCard = ({ university }) => {
   };
 
   return (
-    <div key={university.id} className='card rounded-md bg-light-1'>
+    <div
+      data-cy='university-card'
+      className='card rounded-md bg-light-1'
+    >
       <div className='flex flex-col gap-4'>
         <figure className='w-full h-36 overflow-hidden'>
           <img src={university.campus[0]} className='h-36 w-full' alt={`campus ${university.name}`} />
@@ -43,6 +46,7 @@ const UniversityCard = ({ university }) => {
         <small className=' vision text-xs block leading-relaxed'>
           {resumeDescription(university.vision, 90)}
           <Link
+            data-cy='university-card-link'
             className='my-2 ml-1 text-right text-xs text-neutral-1 hover:underline'
             to={`/university/${university.id}`}
           >

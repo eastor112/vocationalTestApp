@@ -32,7 +32,11 @@ const Sidebar = ({ setWidth }) => {
         <ul className='space-y-2'>
 
           <li>
-            <NavLink to='/' className='border-b-2 border-l-2 border-teal-300  flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 mb-8'>
+            <NavLink
+              data-cy='sidebar-home'
+              to='/'
+              className='border-b-2 border-l-2 border-teal-300  flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 mb-8'
+            >
               <svg
                 className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75 '
                 fill='none'

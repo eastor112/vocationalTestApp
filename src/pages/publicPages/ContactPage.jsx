@@ -3,13 +3,25 @@ import Footer from '../../components/organisms/footer/Footer';
 
 const ContactPage = () => (
   <div>
-    <h3 className='pt-20 pl-20 text-4xl font-semibold text-center mb-7'>Any questions or remarks? Just write us a message!</h3>
+    <h3
+      data-cy='contact-page-title'
+      className='pt-20 pl-20 text-4xl font-semibold text-center mb-7'
+    >
+      Any questions or remarks? Just write us a message!
+    </h3>
+
     <div className='flex flex-col md:flex-row'>
       <div className='left flex h-auto md:h-96 xl:h-auto md:w-1/2'>
         <img src={require('../../assets/contact.png')} alt='contact' />
       </div>
       <div className='right flex flex-col w-full  mb-12 gap-10 md:w-1/2 lg:mr-8 p-6 max-w-sm bg-gradient-to-r from-indigo-800 to-teal-500 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'>
-        <h5 className='mb-2 text-2xl font-bold tracking-tight text-white dark:text-white'>Contact information</h5>
+        <h5
+          data-cy='contact-page-info'
+          className='mb-2 text-2xl font-bold tracking-tight text-white dark:text-white'
+        >
+          Contact information
+        </h5>
+
         <p className='font-normal text-white '>you can contact us via social media or email, our team will get back to you in 24h tops.</p>
         <div className='flex flex-col gap-10 pt-10'>
           <div className='flex flex-row gap-3'>

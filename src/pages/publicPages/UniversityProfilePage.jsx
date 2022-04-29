@@ -30,7 +30,12 @@ const UniversityProfilePage = () => {
 
               <section className='university'>
                 <div className='title text-3xl'>
-                  <h1 className='text-3xl font-medium mt-5'>{university.name}</h1>
+                  <h1
+                    data-cy='university-name'
+                    className='text-3xl font-medium mt-5'
+                  >
+                    {university.name}
+                  </h1>
                 </div>
 
                 <figure className=' mt-10'>
@@ -97,13 +102,13 @@ const UniversityProfilePage = () => {
 
                 <div className='md:border-l-2 p-10'>
                   <p className='text-3xl font-medium'>Location</p>
-                  <div>
+                  <div data-cy='map'>
                     <MapChart />
                   </div>
                 </div>
 
               </section>
-              <div className='fixed top-80 right-5 flex flex-col gap-2'>
+              <div className='social-media-links fixed top-80 right-5 flex flex-col gap-2'>
 
                 <a href={university.socialMedia.linkedIn} target='_blank' rel='noreferrer'>
                   <button

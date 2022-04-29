@@ -2,7 +2,8 @@
   "extends": [
     "plugin:react/recommended",
     "airbnb",
-    "plugin:jest-dom/recommended"
+    "plugin:jest-dom/recommended",
+    "plugin:cypress/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {

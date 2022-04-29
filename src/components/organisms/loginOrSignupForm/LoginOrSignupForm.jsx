@@ -109,6 +109,7 @@ const LoginOrSignupForm = ({ title }) => {
         error
         && (
           <div
+            data-cy='error-message'
             className='p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800'
             role='alert'
           >
@@ -119,7 +120,7 @@ const LoginOrSignupForm = ({ title }) => {
 
       }
 
-      <div aria-label='email' className='mb-5 flex flex-col gap-2'>
+      <div data-cy='email-input' aria-label='email' className='mb-5 flex flex-col gap-2'>
         <label htmlFor='email' className=''>
           <input
             id='email'
@@ -134,7 +135,7 @@ const LoginOrSignupForm = ({ title }) => {
         </label>
       </div>
 
-      <div aria-label='password' className='mb-4 flex flex-col gap-2'>
+      <div data-cy='pass-input' aria-label='password' className='mb-4 flex flex-col gap-2'>
         <label htmlFor='pass' className=''>
           <input
             id='pass'
@@ -154,6 +155,7 @@ const LoginOrSignupForm = ({ title }) => {
           <div aria-label='is-institution' className='mb-4 flex flex-col gap-2'>
             <label htmlFor='isInstitution' className='flex items-center'>
               <input
+                data-cy='institution-checkbox'
                 id='isInstitution'
                 type='checkbox'
                 className='border-primary-1 py-1 mr-2'
@@ -173,6 +175,7 @@ const LoginOrSignupForm = ({ title }) => {
             <div aria-label='institution-name' className='mb-5 flex flex-col gap-2'>
               <label htmlFor='name' className=''>
                 <input
+                  data-cy='institution-name'
                   id='name'
                   type='text'
                   placeholder='Institution name'
@@ -188,7 +191,14 @@ const LoginOrSignupForm = ({ title }) => {
             <div aria-label='country-phone' className='flex gap-5 w-full'>
               <div aria-label='country' className='mb-5 flex flex-col gap-2 flex-1'>
                 <label htmlFor='country' className=''>
-                  <select name='country' id='country' className='w-full h-9 text-sm' value={country} onChange={handleInputChange}>
+                  <select
+                    data-cy='institution-country'
+                    name='country'
+                    id='country'
+                    className='w-full h-9 text-sm'
+                    value={country}
+                    onChange={handleInputChange}
+                  >
                     <option value='peru'>Perú</option>
                     <option value='colombia'>Colombia</option>
                   </select>
@@ -198,6 +208,7 @@ const LoginOrSignupForm = ({ title }) => {
               <div aria-label='phone' className='mb-4 flex flex-col gap-2 flex-1'>
                 <label htmlFor='phone' className=''>
                   <input
+                    data-cy='institution-phone'
                     id='phone'
                     type='tel'
                     placeholder='phone'
@@ -214,6 +225,7 @@ const LoginOrSignupForm = ({ title }) => {
             <div aria-label='website' className='mb-4 flex flex-col gap-2'>
               <label htmlFor='url' className=''>
                 <input
+                  data-cy='institution-url'
                   id='url'
                   type='url'
                   placeholder='website'
@@ -230,6 +242,7 @@ const LoginOrSignupForm = ({ title }) => {
       }
 
       <button
+        data-cy='submit-button'
         type='submit'
         className={`bg-blue-500 relative text-white font-bold py-2 px-6  whitespace-nowrap rounded-sm ${isLoading ? 'bg-gray-500' : 'hover:bg-blue-700'}`}
         disabled={isLoading}
