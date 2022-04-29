@@ -32,7 +32,7 @@ const OrderPayments = ({ product, closeModal }) => {
       </div>
 
       <Elements stripe={stripePromise}>
-        <CheckoutFormV2 />
+        <CheckoutFormV2 testId={product.id} closeModal={closeModal} />
       </Elements>
       <PaypalButton
         product={product}

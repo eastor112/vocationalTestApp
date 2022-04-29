@@ -1,5 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { fetchBillingAction, setIsPurchasedAction } from '../../../context/actions/billings-actions';
 
 const BASE_URL = process.env.REACT_APP_ENV === 'develop' ? process.env.REACT_APP_API_URL_DEV : process.env.REACT_APP_API_URL_PROD;
 const inputStyle = {
@@ -25,10 +29,15 @@ const cardElementOptions = {
     },
   },
 };
-const CheckoutFormV2 = () => {
-  const URL = `${BASE_URL}/api/checkout`;
+
+const URL = `${BASE_URL}/api/checkout`;
+
+const CheckoutFormV2 = ({ testId, closeModal }) => {
+  const dispatch = useDispatch();
   const stripe = useStripe();
   const elements = useElements();
+  const token = localStorage.getItem('token');
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -36,18 +45,34 @@ const CheckoutFormV2 = () => {
       card: elements.getElement(CardElement),
     });
     if (!error) {
-      console.log('Payment Method Created!', paymentMethod);
-
       const payload = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ paymentMethod, amount: 1500 }),
       };
+
+      Swal.fire({
+        title: 'Purchasing this Test...',
+        html: 'Wait a moment...',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
       const response = await fetch(URL, payload);
       const body = await response.json();
-      console.log('response from server:', body);
+      Swal.close();
+      const paypalAmount = Number(body.amount) / 100;
+      dispatch(
+        fetchBillingAction(testId, body.description, paypalAmount, 'CREDIT CARD'),
+      );
+      dispatch(setIsPurchasedAction(true));
+      closeModal();
       elements.getElement(CardElement).clear();
     } else {
       console.log('Payment Method Error!', error);
@@ -73,6 +98,11 @@ const CheckoutFormV2 = () => {
     </div>
 
   );
+};
+
+CheckoutFormV2.propTypes = {
+  testId: PropTypes.string.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default CheckoutFormV2;
