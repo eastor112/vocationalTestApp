@@ -31,4 +31,5 @@ workflows:
   build:
     jobs:
       - build-units
-      - cypress/run
+      - cypress/run:
+          start: npm start 
