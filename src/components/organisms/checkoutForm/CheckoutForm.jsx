@@ -30,6 +30,7 @@ const CheckoutForm = () => {
   const URL = `${BASE_URL}/api/checkout`;
   const stripe = useStripe();
   const elements = useElements();
+  const token = localStorage.getItem('token');
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -38,12 +39,13 @@ const CheckoutForm = () => {
     });
     if (!error) {
       console.log('Payment Method Created!', paymentMethod);
+      const myHeaders = new Headers();
+      myHeaders.append('Authorization', `Bearer ${token}`);
+      myHeaders.append('Content-Type', 'application/json');
 
       const payload = {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: myHeaders,
         body: JSON.stringify({ paymentMethod, amount: 1500 }),
       };
       const response = await fetch(URL, payload);
