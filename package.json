@@ -61,7 +61,7 @@
     "prepare": "husky install",
     "db": "json-server --watch db.json --port 3001 --routes routes.json",
     "dev": "concurrently \"npm run start\"  \"npm run db\"",
-    "cypress:run": "cypress run",
+    "cypress:run": "npx cypress run --record --key 2a4e4ad9-6094-496f-9961-91c451243069",
     "cypress:open": "cypress open"
   },
   "eslintConfig": {

@@ -4,5 +4,6 @@
     "mochaFile": "cypress/results/tests-[hash].xml",
     "toConsole": true
   },
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "projectId": "4myh3n"
 }
