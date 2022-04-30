@@ -1,11 +1,5 @@
 version: 2.1
-# orbs:
-#   cypress: cypress-io/cypress@1
-# executors:
-#   with-chrome:
-#     resource_class: small
-#     docker:
-#       - image: "cypress/browsers:node16.14.2-slim-chrome100-ff99-edge"
+
 jobs:
   build:
     working_directory: ~/src
@@ -55,30 +49,16 @@ jobs:
       - run:
           name: Run E2E tests
           command: npm run cypress:run
+      - run: ls
+      - store_test_results:
+          path: results
+      - store_artifacts:
+          path: cypress/videos
+      - store_artifacts:
+          path: cypress/screenshots
 
 workflows:
   build:
     jobs:
       - build
       - e2e
-# workflows:
-#   build:
-#     jobs:
-#       - cypress/install:
-#           pre-steps:
-#           - run: npm install -g npm@latest
-#       - cypress/run:
-#           requires:
-#             - cypress/install
-#           executor: with-chrome
-#           browser: chrome
-#           start:
-#             npm start
-#           wait-on: 'http://localhost:3000'
-#           no-workspace: true
-#           post-steps:
-#             - run: ls
-            # - store_test_results:
-            #     path: cypress/results
-            # - store_artifacts:
-            #     path: cypress/screenshots
