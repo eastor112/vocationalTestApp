@@ -86,7 +86,7 @@ const SearchBar = ({ setUniversities }) => {
             value={formValues.country}
             onChange={handleInputChange}
           >
-            <option key={uuidv4()} value=''> </option>
+            <option key={uuidv4()} value=''> All</option>
             {
               countries.map((c) => {
                 return (
@@ -114,7 +114,7 @@ const SearchBar = ({ setUniversities }) => {
             onChange={handleInputChange}
           >
 
-            <option key={uuidv4()} value=''> </option>
+            <option key={uuidv4()} value=''> All </option>
             {
               careers.map((c) => {
                 return (

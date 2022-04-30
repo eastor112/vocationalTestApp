@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import Footer from '../../components/organisms/footer/Footer';
 import { getUniversityById } from '../../services/universitiesServices';
 import MapChart from '../../components/organisms/mapChart/MapChart';
@@ -62,7 +63,7 @@ const UniversityProfilePage = () => {
                     {university.process && university.process.map((process) => {
                       const count = university.process.indexOf(process) + 1;
                       return (
-                        <li className='' key={university.id}>
+                        <li className='' key={uuidv4()}>
                           {`${count}`}
                           .
                           {process}
@@ -81,10 +82,9 @@ const UniversityProfilePage = () => {
                   {university.offer && university.offer.map((offer) => {
                     return (
 
-                      <div key={offer.id}>
+                      <div key={uuidv4()}>
                         <a className='text-teal-600 hover:text-teal-400 underline underline-offset-8 ' href='.'>{offer.name}</a>
                         <p className='p-2'>{offer.description}</p>
-
                       </div>
                     );
                   })}
