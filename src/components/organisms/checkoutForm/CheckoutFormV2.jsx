@@ -81,11 +81,15 @@ const CheckoutFormV2 = ({ testId, closeModal }) => {
   return (
 
     <div className='flex flex-col gap-2'>
-      <form onSubmit={handleSubmit} className='text-center overflow-hidden rounded shadow-lg bg-white pt-6 mb-2'>
-        <CardElement options={cardElementOptions} />
+      <form className='text-center overflow-hidden rounded shadow-lg bg-white pt-6 mb-2'>
+        <div id='stripeContainer'>
+          <CardElement options={cardElementOptions} />
+        </div>
         <br />
         <button
-          type='submit'
+          type='button'
+          onClick={handleSubmit}
+          id='pay-button'
           className='w-full flex justify-center items-center text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded text-sm px-5 py-2.5 text-center'
         >
           <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5 mr-2' viewBox='0 0 20 20' fill='currentColor'>

@@ -48,7 +48,12 @@ const SelectTestPage = () => {
               {
                 isPurchased && (
                   <div className='absolute top-2 right-2 w-64 p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800' role='alert'>
-                    <span className='font-medium mr-2'>Success!</span>
+                    <span
+                      data-cy='payment-success-message'
+                      className='font-medium mr-2'
+                    >
+                      Success!
+                    </span>
                     You bought a test.
                   </div>
                 )
@@ -59,7 +64,7 @@ const SelectTestPage = () => {
               >
                 Choose a Test
               </h2>
-              <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
+              <div className='test-cards w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
                 {
                   tests.map((test) => (
                     <TestCardV2
