@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Run E2E tests
           command: npm run cypress:run
-      - run: ls
+      - run: pwd
       - store_test_results:
           path: results
       - store_artifacts:
