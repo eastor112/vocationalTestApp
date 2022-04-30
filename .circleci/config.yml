@@ -51,6 +51,7 @@ jobs:
           name: Launch server
           command: npm start
           background: true
+      - run: sleep 45
       - run:
           name: Run E2E tests
           command: npm run cypress:run
