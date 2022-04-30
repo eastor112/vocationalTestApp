@@ -1,6 +1,6 @@
 describe('Testing login and signup page', () => {
   it('should go to signup page', () => {
-    cy.visit('/', { timeout: 30000 });
+    cy.visit('/', { timeout: 120000 });
     cy.get("[data-cy='test-button']").click();
     cy.get("[data-cy='title']").should('be.visible');
     cy.get("[data-cy='email-input']").should('be.visible');
