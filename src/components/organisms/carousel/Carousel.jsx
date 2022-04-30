@@ -26,6 +26,7 @@ const Carousel = ({ universities, setPage, totalPages }) => {
 
     <div className='carousel z-0 my-8 relative flex items-center'>
       <button
+        aria-label='previous'
         type='button'
         className='left-arrow bg-blue-300 opacity-60 hover:opacity-100 absolute text-purple-600 h-8 w-8 rounded-full flex items-center justify-center'
         onClick={prev}
@@ -36,6 +37,7 @@ const Carousel = ({ universities, setPage, totalPages }) => {
       </button>
 
       <button
+        aria-label='next'
         type='button'
         className='right-arrow absolute bg-blue-300 opacity-60 hover:opacity-100 right-0 text-purple-600 h-8 w-8 rounded-full flex items-center justify-center'
         onClick={next}

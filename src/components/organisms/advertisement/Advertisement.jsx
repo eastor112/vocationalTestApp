@@ -38,7 +38,7 @@ const Advertisement = () => {
       </div>
 
       {
-        universities.length > 0
+        (universities && universities.length > 0)
         && (
           <Carousel
             universities={universities}

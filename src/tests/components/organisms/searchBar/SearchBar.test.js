@@ -3,7 +3,7 @@ import SearchBar from '../../../../components/organisms/searchBar/SearchBar';
 
 describe('testing searchBar', () => {
   test('should render searchBar', () => {
-    render(<SearchBar />);
+    render(<SearchBar setUniversities={() => { }} />);
 
     const country = screen.getByText(/country:/i);
     const career = screen.getByText(/career:/i);

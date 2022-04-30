@@ -57,3 +57,22 @@ export const getUniversitiesByCareer = async (career, limit = 4, page = 1) => {
     return error.message;
   }
 };
+
+export const getUniversitiesByFilters = async (
+  country,
+  career,
+  name,
+  limit = 20,
+  page = 1,
+) => {
+  const URL = `${BASE_URL}/api/search/universities?country=${country}&career=${career}&name=${name}&limit=${limit}&page=${page}`;
+
+  try {
+    const response = await fetch(URL);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};

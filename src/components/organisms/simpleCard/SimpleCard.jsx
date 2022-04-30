@@ -20,7 +20,7 @@ const SimpleCard = ({
         <figure className='absolute h-8 overflow-hidden top-1 left-1 p-1 bg-white'>
           <img className='h-full' src={logo} alt={id} />
         </figure>
-        <h3 className='text-sm font-bold uppercase'>
+        <h3 className='text-xs font-bold uppercase h-9'>
           {name}
         </h3>
         <p className='mt-1 text-sm leading-3'>
