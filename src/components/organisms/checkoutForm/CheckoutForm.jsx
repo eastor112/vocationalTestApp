@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import CheckoutCard from '../simpleCard/CheckoutCard';

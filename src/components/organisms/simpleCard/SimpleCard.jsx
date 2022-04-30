@@ -1,39 +1,50 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const SimpleCard = () => {
-  const navigate = useNavigate();
-
-  const handleSeeMore = () => {
-    navigate('/university/1');
-  };
-
+const SimpleCard = ({
+  id,
+  name,
+  logo,
+  mission,
+  campus,
+}) => {
   return (
     <div
-      className='card md:w-1/2 lg:w-1/3 xl:w-1/4 border-8 border-white bg-slate-400 inline-block whitespace-normal'
+      className='mx-3 relative card sm:w-3/5 md:w-2/4 lg:w-1/3 xl:w-1/4  border-white bg-slate-400 inline-block whitespace-normal'
     >
-      <figure>
-        <img src='https://via.placeholder.com/800x600?text=University-Photograph' alt='' />
+      <figure className='h-24 overflow-hidden flex justify-center items-center'>
+        <img className='w-full' src={campus[0]} alt={name} />
       </figure>
-      <div className='p-6'>
-        <h3 className='text-lg font-bold uppercase'>
-          University 1
+      <div className='p-5'>
+        <figure className='absolute h-8 overflow-hidden top-1 left-1 p-1 bg-white'>
+          <img className='h-full' src={logo} alt={id} />
+        </figure>
+        <h3 className='text-sm font-bold uppercase'>
+          {name}
         </h3>
-        <p className='mt-4 text-base leading-3'>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste cumque
-          autem quos quisquam, atque bea...
+        <p className='mt-1 text-sm leading-3'>
+          {mission.substring(0, 100)}
+          ...
         </p>
 
-        <button
-          type='button'
-          className='mt-4 text-blue-500 hover:underline hover:text-blue-600'
-          onClick={handleSeeMore}
+        <Link
+          to={`/university/${id}`}
+          className='mt-3 text-blue-600 hover:underline hover:text-blue-700 block'
         >
           See More
-        </button>
+        </Link>
       </div>
     </div>
   );
+};
+
+SimpleCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  logo: PropTypes.string.isRequired,
+  mission: PropTypes.string.isRequired,
+  campus: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default SimpleCard;

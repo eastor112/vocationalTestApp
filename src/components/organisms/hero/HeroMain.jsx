@@ -21,9 +21,9 @@ const HeroMain = () => {
           Discover your vocation, choose well
         </h2>
         <p className='text-xl md:text-lg xl:text-xl leading-4 md:leading-4 xl:leading-5 mt-10 md:mt-5 lg:mt-10'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Consequuntur ipsa inventore libero dolorem vel ipsam fuga necessitatibus
-          non natus quo. Sed, est quia ad necessitatibus aperiam culpa autem eum quasi.
+          Choosing a career can help you set career goals and develop a strategy to
+          get where you want to be. We help you choose based on the evaluation
+          of your talents, abilities and interests.
         </p>
         <div className='buttons mt-14 md:mt-7 lg:mt-12'>
           <button
