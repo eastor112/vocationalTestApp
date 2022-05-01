@@ -2,11 +2,10 @@ import { Country } from 'country-state-city';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
-import { getUniversitiesByCareer, getUniversitiesByCountry, getUniversitiesByName } from '../../../services/universitiesServices';
+import { getUniversitiesByFilters } from '../../../services/universitiesServices';
 import { getAllCareersNames } from '../../../services/careersServices';
 
 const SearchBar = ({ setUniversities }) => {
-  // eslint-disable-next-line no-unused-vars
   const [countries, setCountries] = useState([]);
   const [careers, setCareers] = useState([]);
 
@@ -22,8 +21,8 @@ const SearchBar = ({ setUniversities }) => {
   const [formValues, setFormValues] = useState({
     country: '',
     career: '',
-    order: 'global',
     search: '',
+    order: 'global',
   });
 
   const handleInputChange = (e) => {
@@ -36,25 +35,16 @@ const SearchBar = ({ setUniversities }) => {
     });
 
     if (field === 'country') {
-      if (value !== '') {
-        getUniversitiesByCountry(value)
-          .then((data) => {
-            setUniversities(data.results);
-          });
-      }
+      getUniversitiesByFilters(value, formValues.career, formValues.search)
+        .then((data) => {
+          setUniversities(data.results);
+        });
     }
-
     if (field === 'career') {
-      if (value !== '') {
-        getUniversitiesByCareer(value)
-          .then((data) => {
-            setUniversities(data.results);
-          });
-      }
-    }
-
-    if (field === 'order') {
-      // fetch universities by order
+      getUniversitiesByFilters(formValues.country, value, formValues.search)
+        .then((data) => {
+          setUniversities(data.results);
+        });
     }
   };
 
@@ -62,7 +52,7 @@ const SearchBar = ({ setUniversities }) => {
     e.preventDefault();
 
     if (formValues.search !== '') {
-      getUniversitiesByName(formValues.search)
+      getUniversitiesByFilters(formValues.country, formValues.career, formValues.search)
         .then((data) => {
           setUniversities(data.results);
         });

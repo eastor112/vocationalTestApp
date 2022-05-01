@@ -6,11 +6,15 @@ describe('Testing Carousel component', () => {
   test('should render Carousel component ', () => {
     render(
       <BrowserRouter>
-        <Carousel />
+        <Carousel
+          universities={[]}
+          setPage={() => { }}
+          totalPages={1}
+        />
       </BrowserRouter>,
     );
 
-    expect(screen.getByText(/back/i)).toBeInTheDocument();
-    expect(screen.getByText(/next/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/previous/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/next/i)).toBeInTheDocument();
   });
 });

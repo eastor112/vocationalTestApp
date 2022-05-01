@@ -18,7 +18,7 @@ const Cta = () => {
 
       <div className='CTA-left md:flex md:flex-col md:justify-center md:gap-2'>
         <h2 className='text-3xl md:text-2xl xl:text-4xl leading-5 font-semibold mt-6 md:mt-0 '>
-          Don`&apos;t know what to study?
+          Don&apos;t know what to study?
         </h2>
         <p aria-label='description' className='text-xl mt-6 md:mt-0 md:text-lg xl:text-xl leading-4 md:leading-4 lg:leading-5 '>
           Take the vocational test and discover your best option
