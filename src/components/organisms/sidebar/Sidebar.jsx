@@ -59,8 +59,11 @@ const Sidebar = ({ setWidth }) => {
           </li>
 
           <li aria-label='general-student'>
-            <NavLink to='/dashboard/general' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-              <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' viewBox='0 0 20 20' fill='currentColor'>
+            <NavLink
+              to='/dashboard/general'
+              className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
+            >
+              <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6  transition duration-75' viewBox='0 0 20 20' fill='currentColor'>
                 <path fillRule='evenodd' d='M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z' clipRule='evenodd' />
               </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
@@ -70,8 +73,11 @@ const Sidebar = ({ setWidth }) => {
           </li>
 
           <li aria-label='profile-student'>
-            <NavLink to='/dashboard/user/profile' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-              <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' viewBox='0 0 20 20' fill='currentColor'>
+            <NavLink
+              to='/dashboard/user/profile'
+              className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
+            >
+              <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 transition duration-75' viewBox='0 0 20 20' fill='currentColor'>
                 <path fillRule='evenodd' d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z' clipRule='evenodd' />
               </svg>
               <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
@@ -85,8 +91,11 @@ const Sidebar = ({ setWidth }) => {
             (user.role === 'ADMIN' || user.role === 'INSTITUTION') && (
 
               <li aria-label='profile-institution'>
-                <NavLink to='/dashboard/institution/profile' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-                  <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                <NavLink
+                  to='/dashboard/institution/profile'
+                  className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
+                >
+                  <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 transition duration-75' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
                     <path strokeLinecap='round' strokeLinejoin='round' d='M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' />
                   </svg>
                   <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
@@ -103,8 +112,12 @@ const Sidebar = ({ setWidth }) => {
             && (
               <>
                 <li aria-label='dashboard-admin'>
-                  <NavLink to='/dashboard' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-                    <svg className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
+                  <NavLink
+                    end
+                    to='/dashboard'
+                    className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
+                  >
+                    <svg className='flex-shrink-0 w-6 h-6 transition duration-75' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
                       <path d='M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z' />
                       <path d='M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z' />
                     </svg>
@@ -115,8 +128,11 @@ const Sidebar = ({ setWidth }) => {
                 </li>
 
                 <li aria-label='users-admin'>
-                  <NavLink to='/dashboard/users' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
-                    <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 text-light-1 transition duration-75' viewBox='0 0 20 20' fill='currentColor'>
+                  <NavLink
+                    to='/dashboard/users'
+                    className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
+                  >
+                    <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 transition duration-75' viewBox='0 0 20 20' fill='currentColor'>
                       <path d='M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z' />
                     </svg>
                     <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
@@ -126,7 +142,10 @@ const Sidebar = ({ setWidth }) => {
                 </li>
 
                 <li aria-label='careers-admin'>
-                  <NavLink to='/dashboard/careers' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
+                  <NavLink
+                    to='/dashboard/careers'
+                    className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
+                  >
                     <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
                       <path d='M12 14l9-5-9-5-9 5 9 5z' />
                       <path d='M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z' />
@@ -139,7 +158,10 @@ const Sidebar = ({ setWidth }) => {
                 </li>
 
                 <li aria-label='tests-admin'>
-                  <NavLink to='/dashboard/admin/tests' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
+                  <NavLink
+                    to='/dashboard/admin/tests'
+                    className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
+                  >
                     <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
                       <path strokeLinecap='round' strokeLinejoin='round' d='M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z' />
                     </svg>
@@ -150,7 +172,10 @@ const Sidebar = ({ setWidth }) => {
                 </li>
 
                 <li aria-label='payments-admin'>
-                  <NavLink to='/dashboard/payment' className='flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2'>
+                  <NavLink
+                    to='/dashboard/payment'
+                    className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
+                  >
                     <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5 ' viewBox='0 0 20 20' fill='currentColor'>
                       <path d='M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z' />
                       <path fillRule='evenodd' d='M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z' clipRule='evenodd' />

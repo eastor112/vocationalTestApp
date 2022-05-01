@@ -205,7 +205,7 @@ const NavBarFlow = () => {
                 onClick={() => setShowMenu(!showMenu)}
                 to='/'
                 className={({ isActive }) => {
-                  return `block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0 ${isActive ? 'font-bold text-teal-500' : ''}`;
+                  return `block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0 ${isActive ? 'font-bold text-teal-300' : ''}`;
                 }}
               >
                 Home
@@ -216,7 +216,7 @@ const NavBarFlow = () => {
                 onClick={() => setShowMenu(!showMenu)}
                 to='about'
                 className={({ isActive }) => {
-                  return `block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0 ${isActive ? 'font-bold text-teal-500' : ''}`;
+                  return `block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0 ${isActive ? 'font-bold text-teal-300' : ''}`;
                 }}
               >
                 About us
@@ -227,7 +227,7 @@ const NavBarFlow = () => {
                 onClick={() => setShowMenu(!showMenu)}
                 to='contact'
                 className={({ isActive }) => {
-                  return `block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0 ${isActive ? 'font-bold text-teal-500' : ''}`;
+                  return `block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0 ${isActive ? 'font-bold text-teal-300' : ''}`;
                 }}
               >
                 Contact
