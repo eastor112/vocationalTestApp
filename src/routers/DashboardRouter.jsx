@@ -3,6 +3,7 @@ import BaseDashboard from '../pages/dashboardPages/BaseDashboard';
 import CareersListPage from '../pages/dashboardPages/CareersListPage';
 import Checkout from '../pages/dashboardPages/Checkout';
 import DashboardPage from '../pages/dashboardPages/DashboardPage';
+import EditTestPage from '../pages/dashboardPages/EditTestPage';
 import GeneralPage from '../pages/dashboardPages/GeneralPage';
 import Payment from '../pages/dashboardPages/Payment';
 import SelectTestPage from '../pages/dashboardPages/SelectTestPage';
@@ -31,6 +32,7 @@ const DashboardRoutes = () => {
         <Route path='admin/tests' element={<TestsListPage />} />
         <Route path='payment' element={<Payment />} />
         <Route path='checkout' element={<Checkout />} />
+        <Route path='edittest/:id' element={<EditTestPage />} />
       </Route>
     </Routes>
   );
