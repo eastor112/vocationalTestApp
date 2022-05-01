@@ -33,7 +33,7 @@ const MainRouter = () => (
           <Route
             path='login'
             element={(
-              <PublicRoute route='/dashboard/general'>
+              <PublicRoute>
                 <LoginPage />
               </PublicRoute>
             )}
@@ -41,7 +41,7 @@ const MainRouter = () => (
           <Route
             path='signup'
             element={(
-              <PublicRoute route='/dashboard/general'>
+              <PublicRoute>
                 <SignUpPage />
               </PublicRoute>
             )}

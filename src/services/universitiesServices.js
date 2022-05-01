@@ -33,8 +33,8 @@ export const getUniversitiesByCountry = async (country) => {
   }
 };
 
-export const getUniversitiesByName = async (name) => {
-  const URL = `${BASE_URL}/api/search/universities/${name}?target=name`;
+export const getUniversitiesByName = async (name, limit = 4, page = 1) => {
+  const URL = `${BASE_URL}/api/search/universities?name=${name}&limit=${limit}&page=${page}`;
   try {
     const response = await fetch(URL);
     const data = await response.json();
@@ -47,7 +47,7 @@ export const getUniversitiesByName = async (name) => {
 export const getUniversitiesByCareer = async (career, limit = 4, page = 1) => {
   const query = career.split(' ').join('|');
 
-  const URL = `${BASE_URL}/api/search/universities/${query}?target=career&limit=${limit}&page=${page}`;
+  const URL = `${BASE_URL}/api/search/universities?career=${query}&limit=${limit}&page=${page}`;
 
   try {
     const response = await fetch(URL);
