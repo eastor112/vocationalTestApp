@@ -46,8 +46,8 @@ const NavBarFlow = () => {
     });
     setDrop(!drop);
   };
-  if (isAuthenticated) {
-    useLayoutEffect(() => {
+  useLayoutEffect(() => {
+    if (isAuthenticated) {
       setPos(userMenuButton.current.getBoundingClientRect().x);
       setStyle({
         position: 'absolute',
@@ -55,8 +55,8 @@ const NavBarFlow = () => {
         margin: '0px',
         transform: `translate3d(${pos > 124 ? pos - 124 : 0}px, 60px, 0px)`,
       });
-    }, [pos]);
-  }
+    }
+  }, [pos]);
 
   const handleTogleMenu = () => {
     setShowMenu(!showMenu);
