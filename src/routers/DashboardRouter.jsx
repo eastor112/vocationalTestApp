@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import BaseDashboard from '../pages/dashboardPages/BaseDashboard';
 import CareersListPage from '../pages/dashboardPages/CareersListPage';
+import CareerUpdatePage from '../pages/dashboardPages/CareerUpdatePage';
 import Checkout from '../pages/dashboardPages/Checkout';
 import DashboardPage from '../pages/dashboardPages/DashboardPage';
 import EditTestPage from '../pages/dashboardPages/EditTestPage';
@@ -33,6 +34,7 @@ const DashboardRoutes = () => {
         <Route path='payment' element={<Payment />} />
         <Route path='checkout' element={<Checkout />} />
         <Route path='edittest/:id' element={<EditTestPage />} />
+        <Route path='editcareer/:id' element={<CareerUpdatePage />} />
       </Route>
     </Routes>
   );
