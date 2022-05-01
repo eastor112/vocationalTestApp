@@ -1,11 +1,17 @@
 import React, {
   useState, useRef, useLayoutEffect, useEffect,
 } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { logoutSimple } from '../../../context/actions/auth-actions';
 
 const NavBarFlow = () => {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const {
+    isAuthenticated,
+    user: { names, role, profile, email },
+  } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const userMenuButton = useRef();
@@ -46,6 +52,7 @@ const NavBarFlow = () => {
     });
     setDrop(!drop);
   };
+
   useLayoutEffect(() => {
     if (isAuthenticated) {
       setPos(userMenuButton.current.getBoundingClientRect().x);
@@ -62,12 +69,19 @@ const NavBarFlow = () => {
     setShowMenu(!showMenu);
   };
 
+  const googleLogout = () => {
+    dispatch(logoutSimple());
+  };
+
   return (
     <nav className='fixed z-10 w-full bg-primary-1 border-gray-200 px-6 md:px-20 py-2.5 dark:bg-gray-800'>
 
       <div className='container flex flex-wrap justify-between items-center mx-auto'>
 
-        <NavLink to='/' className='flex items-center'>
+        <NavLink
+          to='/'
+          className='flex items-center'
+        >
 
           <svg
             className='w-10 h-10 mr-2 text-light-1'
@@ -87,6 +101,7 @@ const NavBarFlow = () => {
 
           <span className='self-center hidden sm:block text-xl font-semibold whitespace-nowrap text-light-1 dark:text-white'>My Future, My Choice</span>
         </NavLink>
+
         <div className='flex md:order-2 items-center'>
 
           {isAuthenticated ? (
@@ -98,7 +113,15 @@ const NavBarFlow = () => {
                 className='flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300'
               >
                 <span className='sr-only'>Open user menu</span>
-                <img className='w-8 h-8 rounded-full' src='https://via.placeholder.com/100?text=user' alt='userphoto' />
+
+                <figure className='w-9 h-9 rounded-full shadow-teal-300 shadow overflow-hidden flex items-center justify-center'>
+                  <img
+                    className='w-full'
+                    src={profile !== '' ? profile : require('../../../assets/avatar-male.png')}
+                    alt='userphoto'
+                  />
+                </figure>
+
               </button>
               <div
                 data-testid='user-menu'
@@ -107,33 +130,58 @@ const NavBarFlow = () => {
                 id='dropdown'
               >
                 <div className='py-5 px-4'>
-                  <span className='block text-sm text-light-2'>User Name</span>
-                  <span className='block text-sm font-normal text-terciary-2 truncat'>name@flowbite.com</span>
+                  <span className='block text-sm text-light-2'>{names}</span>
+                  <span className='block text-sm font-normal text-terciary-2 truncat'>{email}</span>
                 </div>
 
                 <ul className='py-1' aria-labelledby='dropdown'>
                   <li>
-                    <NavLink to='/dashboard' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Dashboard</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to='/dashboard/user/profile' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Profile</NavLink>
+                    <NavLink
+                      to={role === 'ADMIN' ? '/dashboard' : '/dashboard/general'}
+                      className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'
+                    >
+                      Dashboard
+                    </NavLink>
                   </li>
 
                   <li>
-                    <NavLink to='/' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Sign out</NavLink>
+                    <NavLink
+                      to='/dashboard/user/profile'
+                      className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'
+                    >
+                      Profile
+                    </NavLink>
+                  </li>
+
+                  <li>
+                    <button
+                      type='button'
+                      className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2 w-full text-left'
+                      onClick={googleLogout}
+                    >
+                      Logout
+                    </button>
                   </li>
                 </ul>
               </div>
             </span>
 
           ) : (
-            <button
-              type='button'
-              className='ml-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700'
-              onClick={handleSignUpClick}
-            >
-              Sign Up
-            </button>
+            <div className='flex items-center gap-2'>
+              <NavLink
+                to='/login'
+                className='block py-2 pr-4 pl-3 text-light-1 bg-primary-2 rounded md:bg-transparent md:hover:font-semibold md:p-0'
+              >
+                Login
+              </NavLink>
+              <button
+                type='button'
+                className='ml-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700'
+                onClick={handleSignUpClick}
+              >
+                Sign Up
+              </button>
+            </div>
           )}
 
           <button
@@ -153,17 +201,35 @@ const NavBarFlow = () => {
         <div data-testid='main-menu' className={`justify-between items-center w-full md:flex md:w-auto md:order-1 ${showMenu ? '' : 'hidden'}`} id='mobile-menu-4'>
           <ul className='flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-normal'>
             <li>
-              <NavLink onClick={() => setShowMenu(!showMenu)} to='/' className='block py-2 pr-4 pl-3 text-light-1 bg-primary-2 rounded md:bg-transparent md:hover:font-semibold md:p-0' aria-current='page'>
+              <NavLink
+                onClick={() => setShowMenu(!showMenu)}
+                to='/'
+                className={({ isActive }) => {
+                  return `block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0 ${isActive ? 'font-bold text-teal-500' : ''}`;
+                }}
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink onClick={() => setShowMenu(!showMenu)} to='about' className='block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0'>
+              <NavLink
+                onClick={() => setShowMenu(!showMenu)}
+                to='about'
+                className={({ isActive }) => {
+                  return `block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0 ${isActive ? 'font-bold text-teal-500' : ''}`;
+                }}
+              >
                 About us
               </NavLink>
             </li>
             <li>
-              <NavLink onClick={() => setShowMenu(!showMenu)} to='contact' className='block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0'>
+              <NavLink
+                onClick={() => setShowMenu(!showMenu)}
+                to='contact'
+                className={({ isActive }) => {
+                  return `block py-2 pr-4 pl-3 text-light-1 border-b  border-gray-100 hover:bg-primary-2 md:hover:bg-transparent md:border-0 md:hover:text-light-2 md:hover:font-semibold md:p-0 ${isActive ? 'font-bold text-teal-500' : ''}`;
+                }}
+              >
                 Contact
               </NavLink>
             </li>
