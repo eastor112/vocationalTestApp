@@ -1,12 +1,17 @@
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import App from '../App';
+import { store } from '../context/store/store';
 
 beforeAll(() => {
   render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>,
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+      ,
+    </Provider>,
   );
 });
 

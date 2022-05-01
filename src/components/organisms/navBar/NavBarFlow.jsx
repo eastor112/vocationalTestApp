@@ -1,9 +1,12 @@
 import React, {
   useState, useRef, useLayoutEffect, useEffect,
 } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 const NavBarFlow = () => {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
   const navigate = useNavigate();
   const userMenuButton = useRef();
 
@@ -43,12 +46,16 @@ const NavBarFlow = () => {
     });
     setDrop(!drop);
   };
-
   useLayoutEffect(() => {
-    setPos(userMenuButton.current.getBoundingClientRect().x);
-    setStyle({
-      position: 'absolute', inset: '0px auto auto 0px', margin: '0px', transform: `translate3d(${pos > 124 ? pos - 124 : 0}px, 60px, 0px)`,
-    });
+    if (isAuthenticated) {
+      setPos(userMenuButton.current.getBoundingClientRect().x);
+      setStyle({
+        position: 'absolute',
+        inset: '0px auto auto 0px',
+        margin: '0px',
+        transform: `translate3d(${pos > 124 ? pos - 124 : 0}px, 60px, 0px)`,
+      });
+    }
   }, [pos]);
 
   const handleTogleMenu = () => {
@@ -80,52 +87,54 @@ const NavBarFlow = () => {
 
           <span className='self-center hidden sm:block text-xl font-semibold whitespace-nowrap text-light-1 dark:text-white'>My Future, My Choice</span>
         </NavLink>
-
         <div className='flex md:order-2 items-center'>
 
-          <button
-            ref={userMenuButton}
-            onClick={handleDropClick}
-            type='button'
-            className='flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300'
-          >
-            <span className='sr-only'>Open user menu</span>
-            <img className='w-8 h-8 rounded-full' src='https://via.placeholder.com/100?text=user' alt='userphoto' />
-          </button>
+          {isAuthenticated ? (
+            <span>
+              <button
+                ref={userMenuButton}
+                onClick={handleDropClick}
+                type='button'
+                className='flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300'
+              >
+                <span className='sr-only'>Open user menu</span>
+                <img className='w-8 h-8 rounded-full' src='https://via.placeholder.com/100?text=user' alt='userphoto' />
+              </button>
+              <div
+                data-testid='user-menu'
+                className={`z-50 my-8 text-base list-none bg-primary-1  divide-y divide-gray-100 shadow ${drop ? 'block' : 'hidden'}`}
+                style={style}
+                id='dropdown'
+              >
+                <div className='py-5 px-4'>
+                  <span className='block text-sm text-light-2'>User Name</span>
+                  <span className='block text-sm font-normal text-terciary-2 truncat'>name@flowbite.com</span>
+                </div>
 
-          {/* Modal User Menu */}
-          <div
-            data-testid='user-menu'
-            className={`z-50 my-8 text-base list-none bg-primary-1  divide-y divide-gray-100 shadow ${drop ? 'block' : 'hidden'}`}
-            style={style}
-            id='dropdown'
-          >
-            <div className='py-5 px-4'>
-              <span className='block text-sm text-light-2'>User Name</span>
-              <span className='block text-sm font-normal text-terciary-2 truncat'>name@flowbite.com</span>
-            </div>
+                <ul className='py-1' aria-labelledby='dropdown'>
+                  <li>
+                    <NavLink to='/dashboard' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Dashboard</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to='/dashboard/user/profile' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Profile</NavLink>
+                  </li>
 
-            <ul className='py-1' aria-labelledby='dropdown'>
-              <li>
-                <NavLink to='/dashboard' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Dashboard</NavLink>
-              </li>
-              <li>
-                <NavLink to='/dashboard/user/profile' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Profile</NavLink>
-              </li>
+                  <li>
+                    <NavLink to='/' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Sign out</NavLink>
+                  </li>
+                </ul>
+              </div>
+            </span>
 
-              <li>
-                <NavLink to='/' className='block py-2 px-4 text-sm text-light-1 hover:bg-primary-2'>Sign out</NavLink>
-              </li>
-            </ul>
-          </div>
-
-          <button
-            type='button'
-            className='ml-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700'
-            onClick={handleSignUpClick}
-          >
-            Sign Up
-          </button>
+          ) : (
+            <button
+              type='button'
+              className='ml-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700'
+              onClick={handleSignUpClick}
+            >
+              Sign Up
+            </button>
+          )}
 
           <button
             onClick={handleTogleMenu}

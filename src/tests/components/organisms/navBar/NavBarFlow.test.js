@@ -1,7 +1,12 @@
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+import configureStore from 'redux-mock-store';
+import { store } from '../../../../context/store/store';
 import NavBarFlow from '../../../../components/organisms/navBar/NavBarFlow';
+
+const mockStore = configureStore();
 
 beforeAll(() => {
 
@@ -10,9 +15,11 @@ beforeAll(() => {
 describe('testing NavBarFlow', () => {
   test('should render a home, about, and contact links', () => {
     const wraper = render(
-      <BrowserRouter>
-        <NavBarFlow />
-      </BrowserRouter>,
+      <Provider store={store}>
+        <BrowserRouter>
+          <NavBarFlow />
+        </BrowserRouter>
+      </Provider>,
     );
 
     const home = wraper.getByText(/home/i);
@@ -26,9 +33,11 @@ describe('testing NavBarFlow', () => {
 
   test('should render a text Logo', () => {
     render(
-      <BrowserRouter>
-        <NavBarFlow />
-      </BrowserRouter>,
+      <Provider store={store}>
+        <BrowserRouter>
+          <NavBarFlow />
+        </BrowserRouter>
+      </Provider>,
     );
 
     const element = screen.getByText(/My Future, My Choice/i);
@@ -37,10 +46,13 @@ describe('testing NavBarFlow', () => {
   });
 
   test('should open dropdown menu', async () => {
+    const fakeStore = mockStore({ auth: { isAuthenticated: true } });
     render(
-      <BrowserRouter>
-        <NavBarFlow />
-      </BrowserRouter>,
+      <Provider store={fakeStore}>
+        <BrowserRouter>
+          <NavBarFlow />
+        </BrowserRouter>
+      </Provider>,
     );
 
     const element = screen.getByText(/Open user menu/i);
@@ -56,9 +68,11 @@ describe('testing NavBarFlow', () => {
 
   test('should open main menu', async () => {
     render(
-      <BrowserRouter>
-        <NavBarFlow />
-      </BrowserRouter>,
+      <Provider store={store}>
+        <BrowserRouter>
+          <NavBarFlow />
+        </BrowserRouter>
+      </Provider>,
     );
 
     const element = screen.getByText(/Open main menu/i);
@@ -73,9 +87,11 @@ describe('testing NavBarFlow', () => {
 
   test('should close main menu when click home navlink', async () => {
     render(
-      <BrowserRouter>
-        <NavBarFlow />
-      </BrowserRouter>,
+      <Provider store={store}>
+        <BrowserRouter>
+          <NavBarFlow />
+        </BrowserRouter>
+      </Provider>,
     );
 
     const element = screen.getByText(/Open main menu/i);
@@ -99,9 +115,11 @@ describe('testing NavBarFlow', () => {
 
   test('should close main menu when click about navlink', async () => {
     render(
-      <BrowserRouter>
-        <NavBarFlow />
-      </BrowserRouter>,
+      <Provider store={store}>
+        <BrowserRouter>
+          <NavBarFlow />
+        </BrowserRouter>
+      </Provider>,
     );
 
     const element = screen.getByText(/Open main menu/i);
@@ -125,9 +143,11 @@ describe('testing NavBarFlow', () => {
 
   test('should close main menu when click contact navlink', async () => {
     render(
-      <BrowserRouter>
-        <NavBarFlow />
-      </BrowserRouter>,
+      <Provider store={store}>
+        <BrowserRouter>
+          <NavBarFlow />
+        </BrowserRouter>
+      </Provider>,
     );
 
     const element = screen.getByText(/Open main menu/i);
@@ -150,10 +170,13 @@ describe('testing NavBarFlow', () => {
   });
 
   test('should close user menu when resize window', async () => {
+    const fakeStore = mockStore({ auth: { isAuthenticated: true } });
     render(
-      <BrowserRouter>
-        <NavBarFlow />
-      </BrowserRouter>,
+      <Provider store={fakeStore}>
+        <BrowserRouter>
+          <NavBarFlow />
+        </BrowserRouter>
+      </Provider>,
     );
 
     const element = screen.getByText(/Open user menu/i);
@@ -175,9 +198,11 @@ describe('testing NavBarFlow', () => {
 
   test('should got to signup page', async () => {
     render(
-      <BrowserRouter>
-        <NavBarFlow />
-      </BrowserRouter>,
+      <Provider store={store}>
+        <BrowserRouter>
+          <NavBarFlow />
+        </BrowserRouter>
+      </Provider>,
     );
 
     const element = screen.getByText(/sign up/i);
