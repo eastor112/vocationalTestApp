@@ -67,6 +67,9 @@ module.exports = {
         11: '5.5rem',
         12: '6rem',
       },
+      transitionProperty: {
+        'width': 'width',
+      },
     },
     fontFamily: {
       roboto: ['Roboto', 'sans-serif'],
