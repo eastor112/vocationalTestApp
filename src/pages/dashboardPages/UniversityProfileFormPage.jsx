@@ -1,22 +1,53 @@
-import { useOutletContext } from 'react-router-dom';
-import FileUpload from '../../components/molecules/fileUpload/FileUpload';
-import UniversityForm from '../../components/molecules/universityForm/UniversityForm';
+/* eslint-disable no-console */
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useOutletContext, useParams } from 'react-router-dom';
+
+import { getUniversityById } from '../../services/universitiesServices';
+import UniversityPrincipalForm from '../../components/molecules/universityForm/UniversityPrincipalForm';
+import Tabs from '../../components/organisms/tabs/Tabs';
+import UniversityAdmisionForm from '../../components/molecules/universityForm/UniversityAdmisionForm';
+import UniversityMediaForm from '../../components/molecules/universityForm/UniversityMediaForm';
 
 const UniversityProfileFormPage = () => {
   const width = useOutletContext();
+  const { part } = useParams();
+
+  const { user: { university } } = useSelector((state) => state.auth);
+
+  const [activeUniversity, setActiveUniversity] = useState({});
+
+  useEffect(() => {
+    getUniversityById(university)
+      .then((data) => {
+        setActiveUniversity(data);
+      });
+  }, []);
+
   return (
-    <main className={`${width === 64 ? 'pt-4 pr-10 pl-72 bg-light-1 min-h-screen' : ' pt-4 pr-10 pl-24 bg-light-1 min-h-screen'}`}>
-      <div className='mt-5'>
-        <h2 className='pb-10 text-2xl font-bold text-dark-1 my-4'>University Profile</h2>
-        <div className='md: w-2/5'>
-          <img src={require('../../assets/img.png')} alt='' />
-        </div>
-        <div className='grid grid-cols-1 justify-start items-cent pt-8'>
-          <FileUpload />
-        </div>
-      </div>
-      <div className='pt-16'>
-        <UniversityForm />
+    <main className={`min-h-screen w-screen pt-10 pr-10 pb-6 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
+
+      <div className='m-auto bg-white px-8 pt-6 pb-8 w-8/12  rounded-sm border border-gray-500'>
+
+        <Tabs />
+
+        {
+          (part === 'principal' && activeUniversity.id) && (
+            <UniversityPrincipalForm
+              university={activeUniversity}
+            />
+          )
+        }
+
+        {
+          (part === 'admision' && activeUniversity.id) && (
+            <UniversityAdmisionForm university={activeUniversity} />)
+        }
+
+        {
+          (part === 'media' && activeUniversity.id) && (
+            <UniversityMediaForm university={activeUniversity} />)
+        }
       </div>
     </main>
   );

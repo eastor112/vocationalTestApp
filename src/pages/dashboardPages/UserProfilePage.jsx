@@ -155,7 +155,7 @@ const UserProfilePage = () => {
                 type='text'
                 name='role'
                 label='Type account'
-                value={formValues.role}
+                value={formValues.role.toLowerCase()}
                 onChange={handleFormChange}
                 disable
               />

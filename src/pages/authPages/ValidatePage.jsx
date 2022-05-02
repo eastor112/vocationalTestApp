@@ -71,7 +71,7 @@ const ValidatePage = () => {
 
             <p className='text-gray-600 text-center'>
               Go to the panel
-              <Link to='/dashboard' className='ml-1 underline text-blue-500 hover:text-blue-700'>here</Link>
+              <Link to='/dashboard/general' className='ml-1 underline text-blue-500 hover:text-blue-700'>here</Link>
             </p>
 
           </div>

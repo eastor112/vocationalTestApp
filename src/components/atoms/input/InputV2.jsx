@@ -4,7 +4,8 @@ const InputV2 = ({
   type,
   name,
   label,
-  value = '', onChange = () => { },
+  value = '',
+  onChange = () => { },
   autocomplete = false,
   disable = false,
 }) => {
@@ -41,7 +42,7 @@ InputV2.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.number]).isRequired,
   onChange: PropTypes.func.isRequired,
   autocomplete: PropTypes.bool,
   disable: PropTypes.bool,

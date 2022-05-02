@@ -92,7 +92,7 @@ const Sidebar = ({ setWidth }) => {
 
               <li aria-label='profile-institution'>
                 <NavLink
-                  to='/dashboard/institution/profile'
+                  to='/dashboard/institution/principal'
                   className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
                 >
                   <svg xmlns='http://www.w3.org/2000/svg' className='flex-shrink-0 w-6 h-6 transition duration-75' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
