@@ -192,3 +192,57 @@ export const deleteUniversityImages = async (id, target, image) => {
     return error.message;
   }
 };
+
+export const updateUniversityProcess = async (id, process) => {
+  const URL = `${BASE_URL}/api/universities/${id}`;
+
+  const token = localStorage.getItem('token');
+
+  const body = {
+    process,
+  };
+
+  const requestOptions = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(body),
+  };
+
+  try {
+    const response = await fetch(URL, requestOptions);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const updateUniversitySocialMedia = async (id, socialMedia) => {
+  const URL = `${BASE_URL}/api/universities/${id}`;
+  const token = localStorage.getItem('token');
+
+  const body = {
+    socialMedia,
+  };
+
+  const requestOptions = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(body),
+  };
+
+  try {
+    const response = await fetch(URL, requestOptions);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};

@@ -8,6 +8,8 @@ import UniversityPrincipalForm from '../../components/molecules/universityForm/U
 import Tabs from '../../components/organisms/tabs/Tabs';
 import UniversityAdmisionForm from '../../components/molecules/universityForm/UniversityAdmisionForm';
 import UniversityMediaForm from '../../components/molecules/universityForm/UniversityMediaForm';
+import UniversitySocialMedia from '../../components/molecules/universityForm/UniversitySocialMedia';
+import UniversityOffersComponent from '../../components/molecules/universityForm/UniversityOffersComponent';
 
 const UniversityProfileFormPage = () => {
   const width = useOutletContext();
@@ -41,12 +43,34 @@ const UniversityProfileFormPage = () => {
 
         {
           (part === 'admision' && activeUniversity.id) && (
-            <UniversityAdmisionForm university={activeUniversity} />)
+            <UniversityAdmisionForm
+              universityId={activeUniversity.id}
+              process={activeUniversity.process}
+            />
+          )
         }
 
         {
           (part === 'media' && activeUniversity.id) && (
             <UniversityMediaForm university={activeUniversity} />)
+        }
+
+        {
+          (part === 'social' && activeUniversity.id) && (
+            <UniversitySocialMedia
+              universityId={activeUniversity.id}
+              socialMedia={activeUniversity.socialMedia}
+            />
+          )
+        }
+
+        {
+          (part === 'offers' && activeUniversity.id) && (
+            <UniversityOffersComponent
+              universityId={activeUniversity.id}
+              offer={activeUniversity.offer}
+            />
+          )
         }
       </div>
     </main>
