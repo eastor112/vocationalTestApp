@@ -26,38 +26,52 @@ const UniversityOffersComponent = ({ universityId, offer }) => {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
-    }).then(() => {
-      Swal.fire({
-        title: 'Updating...',
-        html: 'Wait a moment...',
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        didOpen: () => {
-          Swal.showLoading();
-        },
-      });
-
-      destroyOffer(id)
-        .then(() => {
-          Swal.fire({
-            title: 'Success!',
-            icon: 'success',
-            html: 'Offer deleted successfully!',
-            confirmButtonText: 'Ok',
-          }).then(() => {
-            Swal.close();
-          });
-        })
-        .catch((err) => {
-          Swal.fire({
-            title: 'Error!',
-            icon: 'error',
-            html: err.message,
-            confirmButtonText: 'Ok',
-          }).then(() => {
-            Swal.close();
-          });
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Updating...',
+          html: 'Wait a moment...',
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          },
         });
+
+        Swal.fire({
+          title: 'Updating...',
+          html: 'Wait a moment...',
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
+
+        destroyOffer(id)
+          .then(() => {
+            Swal.fire({
+              title: 'Success!',
+              icon: 'success',
+              html: 'Offer deleted successfully!',
+              confirmButtonText: 'Ok',
+            }).then(() => {
+              Swal.close();
+            });
+          })
+          .catch((err) => {
+            Swal.fire({
+              title: 'Error!',
+              icon: 'error',
+              html: err.message,
+              confirmButtonText: 'Ok',
+            }).then(() => {
+              Swal.close();
+            });
+          });
+
+        Swal.close();
+      }
     });
   };
 
@@ -94,7 +108,7 @@ const UniversityOffersComponent = ({ universityId, offer }) => {
                     <figure className='h-40 max-w-xs overflow-hidden'>
                       {
                         academicOffer.photo !== ''
-                        && <img className='w-full' src={academicOffer.photo} alt={academicOffer.name} />
+                        && <img className='max-w-full max-h-full' src={academicOffer.photo} alt={academicOffer.name} />
                       }
                     </figure>
                     <div>
@@ -152,7 +166,12 @@ const UniversityOffersComponent = ({ universityId, offer }) => {
                               </span>
                             )
                             : (
-                              <a href='_blank'>
+                              <a
+                                className='text-blue-500 hover:text-blue-600 hover:underline'
+                                href={academicOffer.url}
+                                target='_blank'
+                                rel='noreferrer'
+                              >
                                 {academicOffer.url}
                               </a>
                             )
@@ -172,7 +191,6 @@ const UniversityOffersComponent = ({ universityId, offer }) => {
                   </div>
                 </Accordion.Content>
               </Accordion.Panel>
-
             </Accordion>
           ))
         }

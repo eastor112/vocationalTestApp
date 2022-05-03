@@ -77,5 +77,53 @@ export const destroyOffer = async (offerId) => {
 };
 
 export const updateOffer = async (offerId, offer) => {
+  const URL = `${BASE_URL}/api/offers/${offerId}`;
 
+  const token = localStorage.getItem('token');
+
+  const offerCopy = { ...offer };
+
+  delete offerCopy.file;
+
+  try {
+    const response1 = await fetch(URL, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(offerCopy),
+    });
+
+    if (response1.status !== 200) {
+      return Promise.reject(new Error('Error updating offer'));
+    }
+
+    let updatedOffer = await response1.json();
+
+    if (offer.file) {
+      const formData = new FormData();
+      formData.append('photo', offer.file);
+
+      const response2 = await fetch(URL, {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      if (response2.status !== 200) {
+        return Promise.reject(new Error('Error uploading photo'));
+      }
+
+      updatedOffer = await response2.json();
+
+      return updatedOffer;
+    }
+
+    return updatedOffer;
+  } catch (error) {
+    return error;
+  }
 };

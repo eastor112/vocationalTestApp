@@ -6,7 +6,7 @@ import { useForm } from '../../../hooks/useForm';
 import { getAllCareersNames } from '../../../services/careersServices';
 import InputFile from '../../atoms/input/InputFile';
 import InputV2 from '../../atoms/input/InputV2';
-import { createOffer } from '../../../services/offersServices';
+import { createOffer, updateOffer } from '../../../services/offersServices';
 
 // university
 // career
@@ -19,7 +19,7 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
     description: creating ? '' : activeOffer.description,
     url: creating ? '' : activeOffer.url,
     photo: creating ? '' : activeOffer.photo,
-    career: creating ? '' : activeOffer.career,
+    career: creating ? '' : activeOffer.career.name,
   });
 
   const {
@@ -27,6 +27,7 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
     duration,
     description,
     url,
+    photo,
     career,
   } = formValues;
 
@@ -80,7 +81,33 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
   };
 
   const handleUpdateSubmit = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: 'Updating...',
+      html: 'Wait a moment...',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
 
+    updateOffer(activeOffer._id, formValues)
+      .then(() => {
+        Swal.close();
+        closeModal();
+      })
+      .catch((err) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          html: err.message,
+          confirmButtonText: 'Ok',
+        }).then(() => {
+          Swal.close();
+          closeModal();
+        });
+      });
   };
 
   return (
@@ -175,7 +202,7 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
 
           <figure className='h-10 w-10 overflow-hidden flex justify-center items-center'>
             <img
-              src={formValues.profile ? formValues.profile : 'https://via.placeholder.com/150'}
+              src={photo !== '' ? photo : 'https://via.placeholder.com/150'}
               alt='profile-offer'
             />
           </figure>
