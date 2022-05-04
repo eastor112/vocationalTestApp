@@ -75,7 +75,7 @@ const TestCard = () => {
 
         <div className='flex gap-1 mt-2 flex-wrap'>
 
-          <Link to='/dashboard/edittest/:id'>
+          <Link to='institution/:part'>
             <button
               type='button'
               className='flex text-green-500 hover:text-white border border-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded text-xs px-1 py-1.5 text-center mr-1 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800'
@@ -87,7 +87,7 @@ const TestCard = () => {
             </button>
           </Link>
 
-          <Link to='/dashboard/edittest/:id'>
+          <Link to='institution/:part'>
             <button
               type='button'
               className='flex text-yellow-400 hover:text-white border border-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded text-xs px-1 py-1.5 text-center mr-1 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900'
