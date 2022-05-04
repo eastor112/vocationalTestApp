@@ -1,7 +1,7 @@
 const BASE_URL = process.env.REACT_APP_ENV === 'develop' ? process.env.REACT_APP_API_URL_DEV : process.env.REACT_APP_API_URL_PROD;
 
-export const getAllCareers = async () => {
-  const URL = `${BASE_URL}/api/careers`;
+export const getAllCareers = async (limit = 10, page = 1) => {
+  const URL = `${BASE_URL}/api/careers?limit=${limit}&page=${page}`;
   try {
     const response = await fetch(URL);
     const data = await response.json();

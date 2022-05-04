@@ -1,56 +1,20 @@
-const careerExample = {
-  field: {
-    description: 'Social work implies entering a world where empathy and the passion to help must be dominant forces. The main function of a social worker is to promote social change and generate projects that increase the well-being and quality of life of people. Almost all companies and institutions have a professional of this type on their team, since social matters are key everywhere.',
-    list: [
-      'Social worker in public entities.',
-      'In Human Resources.',
-      'In hospitals and health centers.',
-      'As a social monitor, director in residence and shelter homes.',
-      'Social manager in charitable foundations.',
-    ],
-    references: [
-      'https://www.carrerasadistancia.com.pe/licenciatura-en-trabajo-social/articulo-trabajo-social-campo-laboral#:~:text=La%20principal%20funci%C3%B3n%20de%20un,es%20clave%20en%20todas%20partes.',
-    ],
-  },
-  skills: {
-    'description': 'The social worker must have the ability to work and assess their needs and circumstances together with individuals, families, groups, organizations and communities.',
-    'list': [
-      'Positive attitude.',
-      'Listening skills.',
-      'Skills to negotiate.',
-      'Report writing skills.',
-      'Ability to gain the trust of others.',
-      'Ability to manage workload.',
-      'Able to remain calm under pressure.',
-      'Effective communication',
-    ],
-    references: [
-      'https://www.educaweb.com/profesion/trabajador-social-239/',
-      'http://www.trabajosocialvalladolidsegovia.org/perfilprofesional.php',
-    ],
-  },
-  name: 'Social Work 1',
-  description: "Social work is a profession that promotes social change and development, social cohesion and the empowerment of people. Social work engages people and structures to deal with life's challenges and increase well-being.",
-  photo: 'https://res.cloudinary.com/dgieekaqd/image/upload/v1650169148/vocationalTestApp/careers/v2accsivauz7gn1mhqgm.png',
-  createdAt: '2022-04-03T21:14:02.324Z',
-  updatedAt: '2022-04-17T04:19:09.806Z',
-  id: '624a0e1a878cdf793b54ba7e',
-};
+/* eslint-disable max-len */
+import PropTypes from 'prop-types';
 
-const CareerCard = () => {
+const CareerCard = ({ career }) => {
   return (
     <div className='flex flex-col items-center bg-white rounded-md border shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 overflow-hidden'>
       <div className='flex flex-col justify-between p-4 leading-normal'>
         <h5 className='mb-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white'>
-          {careerExample.name}
+          {career.name}
         </h5>
 
         <div className='mb-3 text-xs text-gray-700 dark:text-gray-400 flex'>
           <figure className='h-10 w-24 mr-2 overflow-hidden flex justify-center items-center'>
-            <img className='max-h-full ' src={careerExample.photo} alt='' />
+            <img className='max-h-full ' src={career.photo} alt={career.name} />
           </figure>
           <p>
-            {`${careerExample.description.substring(0, 80)}...`}
+            {`${career.description.substring(0, 80)}...`}
           </p>
 
         </div>
@@ -58,7 +22,7 @@ const CareerCard = () => {
         <hr />
         <div aria-label='field-list'>
           <span className='font-medium mr-2 text-xs'>Labor field:</span>
-          {careerExample.field.list.slice(0, 1).map((item, index) => (
+          {career.field.list.slice(0, 1).map((item, index) => (
             <span key={`${index * 3}sdf`} className='text-xs text-gray-700 dark:text-gray-400'>
               {`${item} `}
             </span>
@@ -70,7 +34,7 @@ const CareerCard = () => {
         <div aria-label='skill-list'>
           <span className='font-medium mr-2 text-xs'>Required skills:</span>
 
-          {careerExample.skills.list.slice(0, 2).map((item, index) => (
+          {career.skills.list.slice(0, 2).map((item, index) => (
             <span key={`${index * 3}sdf`} className='text-xs text-gray-700 dark:text-gray-400'>
               {`${item} `}
             </span>
@@ -113,6 +77,11 @@ const CareerCard = () => {
       </div>
     </div>
   );
+};
+
+CareerCard.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  career: PropTypes.object.isRequired,
 };
 
 export default CareerCard;

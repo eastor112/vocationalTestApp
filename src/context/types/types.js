@@ -36,4 +36,7 @@ export const types = {
   deleteUniversityOffer: '[UNIVERSITIES] DELETE_UNIVERSITY_OFFER',
   updateUniversitiesOffer: '[UNIVERSITIES] UPDATE_UNIVERSITIES_OFFER',
 
+  setActiveCareer: '[CAREERS] SET_ACTIVE_CAREER',
+  setCareers: '[CAREERS] SET_CAREERS',
+  setPageCareers: '[CAREERS] SET_PAGE_CAREERS',
 };

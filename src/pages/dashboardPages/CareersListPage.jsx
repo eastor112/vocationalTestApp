@@ -1,8 +1,37 @@
 import { useOutletContext } from 'react-router-dom';
+import { Label, Select } from 'flowbite-react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import CareerCard from '../../components/organisms/simpleCard/CareerCard';
+import { setCareersAction, setPageCareersAction } from '../../context/actions/careers-actions';
+import { useForm } from '../../hooks/useForm';
 
 const CareersListPage = () => {
   const width = useOutletContext();
+
+  const { formValues, handleFormChange } = useForm({
+    careersByPage: 6,
+  });
+
+  const { careers, page, totalPages, totalCareers } = useSelector((state) => state.careers);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setCareersAction(formValues.careersByPage, page));
+  }, [formValues.careersByPage, page]);
+
+  const handleNext = () => {
+    if (page < totalPages) {
+      dispatch(setPageCareersAction(page + 1));
+    }
+  };
+
+  const handlePrevious = () => {
+    if (page > 1) {
+      dispatch(setPageCareersAction(page - 1));
+    }
+  };
 
   return (
     <main className={`min-h-screen w-screen pt-4 pr-10 pb-12 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
@@ -17,16 +46,71 @@ const CareersListPage = () => {
         </div>
       </div>
 
+      <div className='mb-6'>
+        <Label
+          className='mb-2 block'
+          htmlFor='countries'
+        >
+          Careers by page
+        </Label>
+        <Select
+          id='countries'
+          name='careersByPage'
+          value={formValues.careersByPage}
+          onChange={handleFormChange}
+
+        >
+          <option value={4}>4</option>
+          <option value={6}>6</option>
+          <option value={8}>8</option>
+          <option value={10}>10</option>
+        </Select>
+      </div>
+
       <section className='grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-y-5 gap-x-4'>
-        <CareerCard />
-        <CareerCard />
-        <CareerCard />
-        <CareerCard />
-        <CareerCard />
-        <CareerCard />
-        <CareerCard />
-        <CareerCard />
+        {
+          careers.map((career) => (
+            <CareerCard key={uuidv4()} career={career} />
+          ))
+        }
       </section>
+
+      <hr className='mt-8' />
+
+      <div aria-label='pagination' className='flex flex-col items-center'>
+
+        <span className='text-sm text-gray-700 dark:text-gray-400'>
+          Showing
+          <span className='font-semibold text-gray-900 dark:text-white mx-1'>{formValues.careersByPage * (page - 1) + 1}</span>
+          to
+          <span className='font-semibold text-gray-900 dark:text-white mx-1'>
+            {
+              (formValues.careersByPage * page) < totalCareers
+                ? (formValues.careersByPage * page) : totalCareers
+            }
+          </span>
+          of
+          <span className='font-semibold text-gray-900 dark:text-white mx-1'>{totalCareers}</span>
+          Careers
+        </span>
+
+        <div className='inline-flex mt-2 xs:mt-0'>
+          <button
+            type='button'
+            className='py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
+            onClick={handlePrevious}
+          >
+            Prev
+          </button>
+          <button
+            type='button'
+            className='py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-r border-0 border-l border-gray-700 hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
+            onClick={handleNext}
+          >
+            Next
+          </button>
+        </div>
+      </div>
 
       <button type='button' className='h-11 w-11  rounded-full bottom-5 right-5 text-white bg-purple-500 flex justify-center items-center shadow-md shadow-gray-500 hover:bg-purple-600 fixed'>
         <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
