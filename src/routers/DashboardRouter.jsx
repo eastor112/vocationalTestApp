@@ -26,7 +26,7 @@ const DashboardRoutes = () => {
         <Route path='tests/:testId' element={<VocationalTestPage />} />
         <Route path='testsresults' element={<SelectTestResultPage />} />
         <Route path='testsresults/:resultId' element={<VocationalTestResultPage />} />
-        <Route path='institution/profile' element={<UniversityProfileFormPage />} />
+        <Route path='institution/:part' element={<UniversityProfileFormPage />} />
         <Route path='user/profile' element={<UserProfilePage />} />
         <Route path='users' element={<UsersListPage />} />
         <Route path='careers' element={<CareersListPage />} />

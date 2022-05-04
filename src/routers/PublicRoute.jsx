@@ -6,11 +6,13 @@ import { refreshTokenApi } from '../services/authServices';
 import { loginSimple } from '../context/actions/auth-actions';
 import GlobalSpiner from '../components/organisms/spiner/GlobalSpiner';
 
-const PublicRoute = ({ route, children }) => {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+const PublicRoute = ({ children }) => {
+  const { isAuthenticated, user: { role } } = useSelector((state) => state.auth);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const route = role === 'ADMIN' ? '/dashboard' : '/dashboard/general';
 
   const token = localStorage.getItem('token');
 
@@ -26,7 +28,12 @@ const PublicRoute = ({ route, children }) => {
             setIsLoading(false);
           }, 1000);
 
-          navigate(localStorage.getItem('lastPath') || '/dashboard');
+          if (role === 'STUDENT' || role === 'INSTITUTION') {
+            navigate(localStorage.getItem('lastPath') || '/dashboard/general');
+          }
+          if (role === 'ADMIN') {
+            navigate(localStorage.getItem('lastPath') || '/dashboard');
+          }
 
           dispatch(loginSimple(user));
         })
@@ -58,7 +65,6 @@ PublicRoute.propTypes = {
     PropTypes.object,
     PropTypes.elementType,
   ]).isRequired,
-  route: PropTypes.string.isRequired,
 };
 
 export default PublicRoute;

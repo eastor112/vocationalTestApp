@@ -27,6 +27,8 @@ export const loginAsync = (email, password) => {
 
 export const logoutSimple = () => {
   localStorage.removeItem('token');
+  localStorage.removeItem('lastPath');
+
   return {
     type: types.logout,
     payload: {},

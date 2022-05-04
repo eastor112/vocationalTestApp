@@ -46,7 +46,12 @@ describe('testing NavBarFlow', () => {
   });
 
   test('should open dropdown menu', async () => {
-    const fakeStore = mockStore({ auth: { isAuthenticated: true } });
+    const fakeStore = mockStore({
+      auth: {
+        isAuthenticated: true,
+        user: { role: 'ADMIN', profile: 'asdf', names: 'asdf', email: 'asdf' },
+      },
+    });
     render(
       <Provider store={fakeStore}>
         <BrowserRouter>
@@ -170,7 +175,12 @@ describe('testing NavBarFlow', () => {
   });
 
   test('should close user menu when resize window', async () => {
-    const fakeStore = mockStore({ auth: { isAuthenticated: true } });
+    const fakeStore = mockStore({
+      auth: {
+        isAuthenticated: true,
+        user: { role: 'ADMIN', profile: 'asdf', names: 'asdf', email: 'asdf' },
+      },
+    });
     render(
       <Provider store={fakeStore}>
         <BrowserRouter>

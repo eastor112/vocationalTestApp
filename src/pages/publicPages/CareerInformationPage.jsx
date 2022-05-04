@@ -27,7 +27,7 @@ const CareerInformationPage = () => {
 
   useEffect(() => {
     if (career.id) {
-      getUniversitiesByCareer('art', 4, page)
+      getUniversitiesByCareer(career.name, 4, page)
         .then((data) => {
           setUniversities(data.results);
           setTotalPages(data.totalPages);
