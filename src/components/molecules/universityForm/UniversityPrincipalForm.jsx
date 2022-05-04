@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { City, Country } from 'country-state-city';
 import PropTypes from 'prop-types';
-import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
 import { useForm } from '../../../hooks/useForm';
 import InputV2 from '../../atoms/input/InputV2';
-import { updatePrincipalUniversity } from '../../../services/universitiesServices';
+import { updateActiveUniversityPrincipalAction } from '../../../context/actions/universities-actions';
 
 const UniversityPrincipalForm = ({ university }) => {
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
+
+  const dispatch = useDispatch();
 
   const { formValues, handleFormChange, setFormValues } = useForm({
     name: university.name,
@@ -40,27 +42,7 @@ const UniversityPrincipalForm = ({ university }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Swal.fire({
-      title: 'Updating...',
-      html: 'Wait a moment...',
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
-    updatePrincipalUniversity(university.id, formValues)
-      .then(() => {
-        Swal.close();
-      })
-      .catch((err) => {
-        Swal.close();
-        Swal.fire({
-          title: 'Error',
-          html: err.message,
-          icon: 'error',
-        });
-      });
+    dispatch(updateActiveUniversityPrincipalAction(university.id, formValues));
   };
 
   const handleSelectChange = (e) => {
@@ -137,7 +119,7 @@ const UniversityPrincipalForm = ({ university }) => {
 
         <InputV2
           type='number'
-          label='National Page'
+          label='National rank'
           name='national'
           value={national}
           onChange={handleFormChange}

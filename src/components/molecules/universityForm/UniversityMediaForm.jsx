@@ -1,13 +1,17 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
+import { deleteImageFromActiveUniversityAction, updateActiveUniversityMediaAction } from '../../../context/actions/universities-actions';
 import { useForm } from '../../../hooks/useForm';
-import { deleteUniversityImages, updateMediaUniversity } from '../../../services/universitiesServices';
 import InputFile from '../../atoms/input/InputFile';
 
 const UniversityMediaForm = ({ university }) => {
-  const { formValues, handleFormChange } = useForm({
+  const dispatch = useDispatch();
+
+  const { formValues, handleFormChange, setFormValues } = useForm({
     logo: '',
-    campus: [],
+    campus: '',
   });
 
   const handleFileChange = (ev) => {
@@ -26,20 +30,38 @@ const UniversityMediaForm = ({ university }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (university.campus.length < 5 || !formValues.campus) {
+      dispatch(updateActiveUniversityMediaAction(university.id, formValues));
 
-    updateMediaUniversity(university.id, formValues)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
+      setFormValues({
+        logo: '',
+        campus: '',
       });
+    } else {
+      Swal.fire({
+        title: 'Error',
+        html: 'You can only add 5 campus',
+        icon: 'error',
+      });
+    }
   };
 
   const handleDeleteImage = (target, img) => {
-    deleteUniversityImages(university.id, target, img)
-      .then(() => { console.log('eliminado'); })
-      .catch((err) => { console.log(err); });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteImageFromActiveUniversityAction(university.id, target, img));
+      }
+    });
   };
 
   return (
@@ -76,21 +98,20 @@ const UniversityMediaForm = ({ university }) => {
         <InputFile
           name='logo'
           onChange={handleFileChange}
-          multiple
         />
       </div>
 
       <div className='flex flex-wrap gap-2'>
         {
-          university.campus.map((campus) => (
+          university.campus.map((campusImg) => (
             <div key={uuidv4()} className='relative'>
               <figure className='h-12 overflow-hidden'>
-                <img className='h-full' src={campus} alt='' />
+                <img className='h-full' src={campusImg} alt='' />
               </figure>
               <button
                 type='button'
                 className='absolute -top-1 -right-1 w-4 h-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 rounded-full flex items-center justify-center'
-                onClick={() => handleDeleteImage('campus', campus)}
+                onClick={() => handleDeleteImage('campus', campusImg)}
               >
                 <svg xmlns='http://www.w3.org/2000/svg' className='h-3 w-3' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
                   <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12' />
@@ -113,7 +134,6 @@ const UniversityMediaForm = ({ university }) => {
         <InputFile
           name='campus'
           onChange={handleFileChange}
-          multiple
         />
       </div>
 

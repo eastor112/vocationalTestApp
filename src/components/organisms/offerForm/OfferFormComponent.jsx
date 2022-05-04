@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
-import Swal from 'sweetalert2';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from '../../../hooks/useForm';
 import { getAllCareersNames } from '../../../services/careersServices';
 import InputFile from '../../atoms/input/InputFile';
 import InputV2 from '../../atoms/input/InputV2';
-import { createOffer, updateOffer } from '../../../services/offersServices';
+import { createUniversityOfferAction, updateUniversityOfferAction } from '../../../context/actions/universities-actions';
 
-// university
-// career
 const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer }) => {
+  const dispatch = useDispatch();
+  const { isEditingModal } = useSelector((state) => state.universities);
+
   const [careers, setCareers] = useState([]);
 
   const { formValues, handleFormChange } = useForm({
@@ -38,6 +39,12 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
       });
   }, []);
 
+  useEffect(() => {
+    if (!isEditingModal) {
+      closeModal();
+    }
+  }, [isEditingModal]);
+
   const handleFileChange = (ev) => {
     const file = ev.target.files[0];
 
@@ -52,62 +59,12 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
 
   const handleCreateSubmit = (e) => {
     e.preventDefault();
-    Swal.fire({
-      title: 'Updating...',
-      html: 'Wait a moment...',
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
-
-    createOffer(universityId, formValues)
-      .then(() => {
-        Swal.close();
-        closeModal();
-      })
-      .catch((err) => {
-        Swal.fire({
-          title: 'Error',
-          icon: 'error',
-          html: err.message,
-          confirmButtonText: 'Ok',
-        }).then(() => {
-          Swal.close();
-          closeModal();
-        });
-      });
+    dispatch(createUniversityOfferAction(universityId, formValues));
   };
 
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
-    Swal.fire({
-      title: 'Updating...',
-      html: 'Wait a moment...',
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
-
-    updateOffer(activeOffer._id, formValues)
-      .then(() => {
-        Swal.close();
-        closeModal();
-      })
-      .catch((err) => {
-        Swal.fire({
-          title: 'Error',
-          icon: 'error',
-          html: err.message,
-          confirmButtonText: 'Ok',
-        }).then(() => {
-          Swal.close();
-          closeModal();
-        });
-      });
+    dispatch(updateUniversityOfferAction(activeOffer._id, formValues));
   };
 
   return (
@@ -137,7 +94,7 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
           </label>
           <textarea
             id='mission'
-            rows='3'
+            rows='2'
             className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             placeholder='...'
             name='description'

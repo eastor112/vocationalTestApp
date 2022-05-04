@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { universitySocialMediaAction } from '../../../context/actions/universities-actions';
 import { useForm } from '../../../hooks/useForm';
-import { updateUniversitySocialMedia } from '../../../services/universitiesServices';
 import InputV2 from '../../atoms/input/InputV2';
 
 const UniversitySocialMedia = ({ universityId, socialMedia }) => {
+  const dispatch = useDispatch();
+
   const { formValues, handleFormChange } = useForm({
     facebook: socialMedia.facebook,
     twitter: socialMedia.twitter,
@@ -19,13 +22,7 @@ const UniversitySocialMedia = ({ universityId, socialMedia }) => {
   } = formValues;
 
   const handleUpdateSocialMedia = () => {
-    updateUniversitySocialMedia(universityId, formValues)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(universitySocialMediaAction(universityId, formValues));
   };
 
   return (

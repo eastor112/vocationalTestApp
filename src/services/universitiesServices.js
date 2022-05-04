@@ -166,6 +166,11 @@ export const updateMediaUniversity = async (id, university) => {
 
   try {
     const response = await fetch(URL, requestOptions);
+
+    if (response.status !== 200) {
+      return Promise.reject(response.statusText);
+    }
+
     const data = await response.json();
     return data;
   } catch (error) {
@@ -214,6 +219,7 @@ export const updateUniversityProcess = async (id, process) => {
   try {
     const response = await fetch(URL, requestOptions);
     const data = await response.json();
+
     return data;
   } catch (error) {
     return error.message;
