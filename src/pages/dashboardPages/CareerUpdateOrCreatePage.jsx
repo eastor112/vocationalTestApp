@@ -1,0 +1,37 @@
+import { useOutletContext, useParams } from 'react-router-dom';
+import CareerFieldEditForm from '../../components/organisms/careersForms/CareerFieldEditForm';
+import CareerMainEditForm from '../../components/organisms/careersForms/CareerMainEditForm';
+import CareerSkillsEditForm from '../../components/organisms/careersForms/CareerSkillsEditForm';
+import TabsV3 from '../../components/organisms/tabs/TabsV3';
+
+const CareerUpdateOrCreatePage = () => {
+  const width = useOutletContext();
+  const { careerId, part } = useParams();
+
+  return (
+    <main className={`min-h-screen pt-10 pr-10 pb-6 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
+      <div className='m-auto bg-white px-8 pt-6 pb-8 w-8/12 rounded-sm border border-gray-500'>
+        <TabsV3 careerId={careerId} />
+
+        {
+          (part === 'main') && (
+            <CareerMainEditForm careerId={careerId} />
+          )
+        }
+        {
+          (part === 'field') && (
+            <CareerFieldEditForm careerId={careerId} />
+          )
+        }
+        {
+          (part === 'skills') && (
+            <CareerSkillsEditForm careerId={careerId} />
+          )
+        }
+
+      </div>
+    </main>
+  );
+};
+
+export default CareerUpdateOrCreatePage;

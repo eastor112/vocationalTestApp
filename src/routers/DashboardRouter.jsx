@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import BaseDashboard from '../pages/dashboardPages/BaseDashboard';
 import CareersListPage from '../pages/dashboardPages/CareersListPage';
+import CareerUpdateOrCreatePage from '../pages/dashboardPages/CareerUpdateOrCreatePage';
 import Checkout from '../pages/dashboardPages/Checkout';
 import DashboardPage from '../pages/dashboardPages/DashboardPage';
 import GeneralPage from '../pages/dashboardPages/GeneralPage';
@@ -28,6 +29,7 @@ const DashboardRoutes = () => {
         <Route path='user/profile' element={<UserProfilePage />} />
         <Route path='users' element={<UsersListPage />} />
         <Route path='careers' element={<CareersListPage />} />
+        <Route path='careers/:careerId/:part' element={<CareerUpdateOrCreatePage />} />
         <Route path='admin/tests' element={<TestsListPage />} />
         <Route path='payment' element={<Payment />} />
         <Route path='checkout' element={<Checkout />} />

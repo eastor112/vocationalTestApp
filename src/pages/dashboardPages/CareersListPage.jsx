@@ -34,7 +34,7 @@ const CareersListPage = () => {
   };
 
   return (
-    <main className={`min-h-screen w-screen pt-4 pr-10 pb-12 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
+    <main className={`min-h-screen pt-4 pr-10 pb-12 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
 
       <div className='py-4'>
         <label htmlFor='table-search' className='sr-only'>Search</label>
@@ -67,7 +67,7 @@ const CareersListPage = () => {
         </Select>
       </div>
 
-      <section className='grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-y-5 gap-x-4'>
+      <section className='grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-y-5 gap-x-4'>
         {
           careers.map((career) => (
             <CareerCard key={uuidv4()} career={career} />
