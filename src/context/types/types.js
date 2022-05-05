@@ -40,4 +40,5 @@ export const types = {
   setCareers: '[CAREERS] SET_CAREERS',
   setPageCareers: '[CAREERS] SET_PAGE_CAREERS',
   updateMainCareer: '[CAREERS] UPDATE_MAIN_CAREER',
+  destroyCareer: '[CAREERS] DESTROY_CAREER',
 };

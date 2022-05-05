@@ -1,5 +1,8 @@
 import {
+  createCareer,
+  destroyCareer,
   getAllCareers,
+  searchCareers,
   updateFieldCareer,
   updateMainCareer,
   updateSkillsCareer,
@@ -26,7 +29,7 @@ export const setPageCareersAction = (page) => {
   };
 };
 
-export const setCareerActiveAction = (careerId) => {
+export const setActiveCareerAction = (careerId) => {
   return async (dispatch, getState) => {
     const { careers } = getState().careers;
 
@@ -35,6 +38,15 @@ export const setCareerActiveAction = (careerId) => {
     dispatch({
       type: types.setActiveCareer,
       payload: career,
+    });
+  };
+};
+
+export const clearActiveCareerAction = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: types.setActiveCareer,
+      payload: {},
     });
   };
 };
@@ -68,6 +80,41 @@ export const updateSkillsCareerAction = (id, data) => {
     dispatch({
       type: types.setActiveCareer,
       payload: updatedCareer,
+    });
+  };
+};
+
+export const createCareerAction = (careerName) => {
+  return async (dispatch) => {
+    const career = await createCareer(careerName);
+
+    dispatch({
+      type: types.setActiveCareer,
+      payload: career,
+    });
+  };
+};
+
+export const destroyCareerAction = (id, page, cardsByPage) => {
+  return async (dispatch) => {
+    await destroyCareer(id);
+
+    dispatch({
+      type: types.destroyCareer,
+      payload: id,
+    });
+
+    dispatch(setCareersAction(cardsByPage, page));
+  };
+};
+
+export const searchCareersAction = (query, limit = 10, page = 1) => {
+  return async (dispatch) => {
+    const careers = await searchCareers(query, limit, page);
+
+    dispatch({
+      type: types.setCareers,
+      payload: careers,
     });
   };
 };

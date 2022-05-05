@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Link, useOutletContext, useParams } from 'react-router-dom';
-
-import { Button } from 'flowbite-react';
 import { ExternalLinkIcon } from '@heroicons/react/solid';
 import UniversityPrincipalForm from '../../components/molecules/universityForm/UniversityPrincipalForm';
 import Tabs from '../../components/organisms/tabs/Tabs';
@@ -74,10 +72,12 @@ const UniversityProfileFormPage = () => {
       </div>
 
       <Link to={`/university/${universityId}`}>
-
-        <Button className='fixed bottom-5 right-5 rounded-full h-14 w-14 p-0'>
+        <button
+          type='button'
+          className='h-11 w-11 rounded-full bottom-5 right-5 text-white bg-blue-700 flex justify-center items-center shadow-md shadow-gray-500 hover:bg-blue-600 fixed'
+        >
           <ExternalLinkIcon className='w-6 h-6 fill-current' />
-        </Button>
+        </button>
       </Link>
 
     </main>

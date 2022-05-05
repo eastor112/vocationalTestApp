@@ -13,7 +13,7 @@ export const careersReducer = (state = initialState, action) => {
     case types.setCareers:
       return {
         ...state,
-        careers: action.payload.careers,
+        careers: action.payload.results,
         totalCareers: action.payload.totalDocs,
         totalPages: action.payload.totalPages,
         page: action.payload.currentPage,
@@ -29,6 +29,12 @@ export const careersReducer = (state = initialState, action) => {
       return {
         ...state,
         page: action.payload,
+      };
+
+    case types.destroyCareer:
+      return {
+        ...state,
+        careers: state.careers.filter((item) => item.id !== action.payload),
       };
 
     default:
