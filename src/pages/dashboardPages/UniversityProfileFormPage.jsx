@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Link, useOutletContext, useParams } from 'react-router-dom';
@@ -22,8 +21,6 @@ const UniversityProfileFormPage = () => {
 
   useEffect(() => {
     if (universityId !== 'undefined' && (!activeUniversity.id || activeUniversity.id !== universityId)) {
-      console.log(universityId);
-      console.log(typeof universityId);
       dispatch(setActiveUniversityAction(universityId));
     }
   }, [universityId]);

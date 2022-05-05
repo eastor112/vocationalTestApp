@@ -1,8 +1,18 @@
 /* eslint-disable max-len */
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { setCareerActiveAction } from '../../../context/actions/careers-actions';
 
 const CareerCard = ({ career }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleUpdateCareer = () => {
+    dispatch(setCareerActiveAction(career.id));
+    navigate(`/dashboard/careers/${career.id}/main`);
+  };
+
   return (
     <div className='flex flex-col items-center bg-white rounded-md border shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 overflow-hidden'>
       <div className='flex flex-col justify-between p-4 leading-normal'>
@@ -55,15 +65,16 @@ const CareerCard = ({ career }) => {
             Info
           </Link>
 
-          <Link
-            to={`/dashboard/careers/${career.id}/main`}
+          <button
+            type='button'
+            onClick={handleUpdateCareer}
             className='flex text-yellow-400 hover:text-white border border-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded text-xs px-2 py-1.5 text-center mr-1 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900'
           >
             <svg xmlns='http://www.w3.org/2000/svg' className='h-3.5 w-3.5 mr-1' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
               <path strokeLinecap='round' strokeLinejoin='round' d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' />
             </svg>
             Update
-          </Link>
+          </button>
 
           <button
             type='button'

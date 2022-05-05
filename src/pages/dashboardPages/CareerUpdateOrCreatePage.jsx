@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useOutletContext, useParams } from 'react-router-dom';
 import CareerFieldEditForm from '../../components/organisms/careersForms/CareerFieldEditForm';
 import CareerMainEditForm from '../../components/organisms/careersForms/CareerMainEditForm';
@@ -7,6 +8,10 @@ import TabsV3 from '../../components/organisms/tabs/TabsV3';
 const CareerUpdateOrCreatePage = () => {
   const width = useOutletContext();
   const { careerId, part } = useParams();
+
+  useEffect(() => {
+
+  }, []);
 
   return (
     <main className={`min-h-screen pt-10 pr-10 pb-6 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>

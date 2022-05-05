@@ -45,3 +45,90 @@ export const getFilteredCareers = async (filter) => {
     return error.message;
   }
 };
+
+export const updateMainCareer = async (id, data) => {
+  const URL = `${BASE_URL}/api/careers/${id}`;
+  const token = localStorage.getItem('token');
+
+  const dataCopy = { ...data };
+
+  if (dataCopy.file) {
+    const formData = new FormData();
+    formData.append('photo', dataCopy.file);
+
+    const response = await fetch(URL, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (response.status !== 200) {
+      return Promise.reject(response.status);
+    }
+
+    delete dataCopy.file;
+  }
+
+  try {
+    const response = await fetch(URL, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(dataCopy),
+    });
+    const dataResponse = await response.json();
+    return dataResponse;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const updateFieldCareer = async (id, data) => {
+  const URL = `${BASE_URL}/api/careers/${id}`;
+  const token = localStorage.getItem('token');
+
+  const field = { field: { ...data } };
+
+  try {
+    const response = await fetch(URL, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(field),
+    });
+
+    const dataResponse = await response.json();
+    return dataResponse;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const updateSkillsCareer = async (id, data) => {
+  const URL = `${BASE_URL}/api/careers/${id}`;
+  const token = localStorage.getItem('token');
+
+  const skills = { skills: { ...data } };
+
+  try {
+    const response = await fetch(URL, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(skills),
+    });
+
+    const dataResponse = await response.json();
+    return dataResponse;
+  } catch (error) {
+    return error.message;
+  }
+};

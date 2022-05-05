@@ -18,16 +18,19 @@ export const careersReducer = (state = initialState, action) => {
         totalPages: action.payload.totalPages,
         page: action.payload.currentPage,
       };
+
     case types.setActiveCareer:
       return {
         ...state,
         activeCareer: action.payload,
       };
+
     case types.setPageCareers:
       return {
         ...state,
         page: action.payload,
       };
+
     default:
       return state;
   }
