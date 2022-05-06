@@ -25,4 +25,20 @@ export const types = {
 
   setBilling: '[BILLING] SET_BILLING',
   setIsPurchased: '[BILLING] SET_IS_PURCHASED',
+
+  setIsEditingModal: '[UI] SET_IS_EDITING_MODAL',
+  setUniversities: '[UNIVERSITIES] SET_UNIVERSITIES',
+  setActiveUniversity: '[UNIVERSITIES] SET_ACTIVE_UNIVERSITY',
+  updateActiveUniversity: '[UNIVERSITIES] UPDATE_ACTIVE_UNIVERSITY',
+  deleteLogoUniversity: '[UNIVERSITIES] DELETE_LOGO_UNIVERSITY',
+  deleteCampusImageUniversity: '[UNIVERSITIES] DELETE_CAMPUS_IMAGE_UNIVERSITY',
+  createUniversityOffer: '[UNIVERSITIES] CREATE_UNIVERSITY_OFFER',
+  deleteUniversityOffer: '[UNIVERSITIES] DELETE_UNIVERSITY_OFFER',
+  updateUniversitiesOffer: '[UNIVERSITIES] UPDATE_UNIVERSITIES_OFFER',
+
+  setActiveCareer: '[CAREERS] SET_ACTIVE_CAREER',
+  setCareers: '[CAREERS] SET_CAREERS',
+  setPageCareers: '[CAREERS] SET_PAGE_CAREERS',
+  updateMainCareer: '[CAREERS] UPDATE_MAIN_CAREER',
+  destroyCareer: '[CAREERS] DESTROY_CAREER',
 };

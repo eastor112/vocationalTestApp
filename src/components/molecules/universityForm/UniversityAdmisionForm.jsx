@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { useForm } from '../../../hooks/useForm';
-import { updateUniversityProcess } from '../../../services/universitiesServices';
+import { updateUniversityProcessAction } from '../../../context/actions/universities-actions';
 
 const reorder = (list, startIndex, endIndex) => {
   const result = [...list];
@@ -17,6 +18,7 @@ const reorder = (list, startIndex, endIndex) => {
 const UniversityAdmisionForm = ({ universityId, process }) => {
   const initialSteps = process.map((step) => ({ id: uuidv4(), title: step }));
 
+  const dispatch = useDispatch();
   const [steps, setSteps] = useState(initialSteps);
 
   const { formValues, handleFormChange, setFormValues } = useForm({
@@ -28,19 +30,16 @@ const UniversityAdmisionForm = ({ universityId, process }) => {
     setSteps(newSteps);
   };
 
-  const handleAddStep = (e) => {
+  const handleCreateStep = (e) => {
     e.preventDefault();
     setSteps([...steps, { id: uuidv4(), title: formValues.newStep }]);
     setFormValues({ newStep: '' });
   };
 
-  const handleSubmit = (e) => {
+  const handleUpdate = () => {
     const formatProcess = steps.map((step) => step.title);
 
-    updateUniversityProcess(universityId, formatProcess)
-      .then((data) => {
-        console.log(data);
-      });
+    dispatch(updateUniversityProcessAction(universityId, formatProcess));
   };
 
   return (
@@ -134,7 +133,7 @@ const UniversityAdmisionForm = ({ universityId, process }) => {
         </div>
       </DragDropContext>
 
-      <form className='pt-4' onSubmit={handleAddStep}>
+      <form className='pt-4' onSubmit={handleCreateStep}>
         <label
           htmlFor='default-search'
           className='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300'
@@ -166,7 +165,7 @@ const UniversityAdmisionForm = ({ universityId, process }) => {
       <button
         type='button'
         className='mt-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-        onClick={handleSubmit}
+        onClick={handleUpdate}
       >
         Update
       </button>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SingleResult from './SingleResult';
+import DragAndDropList from '../dragAndDropList/DragAndDropList';
 
 import { getTestyById } from '../../../services/vocationalServices';
 
@@ -16,9 +17,10 @@ const Results = (test) => {
 
   return (
 
-    <SingleResult
-      test={oneTest}
-    />
+    // <SingleResult
+    //   test={oneTest}
+    // />
+    <DragAndDropList />
   );
 };
 

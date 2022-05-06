@@ -4,61 +4,32 @@ import { Accordion, Button } from 'flowbite-react';
 import { ChevronDoubleDownIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/solid';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { useModal } from '../../../hooks/useModal';
+import { useDispatch, useSelector } from 'react-redux';
 import ModalComponent from '../../organisms/modal/ModalComponent';
 import OfferFormComponent from '../../organisms/offerForm/OfferFormComponent';
-import { destroyOffer } from '../../../services/offersServices';
+import { deleteUniversityOfferAction, setIsEditingModal } from '../../../context/actions/universities-actions';
 
-const UniversityOffersComponent = ({ universityId, offer }) => {
+const UniversityOffersComponent = ({ universityId }) => {
+  const {
+    activeUniversity: { offer: academicOffers },
+  } = useSelector((state) => state.universities);
+
+  const dispatch = useDispatch();
+
   const [activeOffer, setActiveOffer] = useState({});
-  const [academicOffers, setAcademicOffers] = useState(offer);
+
   const [creating, setCreating] = useState(false);
 
-  const { isOpen, openModal, closeModal } = useModal(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleDeleteOffer = (id) => {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: 'You won\'t be able to revert this!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
-    }).then(() => {
-      Swal.fire({
-        title: 'Updating...',
-        html: 'Wait a moment...',
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        didOpen: () => {
-          Swal.showLoading();
-        },
-      });
+  const openModal = () => {
+    dispatch(setIsEditingModal(true));
+    setIsOpen(true);
+  };
 
-      destroyOffer(id)
-        .then(() => {
-          Swal.fire({
-            title: 'Success!',
-            icon: 'success',
-            html: 'Offer deleted successfully!',
-            confirmButtonText: 'Ok',
-          }).then(() => {
-            Swal.close();
-          });
-        })
-        .catch((err) => {
-          Swal.fire({
-            title: 'Error!',
-            icon: 'error',
-            html: err.message,
-            confirmButtonText: 'Ok',
-          }).then(() => {
-            Swal.close();
-          });
-        });
-    });
+  const closeModal = () => {
+    dispatch(setIsEditingModal(false));
+    setIsOpen(false);
   };
 
   const handleCreateOffer = () => {
@@ -71,6 +42,10 @@ const UniversityOffersComponent = ({ universityId, offer }) => {
     setCreating(false);
     setActiveOffer(academicOffers.find((offerr) => offerr._id === id));
     openModal();
+  };
+
+  const handleDeleteOffer = (id) => {
+    dispatch(deleteUniversityOfferAction(id));
   };
 
   return (
@@ -90,11 +65,11 @@ const UniversityOffersComponent = ({ universityId, offer }) => {
                   {academicOffer.name}
                 </Accordion.Title>
                 <Accordion.Content>
-                  <div className='bg-gray-100 flex flex-col lg:flex-row gap-4'>
+                  <div className='bg-gray-100 flex flex-col lg:flex-row gap-4 rounded-lg py-2'>
                     <figure className='h-40 max-w-xs overflow-hidden'>
                       {
                         academicOffer.photo !== ''
-                        && <img className='w-full' src={academicOffer.photo} alt={academicOffer.name} />
+                        && <img className='max-w-full max-h-full' src={academicOffer.photo} alt={academicOffer.name} />
                       }
                     </figure>
                     <div>
@@ -152,7 +127,12 @@ const UniversityOffersComponent = ({ universityId, offer }) => {
                               </span>
                             )
                             : (
-                              <a href='_blank'>
+                              <a
+                                className='text-blue-500 hover:text-blue-600 hover:underline'
+                                href={academicOffer.url}
+                                target='_blank'
+                                rel='noreferrer'
+                              >
                                 {academicOffer.url}
                               </a>
                             )
@@ -172,7 +152,6 @@ const UniversityOffersComponent = ({ universityId, offer }) => {
                   </div>
                 </Accordion.Content>
               </Accordion.Panel>
-
             </Accordion>
           ))
         }
@@ -199,8 +178,6 @@ const UniversityOffersComponent = ({ universityId, offer }) => {
 
 UniversityOffersComponent.propTypes = {
   universityId: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  offer: PropTypes.array.isRequired,
 };
 
 export default UniversityOffersComponent;

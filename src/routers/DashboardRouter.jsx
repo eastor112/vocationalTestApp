@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import BaseDashboard from '../pages/dashboardPages/BaseDashboard';
 import CareersListPage from '../pages/dashboardPages/CareersListPage';
-import CareerUpdatePage from '../pages/dashboardPages/CareerUpdatePage';
+import CareerUpdateOrCreatePage from '../pages/dashboardPages/CareerUpdateOrCreatePage';
 import Checkout from '../pages/dashboardPages/Checkout';
 import DashboardPage from '../pages/dashboardPages/DashboardPage';
 import EditTestPage from '../pages/dashboardPages/EditTestPage';
@@ -26,15 +26,15 @@ const DashboardRoutes = () => {
         <Route path='tests/:testId' element={<VocationalTestPage />} />
         <Route path='testsresults' element={<SelectTestResultPage />} />
         <Route path='testsresults/:resultId' element={<VocationalTestResultPage />} />
-        <Route path='institution/:part' element={<UniversityProfileFormPage />} />
+        <Route path='institution/:universityId/:part' element={<UniversityProfileFormPage />} />
         <Route path='user/profile' element={<UserProfilePage />} />
         <Route path='users' element={<UsersListPage />} />
         <Route path='careers' element={<CareersListPage />} />
+        <Route path='careers/:careerId/:part' element={<CareerUpdateOrCreatePage />} />
         <Route path='admin/tests' element={<TestsListPage />} />
         <Route path='payment' element={<Payment />} />
         <Route path='checkout' element={<Checkout />} />
         <Route path='admin/tests/:testId/:part' element={<EditTestPage />} />
-        <Route path='editcareer/:id' element={<CareerUpdatePage />} />
       </Route>
     </Routes>
   );
