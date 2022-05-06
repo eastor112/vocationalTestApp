@@ -28,8 +28,12 @@ const Question = ({ question }) => {
   return (
     <div className='border-b-2 pb-4  border-slate-200'>
 
-      <p className='py-6 font-bold'>{question.statement}</p>
+      <p data-cy='statement-question' className='py-6 font-bold'>
+        {question.statement}
+      </p>
+
       <input
+        data-cy='input-question-a'
         type='radio'
         id={`${question.id}-a`}
         name={`question-${question.id}`}
@@ -48,6 +52,7 @@ const Question = ({ question }) => {
       <br />
 
       <input
+        data-cy='input-question-b'
         type='radio'
         id={`${question.id}-b`}
         name={`question-${question.id}`}
@@ -67,6 +72,7 @@ const Question = ({ question }) => {
       <br />
 
       <input
+        data-cy='input-question-c'
         type='radio'
         id={`${question.id}-c`}
         name={`question-${question.id}`}
@@ -86,6 +92,7 @@ const Question = ({ question }) => {
       <br />
 
       <input
+        data-cy='input-question-d'
         type='radio'
         id={`${question.id}-d`}
         name={`question-${question.id}`}

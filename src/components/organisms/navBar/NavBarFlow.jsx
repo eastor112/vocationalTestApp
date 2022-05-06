@@ -169,6 +169,7 @@ const NavBarFlow = () => {
           ) : (
             <div className='flex items-center gap-2'>
               <NavLink
+                data-cy='login-link'
                 to='/login'
                 className='block py-2 pr-4 pl-3 text-light-1 bg-primary-2 rounded md:bg-transparent md:hover:font-semibold md:p-0'
               >
