@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Accordion } from 'flowbite-react';
 import { ChevronDoubleDownIcon } from '@heroicons/react/solid';
+import DragAndDropList from '../dragAndDropList/DragAndDropList';
 
 const SingleResult = ({ test }) => {
+  const [testResultA, setTestResultA] = useState(test.result.A);
   return (
     <div>
 
@@ -14,7 +16,11 @@ const SingleResult = ({ test }) => {
             Option A
           </Accordion.Title>
           <Accordion.Content>
-            content
+            <DragAndDropList
+              label='Option A'
+              arrayItems={testResultA}
+              setParentArray={setTestResultA}
+            />
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>

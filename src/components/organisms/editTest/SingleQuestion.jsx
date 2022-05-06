@@ -43,7 +43,7 @@ const SingleQuestion = ({ question }) => {
             <div className='relative z-0 w-full mb-6 group'>
               <InputV2
                 type='text'
-                name='description'
+                name='statement'
                 label='Description'
                 value={statement}
                 onChange={handleFormChange}

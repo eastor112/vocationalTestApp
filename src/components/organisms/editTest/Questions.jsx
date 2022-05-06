@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Button } from 'flowbite-react';
 import { getAllTestQuestionsService, getTestyById } from '../../../services/vocationalServices';
 
 import SingleQuestion from './SingleQuestion';
@@ -9,6 +10,7 @@ const Questions = (testId) => {
   const { id } = useParams();
   const [test, setTest] = useState({});
   const [questions, setQuestions] = useState([]);
+  const [creating, setCreating] = useState(false);
 
   useEffect(() => {
     getTestyById(id).then((data) => {
@@ -25,8 +27,20 @@ const Questions = (testId) => {
     });
   }, [id]);
 
+  // const handleCreateQuestion = () => {
+  //   setCreating(true);
+  //   setActiveQuestion({});
+  //   openModal();
+  // };
+
   return (
     <div>
+      <Button
+        className='my-6'
+      // onClick={handleCreateQuestion}
+      >
+        Add question
+      </Button>
       {
         questions.map((question) => (
           <SingleQuestion
