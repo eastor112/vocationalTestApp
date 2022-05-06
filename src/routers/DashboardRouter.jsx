@@ -33,7 +33,7 @@ const DashboardRoutes = () => {
         <Route path='admin/tests' element={<TestsListPage />} />
         <Route path='payment' element={<Payment />} />
         <Route path='checkout' element={<Checkout />} />
-        <Route path='admin/:part' element={<EditTestPage />} />
+        <Route path='admin/tests/:testId/:part' element={<EditTestPage />} />
         <Route path='editcareer/:id' element={<CareerUpdatePage />} />
       </Route>
     </Routes>

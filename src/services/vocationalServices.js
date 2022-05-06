@@ -54,6 +54,24 @@ export const fetchAllTestsService = async () => {
   throw new Error('Error getting tests');
 };
 
+export const getTestyById = async (id) => {
+  const URL = `${BASE_URL}/api/tests/${id}`;
+  const token = localStorage.getItem('token');
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const response = await fetch(URL, requestOptions);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
+
 export const getTestService = async (testId) => {
   const URL = `${BASE_URL}/api/tests/${testId}`;
 
@@ -140,4 +158,28 @@ export const fetchOneTestResultService = async (testId) => {
   }
 
   throw new Error('Error getting test result');
+};
+
+export const updateMainTest = async (testId, test) => {
+  const URL = `${BASE_URL}/api/tests/${testId}`;
+
+  const token = localStorage.getItem('token');
+
+  const requestOptions = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(test),
+  };
+
+  const response = await fetch(URL, requestOptions);
+
+  if (response.status === 200) {
+    const updatedTest = await response.json();
+    return updatedTest;
+  }
+
+  throw new Error('Error updating test');
 };

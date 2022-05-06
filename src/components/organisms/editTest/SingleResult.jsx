@@ -1,9 +1,63 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const singleResult = () => {
+import { Accordion } from 'flowbite-react';
+import { ChevronDoubleDownIcon } from '@heroicons/react/solid';
+
+const SingleResult = ({ test }) => {
   return (
-    <div>singleResult</div>
+    <div>
+
+      <Accordion>
+        <Accordion.Panel>
+          <Accordion.Title arrowIcon={ChevronDoubleDownIcon}>
+            Option A
+          </Accordion.Title>
+          <Accordion.Content>
+            content
+          </Accordion.Content>
+        </Accordion.Panel>
+        <Accordion.Panel>
+          <Accordion.Title arrowIcon={ChevronDoubleDownIcon}>
+            Option B
+          </Accordion.Title>
+          <Accordion.Content>
+            content
+          </Accordion.Content>
+        </Accordion.Panel>
+        <Accordion.Panel>
+          <Accordion.Title arrowIcon={ChevronDoubleDownIcon}>
+            Option C
+          </Accordion.Title>
+          <Accordion.Content>
+            content
+          </Accordion.Content>
+        </Accordion.Panel>
+        <Accordion.Panel>
+          <Accordion.Title arrowIcon={ChevronDoubleDownIcon}>
+            Option D
+          </Accordion.Title>
+          <Accordion.Content>
+            content
+          </Accordion.Content>
+        </Accordion.Panel>
+        <Accordion.Panel>
+          <Accordion.Title arrowIcon={ChevronDoubleDownIcon}>
+            Option E
+          </Accordion.Title>
+          <Accordion.Content>
+            content
+          </Accordion.Content>
+        </Accordion.Panel>
+      </Accordion>
+
+    </div>
   );
 };
 
-export default singleResult;
+SingleResult.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  test: PropTypes.object.isRequired,
+};
+
+export default SingleResult;
