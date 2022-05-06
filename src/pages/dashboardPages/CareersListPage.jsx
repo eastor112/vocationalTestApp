@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router-dom';
-import { Button, Label, Select } from 'flowbite-react';
+import { Alert, Button, Label, Select } from 'flowbite-react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
@@ -93,69 +93,100 @@ const CareersListPage = () => {
           </Label>
           <Select
             id='number-selector'
-            className='block w-20 pl-2.5 pr-2.5'
+            className='pl-3 pr-7 '
             name='careersByPage'
             value={formValues.careersByPage}
             onChange={handleFormChange}
           >
-            <option value={4}>4</option>
-            <option value={8}>8</option>
-            <option value={12}>12</option>
-            <option value={16}>16</option>
-            <option value={20}>20</option>
+            <option className='px-3' value='4'>
+              4
+            </option>
+            <option className='px-3' value='8'>
+              8
+            </option>
+            <option className='px-3' value='12'>
+              12
+            </option>
+            <option className='px-3' value='16'>
+              16
+            </option>
+            <option className='px-3' value='20'>
+              20
+            </option>
           </Select>
         </div>
       </div>
-
-      <section aria-label='cards-container' className='grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-y-5 gap-x-4'>
-        {
-          careers.map((career) => (
-            <CareerCard
-              key={uuidv4()}
-              career={career}
-              cardsByPage={formValues.careersByPage}
-              page={page}
-            />
-          ))
-        }
-      </section>
+      {
+        careers.length > 0
+          ? (
+            <section aria-label='cards-container' className='grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-y-5 gap-x-4'>
+              {
+                careers.map((career) => (
+                  <CareerCard
+                    key={uuidv4()}
+                    career={career}
+                    cardsByPage={formValues.careersByPage}
+                    page={page}
+                  />
+                ))
+              }
+            </section>
+          )
+          : (
+            <Alert
+              color='yellow'
+            >
+              <span>
+                <span className='font-medium mr-2'>
+                  Info!
+                </span>
+                We have not found any career, or there is a problem with the
+                internet connection. Try again.
+              </span>
+            </Alert>
+          )
+      }
 
       <hr className='mt-8' />
+      {
+        careers.length > 0
+        && (
+          <div aria-label='pagination' className='flex flex-col items-center'>
 
-      <div aria-label='pagination' className='flex flex-col items-center'>
+            <span className='text-sm text-gray-700 dark:text-gray-400'>
+              Showing
+              <span className='font-semibold text-gray-900 dark:text-white mx-1'>{formValues.careersByPage * (page - 1) + 1}</span>
+              to
+              <span className='font-semibold text-gray-900 dark:text-white mx-1'>
+                {
+                  (formValues.careersByPage * page) < totalCareers
+                    ? (formValues.careersByPage * page) : totalCareers
+                }
+              </span>
+              of
+              <span className='font-semibold text-gray-900 dark:text-white mx-1'>{totalCareers}</span>
+              Careers
+            </span>
 
-        <span className='text-sm text-gray-700 dark:text-gray-400'>
-          Showing
-          <span className='font-semibold text-gray-900 dark:text-white mx-1'>{formValues.careersByPage * (page - 1) + 1}</span>
-          to
-          <span className='font-semibold text-gray-900 dark:text-white mx-1'>
-            {
-              (formValues.careersByPage * page) < totalCareers
-                ? (formValues.careersByPage * page) : totalCareers
-            }
-          </span>
-          of
-          <span className='font-semibold text-gray-900 dark:text-white mx-1'>{totalCareers}</span>
-          Careers
-        </span>
-
-        <div className='inline-flex mt-2 xs:mt-0'>
-          <button
-            type='button'
-            className='py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
-            onClick={handlePrevious}
-          >
-            Prev
-          </button>
-          <button
-            type='button'
-            className='py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-r border-0 border-l border-gray-700 hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
-            onClick={handleNext}
-          >
-            Next
-          </button>
-        </div>
-      </div>
+            <div className='inline-flex mt-2 xs:mt-0'>
+              <button
+                type='button'
+                className='py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
+                onClick={handlePrevious}
+              >
+                Prev
+              </button>
+              <button
+                type='button'
+                className='py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-r border-0 border-l border-gray-700 hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
+                onClick={handleNext}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )
+      }
 
       <button
         aria-label='create-career-button'

@@ -4,7 +4,7 @@ import UserTableRow from '../../components/organisms/userTableRow/UserTableRow';
 const UsersListPage = () => {
   const width = useOutletContext();
   return (
-    <main className={`min-h-screen w-screen pt-4 pr-10 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
+    <main className={`min-h-screen pt-4 pr-10 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
       <div className='py-4'>
         <label htmlFor='table-search' className='sr-only'>Search</label>
         <div className='relative mt-1'>

@@ -14,7 +14,7 @@ describe('testing Sidebar', () => {
       </Provider>,
     );
 
-    const link = screen.getByText('General');
+    const link = screen.getByLabelText('general-student');
 
     expect(link).toBeInTheDocument();
   });
@@ -29,7 +29,7 @@ describe('testing Sidebar', () => {
     );
 
     const button = screen.getByTestId('expand-button');
-    const link = screen.getByText('General');
+    const link = screen.getByLabelText('general-link');
 
     button.click();
 

@@ -20,7 +20,7 @@ const LoginOrSignupForm = ({ title }) => {
     email: '',
     password: '',
     name: '',
-    country: 'peru',
+    country: 'PE',
     phone: '',
     url: '',
   });
@@ -199,8 +199,8 @@ const LoginOrSignupForm = ({ title }) => {
                     value={country}
                     onChange={handleInputChange}
                   >
-                    <option value='peru'>Perú</option>
-                    <option value='colombia'>Colombia</option>
+                    <option value='PE'>Perú</option>
+                    <option value='CO'>Colombia</option>
                   </select>
                 </label>
               </div>
