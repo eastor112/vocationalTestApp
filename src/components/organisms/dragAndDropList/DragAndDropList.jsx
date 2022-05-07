@@ -92,6 +92,7 @@ const DragAndDropList = ({ label, arrayItems, setParentArray }) => {
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(draggableProvided) => (
                       <li
+                        data-cy='drag-item'
                         {...draggableProvided.draggableProps}
                         ref={draggableProvided.innerRef}
                         {...draggableProvided.dragHandleProps}
@@ -107,6 +108,7 @@ const DragAndDropList = ({ label, arrayItems, setParentArray }) => {
                           </p>
 
                           <button
+                            data-cy='delete-item'
                             type='button'
                             className='flex focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded text-xs px-3 py-2'
                             onClick={() => handleDeleteItem(item.id)}
@@ -162,6 +164,7 @@ const DragAndDropList = ({ label, arrayItems, setParentArray }) => {
             onChange={handleFormChange}
           />
           <button
+            data-cy='add-item-button'
             type='submit'
             className='text-white whitespace-nowrap bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-3'
           >

@@ -39,6 +39,7 @@ const Sidebar = ({ setWidth }) => {
             content='Home'
             placement='right'
             animation='duration-150'
+            className={`${expand ? 'hidden' : ''}`}
           >
             <li aria-label='logo'>
               <NavLink
@@ -69,6 +70,7 @@ const Sidebar = ({ setWidth }) => {
             content='General'
             placement='right'
             animation='duration-150'
+            className={`${expand ? 'hidden' : ''}`}
           >
             <li aria-label='general-student'>
               <NavLink
@@ -89,6 +91,7 @@ const Sidebar = ({ setWidth }) => {
             content='Profile'
             placement='right'
             animation='duration-150'
+            className={`${expand ? 'hidden' : ''}`}
           >
             <li aria-label='profile-student'>
               <NavLink
@@ -113,9 +116,11 @@ const Sidebar = ({ setWidth }) => {
                 content='Institution'
                 placement='right'
                 animation='duration-150'
+                className={`${expand ? 'hidden' : ''}`}
               >
                 <li aria-label='profile-institution'>
                   <NavLink
+                    data-cy='sidebar-institution'
                     to={`/dashboard/institution/${user.university}/principal`}
                     className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
                   >
@@ -141,6 +146,7 @@ const Sidebar = ({ setWidth }) => {
                   content='Dashboard'
                   placement='right'
                   animation='duration-150'
+                  className={`${expand ? 'hidden' : ''}`}
                 >
                   <li aria-label='dashboard-admin'>
                     <NavLink
@@ -163,6 +169,7 @@ const Sidebar = ({ setWidth }) => {
                   content='Users'
                   placement='right'
                   animation='duration-150'
+                  className={`${expand ? 'hidden' : ''}`}
                 >
                   <li aria-label='users-admin'>
                     <NavLink
@@ -183,6 +190,7 @@ const Sidebar = ({ setWidth }) => {
                   content='Careers'
                   placement='right'
                   animation='duration-150'
+                  className={`${expand ? 'hidden' : ''}`}
                 >
                   <li aria-label='careers-admin'>
                     <NavLink
@@ -205,6 +213,7 @@ const Sidebar = ({ setWidth }) => {
                   content='Tests'
                   placement='right'
                   animation='duration-150'
+                  className={`${expand ? 'hidden' : ''}`}
                 >
                   <li aria-label='tests-admin'>
                     <NavLink
@@ -237,6 +246,7 @@ const Sidebar = ({ setWidth }) => {
                       content='Logout'
                       placement='right'
                       animation='duration-150'
+                      className={`${expand ? 'hidden' : ''}`}
                     >
                       <li aria-label='logout-google'>
                         <NavLink to='/' onClick={googleLogout}>
@@ -266,6 +276,7 @@ const Sidebar = ({ setWidth }) => {
                   content='Logout'
                   placement='right'
                   animation='duration-150'
+                  className={`${expand ? 'hidden' : ''}`}
                 >
                   <li aria-label='logout-no-google'>
                     <NavLink to='/'>

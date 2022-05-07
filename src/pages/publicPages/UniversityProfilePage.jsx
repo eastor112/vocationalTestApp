@@ -40,18 +40,25 @@ const UniversityProfilePage = () => {
                 </div>
 
                 <figure className=' mt-10'>
-                  <img className=' h-72 w-full' src={university.campus && university.campus[0]} alt='#' />
+                  {
+                    university.campus.length > 0
+                    && <img data-cy='campus-image' className=' h-72 w-full' src={university.campus[0]} alt={university.name} />
+                  }
                 </figure>
 
               </section>
 
               <section className='mision-vision grid grid-cols-1 md:grid-cols-2  mb-5 mt-10 gap-x-2'>
                 <div className='mission-vision mt-10'>
-                  <p className='text-3xl font-medium p-2'>Mission And Vision</p>
-                  <p className='text-justify p-2'>
-                    {university.mission}
-                    {university.vision}
-                  </p>
+                  <h3 className='text-3xl font-medium p-2'>Mission And Vision</h3>
+                  <div className='text-justify p-2'>
+                    <p className='mb-4'>
+                      {university.mission}
+                    </p>
+                    <p>
+                      {university.vision}
+                    </p>
+                  </div>
 
                 </div>
 
@@ -109,31 +116,46 @@ const UniversityProfilePage = () => {
 
               </section>
               <div className='social-media-links fixed top-80 right-5 flex flex-col gap-2'>
+                {
+                  university.socialMedia.linkedIn !== '' && (
+                    <a href={university.socialMedia.linkedIn} target='_blank' rel='noreferrer'>
+                      <button
+                        type='button'
+                        className=' rounded-full w-12 h-12 text-white bg-blue-800 hover:bg-blue-900 flex justify-center items-center shadow-md shadow-gray-400'
+                      >
+                        <i className='fa-brands fa-linkedin-in' />
+                      </button>
 
-                <a href={university.socialMedia.linkedIn} target='_blank' rel='noreferrer'>
-                  <button
-                    type='button'
-                    className=' rounded-full w-12 h-12 text-white bg-blue-800 hover:bg-blue-900 flex justify-center items-center shadow-md shadow-gray-400'
-                  >
-                    <i className='fa-brands fa-linkedin-in' />
-                  </button>
+                    </a>
+                  )
+                }
+                {
+                  university.socialMedia.facebook !== '' && (
+                    <a href={university.socialMedia.facebook} target='_blank' rel='noreferrer'>
+                      <button
+                        type='button'
+                        className=' rounded-full w-12 h-12 text-white bg-blue-500 hover:bg-blue-600 flex justify-center items-center shadow-md shadow-gray-400'
+                      >
+                        <i className='fa-brands fa-facebook-f' />
 
-                </a>
-                <a href={university.socialMedia.facebook} target='_blank' rel='noreferrer'>
-                  <button
-                    type='button'
-                    className=' rounded-full w-12 h-12 text-white bg-blue-500 hover:bg-blue-600 flex justify-center items-center shadow-md shadow-gray-400'
-                  >
-                    <i className='fa-brands fa-facebook-f' />
-
-                  </button>
-                </a>
-                <a href={university.socialMedia.instagram} target='_blank' rel='noreferrer'>
-                  <button type='button' className='rounded-full w-12 h-12 text-white bg-gradient-to-r from-yellow-300 via-orange-500 to-pink-500 hover:from-pink-500 hover:to-yellow-500 flex justify-center items-center shadow-md shadow-gray-400'><i className='fa-brands fa-instagram' /></button>
-                </a>
-                <a href={university.socialMedia.twitter} target='_blank' rel='noreferrer'>
-                  <button type='button' className='rounded-full w-12 h-12 text-white bg-blue-300 hover:bg-blue-400 flex justify-center items-center shadow-md shadow-gray-400'><i className='fa-brands fa-twitter' /></button>
-                </a>
+                      </button>
+                    </a>
+                  )
+                }
+                {
+                  university.socialMedia.instagram !== '' && (
+                    <a href={university.socialMedia.instagram} target='_blank' rel='noreferrer'>
+                      <button type='button' className='rounded-full w-12 h-12 text-white bg-gradient-to-r from-yellow-300 via-orange-500 to-pink-500 hover:from-pink-500 hover:to-yellow-500 flex justify-center items-center shadow-md shadow-gray-400'><i className='fa-brands fa-instagram' /></button>
+                    </a>
+                  )
+                }
+                {
+                  university.socialMedia.twitter !== '' && (
+                    <a href={university.socialMedia.twitter} target='_blank' rel='noreferrer'>
+                      <button type='button' className='rounded-full w-12 h-12 text-white bg-blue-300 hover:bg-blue-400 flex justify-center items-center shadow-md shadow-gray-400'><i className='fa-brands fa-twitter' /></button>
+                    </a>
+                  )
+                }
               </div>
 
             </div>

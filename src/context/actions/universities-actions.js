@@ -200,7 +200,7 @@ export const universitySocialMediaAction = (id, data) => {
 export const createUniversityOfferAction = (id, data) => {
   return async (dispatch) => {
     Swal.fire({
-      title: 'Updating...',
+      title: 'Creating an offer...',
       html: 'Wait a moment...',
       allowEscapeKey: false,
       allowOutsideClick: false,
@@ -279,6 +279,7 @@ export const deleteUniversityOfferAction = (id) => {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
+      reverseButtons: true,
     });
 
     if (result.isConfirmed) {

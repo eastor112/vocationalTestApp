@@ -9,6 +9,7 @@ const Tabs = ({ universityId }) => {
       <ul className='flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
         <li className='mr-2'>
           <NavLink
+            data-cy='tab-main'
             to={`/dashboard/institution/${universityId}/principal`}
             className={({ isActive }) => (`inline-flex p-4 rounded-t-lg border-b-2 group ${isActive ? ' border-blue-600 active text-blue-600' : 'border-transparent hover:text-gray-600 hover:border-gray-300'}`)}
           >
@@ -19,6 +20,7 @@ const Tabs = ({ universityId }) => {
 
         <li className='mr-2'>
           <NavLink
+            data-cy='tab-media'
             to={`/dashboard/institution/${universityId}/media`}
             className={({ isActive }) => (`inline-flex p-4 rounded-t-lg border-b-2 group ${isActive ? ' border-blue-600 active text-blue-600' : 'border-transparent hover:text-gray-600 hover:border-gray-300'}`)}
           >
@@ -29,6 +31,7 @@ const Tabs = ({ universityId }) => {
 
         <li className='mr-2'>
           <NavLink
+            data-cy='tab-admission'
             to={`/dashboard/institution/${universityId}/admision`}
             className={({ isActive }) => (`inline-flex p-4 rounded-t-lg border-b-2 group ${isActive ? ' border-blue-600 active text-blue-600' : 'border-transparent hover:text-gray-600 hover:border-gray-300'}`)}
           >
@@ -39,6 +42,7 @@ const Tabs = ({ universityId }) => {
 
         <li className='mr-2'>
           <NavLink
+            data-cy='tab-social'
             to={`/dashboard/institution/${universityId}/social`}
             className={({ isActive }) => (`inline-flex p-4 rounded-t-lg border-b-2 group ${isActive ? ' border-blue-600 active text-blue-600' : 'border-transparent hover:text-gray-600 hover:border-gray-300'}`)}
           >
@@ -49,6 +53,7 @@ const Tabs = ({ universityId }) => {
 
         <li className='mr-2'>
           <NavLink
+            data-cy='tab-offers'
             to={`/dashboard/institution/${universityId}/offers`}
             className={({ isActive }) => (`inline-flex p-4 rounded-t-lg border-b-2 group ${isActive ? ' border-blue-600 active text-blue-600' : 'border-transparent hover:text-gray-600 hover:border-gray-300'}`)}
           >

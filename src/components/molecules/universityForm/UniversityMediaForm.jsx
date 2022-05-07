@@ -74,6 +74,7 @@ const UniversityMediaForm = ({ university }) => {
             <div className='relative h-20 w-fit'>
               <img className='h-20' src={university.logo} alt='' />
               <button
+                data-cy='delete-logo'
                 type='button'
                 className='absolute -top-1 -right-1 w-4 h-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 rounded-full flex items-center justify-center'
                 onClick={() => handleDeleteImage('logo', university.logo)}
@@ -109,6 +110,7 @@ const UniversityMediaForm = ({ university }) => {
                 <img className='h-full' src={campusImg} alt='' />
               </figure>
               <button
+                data-cy='delete-campus'
                 type='button'
                 className='absolute -top-1 -right-1 w-4 h-4 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 rounded-full flex items-center justify-center'
                 onClick={() => handleDeleteImage('campus', campusImg)}
@@ -139,6 +141,7 @@ const UniversityMediaForm = ({ university }) => {
 
       <div>
         <button
+          data-cy='update-media'
           type='submit'
           className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           onClick={handleSubmit}

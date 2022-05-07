@@ -31,7 +31,7 @@ export const createOffer = async (universityId, offer) => {
       const formData = new FormData();
       formData.append('photo', offer.file);
 
-      const response2 = await fetch(`${URL}/${createdOffer.id}`, {
+      const response2 = await fetch(`${URL}/${createdOffer._id}`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${token}`,

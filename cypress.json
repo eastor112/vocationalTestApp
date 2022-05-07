@@ -5,5 +5,10 @@
     "toConsole": true
   },
   "chromeWebSecurity": false,
-  "projectId": "4myh3n"
+  "projectId": "4myh3n",
+  "defaultCommandTimeout": 30000,
+  "requestTimeout": 30000,
+  "env": {
+    "MAILSLURP_API_KEY": "c74e5b34b34d122285983c2bcedddbb36f3156701065b447779cbd6b1de3b31f"
+  }
 }

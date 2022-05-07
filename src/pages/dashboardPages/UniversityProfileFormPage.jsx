@@ -25,7 +25,7 @@ const UniversityProfileFormPage = () => {
   }, [universityId]);
 
   return (
-    <main className={` min-h-screen pt-10 pr-10 pb-6 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
+    <main className={`min-h-screen pt-10 pr-10 pb-6 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
 
       <div className='m-auto bg-white px-8 pt-6 pb-8 w-8/12 rounded-sm border border-gray-500'>
 
@@ -91,6 +91,7 @@ const UniversityProfileFormPage = () => {
 
           <Link to={`/university/${universityId}`}>
             <button
+              data-cy='see-university-changes'
               type='button'
               className='h-11 w-11 rounded-full bottom-5 right-5 text-white bg-blue-700 flex justify-center items-center shadow-md shadow-gray-500 hover:bg-blue-600 fixed'
             >
