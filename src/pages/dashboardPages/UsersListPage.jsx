@@ -3,39 +3,54 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import InputV2 from '../../components/atoms/input/InputV2';
 import CreateUserForm from '../../components/organisms/createUserform/CreateUserForm';
 import ModalComponent from '../../components/organisms/modal/ModalComponent';
 import UserDetailUpdateCreateForm from '../../components/organisms/userForm/UserDetailUpdateCreateForm';
 import UserTableRow from '../../components/organisms/userTableRow/UserTableRow';
-import { searchUsersAction, setAllUsersAction, setCountriesAction, setPageUsersAction } from '../../context/actions/usersActions';
+import {
+  searchUsersAction,
+  setAllUsersAction,
+  setCountriesAction,
+  setIsEditingUsersAction,
+  setPageUsersAction,
+} from '../../context/actions/usersActions';
 import { useForm } from '../../hooks/useForm';
 import { useModal } from '../../hooks/useModal';
 
 const UsersListPage = () => {
   const width = useOutletContext();
+
   const dispatch = useDispatch();
-  const [isCreating, setIsCreating] = useState(false);
-  const { users, page, totalPages, totalUsers } = useSelector((state) => state.users);
+  const { users, page, totalPages, totalUsers, isEditing } = useSelector((state) => state.users);
+
   const { isOpen, openModal, closeModal } = useModal(false);
+  const [isCreating, setIsCreating] = useState(false);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const { formValues, handleFormChange } = useForm({
-    careersByPage: 8,
+    usersByPage: '8',
     search: '',
   });
 
   useEffect(() => {
-    dispatch(setAllUsersAction(8, 1));
-    dispatch(setCountriesAction());
+    if (users.length === 0) {
+      setFirstLoad(false);
+      dispatch(setAllUsersAction(formValues.usersByPage, page));
+      dispatch(setCountriesAction());
+    } else {
+      setFirstLoad(false);
+    }
   }, []);
 
   useEffect(() => {
     if (formValues.search === '') {
-      dispatch(setAllUsersAction(formValues.careersByPage, page));
+      if (!firstLoad) {
+        dispatch(setAllUsersAction(formValues.usersByPage, page));
+      }
     } else {
-      dispatch(searchUsersAction(formValues.search, formValues.careersByPage, page));
+      dispatch(searchUsersAction(formValues.search, formValues.usersByPage, page));
     }
-  }, [formValues.careersByPage, page]);
+  }, [formValues.usersByPage, page]);
 
   const handleNext = () => {
     if (page < totalPages) {
@@ -50,6 +65,7 @@ const UsersListPage = () => {
   };
 
   const handleOpenCreateModal = () => {
+    dispatch(setIsEditingUsersAction(true));
     setIsCreating(true);
     openModal();
   };
@@ -60,9 +76,15 @@ const UsersListPage = () => {
     if (formValues.search.length > 0) {
       dispatch(searchUsersAction(formValues.search));
     } else {
-      dispatch(setAllUsersAction(formValues.careersByPage, page));
+      dispatch(setAllUsersAction(formValues.usersByPage, page));
     }
   };
+
+  useEffect(() => {
+    if (!isEditing) {
+      closeModal();
+    }
+  }, [isEditing]);
 
   return (
     <main className={`min-h-screen pt-4 pr-6 pb-10 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
@@ -102,8 +124,8 @@ const UsersListPage = () => {
           <Select
             id='number-selector'
             className='pl-3 pr-7 '
-            name='careersByPage'
-            value={formValues.careersByPage}
+            name='usersByPage'
+            value={formValues.usersByPage}
             onChange={handleFormChange}
           >
             <option className='px-3' value='4'>
@@ -166,6 +188,8 @@ const UsersListPage = () => {
                   user={user}
                   openModal={openModal}
                   setIsCreating={setIsCreating}
+                  usersByPage={formValues.usersByPage}
+                  page={page}
                 />
               ))
             }
@@ -175,18 +199,18 @@ const UsersListPage = () => {
       </div>
 
       {
-        users.length > 0
+        (users.length > 0 || (users.length === 0 && page > 0))
         && (
           <div aria-label='pagination' className='flex flex-col items-center'>
 
             <span className='text-sm text-gray-700 dark:text-gray-400'>
               Showing
-              <span className='font-semibold text-gray-900 dark:text-white mx-1'>{formValues.careersByPage * (page - 1) + 1}</span>
+              <span className='font-semibold text-gray-900 dark:text-white mx-1'>{formValues.usersByPage * (page - 1) + 1}</span>
               to
               <span className='font-semibold text-gray-900 dark:text-white mx-1'>
                 {
-                  (formValues.careersByPage * page) < totalUsers
-                    ? (formValues.careersByPage * page) : totalUsers
+                  (formValues.usersByPage * page) < totalUsers
+                    ? (formValues.usersByPage * page) : totalUsers
                 }
               </span>
               of
@@ -230,7 +254,7 @@ const UsersListPage = () => {
       >
         {
           isCreating
-            ? <CreateUserForm />
+            ? <CreateUserForm usersByPage={formValues.usersByPage} page={page} />
             : <UserDetailUpdateCreateForm />
         }
       </ModalComponent>

@@ -86,7 +86,7 @@ const UserDetailUpdateCreateForm = () => {
         <InputV2
           type='text'
           name='fatherName'
-          label='Middle name'
+          label="Father's last name"
           value={formValues.fatherName}
           onChange={handleFormChange}
         />
@@ -96,7 +96,7 @@ const UserDetailUpdateCreateForm = () => {
         <InputV2
           type='text'
           name='motherName'
-          label='Last name'
+          label="Mother's last name"
           value={formValues.motherName}
           onChange={handleFormChange}
         />

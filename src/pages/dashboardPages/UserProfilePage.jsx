@@ -108,7 +108,7 @@ const UserProfilePage = () => {
               <InputV2
                 type='text'
                 name='fatherName'
-                label='Middle name'
+                label="Father's last name"
                 value={formValues.fatherName}
                 onChange={handleFormChange}
               />
@@ -117,8 +117,8 @@ const UserProfilePage = () => {
             <div className='grid xl:grid-cols-2 xl:gap-6'>
               <InputV2
                 type='text'
-                name='motherName'
-                label='Last name'
+                name='MotherName'
+                label="mother's last name"
                 value={formValues.motherName}
                 onChange={handleFormChange}
               />

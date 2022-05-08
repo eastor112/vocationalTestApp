@@ -2,15 +2,20 @@ import PropTypes from 'prop-types';
 import { PencilAltIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
 import { capitalize, showName } from '../../../helpers/stringHelpers';
-import { setActiveUserAction } from '../../../context/actions/usersActions';
+import { destroyUserAction, setActiveUserAction, setIsEditingUsersAction } from '../../../context/actions/usersActions';
 
-const UserTableRow = ({ user, openModal, setIsCreating }) => {
+const UserTableRow = ({ user, openModal, setIsCreating, usersByPage, page }) => {
   const dispatch = useDispatch();
 
   const handleUpdateUser = () => {
+    dispatch(setIsEditingUsersAction(true));
     dispatch(setActiveUserAction(user));
     setIsCreating(false);
     openModal();
+  };
+
+  const handleDeleteUser = () => {
+    dispatch(destroyUserAction(user.uid, usersByPage, page));
   };
   return (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-purple-100 dark:hover:bg-gray-600 h-12'>
@@ -54,7 +59,11 @@ const UserTableRow = ({ user, openModal, setIsCreating }) => {
           <PencilAltIcon className='w-5 h-5' />
         </button>
 
-        <button type='button' className='mx-1'>
+        <button
+          type='button'
+          className='mx-1'
+          onClick={handleDeleteUser}
+        >
           <svg xmlns='http://www.w3.org/2000/svg' className='h-4 md:h-5 w-4 md:w-5 text-danger-1' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
             <path strokeLinecap='round' strokeLinejoin='round' d='M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z' />
           </svg>
@@ -73,6 +82,8 @@ UserTableRow.propTypes = {
   user: PropTypes.object.isRequired,
   openModal: PropTypes.func,
   setIsCreating: PropTypes.func.isRequired,
+  usersByPage: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
 };
 
 export default UserTableRow;

@@ -5,6 +5,7 @@ const initialState = {
   page: 1,
   totalUsers: 0,
   countries: [],
+  isEditing: false,
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -46,6 +47,26 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         page: action.payload,
+      };
+
+    case 'ADD_USER':
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+        totalUsers: state.totalUsers + 1,
+      };
+
+    case 'DELETE_USER':
+      return {
+        ...state,
+        users: state.users.filter((user) => user.uid !== action.payload),
+        totalUsers: state.totalUsers - 1,
+      };
+
+    case 'SET_EDITING':
+      return {
+        ...state,
+        isEditing: action.payload,
       };
 
     default:

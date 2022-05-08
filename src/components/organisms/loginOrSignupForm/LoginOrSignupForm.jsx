@@ -51,6 +51,10 @@ const LoginOrSignupForm = ({ title }) => {
       dispatch(setError('Password must be at least 6 characters'));
       return false;
     }
+    if (isInstitution && (name === '' || country === '' || phone === '' || url === '')) {
+      setError('Please fill in all institutions fields');
+      return false;
+    }
     dispatch(clearError());
     return true;
   };
