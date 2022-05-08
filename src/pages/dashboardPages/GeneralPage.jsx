@@ -4,7 +4,7 @@ const GeneralPage = () => {
   const width = useOutletContext();
 
   return (
-    <main className={`min-h-screen w-screen pt-4 pr-10 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
+    <main className={`min-h-screen pt-4 pr-10 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
 
       <section className='flex flex-col lg:flex-row gap-8 lg:gap-16 py-6'>
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Accordion, Button } from 'flowbite-react';
+import { Accordion, Alert, Button } from 'flowbite-react';
 import { ChevronDoubleDownIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/solid';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
@@ -52,24 +52,38 @@ const UniversityOffersComponent = ({ universityId }) => {
     <>
       <div>
         <Button
+          data-cy='open-modal-button'
           className='my-6'
           onClick={handleCreateOffer}
         >
           Add academic offer
         </Button>
+
         {
-          academicOffers.map((academicOffer) => (
-            <Accordion key={uuidv4()}>
-              <Accordion.Panel>
+          academicOffers.length === 0 && (
+            <Alert className='mt-2' color='yellow'>
+              <span>
+                <span className='font-medium mr-1'>
+                  Info!
+                </span>
+                You haven&apos;t added any academic offer yet
+              </span>
+            </Alert>
+          )
+        }
+        <Accordion>
+          {
+            academicOffers.map((academicOffer) => (
+              <Accordion.Panel key={uuidv4()}>
                 <Accordion.Title arrowIcon={ChevronDoubleDownIcon}>
                   {academicOffer.name}
                 </Accordion.Title>
                 <Accordion.Content>
                   <div className='bg-gray-100 flex flex-col lg:flex-row gap-4 rounded-lg py-2'>
-                    <figure className='h-40 max-w-xs overflow-hidden'>
+                    <figure className='max-h-40 max-w-xs overflow-hidden'>
                       {
                         academicOffer.photo !== ''
-                        && <img className='max-w-full max-h-full' src={academicOffer.photo} alt={academicOffer.name} />
+                        && <img className='max-w-full max-h-40' src={academicOffer.photo} alt={academicOffer.name} />
                       }
                     </figure>
                     <div>
@@ -78,7 +92,7 @@ const UniversityOffersComponent = ({ universityId }) => {
                           academicOffer.description === ''
                             ? (
                               <span className='text-gray-400'>
-                                No description
+                                No descriptions
                               </span>
                             )
                             : academicOffer.description
@@ -139,11 +153,11 @@ const UniversityOffersComponent = ({ universityId }) => {
                         }
                       </p>
                       <div className='flex gap-2 mt-6'>
-                        <Button color='yellow' onClick={() => handleUpdateOffer(academicOffer._id)}>
+                        <Button data-cy='update-offer-open' color='yellow' onClick={() => handleUpdateOffer(academicOffer._id)}>
                           <PencilAltIcon className='mr-2 h-5 w-5' />
                           Update
                         </Button>
-                        <Button color='red' onClick={() => handleDeleteOffer(academicOffer._id)}>
+                        <Button data-cy='delete-offer-open' color='red' onClick={() => handleDeleteOffer(academicOffer._id)}>
                           <TrashIcon className='mr-2 h-5 w-5' />
                           Delete
                         </Button>
@@ -152,9 +166,9 @@ const UniversityOffersComponent = ({ universityId }) => {
                   </div>
                 </Accordion.Content>
               </Accordion.Panel>
-            </Accordion>
-          ))
-        }
+            ))
+          }
+        </Accordion>
 
       </div>
 

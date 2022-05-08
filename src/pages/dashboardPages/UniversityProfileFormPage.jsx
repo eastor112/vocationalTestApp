@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Link, useOutletContext, useParams } from 'react-router-dom';
 import { ExternalLinkIcon } from '@heroicons/react/solid';
+import { Alert } from 'flowbite-react';
 import UniversityPrincipalForm from '../../components/molecules/universityForm/UniversityPrincipalForm';
 import Tabs from '../../components/organisms/tabs/Tabs';
 import UniversityAdmisionForm from '../../components/molecules/universityForm/UniversityAdmisionForm';
@@ -24,11 +25,25 @@ const UniversityProfileFormPage = () => {
   }, [universityId]);
 
   return (
-    <main className={` min-h-screen pt-10 pr-10 pb-6 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
+    <main className={`min-h-screen pt-10 pr-10 pb-6 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
 
       <div className='m-auto bg-white px-8 pt-6 pb-8 w-8/12 rounded-sm border border-gray-500'>
 
         <Tabs universityId={universityId} />
+        {
+          universityId === 'undefined' && (
+            <div className='mt-6'>
+              <Alert color='blue'>
+                <span>
+                  <span className='font-medium mr-1'>
+                    Info!
+                  </span>
+                  This account is not associated with any university
+                </span>
+              </Alert>
+            </div>
+          )
+        }
 
         {
           (part === 'principal' && activeUniversity.id) && (
@@ -71,14 +86,20 @@ const UniversityProfileFormPage = () => {
         }
       </div>
 
-      <Link to={`/university/${universityId}`}>
-        <button
-          type='button'
-          className='h-11 w-11 rounded-full bottom-5 right-5 text-white bg-blue-700 flex justify-center items-center shadow-md shadow-gray-500 hover:bg-blue-600 fixed'
-        >
-          <ExternalLinkIcon className='w-6 h-6 fill-current' />
-        </button>
-      </Link>
+      {
+        universityId !== 'undefined' && (
+
+          <Link to={`/university/${universityId}`}>
+            <button
+              data-cy='see-university-changes'
+              type='button'
+              className='h-11 w-11 rounded-full bottom-5 right-5 text-white bg-blue-700 flex justify-center items-center shadow-md shadow-gray-500 hover:bg-blue-600 fixed'
+            >
+              <ExternalLinkIcon className='w-6 h-6 fill-current' />
+            </button>
+          </Link>
+        )
+      }
 
     </main>
   );

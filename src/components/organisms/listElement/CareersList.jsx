@@ -24,7 +24,7 @@ const CareersList = ({ option, description, careers, onClick }) => {
             >
               <button
                 type='button'
-                className='text-blue-600 hover:text-blue-700 hover:underline'
+                className='career-list-item text-blue-600 hover:text-blue-700 hover:underline'
                 onClick={() => onClick(career)}
               >
                 {career}

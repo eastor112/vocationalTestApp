@@ -30,7 +30,7 @@ const SimpleCard = ({
 
         <Link
           to={`/university/${id}`}
-          className='mt-3 text-blue-600 hover:underline hover:text-blue-700 block'
+          className='university-detail-link mt-3 text-blue-600 hover:underline hover:text-blue-700 block'
         >
           See More
         </Link>
