@@ -41,4 +41,11 @@ export const types = {
   setPageCareers: '[CAREERS] SET_PAGE_CAREERS',
   updateMainCareer: '[CAREERS] UPDATE_MAIN_CAREER',
   destroyCareer: '[CAREERS] DESTROY_CAREER',
+
+  setTestsAdmin: '[TESTS] SET_TESTS_ADMIN',
+  setActiveTestAdmin: '[TESTS] SET_ACTIVE_TEST_ADMIN',
+  clearActiveTestAdmin: '[TESTS] CLEAR_ACTIVE_TEST_ADMIN',
+
+  setQuestionsAdmin: '[QUESTIONS] SET_QUESTIONS_ADMIN',
+  setActiveQuestion: '[QUESTIONS] SET_ACTIVE_QUESTION',
 };

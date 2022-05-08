@@ -8,6 +8,7 @@ import { solvingTestReducer } from './solvingTestReducer';
 import { billingsReducer } from './billingsReducer';
 import { universitiesReducer } from './universitiesReducer';
 import { careersReducer } from './careersReducer';
+import { adminTestsReducer } from './adminTestsReducer';
 
 const rootReducer = combineReducers({
   ui: uiReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   billings: billingsReducer,
   universities: universitiesReducer,
   careers: careersReducer,
+  testsAdmin: adminTestsReducer,
 });
 
 export default rootReducer;

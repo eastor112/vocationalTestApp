@@ -1,4 +1,13 @@
-const TestCard = () => {
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setActiveTestAction } from '../../../context/actions/testAdmin-actions';
+
+const TestCard = ({ test }) => {
+  const dispatch = useDispatch();
+  const handleUpdateTest = () => {
+    dispatch(setActiveTestAction(test));
+  };
   return (
     <div className='flex flex-col justify-center w-68  border border-primary-1 overflow-hidden rounded-lg shadow-lg bg-white'>
 
@@ -15,7 +24,7 @@ const TestCard = () => {
               Type:
             </th>
             <td className='px-6 py-1.5 w-2/3'>
-              Vocational
+              {test.type}
             </td>
           </tr>
           <tr className='bg-white dark:bg-gray-800'>
@@ -23,7 +32,7 @@ const TestCard = () => {
               Questions:
             </th>
             <td className='px-6 py-1.5'>
-              15
+              {test.numberOfQuestions}
             </td>
           </tr>
           <tr className='bg-white dark:bg-gray-800'>
@@ -31,7 +40,7 @@ const TestCard = () => {
               Time:
             </th>
             <td className='px-6 py-1.5'>
-              15 min
+              {test.estimatedTime}
             </td>
           </tr>
           <tr className='bg-white dark:bg-gray-800'>
@@ -39,7 +48,7 @@ const TestCard = () => {
               Author:
             </th>
             <td className='px-6 py-1.5'>
-              Paola
+              {test.author}
             </td>
           </tr>
           <tr className='bg-white dark:bg-gray-800'>
@@ -47,7 +56,7 @@ const TestCard = () => {
               Status:
             </th>
             <td className='px-6 py-1.5'>
-              Published
+              {test.status}
             </td>
           </tr>
           <tr className='bg-white dark:bg-gray-800'>
@@ -55,7 +64,7 @@ const TestCard = () => {
               Created at:
             </th>
             <td className='px-6 py-1.5'>
-              15-04-2022
+              {test.createdAt}
             </td>
           </tr>
           <tr className='bg-white dark:bg-gray-800'>
@@ -63,7 +72,7 @@ const TestCard = () => {
               Updated at:
             </th>
             <td className='px-6 py-1.5'>
-              20-04-2022
+              {test.updatedAt}
             </td>
           </tr>
         </tbody>
@@ -73,25 +82,30 @@ const TestCard = () => {
 
         <div className='flex gap-1 mt-2 flex-wrap'>
 
-          <button
-            type='button'
-            className='flex text-green-500 hover:text-white border border-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded text-xs px-1 py-1.5 text-center mr-1 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800'
-          >
-            <svg xmlns='http://www.w3.org/2000/svg' className='h-3.5 w-3.5' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
-              <path strokeLinecap='round' strokeLinejoin='round' d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' />
-            </svg>
-            Info
-          </button>
+          <Link to={`/dashboard/admin/tests/${test.id}/principal`}>
+            <button
+              type='button'
+              className='flex text-green-500 hover:text-white border border-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded text-xs px-1 py-1.5 text-center mr-1 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800'
+            >
+              <svg xmlns='http://www.w3.org/2000/svg' className='h-3.5 w-3.5' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                <path strokeLinecap='round' strokeLinejoin='round' d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' />
+              </svg>
+              Info
+            </button>
+          </Link>
 
-          <button
-            type='button'
-            className='flex text-yellow-400 hover:text-white border border-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded text-xs px-1 py-1.5 text-center mr-1 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900'
-          >
-            <svg xmlns='http://www.w3.org/2000/svg' className='h-3.5 w-3.5' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
-              <path strokeLinecap='round' strokeLinejoin='round' d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' />
-            </svg>
-            Update
-          </button>
+          <Link to={`/dashboard/admin/tests/${test.id}/principal`}>
+            <button
+              type='button'
+              className='flex text-yellow-400 hover:text-white border border-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded text-xs px-1 py-1.5 text-center mr-1 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900'
+              onClick={handleUpdateTest}
+            >
+              <svg xmlns='http://www.w3.org/2000/svg' className='h-3.5 w-3.5' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                <path strokeLinecap='round' strokeLinejoin='round' d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' />
+              </svg>
+              Update
+            </button>
+          </Link>
 
           <button
             type='button'
@@ -107,6 +121,11 @@ const TestCard = () => {
       </div>
     </div>
   );
+};
+
+TestCard.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  test: PropTypes.object.isRequired,
 };
 
 export default TestCard;
