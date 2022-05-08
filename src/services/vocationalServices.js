@@ -183,3 +183,51 @@ export const updateMainTest = async (testId, test) => {
 
   throw new Error('Error updating test');
 };
+
+export const updateResultsVocationalTest = async (testId, resA, resB, resC, resD, resE) => {
+  const URL = `${BASE_URL}/api/tests/${testId}`;
+  const token = localStorage.getItem('token');
+  const results = {
+    A: resA,
+    B: resB,
+    C: resC,
+    D: resD,
+    E: resE,
+  };
+
+  const requestOptions = {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ results }),
+  };
+  const response = await fetch(URL, requestOptions);
+  if (response.status !== 200) {
+    return Promise.reject(new Error('Error updating test'));
+  }
+  const updatedTest = await response.json();
+  return updatedTest;
+};
+
+export const updateDescriptionsTest = async (testId, descriptions) => {
+  console.log(descriptions);
+  const URL = `${BASE_URL}/api/tests/${testId}`;
+  const token = localStorage.getItem('token');
+  const requestOptions = {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ descriptions }),
+  };
+  const response = await fetch(URL, requestOptions);
+  if (response.status !== 200) {
+    return Promise.reject(new Error('Error updating test'));
+  }
+  const updatedTest = await response.json();
+  console.log(updatedTest);
+  return updatedTest;
+};

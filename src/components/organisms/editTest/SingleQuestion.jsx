@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Accordion } from 'flowbite-react';
-import { ChevronDoubleDownIcon } from '@heroicons/react/solid';
+import { Accordion, Button } from 'flowbite-react';
+import { ChevronDoubleDownIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/solid';
 import { useForm } from '../../../hooks/useForm';
 import InputV2 from '../../atoms/input/InputV2';
-import { updateQuestionService } from '../../../services/questionsService';
+import { deleteQuestionService, updateQuestionService } from '../../../services/questionsService';
 
-const SingleQuestion = ({ question }) => {
+const SingleQuestion = ({ question, index }) => {
   const { formValues, handleFormChange } = useForm({
     statement: question.statement,
     optionA: question.optionA,
@@ -31,12 +31,18 @@ const SingleQuestion = ({ question }) => {
     });
   };
 
+  const handleDeleteQuestion = () => {
+    deleteQuestionService(question.id).then((data) => {
+      console.log(data);
+    });
+  };
+
   return (
 
     <Accordion>
       <Accordion.Panel>
         <Accordion.Title arrowIcon={ChevronDoubleDownIcon}>
-          Question #
+          {`Question ${index + 1}`}
         </Accordion.Title>
         <Accordion.Content>
           <form onSubmit={handleSubmit}>
@@ -90,12 +96,21 @@ const SingleQuestion = ({ question }) => {
                 />
               </div>
             </div>
-            <button
-              type='submit'
-              className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-            >
-              Update
-            </button>
+
+            <div className='flex gap-2 mt-6'>
+              <Button type='submit' data-cy='update-offer-open' color='yellow'>
+                <PencilAltIcon className='mr-2 h-5 w-5' />
+                Update
+              </Button>
+              <Button
+                data-cy='delete-offer-open'
+                color='red'
+                onClick={handleDeleteQuestion}
+              >
+                <TrashIcon className='mr-2 h-5 w-5' />
+                Delete
+              </Button>
+            </div>
           </form>
         </Accordion.Content>
       </Accordion.Panel>
@@ -106,6 +121,7 @@ const SingleQuestion = ({ question }) => {
 SingleQuestion.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   question: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default SingleQuestion;

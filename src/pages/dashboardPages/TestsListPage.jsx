@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
 import TestCard from '../../components/organisms/simpleCard/TestCard';
-import { fetchAllTestsService } from '../../services/vocationalServices';
+import { getAllTestsAction } from '../../context/actions/testAdmin-actions';
 
 const TestsListPage = () => {
+  const dispatch = useDispatch();
+  const { tests } = useSelector((state) => state.testsAdmin);
   const width = useOutletContext();
-  const [tests, setTests] = useState([]);
 
   useEffect(() => {
-    fetchAllTestsService().then((res) => {
-      setTests(res);
-    });
+    dispatch(getAllTestsAction());
   }, []);
 
   return (

@@ -64,6 +64,40 @@ export const updateQuestionService = async (id, question) => {
   }
 };
 
-export const deleteQuestionService = async (questionId) => {
+export const createQuestionService = async (test) => {
+  const URL = `${BASE_URL}/api/questions`;
+  const token = localStorage.getItem('token');
 
+  const data = {
+    test,
+  };
+  const response = await fetch(URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+  const newQuestion = await response.json();
+  return newQuestion;
+};
+
+export const deleteQuestionService = async (id) => {
+  const URL = `${BASE_URL}/api/questions/${id}`;
+  const token = localStorage.getItem('token');
+  try {
+    const response = await fetch(URL, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status !== 204) {
+      return Promise.reject(response.status);
+    }
+    return response;
+  } catch (error) {
+    return error.message;
+  }
 };

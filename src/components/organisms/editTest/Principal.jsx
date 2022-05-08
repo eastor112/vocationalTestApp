@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 import InputV2 from '../../atoms/input/InputV2';
 import { useForm } from '../../../hooks/useForm';
 import { updateMainTest } from '../../../services/vocationalServices';
+import { updateTestAction } from '../../../context/actions/testAdmin-actions';
 
 const Principal = ({ test }) => {
+  const dispatch = useDispatch();
   const { formValues, handleFormChange } = useForm({
     title: test.title,
     type: test.type,
@@ -21,9 +25,7 @@ const Principal = ({ test }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateMainTest(test.id, formValues).then((data) => {
-      console.log(data);
-    });
+    dispatch(updateTestAction(test.id, formValues));
   };
 
   return (

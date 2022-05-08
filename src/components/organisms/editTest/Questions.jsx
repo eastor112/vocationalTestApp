@@ -2,54 +2,73 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button } from 'flowbite-react';
+import { v4 as uuidv4 } from 'uuid';
 import { getAllTestQuestionsService, getTestyById } from '../../../services/vocationalServices';
 
 import SingleQuestion from './SingleQuestion';
+import ModalComponent from '../modal/ModalComponent';
+import { useModal } from '../../../hooks/useModal';
+import { createQuestionService } from '../../../services/questionsService';
 
-const Questions = (testId) => {
-  const { id } = useParams();
+const Questions = () => {
+  const { testId } = useParams();
   const [test, setTest] = useState({});
   const [questions, setQuestions] = useState([]);
-  const [creating, setCreating] = useState(false);
+  const [newQuestion, setNewQuestion] = useState({});
+
+  const { isOpen, openModal, closeModal } = useModal(false);
 
   useEffect(() => {
-    getTestyById(id).then((data) => {
+    getTestyById(testId).then((data) => {
       if (data === 'error') {
         return 'error';
       }
       return setTest(data);
     });
-  }, [id]);
+  }, [testId]);
 
   useEffect(() => {
     getAllTestQuestionsService(testId).then((data) => {
       setQuestions(data);
     });
-  }, [id]);
+  }, [testId]);
 
-  // const handleCreateQuestion = () => {
-  //   setCreating(true);
-  //   setActiveQuestion({});
-  //   openModal();
-  // };
+  const handleCreateQuestion = () => {
+    // setCreating(true);
+    // setActiveQuestion({});
+    createQuestionService(testId).then((data) => {
+      setNewQuestion(data);
+    });
+    openModal();
+  };
+
+  console.log(newQuestion);
 
   return (
     <div>
       <Button
         className='my-6'
-      // onClick={handleCreateQuestion}
+        onClick={handleCreateQuestion}
       >
         Add question
       </Button>
       {
-        questions.map((question) => (
+        questions.map((question, index) => (
           <SingleQuestion
+            key={uuidv4()}
             question={question}
             test={test}
             testId={testId}
+            index={index}
           />
         ))
       }
+      <ModalComponent
+        isOpen={isOpen}
+        closeModal={closeModal}
+      >
+        Question created and added at the end of the list
+      </ModalComponent>
     </div>
 
   );

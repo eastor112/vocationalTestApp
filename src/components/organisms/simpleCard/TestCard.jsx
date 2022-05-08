@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setActiveTestAction } from '../../../context/actions/testAdmin-actions';
 
 const TestCard = ({ test }) => {
+  const dispatch = useDispatch();
+  const handleUpdateTest = () => {
+    dispatch(setActiveTestAction(test));
+  };
   return (
     <div className='flex flex-col justify-center w-68  border border-primary-1 overflow-hidden rounded-lg shadow-lg bg-white'>
 
@@ -92,6 +98,7 @@ const TestCard = ({ test }) => {
             <button
               type='button'
               className='flex text-yellow-400 hover:text-white border border-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded text-xs px-1 py-1.5 text-center mr-1 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900'
+              onClick={handleUpdateTest}
             >
               <svg xmlns='http://www.w3.org/2000/svg' className='h-3.5 w-3.5' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
                 <path strokeLinecap='round' strokeLinejoin='round' d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' />

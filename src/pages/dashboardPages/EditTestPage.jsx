@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useOutletContext, useParams } from 'react-router-dom';
+import Descriptions from '../../components/organisms/editTest/Descriptions';
 
 import Principal from '../../components/organisms/editTest/Principal';
 import Questions from '../../components/organisms/editTest/Questions';
@@ -12,7 +13,6 @@ const EditTestPage = () => {
   const width = useOutletContext();
   const { part, testId } = useParams();
 
-  console.log(part);
   const [activeTest, setActiveTest] = useState({});
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const EditTestPage = () => {
         setActiveTest(data);
       });
   }, []);
-  console.log(activeTest);
+
   return (
     <main className={`min-h-screen w-screen pt-10 pr-10 pb-6 bg-light-1 ${width === 64 ? 'pl-72' : 'pl-24'}`}>
 
@@ -52,7 +52,16 @@ const EditTestPage = () => {
           (part === 'results' && activeTest.id) && (
             <Results
               testId={testId}
-              test={activeTest}
+              results={activeTest.results}
+            />
+          )
+        }
+
+        {
+          (part === 'descriptions' && activeTest.id) && (
+            <Descriptions
+              testId={testId}
+              descriptions={activeTest.descriptions}
             />
           )
         }
