@@ -1,4 +1,6 @@
 /// <reference types="Cypress" />
+const studentAccount = 'student@test.com';
+const studentPassword = '123456';
 
 describe('Student flow', () => {
   it('should login', () => {
@@ -8,8 +10,8 @@ describe('Student flow', () => {
     cy.get("[data-cy='email-input']").should('be.visible');
     cy.get("[data-cy='pass-input']").should('be.visible');
 
-    cy.get("[data-cy='email-input']").type('example@test.com');
-    cy.get("[data-cy='pass-input']").type('123456');
+    cy.get("[data-cy='email-input']").type(studentAccount);
+    cy.get("[data-cy='pass-input']").type(studentPassword);
     cy.get("[data-cy='submit-button']").click();
     cy.get("[data-cy='sidebar-home']").should('be.visible');
 

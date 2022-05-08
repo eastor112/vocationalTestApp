@@ -41,7 +41,7 @@ const Sidebar = ({ setWidth }) => {
             animation='duration-150'
             className={`${expand ? 'hidden' : ''}`}
           >
-            <li aria-label='logo'>
+            <li aria-label='logo' className={`${expand ? 'w-[230px]' : ''}`}>
               <NavLink
                 data-cy='sidebar-home'
                 to='/'
@@ -72,7 +72,7 @@ const Sidebar = ({ setWidth }) => {
             animation='duration-150'
             className={`${expand ? 'hidden' : ''}`}
           >
-            <li aria-label='general-student'>
+            <li aria-label='general-student' className={`${expand ? 'w-[230px]' : ''}`}>
               <NavLink
                 to='/dashboard/general'
                 className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
@@ -93,7 +93,7 @@ const Sidebar = ({ setWidth }) => {
             animation='duration-150'
             className={`${expand ? 'hidden' : ''}`}
           >
-            <li aria-label='profile-student'>
+            <li aria-label='profile-student' className={`${expand ? 'w-[230px]' : ''}`}>
               <NavLink
                 to='/dashboard/user/profile'
                 className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
@@ -118,7 +118,7 @@ const Sidebar = ({ setWidth }) => {
                 animation='duration-150'
                 className={`${expand ? 'hidden' : ''}`}
               >
-                <li aria-label='profile-institution'>
+                <li aria-label='profile-institution' className={`${expand ? 'w-[230px]' : ''}`}>
                   <NavLink
                     data-cy='sidebar-institution'
                     to={`/dashboard/institution/${user.university}/principal`}
@@ -148,7 +148,7 @@ const Sidebar = ({ setWidth }) => {
                   animation='duration-150'
                   className={`${expand ? 'hidden' : ''}`}
                 >
-                  <li aria-label='dashboard-admin'>
+                  <li aria-label='dashboard-admin' className={`${expand ? 'w-[230px]' : ''}`}>
                     <NavLink
                       end
                       to='/dashboard'
@@ -171,7 +171,7 @@ const Sidebar = ({ setWidth }) => {
                   animation='duration-150'
                   className={`${expand ? 'hidden' : ''}`}
                 >
-                  <li aria-label='users-admin'>
+                  <li aria-label='users-admin' className={`${expand ? 'w-[230px]' : ''}`}>
                     <NavLink
                       to='/dashboard/users'
                       className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
@@ -192,7 +192,7 @@ const Sidebar = ({ setWidth }) => {
                   animation='duration-150'
                   className={`${expand ? 'hidden' : ''}`}
                 >
-                  <li aria-label='careers-admin'>
+                  <li aria-label='careers-admin' className={`${expand ? 'w-[230px]' : ''}`}>
                     <NavLink
                       to='/dashboard/careers'
                       className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
@@ -215,7 +215,7 @@ const Sidebar = ({ setWidth }) => {
                   animation='duration-150'
                   className={`${expand ? 'hidden' : ''}`}
                 >
-                  <li aria-label='tests-admin'>
+                  <li aria-label='tests-admin' className={`${expand ? 'w-[230px]' : ''}`}>
                     <NavLink
                       to='/dashboard/admin/tests'
                       className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
@@ -248,7 +248,7 @@ const Sidebar = ({ setWidth }) => {
                       animation='duration-150'
                       className={`${expand ? 'hidden' : ''}`}
                     >
-                      <li aria-label='logout-google'>
+                      <li aria-label='logout-google' className={`${expand ? 'w-[230px]' : ''}`}>
                         <NavLink to='/' onClick={googleLogout}>
                           <button
                             data-testid='logout-button'
@@ -278,7 +278,7 @@ const Sidebar = ({ setWidth }) => {
                   animation='duration-150'
                   className={`${expand ? 'hidden' : ''}`}
                 >
-                  <li aria-label='logout-no-google'>
+                  <li aria-label='logout-no-google' className={`${expand ? 'w-[230px]' : ''}`}>
                     <NavLink to='/'>
                       <button
                         data-testid='logout-button'
