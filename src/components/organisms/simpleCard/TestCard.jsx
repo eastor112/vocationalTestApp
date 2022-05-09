@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setActiveTestAction } from '../../../context/actions/testAdmin-actions';
+import { toLocalTime } from '../../../helpers/dateHelpers';
 
 const TestCard = ({ test }) => {
   const dispatch = useDispatch();
@@ -64,7 +65,7 @@ const TestCard = ({ test }) => {
               Created at:
             </th>
             <td className='px-6 py-1.5'>
-              {test.createdAt}
+              {toLocalTime(test.createdAt)}
             </td>
           </tr>
           <tr className='bg-white dark:bg-gray-800'>
@@ -72,7 +73,7 @@ const TestCard = ({ test }) => {
               Updated at:
             </th>
             <td className='px-6 py-1.5'>
-              {test.updatedAt}
+              {toLocalTime(test.updatedAt)}
             </td>
           </tr>
         </tbody>

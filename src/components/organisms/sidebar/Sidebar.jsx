@@ -210,6 +210,25 @@ const Sidebar = ({ setWidth }) => {
                 </Tooltip>
 
                 <Tooltip
+                  content='Universities'
+                  placement='right'
+                  animation='duration-150'
+                  className={`${expand ? 'hidden' : ''}`}
+                >
+                  <li aria-label='universities-admin' className={`${expand ? 'w-[230px]' : ''}`}>
+                    <NavLink
+                      to='/dashboard/admin/universities'
+                      className={({ isActive }) => `flex items-center p-2 text-base font-normal text-light-1 rounded-lg  hover:bg-primary-2 ${isActive ? 'text-teal-300' : ''}`}
+                    >
+                      <i className='fa-solid fa-city' />
+                      <span className={expand ? 'flex-1 ml-3 whitespace-nowrap' : 'hidden'}>
+                        Universities
+                      </span>
+                    </NavLink>
+                  </li>
+                </Tooltip>
+
+                <Tooltip
                   content='Tests'
                   placement='right'
                   animation='duration-150'

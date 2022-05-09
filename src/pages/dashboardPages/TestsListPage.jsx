@@ -14,9 +14,9 @@ const TestsListPage = () => {
   }, []);
 
   return (
-    <main className={`${width === 64 ? 'pt-4 pr-10 pl-72 bg-light-1 h-screen' : ' pt-4 pr-10 pl-24 bg-light-1 h-screen'}`}>
+    <main className={`min-h-screen ${width === 64 ? 'pt-4 pr-10 pl-72 bg-light-1' : ' pt-4 pr-10 pl-24 bg-light-1'}`}>
 
-      <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
+      <div className='w-full flex flex-wrap gap-5'>
         {tests.map((test) => (
           <TestCard
             test={test}

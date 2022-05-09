@@ -10,6 +10,7 @@ import Payment from '../pages/dashboardPages/Payment';
 import SelectTestPage from '../pages/dashboardPages/SelectTestPage';
 import SelectTestResultPage from '../pages/dashboardPages/SelectTestResultPage';
 import TestsListPage from '../pages/dashboardPages/TestsListPage';
+import UniversitiesListPage from '../pages/dashboardPages/UniversitiesListPage';
 import UniversityProfileFormPage from '../pages/dashboardPages/UniversityProfileFormPage';
 import UserProfilePage from '../pages/dashboardPages/UserProfilePage';
 import UsersListPage from '../pages/dashboardPages/UsersListPage';
@@ -32,6 +33,7 @@ const DashboardRoutes = () => {
         <Route path='careers' element={<CareersListPage />} />
         <Route path='careers/:careerId/:part' element={<CareerUpdateOrCreatePage />} />
         <Route path='admin/tests' element={<TestsListPage />} />
+        <Route path='admin/universities' element={<UniversitiesListPage />} />
         <Route path='payment' element={<Payment />} />
         <Route path='checkout' element={<Checkout />} />
         <Route path='admin/tests/:testId/:part' element={<EditTestPage />} />

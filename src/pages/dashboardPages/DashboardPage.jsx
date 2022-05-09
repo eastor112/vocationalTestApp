@@ -8,7 +8,7 @@ import PopularTop from '../../components/organisms/popularTop/PopularTop';
 const DashboardPage = () => {
   const width = useOutletContext();
   return (
-    <main className={`${width === 64 ? 'pt-4 pr-10 pl-72 bg-light-1' : ' pt-4 pr-10 pl-24 bg-light-1'}`}>
+    <main className={`min-h-screen ${width === 64 ? 'pt-4 pr-10 pl-72 bg-light-1' : ' pt-4 pr-10 pl-24 bg-light-1'}`}>
 
       <h2
         className='text-2xl font-bold text-dark-1 my-4'
