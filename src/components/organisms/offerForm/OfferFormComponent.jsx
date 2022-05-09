@@ -20,7 +20,8 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
     description: creating ? '' : activeOffer.description,
     url: creating ? '' : activeOffer.url,
     photo: creating ? '' : activeOffer.photo,
-    career: creating ? '' : activeOffer.career.name,
+    // eslint-disable-next-line no-nested-ternary
+    career: creating ? '' : (activeOffer.career ? activeOffer.career.name : ''),
   });
 
   const {
@@ -139,8 +140,8 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
               {
                 careers.map((c) => {
                   return (
-                    <option key={uuidv4()} value={c.name}>
-                      {c.name}
+                    <option key={uuidv4()} value={c}>
+                      {c}
                     </option>
                   );
                 })

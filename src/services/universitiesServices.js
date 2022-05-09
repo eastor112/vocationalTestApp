@@ -2,6 +2,16 @@ import { City, Country } from 'country-state-city';
 
 const BASE_URL = process.env.REACT_APP_ENV === 'develop' ? process.env.REACT_APP_API_URL_DEV : process.env.REACT_APP_API_URL_PROD;
 
+export const getAllUniversitiesCountryCodes = async () => {
+  const response = await fetch(`${BASE_URL}/api/universities/countries/codes`);
+
+  if (response.status !== 200) {
+    return Promise.reject(new Error(response.statusText));
+  }
+
+  return response.json();
+};
+
 export const getAllUniversities = async (limit = 20, page = 1) => {
   const URL = `${BASE_URL}/api/universities?limit=${limit}&page=${page}`;
   try {

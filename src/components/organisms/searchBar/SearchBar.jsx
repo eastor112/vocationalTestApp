@@ -2,7 +2,7 @@ import { Country } from 'country-state-city';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
-import { getUniversitiesByFilters } from '../../../services/universitiesServices';
+import { getAllUniversitiesCountryCodes, getUniversitiesByFilters } from '../../../services/universitiesServices';
 import { getAllCareersNames } from '../../../services/careersServices';
 
 const SearchBar = ({ setUniversities }) => {
@@ -11,6 +11,11 @@ const SearchBar = ({ setUniversities }) => {
 
   useEffect(() => {
     setCountries(Country.getAllCountries());
+
+    getAllUniversitiesCountryCodes().then((arrayCodes) => {
+      const universityCountries = arrayCodes.map((code) => Country.getCountryByCode(code));
+      setCountries(universityCountries);
+    });
 
     getAllCareersNames()
       .then((data) => {
@@ -78,15 +83,14 @@ const SearchBar = ({ setUniversities }) => {
           >
             <option key={uuidv4()} value=''> All</option>
             {
-              countries.map((c) => {
+              countries.map((country) => {
                 return (
-                  <option key={uuidv4()} value={c.isoCode}>
-                    {c.name}
+                  <option key={uuidv4()} value={country.isoCode}>
+                    {country.name}
                   </option>
                 );
               })
             }
-            <option>USA</option>
           </select>
         </label>
 
@@ -98,7 +102,7 @@ const SearchBar = ({ setUniversities }) => {
           <select
             data-cy='career-select'
             id='career'
-            className='ml-1 mt-2 lg:mt-0 w-32 sm:w-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            className='ml-1 pr-8 mt-2 lg:mt-0 w-40 sm:w-44 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             name='career'
             value={formValues.career}
             onChange={handleInputChange}
@@ -106,10 +110,10 @@ const SearchBar = ({ setUniversities }) => {
 
             <option key={uuidv4()} value=''> All </option>
             {
-              careers.map((c) => {
+              careers.map((career) => {
                 return (
-                  <option key={uuidv4()} value={c.name}>
-                    {c.name}
+                  <option key={uuidv4()} value={career}>
+                    {career}
                   </option>
                 );
               })
