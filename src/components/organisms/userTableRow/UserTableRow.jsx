@@ -82,7 +82,7 @@ UserTableRow.propTypes = {
   user: PropTypes.object.isRequired,
   openModal: PropTypes.func,
   setIsCreating: PropTypes.func.isRequired,
-  usersByPage: PropTypes.number.isRequired,
+  usersByPage: PropTypes.string.isRequired,
   page: PropTypes.number.isRequired,
 };
 

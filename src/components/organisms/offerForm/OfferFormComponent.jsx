@@ -2,21 +2,27 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { Alert } from 'flowbite-react';
 import { useForm } from '../../../hooks/useForm';
 import { getAllCareersNames } from '../../../services/careersServices';
 import InputFile from '../../atoms/input/InputFile';
 import InputV2 from '../../atoms/input/InputV2';
-import { createUniversityOfferAction, updateUniversityOfferAction } from '../../../context/actions/universities-actions';
+import {
+  createUniversityOfferAction,
+  updateUniversityOfferAction,
+} from '../../../context/actions/universities-actions';
 
 const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer }) => {
   const dispatch = useDispatch();
   const { isEditingModal } = useSelector((state) => state.universities);
 
   const [careers, setCareers] = useState([]);
+  const [error, setError] = useState(null);
 
   const { formValues, handleFormChange } = useForm({
     name: creating ? '' : activeOffer.name,
-    duration: creating ? '' : activeOffer.duration,
+    // eslint-disable-next-line no-nested-ternary
+    duration: creating ? '' : (activeOffer.duration ? activeOffer.duration : 0),
     description: creating ? '' : activeOffer.description,
     url: creating ? '' : activeOffer.url,
     photo: creating ? '' : activeOffer.photo,
@@ -58,14 +64,30 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
     handleFormChange(e);
   };
 
+  const isValidForm = () => {
+    if (name === '') {
+      setError('Please enter a career name');
+      return false;
+    }
+
+    setError(null);
+    return true;
+  };
+
   const handleCreateSubmit = (e) => {
     e.preventDefault();
-    dispatch(createUniversityOfferAction(universityId, formValues));
+
+    if (isValidForm()) {
+      dispatch(createUniversityOfferAction(universityId, formValues));
+    }
   };
 
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUniversityOfferAction(activeOffer._id, formValues));
+
+    if (isValidForm()) {
+      dispatch(updateUniversityOfferAction(activeOffer._id, formValues));
+    }
   };
 
   return (
@@ -78,12 +100,27 @@ const OfferFormComponent = ({ universityId, closeModal, creating, activeOffer })
       </h3>
 
       <form action=''>
+        {
+          error
+          && (
+            <Alert color='red'>
+              <span>
+                <span className='font-medium mr-1'>
+                  Error!
+                </span>
+                {error}
+              </span>
+            </Alert>
+          )
+        }
+
         <InputV2
           type='text'
           label='Name'
           name='name'
           value={name}
           onChange={handleFormChange}
+          required
         />
 
         <div aria-label='description' className='relative top-2 mb-8'>

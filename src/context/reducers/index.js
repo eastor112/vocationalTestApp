@@ -9,8 +9,9 @@ import { billingsReducer } from './billingsReducer';
 import { universitiesReducer } from './universitiesReducer';
 import { careersReducer } from './careersReducer';
 import { adminTestsReducer } from './adminTestsReducer';
+import { types } from '../types/types';
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   ui: uiReducer,
   auth: authReducer,
   users: usersReducer,
@@ -21,5 +22,13 @@ const rootReducer = combineReducers({
   careers: careersReducer,
   testsAdmin: adminTestsReducer,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === types.resetStore) {
+    return appReducer(undefined, action);
+  }
+
+  return appReducer(state, action);
+};
 
 export default rootReducer;

@@ -3,6 +3,13 @@ import { emailValidationApi, loginValidationApi, updateUserApi } from '../../ser
 import { types } from '../types/types';
 import { setError, setLoading } from './ui-actions';
 
+export const resetStoreAction = () => {
+  return {
+    type: types.resetStore,
+    payload: null,
+  };
+};
+
 export const loginSimple = (result) => ({
   type: types.login,
   payload: {
@@ -26,12 +33,15 @@ export const loginAsync = (email, password) => {
 };
 
 export const logoutSimple = () => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('lastPath');
+  return (dispatch) => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('lastPath');
 
-  return {
-    type: types.logout,
-    payload: {},
+    dispatch(resetStoreAction());
+    dispatch({
+      type: types.logout,
+      payload: {},
+    });
   };
 };
 

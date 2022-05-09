@@ -215,7 +215,7 @@ const UsersListPage = () => {
               </span>
               of
               <span className='font-semibold text-gray-900 dark:text-white mx-1'>{totalUsers}</span>
-              Careers
+              Users
             </span>
 
             <div className='inline-flex mt-2 xs:mt-0'>

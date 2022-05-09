@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
+import { Country } from 'country-state-city';
+import { v4 as uuidv4 } from 'uuid';
 import { loginAsync } from '../../../context/actions/auth-actions';
 import { setError, clearError, setLoading } from '../../../context/actions/ui-actions';
 import { useForm } from '../../../hooks/useForm';
@@ -10,11 +12,16 @@ import { signUpStudentApi, signUpInstitutionApi } from '../../../services/authSe
 
 const LoginOrSignupForm = ({ title }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const { error, isLoading } = useSelector((state) => state.ui);
 
   const [isInstitution, setIsInstitution] = useState(false);
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    setCountries(Country.getAllCountries());
+  }, []);
 
   const { formValues, handleInputChange } = useForm({
     email: '',
@@ -203,8 +210,15 @@ const LoginOrSignupForm = ({ title }) => {
                     value={country}
                     onChange={handleInputChange}
                   >
-                    <option value='PE'>Perú</option>
-                    <option value='CO'>Colombia</option>
+                    <option value=''>Select a country</option>
+                    {
+                      countries.map((c) => (
+                        <option key={uuidv4()} value={c.isoCode}>
+                          {c.name}
+                        </option>
+                      ))
+                    }
+
                   </select>
                 </label>
               </div>

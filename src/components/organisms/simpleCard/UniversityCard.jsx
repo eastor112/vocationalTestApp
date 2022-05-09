@@ -18,9 +18,17 @@ const UniversityCard = ({ university }) => {
         <figure className='w-full h-36 overflow-hidden'>
           <img src={university.campus[0]} className='h-36 w-full' alt={`campus ${university.name}`} />
         </figure>
-        <figure className='w-2/5 ml-3'>
-          <img className='logo w-full' src={university.logo} alt={university.name} />
-        </figure>
+        {
+          (university.logo !== '' && university.logo)
+            ? (
+              <figure className='h-10 ml-3'>
+                <img className='logo h-full' src={university.logo} alt={university.name} />
+              </figure>
+            )
+            : (
+              <div className='h-10' />
+            )
+        }
       </div>
       <div className='p-3'>
         <h3 className='font-medium text-xs text-center mb-2'>{university.name.toUpperCase()}</h3>
@@ -62,7 +70,7 @@ UniversityCard.propTypes = {
   university: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    logo: PropTypes.string.isRequired,
+    logo: PropTypes.string,
     campus: PropTypes.arrayOf(PropTypes.string).isRequired,
     ranking: PropTypes.shape({
       national: PropTypes.number.isRequired,

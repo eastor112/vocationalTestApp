@@ -10,8 +10,6 @@ const SearchBar = ({ setUniversities }) => {
   const [careers, setCareers] = useState([]);
 
   useEffect(() => {
-    setCountries(Country.getAllCountries());
-
     getAllUniversitiesCountryCodes().then((arrayCodes) => {
       const universityCountries = arrayCodes.map((code) => Country.getCountryByCode(code));
       setCountries(universityCountries);

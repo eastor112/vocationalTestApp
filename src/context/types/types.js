@@ -1,4 +1,6 @@
 export const types = {
+  resetStore: 'RESET_STORE',
+
   login: '[AUTH] LOGIN',
   logout: '[AUTH] LOGOUT',
   updateUserData: '[AUTH] UPDATE_USER',
