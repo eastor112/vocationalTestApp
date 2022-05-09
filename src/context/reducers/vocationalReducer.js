@@ -52,6 +52,13 @@ export const vocationalReducer = (state = initialState, action) => {
         testsResults: [...action.payload],
       };
 
+    case types.deleteTestResult:
+      return {
+        ...state,
+        testsResults: state.testsResults.filter(
+          (testResult) => testResult.id !== action.payload,
+        ),
+      };
     default:
       return state;
   }

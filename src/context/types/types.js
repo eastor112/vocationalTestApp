@@ -16,6 +16,7 @@ export const types = {
   setActiveTest: '[TEST] SET_ACTIVE_TEST',
   setQuestions: '[TEST] SET_QUESTIONS',
   clearQuestions: '[TEST] CLEAR_QUESTIONS',
+  deleteTestResult: '[TEST] DELETE_TEST_RESULT',
 
   resetSolvingTest: '[SOLVING] RESET_SOLVING_TEST',
   addQuestionResponse: '[SOLVING] ADD_QUESTION_RESPONSE',

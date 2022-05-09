@@ -192,7 +192,7 @@ export const destroyCareerAction = (id, page, cardsByPage) => {
 
     if (result.isConfirmed) {
       Swal.fire({
-        title: 'Updating...',
+        title: 'Deleting...',
         html: 'Wait a moment...',
         allowEscapeKey: false,
         allowOutsideClick: false,

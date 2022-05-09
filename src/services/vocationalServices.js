@@ -212,7 +212,6 @@ export const updateResultsVocationalTest = async (testId, resA, resB, resC, resD
 };
 
 export const updateDescriptionsTest = async (testId, descriptions) => {
-  console.log(descriptions);
   const URL = `${BASE_URL}/api/tests/${testId}`;
   const token = localStorage.getItem('token');
   const requestOptions = {
@@ -228,6 +227,25 @@ export const updateDescriptionsTest = async (testId, descriptions) => {
     return Promise.reject(new Error('Error updating test'));
   }
   const updatedTest = await response.json();
-  console.log(updatedTest);
+
   return updatedTest;
+};
+
+export const destroyTestResultsService = async (testId) => {
+  const URL = `${BASE_URL}/api/results/${testId}/destroy`;
+  const token = localStorage.getItem('token');
+
+  const requestOptions = {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+
+  };
+  const response = await fetch(URL, requestOptions);
+  if (response.status !== 204) {
+    return Promise.reject(new Error('Error deleting test'));
+  }
+
+  return 'deleted';
 };

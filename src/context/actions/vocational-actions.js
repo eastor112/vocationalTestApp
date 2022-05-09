@@ -3,6 +3,7 @@ import { processResponses } from '../../helpers/testsHelpers';
 import { createMultipleQuestionResponseService } from '../../services/solvingTestServices';
 import {
   createTestResultService,
+  destroyTestResultsService,
   fetchAllTestsResultsService,
   fetchAllTestsService,
   fetchOneTestResultService,
@@ -66,11 +67,6 @@ export const createTestResultAction = () => {
       secondOption,
     );
 
-    dispatch({
-      type: types.setActiveTestResult,
-      payload: testResult,
-    });
-
     const savedQuestionsResponses = await createMultipleQuestionResponseService(
       unsavedQuestionsResponses,
       testResult.id,
@@ -111,12 +107,33 @@ export const getAllTestsResultsAction = () => {
       auth: { user },
     } = getState();
 
-    const testsResults = await fetchAllTestsResultsService(user.uid);
-
-    dispatch({
-      type: types.setTestsResults,
-      payload: testsResults,
+    Swal.fire({
+      title: 'Getting your results...',
+      html: 'Wait a moment...',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
     });
+
+    try {
+      const testsResults = await fetchAllTestsResultsService(user.uid);
+
+      dispatch({
+        type: types.setTestsResults,
+        payload: testsResults,
+      });
+
+      Swal.close();
+    } catch (err) {
+      Swal.close();
+      Swal.fire({
+        title: 'Error',
+        html: err.message,
+        icon: 'error',
+      });
+    }
   };
 };
 
@@ -134,5 +151,51 @@ export const getActiveTestResultAction = (testId) => {
 export const clearActiveTestResultAction = () => {
   return {
     type: types.clearActiveTestResult,
+  };
+};
+
+export const destroyTestResultAction = (testId) => {
+  return async (dispatch) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    });
+
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: 'Deleting...',
+        html: 'Wait a moment...',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
+      try {
+        await destroyTestResultsService(testId);
+
+        dispatch({
+          type: types.deleteTestResult,
+          payload: testId,
+        });
+
+        Swal.close();
+      } catch (err) {
+        Swal.fire({
+          title: 'Error!',
+          icon: 'error',
+          html: err.message,
+          confirmButtonText: 'Ok',
+        }).then(() => {
+          Swal.close();
+        });
+      }
+    }
   };
 };
