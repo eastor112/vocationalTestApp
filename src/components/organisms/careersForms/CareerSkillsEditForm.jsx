@@ -41,14 +41,14 @@ const CareerSkillsEditForm = () => {
           id='description'
           rows='3'
           className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-          placeholder='This pro.'
+          placeholder='This pro...'
           name='description'
           value={formValues.description}
           onChange={handleFormChange}
         />
 
         <DragAndDropList
-          label='Job field'
+          label='Skills'
           arrayItems={skillsList}
           setParentArray={setSkillsList}
         />

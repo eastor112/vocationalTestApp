@@ -147,7 +147,10 @@ const UniversityOffersComponent = ({ universityId }) => {
                                 target='_blank'
                                 rel='noreferrer'
                               >
-                                {academicOffer.url}
+                                {
+                                  academicOffer.url && academicOffer.url.substring(0, 24)
+                                }
+                                ...
                               </a>
                             )
                         }

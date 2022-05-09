@@ -29,7 +29,7 @@ const CareerCard = ({ career, page, cardsByPage }) => {
             <img className='max-h-full ' src={career.photo} alt={career.name} />
           </figure>
           <p>
-            {`${career.description.substring(0, 80)}...`}
+            {`${career.description.substring(0, 40)}...`}
           </p>
 
         </div>
@@ -37,23 +37,25 @@ const CareerCard = ({ career, page, cardsByPage }) => {
         <hr />
         <div aria-label='field-list'>
           <span className='font-medium mr-2 text-xs'>Labor field:</span>
-          {career.field.list.slice(0, 1).map((item, index) => (
-            <span key={`${index * 3}sdf`} className='text-xs text-gray-700 dark:text-gray-400'>
-              {`${item} `}
-            </span>
-          ))}
+
+          <span className='text-xs text-gray-700 dark:text-gray-400'>
+            {
+              career.field.list.lentgth > 0
+              && career.field.list[0].substring(0, 24)
+            }
+          </span>
           ...
         </div>
 
         <hr />
         <div aria-label='skill-list'>
           <span className='font-medium mr-2 text-xs'>Required skills:</span>
-
-          {career.skills.list.slice(0, 2).map((item, index) => (
-            <span key={`${index * 3}sdf`} className='text-xs text-gray-700 dark:text-gray-400'>
-              {`${item} `}
-            </span>
-          ))}
+          <span className='text-xs text-gray-700 dark:text-gray-400'>
+            {
+              career.skills.list.lentgth > 0
+              && career.skills.list[0].substring(0, 24)
+            }
+          </span>
           ...
         </div>
 

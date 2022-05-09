@@ -59,7 +59,7 @@ const LoginOrSignupForm = ({ title }) => {
       return false;
     }
     if (isInstitution && (name === '' || country === '' || phone === '' || url === '')) {
-      setError('Please fill in all institutions fields');
+      dispatch(setError('Please fill in all institutions fields'));
       return false;
     }
     dispatch(clearError());
