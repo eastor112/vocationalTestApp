@@ -48,13 +48,5 @@ describe('Student flow', () => {
     cy.get('.career-list-item:first').click();
 
     cy.get('.career-detail-link:first').click();
-
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(1000);
-    cy.get('.university-detail-link:first').click();
-
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(1000);
-    cy.get("[data-cy='university-name']").should('be.visible');
   });
 });

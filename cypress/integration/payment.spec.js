@@ -1,8 +1,11 @@
+const studentAccount = 'student@test.com';
+const studentPassword = '123456';
+
 describe('Testing Payment Gateway', () => {
   it('should login', () => {
     cy.visit('/login');
-    cy.get("[data-cy='email-input']").type('example@test.com');
-    cy.get("[data-cy='pass-input']").type('123456');
+    cy.get("[data-cy='email-input']").type(studentAccount);
+    cy.get("[data-cy='pass-input']").type(studentPassword);
     cy.get("[data-cy='submit-button']").click();
   });
 
