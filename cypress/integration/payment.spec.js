@@ -11,7 +11,7 @@ describe('Testing Payment Gateway', () => {
 
   it('should go to payment page', () => {
     cy.get("[data-cy='general-page-link']").click();
-    cy.get('.buy-button').click();
+    cy.get('.buy-button:first').click();
   });
 
   it('should pay for the test', () => {

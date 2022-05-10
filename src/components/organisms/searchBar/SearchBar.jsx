@@ -40,13 +40,19 @@ const SearchBar = ({ setUniversities }) => {
     if (field === 'country') {
       getUniversitiesByFilters(value, formValues.career, formValues.search)
         .then((data) => {
-          setUniversities(data.results);
+          const dataPublicated = data.results.filter((university) => {
+            return university.isPublicated;
+          });
+          setUniversities(dataPublicated);
         });
     }
     if (field === 'career') {
       getUniversitiesByFilters(formValues.country, value, formValues.search)
         .then((data) => {
-          setUniversities(data.results);
+          const dataPublicated = data.results.filter((university) => {
+            return university.isPublicated;
+          });
+          setUniversities(dataPublicated);
         });
     }
   };
@@ -57,7 +63,10 @@ const SearchBar = ({ setUniversities }) => {
     if (formValues.search !== '') {
       getUniversitiesByFilters(formValues.country, formValues.career, formValues.search)
         .then((data) => {
-          setUniversities(data.results);
+          const dataPublicated = data.results.filter((university) => {
+            return university.isPublicated;
+          });
+          setUniversities(dataPublicated);
         });
     }
   };

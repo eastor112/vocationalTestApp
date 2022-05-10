@@ -56,10 +56,8 @@ export const getUniversitiesByName = async (name, limit = 4, page = 1) => {
   }
 };
 
-export const getUniversitiesByCareer = async (career, limit = 4, page = 1) => {
-  const query = career.split(' ').join('|');
-
-  const URL = `${BASE_URL}/api/search/universities?career=${query}&limit=${limit}&page=${page}`;
+export const getUniversitiesByCareer = async (careerId, limit = 4, page = 1) => {
+  const URL = `${BASE_URL}/api/search/universities?career=${careerId}&limit=${limit}&page=${page}`;
 
   try {
     const response = await fetch(URL);

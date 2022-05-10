@@ -11,7 +11,11 @@ const Advertisement = () => {
   useEffect(() => {
     getAllUniversities(4, page)
       .then((data) => {
-        setUniversities(data.universities);
+        const dataPublicated = data.universities.filter((university) => {
+          return university.isPublicated;
+        });
+
+        setUniversities(dataPublicated);
         setTotalPages(data.totalPages);
       });
   }, [page]);

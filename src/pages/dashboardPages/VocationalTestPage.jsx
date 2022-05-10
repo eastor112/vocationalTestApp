@@ -72,11 +72,11 @@ const VocationalTestPage = () => {
               </h1>
               <div>
                 <p className='mt-10 text-justify'>
-                  Todos tenemos una disposición natural para trabajar mejor en los campos
-                  que más nos interesan y en los que creemos ser más eficaces.
-                  Esta eficacia produce satisfacción, lo que nos impulsa a progresar
-                  más rapidamente en el desarrollo de nuestras
-                  habilidades
+                  We all have a natural disposition to work better in the fields
+                  that interest us most and in which we believe we are most effective.
+                  This efficiency produces satisfaction, which drives us to progress
+                  more quickly in the development of our skills. With the following
+                  questions we seek to know what your best skills are.
                 </p>
                 <br />
                 <div className=' md:grid grid-cols-2 gap-2'>
