@@ -16,7 +16,7 @@ const studentPassword = '123456';
 
 describe('Testing login and signup page', () => {
 
-  it.skip('Can create an account', () => {
+  it('Can create an account', () => {
     cy.visit('/signup');
     cy.contains('Sign up');
 
@@ -40,7 +40,7 @@ describe('Testing login and signup page', () => {
     });
   });
 
-  it.skip('can receive the confirmation email and activate his account', () => {
+  it('can receive the confirmation email and activate his account', () => {
     cy.waitForLatestEmail(inboxId).then((email) => {
       assert.isDefined(email);
 
