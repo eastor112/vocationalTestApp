@@ -1,12 +1,23 @@
 import Swal from 'sweetalert2';
 import { createOffer, destroyOffer, updateOffer } from '../../services/offersServices';
-import { deleteUniversityImages, getUniversityById, updateMediaUniversity, updatePrincipalUniversity, updateUniversityProcess, updateUniversitySocialMedia } from '../../services/universitiesServices';
+import { deleteUniversityImages, getAllUniversities, getUniversityById, updateMediaUniversity, updatePrincipalUniversity, updateUniversityProcess, updateUniversitySocialMedia } from '../../services/universitiesServices';
 import { types } from '../types/types';
 
 export const setIsEditingModal = (isEditing) => ({
   type: types.setIsEditingModal,
   payload: isEditing,
 });
+
+export const setUniversitiesAction = () => {
+  return async (dispatch) => {
+    const universities = await getAllUniversities();
+
+    dispatch({
+      type: types.setUniversities,
+      payload: universities.universities,
+    });
+  };
+};
 
 export const setActiveUniversityAction = (id) => {
   return async (dispatch) => {

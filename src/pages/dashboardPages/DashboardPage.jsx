@@ -12,10 +12,17 @@ const DashboardPage = () => {
   const [dataGraph, setDataGraph] = useState({});
 
   useEffect(() => {
+    let isCancelled = false;
+
     getBalanceLastThirtyDays()
       .then((resp) => {
-        setDataGraph(resp);
+        if (!isCancelled) {
+          setDataGraph(resp);
+        }
       });
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   return (

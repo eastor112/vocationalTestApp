@@ -88,10 +88,25 @@ const UniversityProfilePage = () => {
 
                   {university.offer && university.offer.map((offer) => {
                     return (
-
                       <div key={uuidv4()}>
-                        <a className='text-teal-600 hover:text-teal-400 underline underline-offset-8 ' href='.'>{offer.name}</a>
-                        <p className='p-2'>{offer.description}</p>
+                        <figure className='h-36 overflow-hidden'>
+                          <img className='h-36' src={offer.photo ? offer.photo : require('../../assets/professional.jpg')} alt='' />
+                        </figure>
+                        <div className='mt-2'>
+                          <a
+                            className='text-teal-600 hover:text-teal-400 underline underline-offset-8 '
+                            href={offer.url ? offer.url : '.'}
+                            target='_blank'
+                            rel='noreferrer'
+                          >
+                            {offer.name}
+
+                          </a>
+                          <p className='p-2'>
+                            {offer.description.substring(0, 80)}
+                            ...
+                          </p>
+                        </div>
                       </div>
                     );
                   })}

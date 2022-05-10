@@ -19,6 +19,7 @@ const TestsListPage = () => {
       <div className='w-full flex flex-wrap gap-5'>
         {tests.map((test) => (
           <TestCard
+            key={test.id}
             test={test}
           />
         ))}

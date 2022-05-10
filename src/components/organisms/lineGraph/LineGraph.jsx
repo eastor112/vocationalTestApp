@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -31,7 +31,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Visitors and Subscribers statistics (monthly)',
+      text: 'Total, Utilities, Fees and Taxes',
       position: 'top',
       align: 'start',
     },
@@ -39,40 +39,61 @@ export const options = {
 };
 
 const LineGraph = ({ dataGraph }) => {
-  const totals = dataGraph.utilities?.map((utility, i) => {
-    return utility + dataGraph.fees[i] + dataGraph.taxes[i];
-  });
-
-  const data = {
-    labels: dataGraph.labels,
+  const [data, setData] = useState({
+    labels: [],
     datasets: [
       {
         label: 'Total',
-        data: totals,
+        data: [],
         borderColor: 'rgb(39, 57, 194)',
         backgroundColor: 'rgba(39, 57, 194, 0.2)',
       },
-      {
-        label: 'Utilities',
-        data: dataGraph.utilities,
-        borderColor: 'rgb(70, 194, 39)',
-        backgroundColor: 'rgba(70, 194, 39, 0.2)',
-      },
-      {
-        label: 'Fees',
-        data: dataGraph.fees,
-        borderColor: 'rgb(235, 223, 53)',
-        backgroundColor: 'rgba(235, 223, 53, 0.5)',
-      },
-      {
-        label: 'Taxes',
-        data: dataGraph.taxes,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-
     ],
-  };
+  });
+
+  useEffect(
+    () => {
+      if (dataGraph && Object.keys(dataGraph).length > 0) {
+        const totals = dataGraph.utilities.map((utility, i) => {
+          return utility + dataGraph.fees[i] + dataGraph.taxes[i];
+        });
+
+        const dataObj = {
+          labels: dataGraph.labels,
+          datasets: [
+            {
+              label: 'Total',
+              data: totals,
+              borderColor: 'rgb(39, 57, 194)',
+              backgroundColor: 'rgba(39, 57, 194, 0.2)',
+            },
+            {
+              label: 'Utilities',
+              data: dataGraph.utilities,
+              borderColor: 'rgb(70, 194, 39)',
+              backgroundColor: 'rgba(70, 194, 39, 0.2)',
+            },
+            {
+              label: 'Fees',
+              data: dataGraph.fees,
+              borderColor: 'rgb(235, 223, 53)',
+              backgroundColor: 'rgba(235, 223, 53, 0.5)',
+            },
+            {
+              label: 'Taxes',
+              data: dataGraph.taxes,
+              borderColor: 'rgb(255, 99, 132)',
+              backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            },
+
+          ],
+        };
+
+        setData(dataObj);
+      }
+    },
+    [dataGraph],
+  );
 
   return (
     <div aria-label='graph-container' className='graph h-80'>
